@@ -1,11 +1,16 @@
 /**
  * gen.ts — regenerate the shadcn registry files and the README catalog.
  *
- * Single source of truth for each item is its manifest (SKILL.md) frontmatter
- * plus the actual files in the item folder. This script derives:
- *   - skills/<name>/registry.json   (one shadcn item per folder)
- *   - registry.json                 (root: name/homepage + include[])
- *   - the README catalog table       (between the skills markers)
+ * Source layout is `skills/<category>/<name>/SKILL.md`. The category is the
+ * folder a skill lives in — the single source of truth, so there is no
+ * `category` field to set or keep in sync. Skills always *install* to a flat
+ * `.claude/skills/<name>/` (Claude Code loads them from there), so the category
+ * is stripped from the install target and exists only to organise this repo.
+ *
+ * This script derives:
+ *   - skills/<category>/<name>/registry.json  (one shadcn item per skill)
+ *   - registry.json                           (root: name/homepage + include[])
+ *   - the README catalog                       (between the skills markers)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
@@ -33,7 +38,7 @@ const ROOT_REGISTRY_PATH = join(ROOT, "registry.json");
  * no other code changes are required.
  */
 interface ContentType {
-  /** Top-level folder that holds one subfolder per item. */
+  /** Top-level folder that holds one `<category>/<item>` tree. */
   dir: string;
   /** Manifest filename inside each item folder. */
   manifest: string;
@@ -44,6 +49,12 @@ interface ContentType {
 const CONTENT_TYPES: readonly ContentType[] = [
   { dir: "skills", manifest: "SKILL.md", targetBase: ".claude/skills" },
 ];
+
+/** One skill, located at `<dir>/<category>/<name>/`. */
+interface Item {
+  category: string;
+  name: string;
+}
 
 const FrontmatterSchema = z.object({
   name: z.string(),
@@ -63,6 +74,7 @@ interface RegistryItem {
   type: "registry:item";
   title: string;
   description: string;
+  categories: string[];
   files: RegistryFile[];
 }
 
@@ -70,6 +82,7 @@ interface CatalogRow {
   name: string;
   folder: string;
   description: string;
+  category: string;
 }
 
 interface GeneratedFile {
@@ -108,13 +121,24 @@ function listFiles(dir: string): string[] {
   return out;
 }
 
-function itemFolders(ct: ContentType): string[] {
-  const base = join(ROOT, ct.dir);
-  if (!existsSync(base)) return [];
-  return readdirSync(base, { withFileTypes: true })
+function subdirs(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
     .sort();
+}
+
+/** Walk `<dir>/<category>/<name>/`, deriving each skill's category from its folder. */
+function items(ct: ContentType): Item[] {
+  const base = join(ROOT, ct.dir);
+  if (!existsSync(base)) return [];
+  const out: Item[] = [];
+  for (const category of subdirs(base)) {
+    for (const name of subdirs(join(base, category))) {
+      out.push({ category, name });
+    }
+  }
+  return out;
 }
 
 function readFrontmatter(manifestPath: string): Frontmatter {
@@ -129,47 +153,79 @@ function readFrontmatter(manifestPath: string): Frontmatter {
   return result.data;
 }
 
-function buildItem(ct: ContentType, name: string, fm: Frontmatter): RegistryItem {
-  const folder = join(ROOT, ct.dir, name);
+function buildItem(ct: ContentType, item: Item, fm: Frontmatter): RegistryItem {
+  const folder = join(ROOT, ct.dir, item.category, item.name);
   const files = listFiles(folder)
     .map(toPosix)
     .filter((rel) => rel !== "registry.json")
     .sort();
 
   if (files.length === 0) {
-    throw new Error(`${ct.dir}/${name} has no files to publish.`);
+    throw new Error(`${ct.dir}/${item.category}/${item.name} has no files to publish.`);
   }
 
   const fileEntries: RegistryFile[] = files.map((rel) => ({
     path: rel,
     type: "registry:file",
-    target: `${ct.targetBase}/${name}/${rel}`,
+    target: `${ct.targetBase}/${item.name}/${rel}`,
   }));
 
-  const item: RegistryItem = {
-    name,
+  return {
+    name: item.name,
     type: "registry:item",
-    title: fm.title ?? toTitle(name),
+    title: fm.title ?? toTitle(item.name),
     description: fm.description.replace(/\s+/g, " ").trim(),
+    categories: [item.category],
     files: fileEntries,
   };
-  return item;
 }
 
 function inlineDescription(description: string): string {
   return description.replace(/\s+/g, " ").trim().replace(/\|/g, "\\|");
 }
 
+function catalogRow(row: CatalogRow): string {
+  return `| [${row.name}](${row.folder}) | ${inlineDescription(row.description)} | \`npx shadcn@latest add ${GITHUB_OWNER_REPO}/${row.name}\` |`;
+}
+
+function catalogSection(label: string, rows: CatalogRow[]): string[] {
+  const sorted = [...rows].sort((a, b) => a.name.localeCompare(b.name));
+  return [
+    `### ${label}`,
+    "",
+    "| Skill | Description | Install |",
+    "| --- | --- | --- |",
+    ...sorted.map(catalogRow),
+    "",
+  ];
+}
+
 function buildCatalog(rows: CatalogRow[]): string {
-  const header = ["| Skill | Description | Install |", "| --- | --- | --- |"];
-  const body =
-    rows.length === 0
-      ? ["| _none yet_ | | |"]
-      : rows.map(
-          (row) =>
-            `| [${row.name}](${row.folder}) | ${inlineDescription(row.description)} | \`npx shadcn@latest add ${GITHUB_OWNER_REPO}/${row.name}\` |`,
-        );
-  return [README_START, "", ...header, ...body, "", README_END].join("\n");
+  if (rows.length === 0) {
+    return [
+      README_START,
+      "",
+      "| Skill | Description | Install |",
+      "| --- | --- | --- |",
+      "| _none yet_ | | |",
+      "",
+      README_END,
+    ].join("\n");
+  }
+
+  const byCategory = new Map<string, CatalogRow[]>();
+  for (const row of rows) {
+    const group = byCategory.get(row.category) ?? [];
+    group.push(row);
+    byCategory.set(row.category, group);
+  }
+
+  const sections: string[] = [];
+  for (const category of [...byCategory.keys()].sort()) {
+    sections.push(...catalogSection(toTitle(category), byCategory.get(category) ?? []));
+  }
+
+  return [README_START, "", ...sections, README_END].join("\n");
 }
 
 function replaceCatalog(readme: string, catalog: string): string {
@@ -187,22 +243,27 @@ function generate(): GeneratedFile[] {
   const rows: CatalogRow[] = [];
 
   for (const ct of CONTENT_TYPES) {
-    for (const name of itemFolders(ct)) {
-      const manifestPath = join(ROOT, ct.dir, name, ct.manifest);
+    for (const item of items(ct)) {
+      const itemDir = join(ct.dir, item.category, item.name);
+      const manifestPath = join(ROOT, itemDir, ct.manifest);
       if (!existsSync(manifestPath)) {
-        throw new Error(`${ct.dir}/${name} is missing ${ct.manifest}.`);
+        throw new Error(`${itemDir} is missing ${ct.manifest}.`);
       }
       const fm = readFrontmatter(manifestPath);
-      const item = buildItem(ct, name, fm);
+      const registryItem = buildItem(ct, item, fm);
 
-      const chunkPath = join(ROOT, ct.dir, name, "registry.json");
       outputs.push({
-        path: chunkPath,
-        content: toJson({ $schema: REGISTRY_SCHEMA, items: [item] }),
+        path: join(ROOT, itemDir, "registry.json"),
+        content: toJson({ $schema: REGISTRY_SCHEMA, items: [registryItem] }),
       });
 
-      includePaths.push(`${ct.dir}/${name}/registry.json`);
-      rows.push({ name, folder: `${ct.dir}/${name}/`, description: item.description });
+      includePaths.push(toPosix(join(itemDir, "registry.json")));
+      rows.push({
+        name: item.name,
+        folder: `${toPosix(itemDir)}/`,
+        description: registryItem.description,
+        category: item.category,
+      });
     }
   }
 

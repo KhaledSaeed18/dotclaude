@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "explain-codebase",
+      "type": "registry:item",
+      "title": "Explain Codebase",
+      "description": "Onboard to an unfamiliar codebase by mapping its architecture, entry points, and data flow. Use when starting work in a new or unknown repository and you need a navigable mental model fast.",
+      "categories": [
+        "engineering"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/explain-codebase/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

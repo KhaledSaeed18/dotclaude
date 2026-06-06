@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "pr-description",
+      "type": "registry:item",
+      "title": "Pr Description",
+      "description": "Generate a clear, reviewer-friendly pull-request description from a diff — covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body.",
+      "categories": [
+        "productivity"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/pr-description/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,9 @@
       "type": "registry:item",
       "title": "Handoff",
       "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "categories": [
+        "productivity"
+      ],
       "files": [
         {
           "path": "SKILL.md",

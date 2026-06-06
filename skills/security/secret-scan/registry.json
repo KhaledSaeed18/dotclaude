@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "secret-scan",
+      "type": "registry:item",
+      "title": "Secret Scan",
+      "description": "Scan code or a diff for hardcoded secrets — API keys, tokens, passwords, private keys, and other exposed credentials — before they get committed or shipped. Use before committing, during review, or when auditing a repository.",
+      "categories": [
+        "security"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/secret-scan/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

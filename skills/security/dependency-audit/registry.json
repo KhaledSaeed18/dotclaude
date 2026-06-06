@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "dependency-audit",
+      "type": "registry:item",
+      "title": "Dependency Audit",
+      "description": "Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem — npm/pnpm/yarn, pip/Poetry/uv, Cargo, Go modules, Maven/Gradle, Bundler, Composer, and others.",
+      "categories": [
+        "security"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/dependency-audit/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

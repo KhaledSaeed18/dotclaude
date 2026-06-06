@@ -1,10 +1,12 @@
 /**
  * validate.ts — integrity checks for the registry.
  *
- * Owns the skill-specific rules shadcn cannot know about (frontmatter present,
- * name matches folder, naming convention) and then
- * delegates structural registry validation (duplicate names, include rules,
- * missing files) to `shadcn registry validate`.
+ * Source layout is `skills/<category>/<name>/SKILL.md` — the category is the
+ * folder a skill lives in. This script owns the rules shadcn cannot know about
+ * (manifest present, frontmatter shape, name matches folder, naming convention,
+ * category folder convention, globally-unique names) and then delegates
+ * structural registry validation (duplicate names, include rules, missing
+ * files) to `shadcn registry validate`.
  *
  * Run `pnpm validate`, or `pnpm validate --no-shadcn` to skip the shadcn step
  * (offline).
@@ -26,6 +28,12 @@ interface ContentType {
 
 const CONTENT_TYPES: readonly ContentType[] = [{ dir: "skills", manifest: "SKILL.md" }];
 
+/** One skill, located at `<dir>/<category>/<name>/`. */
+interface Item {
+  category: string;
+  name: string;
+}
+
 const FrontmatterSchema = z.object({
   name: z.string(),
   description: z.string(),
@@ -41,13 +49,40 @@ const RegistryChunkSchema = z.object({
   ),
 });
 
-function itemFolders(ct: ContentType): string[] {
-  const base = join(ROOT, ct.dir);
-  if (!existsSync(base)) return [];
-  return readdirSync(base, { withFileTypes: true })
+function subdirs(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
     .sort();
+}
+
+/**
+ * Walk `<dir>/<category>/<name>/`. A category folder that holds the manifest
+ * directly (a skill placed without its own folder) is reported via `errors`
+ * rather than silently treated as a skill.
+ */
+function items(ct: ContentType, errors: string[]): Item[] {
+  const base = join(ROOT, ct.dir);
+  if (!existsSync(base)) return [];
+  const out: Item[] = [];
+  for (const category of subdirs(base)) {
+    const categoryDir = join(base, category);
+    if (existsSync(join(categoryDir, ct.manifest))) {
+      errors.push(
+        `${ct.dir}/${category}: contains ${ct.manifest} directly — skills must live in ${ct.dir}/<category>/<name>/`,
+      );
+      continue;
+    }
+    if (!NAME_RE.test(category)) {
+      errors.push(
+        `${ct.dir}/${category}: category "${category}" violates convention ${NAME_RE.source}`,
+      );
+    }
+    for (const name of subdirs(categoryDir)) {
+      out.push({ category, name });
+    }
+  }
+  return out;
 }
 
 function checkRegistryFiles(folder: string, label: string, errors: string[]): void {
@@ -82,9 +117,9 @@ function main(): void {
   const seen = new Map<string, string>();
 
   for (const ct of CONTENT_TYPES) {
-    for (const name of itemFolders(ct)) {
-      const label = `${ct.dir}/${name}`;
-      const folder = join(ROOT, ct.dir, name);
+    for (const item of items(ct, errors)) {
+      const label = `${ct.dir}/${item.category}/${item.name}`;
+      const folder = join(ROOT, ct.dir, item.category, item.name);
       const manifestPath = join(folder, ct.manifest);
 
       if (!existsSync(manifestPath)) {
@@ -104,8 +139,8 @@ function main(): void {
 
       if (fm.name.trim() === "") errors.push(`${label}: empty name`);
       if (fm.description.trim() === "") errors.push(`${label}: empty description`);
-      if (fm.name !== name) {
-        errors.push(`${label}: frontmatter name "${fm.name}" does not match folder "${name}"`);
+      if (fm.name !== item.name) {
+        errors.push(`${label}: frontmatter name "${fm.name}" does not match folder "${item.name}"`);
       }
       if (!NAME_RE.test(fm.name)) {
         errors.push(`${label}: name "${fm.name}" violates convention ${NAME_RE.source}`);

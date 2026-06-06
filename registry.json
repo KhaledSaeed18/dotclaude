@@ -3,6 +3,10 @@
   "name": "dotclaude",
   "homepage": "https://github.com/KhaledSaeed18/dotclaude",
   "include": [
-    "skills/handoff/registry.json"
+    "skills/engineering/explain-codebase/registry.json",
+    "skills/productivity/handoff/registry.json",
+    "skills/productivity/pr-description/registry.json",
+    "skills/security/dependency-audit/registry.json",
+    "skills/security/secret-scan/registry.json"
   ]
 }
