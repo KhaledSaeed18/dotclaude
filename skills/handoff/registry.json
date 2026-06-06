@@ -10,7 +10,7 @@
         {
           "path": "SKILL.md",
           "type": "registry:file",
-          "target": "~/.claude/skills/handoff/SKILL.md"
+          "target": ".claude/skills/handoff/SKILL.md"
         }
       ]
     }

@@ -42,7 +42,7 @@ interface ContentType {
 }
 
 const CONTENT_TYPES: readonly ContentType[] = [
-  { dir: "skills", manifest: "SKILL.md", targetBase: "~/.claude/skills" },
+  { dir: "skills", manifest: "SKILL.md", targetBase: ".claude/skills" },
 ];
 
 const FrontmatterSchema = z.object({

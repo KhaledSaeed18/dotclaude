@@ -2,7 +2,7 @@
 
 My personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) extensions, distributed as a [shadcn GitHub registry](https://ui.shadcn.com/docs/registry/github).
 
-Everything here installs into your personal Claude Code scope under `~/.claude/`, so the items are available across all of your projects.
+Items install into the **current project** under `.claude/`, so run the install command from your project root. (shadcn writes into the project you run it in — its `~` means "project root", not your home directory — so a skill lands in `<project>/.claude/skills/<name>/`.)
 
 ## Install
 
@@ -12,13 +12,17 @@ Install any item with the shadcn CLI:
 npx shadcn@latest add KhaledSaeed18/dotclaude/<item>
 ```
 
-For example, the `handoff` skill lands in `~/.claude/skills/handoff/`:
+For example, run this from your project root and the `handoff` skill lands in `.claude/skills/handoff/`:
 
 ```bash
 npx shadcn@latest add KhaledSaeed18/dotclaude/handoff
 ```
 
-Want an item in a single project instead of your personal scope? Pass your own `target` (the registry items default to `~/.claude/...`) or copy the folder under the project's `.claude/` directory.
+Want a skill available globally (in every project)? so install it into a project as above and copy it across:
+
+```bash
+cp -R .claude/skills/handoff ~/.claude/skills/
+```
 
 ## Catalog
 
