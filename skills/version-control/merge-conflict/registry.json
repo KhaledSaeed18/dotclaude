@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "merge-conflict",
+      "type": "registry:item",
+      "title": "Merge Conflict",
+      "description": "Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely — by understanding both sides and the operation in progress before integrating, then verifying the result builds and passes tests. Use when a merge/rebase/cherry-pick stops with conflicts or \"needs merge\".",
+      "categories": [
+        "version-control"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/merge-conflict/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

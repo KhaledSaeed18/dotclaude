@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "release-tag",
+      "type": "registry:item",
+      "title": "Release Tag",
+      "description": "Cut a release — determine the SemVer bump from history, update version files across any stack, refresh the changelog, create an annotated (optionally signed) Git tag, and push the release safely after pre-flight checks. Use when tagging a version, bumping the version, or preparing a release.",
+      "categories": [
+        "version-control"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/release-tag/SKILL.md"
+        }
+      ]
+    }
+  ]
+}
