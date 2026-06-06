@@ -1,4 +1,8 @@
-# dotclaude
+<div align="center">
+  <img src=".github/assets/banner.png" alt="dotclaude" width="720" />
+</div>
+
+<br />
 
 My personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) extensions, distributed as a [shadcn GitHub registry](https://ui.shadcn.com/docs/registry/github).
 
