@@ -40,6 +40,7 @@ The table below is generated from each skill's `SKILL.md` — run `pnpm gen` aft
 
 | Skill | Description | Install |
 | --- | --- | --- |
+| [create-skill](skills/engineering/create-skill/) | Author a new skill for this repository end to end — choose its category, write trigger-friendly frontmatter, structure the SKILL.md, split reference material into companion files, then regenerate the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-skill` |
 | [explain-codebase](skills/engineering/explain-codebase/) | Onboard to an unfamiliar codebase by mapping its architecture, entry points, and data flow. Use when starting work in a new or unknown repository and you need a navigable mental model fast. | `npx shadcn@latest add KhaledSaeed18/dotclaude/explain-codebase` |
 | [grill-with-docs](skills/engineering/grill-with-docs/) | Stress-test a plan against the project's existing domain model — challenges terminology, surfaces contradictions with code, and updates CONTEXT.md and ADRs inline as decisions crystallise. | `npx shadcn@latest add KhaledSaeed18/dotclaude/grill-with-docs` |
 

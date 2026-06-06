@@ -3,6 +3,7 @@
   "name": "dotclaude",
   "homepage": "https://github.com/KhaledSaeed18/dotclaude",
   "include": [
+    "skills/engineering/create-skill/registry.json",
     "skills/engineering/explain-codebase/registry.json",
     "skills/engineering/grill-with-docs/registry.json",
     "skills/productivity/grill-me/registry.json",

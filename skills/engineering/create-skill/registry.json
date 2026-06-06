@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "create-skill",
+      "type": "registry:item",
+      "title": "Create Skill",
+      "description": "Author a new skill for this repository end to end — choose its category, write trigger-friendly frontmatter, structure the SKILL.md, split reference material into companion files, then regenerate the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo.",
+      "categories": [
+        "engineering"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/create-skill/SKILL.md"
+        },
+        {
+          "path": "reference/frontmatter.md",
+          "type": "registry:file",
+          "target": ".claude/skills/create-skill/reference/frontmatter.md"
+        },
+        {
+          "path": "reference/voice-and-structure.md",
+          "type": "registry:file",
+          "target": ".claude/skills/create-skill/reference/voice-and-structure.md"
+        },
+        {
+          "path": "templates/SKILL.template.md",
+          "type": "registry:file",
+          "target": ".claude/skills/create-skill/templates/SKILL.template.md"
+        }
+      ]
+    }
+  ]
+}
