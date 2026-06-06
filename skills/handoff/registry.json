@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "handoff",
+      "type": "registry:item",
+      "title": "Handoff",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": "~/.claude/skills/handoff/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# MacOS
+.DS_Store
+
+# Code editor files
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build / temp
+dist/
+*.log
+
+# Local Claude settings
+.claude/settings.local.json

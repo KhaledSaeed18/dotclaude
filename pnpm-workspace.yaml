@@ -1,0 +1,5 @@
+# pnpm 11 reads config from this file even for a single-package repo.
+# esbuild ships a postinstall that links its platform binary (used by tsx);
+# allow it so installs don't fail under strictDepBuilds.
+allowBuilds:
+  esbuild: true

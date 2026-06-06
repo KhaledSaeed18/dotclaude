@@ -1,0 +1,34 @@
+{
+  "name": "dotclaude",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal Claude Code registry (skills, agents, commands, hooks) distributed via the shadcn GitHub registry.",
+  "type": "module",
+  "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhaledSaeed18/dotclaude.git"
+  },
+  "license": "MIT",
+  "author": "Khaled Saeed",
+  "packageManager": "pnpm@11.1.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "gen": "tsx scripts/gen.ts",
+    "gen:check": "tsx scripts/gen.ts --check",
+    "validate": "tsx scripts/validate.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.16",
+    "@types/node": "^22",
+    "gray-matter": "^4.0.3",
+    "tsx": "^4",
+    "typescript": "^5",
+    "zod": "^3.23.8"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "dotclaude",
+  "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+  "include": [
+    "skills/handoff/registry.json"
+  ]
+}
