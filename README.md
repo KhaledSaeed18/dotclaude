@@ -58,6 +58,12 @@ The table below is generated from each skill's `SKILL.md` — run `pnpm gen` aft
 | [dependency-audit](skills/security/dependency-audit/) | Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem — npm/pnpm/yarn, pip/Poetry/uv, Cargo, Go modules, Maven/Gradle, Bundler, Composer, and others. | `npx shadcn@latest add KhaledSaeed18/dotclaude/dependency-audit` |
 | [secret-scan](skills/security/secret-scan/) | Scan code or a diff for hardcoded secrets — API keys, tokens, passwords, private keys, and other exposed credentials — before they get committed or shipped. Use before committing, during review, or when auditing a repository. | `npx shadcn@latest add KhaledSaeed18/dotclaude/secret-scan` |
 
+### Version Control
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [git-commit](skills/version-control/git-commit/) | Commit work the right way — gather full repo state, respect the project's commitlint/pre-commit/branch rules, stage only understood files, and write a conventional-commit message whose body explains why. Use when committing, branching, or pushing changes. | `npx shadcn@latest add KhaledSaeed18/dotclaude/git-commit` |
+
 <!-- skills:end -->
 
 ## Adding a skill

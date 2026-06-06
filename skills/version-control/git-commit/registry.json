@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "git-commit",
+      "type": "registry:item",
+      "title": "Git Commit",
+      "description": "Commit work the right way — gather full repo state, respect the project's commitlint/pre-commit/branch rules, stage only understood files, and write a conventional-commit message whose body explains why. Use when committing, branching, or pushing changes.",
+      "categories": [
+        "version-control"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/git-commit/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

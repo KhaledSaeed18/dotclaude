@@ -9,6 +9,7 @@
     "skills/productivity/handoff/registry.json",
     "skills/productivity/pr-description/registry.json",
     "skills/security/dependency-audit/registry.json",
-    "skills/security/secret-scan/registry.json"
+    "skills/security/secret-scan/registry.json",
+    "skills/version-control/git-commit/registry.json"
   ]
 }
