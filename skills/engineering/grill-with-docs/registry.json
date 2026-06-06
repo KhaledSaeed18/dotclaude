@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "grill-with-docs",
+      "type": "registry:item",
+      "title": "Grill With Docs",
+      "description": "Stress-test a plan against the project's existing domain model — challenges terminology, surfaces contradictions with code, and updates CONTEXT.md and ADRs inline as decisions crystallise.",
+      "categories": [
+        "engineering"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/grill-with-docs/SKILL.md"
+        },
+        {
+          "path": "docs/ADR-FORMAT.md",
+          "type": "registry:file",
+          "target": ".claude/skills/grill-with-docs/docs/ADR-FORMAT.md"
+        },
+        {
+          "path": "docs/CONTEXT-FORMAT.md",
+          "type": "registry:file",
+          "target": ".claude/skills/grill-with-docs/docs/CONTEXT-FORMAT.md"
+        }
+      ]
+    }
+  ]
+}

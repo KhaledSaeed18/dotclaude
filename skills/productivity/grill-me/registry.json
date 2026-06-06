@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "grill-me",
+      "type": "registry:item",
+      "title": "Grill Me",
+      "description": "Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved.",
+      "categories": [
+        "productivity"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/grill-me/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

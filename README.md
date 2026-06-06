@@ -22,11 +22,13 @@ For example, run this from your project root and the `handoff` skill lands in `.
 npx shadcn@latest add KhaledSaeed18/dotclaude/handoff
 ```
 
-Want a skill available globally (in every project)? so install it into a project as above and copy it across:
+Want a skill available globally (in every project)? Install it into a project as above and copy it across:
 
 ```bash
 cp -R .claude/skills/handoff ~/.claude/skills/
 ```
+
+Skills that bundle companion files (like `grill-with-docs`) install a `docs/` subdirectory alongside `SKILL.md` — the same `cp -R` command handles that automatically.
 
 ## Catalog
 
@@ -39,11 +41,13 @@ The table below is generated from each skill's `SKILL.md` — run `pnpm gen` aft
 | Skill | Description | Install |
 | --- | --- | --- |
 | [explain-codebase](skills/engineering/explain-codebase/) | Onboard to an unfamiliar codebase by mapping its architecture, entry points, and data flow. Use when starting work in a new or unknown repository and you need a navigable mental model fast. | `npx shadcn@latest add KhaledSaeed18/dotclaude/explain-codebase` |
+| [grill-with-docs](skills/engineering/grill-with-docs/) | Stress-test a plan against the project's existing domain model — challenges terminology, surfaces contradictions with code, and updates CONTEXT.md and ADRs inline as decisions crystallise. | `npx shadcn@latest add KhaledSaeed18/dotclaude/grill-with-docs` |
 
 ### Productivity
 
 | Skill | Description | Install |
 | --- | --- | --- |
+| [grill-me](skills/productivity/grill-me/) | Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. | `npx shadcn@latest add KhaledSaeed18/dotclaude/grill-me` |
 | [handoff](skills/productivity/handoff/) | Compact the current conversation into a handoff document for another agent to pick up. | `npx shadcn@latest add KhaledSaeed18/dotclaude/handoff` |
 | [pr-description](skills/productivity/pr-description/) | Generate a clear, reviewer-friendly pull-request description from a diff — covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body. | `npx shadcn@latest add KhaledSaeed18/dotclaude/pr-description` |
 
