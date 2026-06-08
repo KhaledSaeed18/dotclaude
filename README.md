@@ -1,5 +1,5 @@
 <div align="center">
-  <img src=".github/assets/banner.png" alt="dotclaude" width="720" />
+  <img src=".github/assets/banner.png" alt="dotclaude" />
 </div>
 
 <br />
@@ -75,3 +75,11 @@ The catalog below lists every skill in this repository, grouped by category.
 ## License
 
 [MIT](LICENSE) © Khaled Saeed
+
+### Attributions
+
+Some skills in this project were created from scratch, while others were inspired by, adapted from, or built upon work from the open-source community. Credit and thanks to the following resources:
+
+| Source | Link |
+|--------|------|
+| Matt Pocock's Skills | [mattpocock/skills](https://github.com/mattpocock/skills) |
