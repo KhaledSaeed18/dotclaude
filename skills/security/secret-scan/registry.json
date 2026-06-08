@@ -5,7 +5,7 @@
       "name": "secret-scan",
       "type": "registry:item",
       "title": "Secret Scan",
-      "description": "Scan code or a diff for hardcoded secrets — API keys, tokens, passwords, private keys, and other exposed credentials — before they get committed or shipped. Use before committing, during review, or when auditing a repository.",
+      "description": "Scan code or a diff for hardcoded secrets (API keys, tokens, passwords, private keys, and other exposed credentials) before they get committed or shipped. Use before committing, during review, or when auditing a repository.",
       "categories": [
         "security"
       ],

@@ -9,7 +9,7 @@ Build a navigable map of this repository so the reader can find their way around
 ## Orient first
 
 - Identify the project type and stack from manifests and config (e.g. `package.json`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `pom.xml`, `Gemfile`, Dockerfiles, CI config). Note the build, test, and run commands.
-- Read the README, docs, and any `CONTRIBUTING` or architecture notes before reading code — but verify their claims against the tree rather than trusting them blindly.
+- Read the README, docs, and any `CONTRIBUTING` or architecture notes before reading code, but verify their claims against the tree rather than trusting them blindly.
 - Get the shape of the tree: the top-level directories and what each is responsible for.
 
 ## Map the architecture
@@ -22,17 +22,17 @@ Build a navigable map of this repository so the reader can find their way around
 
 - Pick one or two representative operations (or whatever the user asked to focus on) and follow them end to end: input → validation → core logic → persistence/external calls → response.
 - Show each path as a short sequence of `file:line` hops the reader can click through.
-- Call out where state lives — databases, caches, queues, external services — and how it's accessed.
+- Call out where state lives (databases, caches, queues, external services) and how it's accessed.
 
 ## Report
 
 Produce, concisely:
 
-1. **Summary** — one paragraph on what this project is and does.
-2. **Architecture map** — the layers/modules and their responsibilities.
-3. **Entry points** — where execution starts, with paths.
-4. **Key flows** — the traced paths.
-5. **Conventions & gotchas** — naming, patterns, where to add a new feature, anything surprising.
-6. **Where to look next** — the 3–5 files most worth reading first.
+1. **Summary**: one paragraph on what this project is and does.
+2. **Architecture map**: the layers/modules and their responsibilities.
+3. **Entry points**: where execution starts, with paths.
+4. **Key flows**: the traced paths.
+5. **Conventions & gotchas**: naming, patterns, where to add a new feature, anything surprising.
+6. **Where to look next**: the 3 to 5 files most worth reading first.
 
 Prefer precise `file:line` references over prose. Flag anything you were unsure about rather than guessing.

@@ -1,7 +1,7 @@
 /**
- * validate.ts — integrity checks for the registry.
+ * validate.ts: integrity checks for the registry.
  *
- * Source layout is `skills/<category>/<name>/SKILL.md` — the category is the
+ * Source layout is `skills/<category>/<name>/SKILL.md`. The category is the
  * folder a skill lives in. This script owns the rules shadcn cannot know about
  * (manifest present, frontmatter shape, name matches folder, naming convention,
  * category folder convention, globally-unique names) and then delegates
@@ -69,7 +69,7 @@ function items(ct: ContentType, errors: string[]): Item[] {
     const categoryDir = join(base, category);
     if (existsSync(join(categoryDir, ct.manifest))) {
       errors.push(
-        `${ct.dir}/${category}: contains ${ct.manifest} directly — skills must live in ${ct.dir}/<category>/<name>/`,
+        `${ct.dir}/${category}: contains ${ct.manifest} directly; skills must live in ${ct.dir}/<category>/<name>/`,
       );
       continue;
     }
@@ -95,7 +95,7 @@ function checkRegistryFiles(folder: string, label: string, errors: string[]): vo
   try {
     raw = JSON.parse(readFileSync(regPath, "utf8"));
   } catch (error) {
-    errors.push(`${label}: registry.json is not valid JSON — ${String(error)}`);
+    errors.push(`${label}: registry.json is not valid JSON: ${String(error)}`);
     return;
   }
   const parsed = RegistryChunkSchema.safeParse(raw);
@@ -132,7 +132,7 @@ function main(): void {
         const reason = parsed.error.issues
           .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
           .join("; ");
-        errors.push(`${label}: invalid frontmatter — ${reason}`);
+        errors.push(`${label}: invalid frontmatter: ${reason}`);
         continue;
       }
       const fm = parsed.data;

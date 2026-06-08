@@ -5,7 +5,7 @@
       "name": "gitignore",
       "type": "registry:item",
       "title": "Gitignore",
-      "description": "Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors — and untrack files that are already committed but should be ignored. Flags secrets/build/dependency files that slipped into the repo. Use when creating, fixing, or auditing .gitignore.",
+      "description": "Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but should be ignored. Flags secrets/build/dependency files that slipped into the repo. Use when creating, fixing, or auditing .gitignore.",
       "categories": [
         "version-control"
       ],

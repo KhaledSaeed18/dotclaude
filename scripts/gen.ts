@@ -1,8 +1,8 @@
 /**
- * gen.ts — regenerate the shadcn registry files and the README catalog.
+ * gen.ts: regenerate the shadcn registry files and the README catalog.
  *
  * Source layout is `skills/<category>/<name>/SKILL.md`. The category is the
- * folder a skill lives in — the single source of truth, so there is no
+ * folder a skill lives in, the single source of truth, so there is no
  * `category` field to set or keep in sync. Skills always *install* to a flat
  * `.claude/skills/<name>/` (Claude Code loads them from there), so the category
  * is stripped from the install target and exists only to organise this repo.
@@ -148,7 +148,7 @@ function readFrontmatter(manifestPath: string): Frontmatter {
     const reason = result.error.issues
       .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
       .join("; ");
-    throw new Error(`Invalid frontmatter in ${relative(ROOT, manifestPath)} — ${reason}`);
+    throw new Error(`Invalid frontmatter in ${relative(ROOT, manifestPath)}: ${reason}`);
   }
   return result.data;
 }

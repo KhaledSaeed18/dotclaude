@@ -5,7 +5,7 @@
       "name": "changelog",
       "type": "registry:item",
       "title": "Changelog",
-      "description": "Generate a changelog or release notes from Git history — grouped by change type, written in user-facing language, with issue/PR links and breaking changes called out. Conventional-Commits aware and Keep a Changelog formatted; respects any existing CHANGELOG or tooling. Use when preparing release notes or updating CHANGELOG.md.",
+      "description": "Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes called out. Conventional-Commits aware and Keep a Changelog formatted; respects any existing CHANGELOG or tooling. Use when preparing release notes or updating CHANGELOG.md.",
       "categories": [
         "version-control"
       ],

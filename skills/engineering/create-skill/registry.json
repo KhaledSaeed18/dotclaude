@@ -5,7 +5,7 @@
       "name": "create-skill",
       "type": "registry:item",
       "title": "Create Skill",
-      "description": "Author a new skill for this repository end to end — choose its category, write trigger-friendly frontmatter, structure the SKILL.md, split reference material into companion files, then regenerate the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo.",
+      "description": "Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting reference material into companion files, then regenerating the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo.",
       "categories": [
         "engineering"
       ],

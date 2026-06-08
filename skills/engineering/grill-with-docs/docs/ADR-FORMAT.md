@@ -4,15 +4,15 @@
 
 Only create an ADR when **all three** are true:
 
-1. **Hard to reverse** — the cost of changing your mind later is meaningful.
-2. **Surprising without context** — a future reader will wonder "why did they do it this way?"
-3. **Real trade-off** — there were genuine alternatives and you picked one for specific reasons.
+1. **Hard to reverse**: the cost of changing your mind later is meaningful.
+2. **Surprising without context**: a future reader will wonder "why did they do it this way?"
+3. **Real trade-off**: there were genuine alternatives and you picked one for specific reasons.
 
 If any of the three is missing, skip it.
 
 ## File naming
 
-`docs/adr/<NNNN>-<slug>.md` — four-digit zero-padded number, lowercase hyphenated slug.
+`docs/adr/<NNNN>-<slug>.md`: four-digit zero-padded number, lowercase hyphenated slug.
 
 Example: `docs/adr/0003-use-event-sourcing-for-orders.md`
 
@@ -46,7 +46,7 @@ What becomes easier? What becomes harder? What debt are we taking on?
 
 ## Rules
 
-- Write **Context before Decision** — the why before the what.
-- **Consequences must be honest** — list the downsides, not just the benefits.
-- **Alternatives must be real** — options that were genuinely on the table.
-- **Status must be kept current** — if this decision is later reversed, update Status to "Superseded by …" and link to the replacement.
+- Write **Context before Decision**: the why before the what.
+- **Consequences must be honest**: list the downsides, not just the benefits.
+- **Alternatives must be real**: options that were genuinely on the table.
+- **Status must be kept current**: if this decision is later reversed, update Status to "Superseded by …" and link to the replacement.

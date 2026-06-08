@@ -5,7 +5,7 @@
       "name": "grill-with-docs",
       "type": "registry:item",
       "title": "Grill With Docs",
-      "description": "Stress-test a plan against the project's existing domain model — challenges terminology, surfaces contradictions with code, and updates CONTEXT.md and ADRs inline as decisions crystallise.",
+      "description": "Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise.",
       "categories": [
         "engineering"
       ],

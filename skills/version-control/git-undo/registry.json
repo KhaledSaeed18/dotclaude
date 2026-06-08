@@ -5,7 +5,7 @@
       "name": "git-undo",
       "type": "registry:item",
       "title": "Git Undo",
-      "description": "Recover safely from Git mistakes — discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad rebases. Chooses the least-destructive fix and protects against data loss. Use when something in Git went wrong and needs undoing.",
+      "description": "Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad rebases. Chooses the least-destructive fix and protects against data loss. Use when something in Git went wrong and needs undoing.",
       "categories": [
         "version-control"
       ],

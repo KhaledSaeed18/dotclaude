@@ -5,7 +5,7 @@
       "name": "release-tag",
       "type": "registry:item",
       "title": "Release Tag",
-      "description": "Cut a release — determine the SemVer bump from history, update version files across any stack, refresh the changelog, create an annotated (optionally signed) Git tag, and push the release safely after pre-flight checks. Use when tagging a version, bumping the version, or preparing a release.",
+      "description": "Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated (optionally signed) Git tag, and pushing the release safely after pre-flight checks. Use when tagging a version, bumping the version, or preparing a release.",
       "categories": [
         "version-control"
       ],
