@@ -8,7 +8,6 @@
     "skills/engineering/grill-with-docs/registry.json",
     "skills/productivity/grill-me/registry.json",
     "skills/productivity/handoff/registry.json",
-    "skills/productivity/pr-description/registry.json",
     "skills/security/dependency-audit/registry.json",
     "skills/security/secret-scan/registry.json",
     "skills/version-control/changelog/registry.json",
@@ -16,6 +15,7 @@
     "skills/version-control/git-undo/registry.json",
     "skills/version-control/gitignore/registry.json",
     "skills/version-control/merge-conflict/registry.json",
+    "skills/version-control/pr-description/registry.json",
     "skills/version-control/release-tag/registry.json"
   ]
 }
