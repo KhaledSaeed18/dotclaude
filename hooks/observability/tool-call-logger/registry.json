@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "tool-call-logger",
+      "type": "registry:item",
+      "title": "Tool Call Logger",
+      "description": "A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and payload truncation. Use to audit, debug, or observe exactly what Claude Code did during a session.",
+      "categories": [
+        "observability"
+      ],
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/tool-call-logger/HOOK.md"
+        },
+        {
+          "path": "log-tool-calls.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/tool-call-logger/log-tool-calls.mjs"
+        }
+      ]
+    }
+  ]
+}

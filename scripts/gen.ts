@@ -1,16 +1,17 @@
 /**
  * gen.ts: regenerate the shadcn registry files and the README catalog.
  *
- * Source layout is `skills/<category>/<name>/SKILL.md`. The category is the
- * folder a skill lives in, the single source of truth, so there is no
- * `category` field to set or keep in sync. Skills always *install* to a flat
- * `.claude/skills/<name>/` (Claude Code loads them from there), so the category
- * is stripped from the install target and exists only to organise this repo.
+ * Source layout is `<type>/<category>/<name>/<MANIFEST>`, where `<type>` is one
+ * of the content types below (skills, agents, commands, hooks). The category is
+ * the folder an item lives in, the single source of truth, so there is no
+ * `category` field to set or keep in sync. The install target depends on the
+ * type's `layout` (see ContentType): skills and hooks install as a folder,
+ * agents and commands as a single file Claude Code loads directly.
  *
  * This script derives:
- *   - skills/<category>/<name>/registry.json  (one shadcn item per skill)
+ *   - <type>/<category>/<name>/registry.json  (one shadcn item per item)
  *   - registry.json                           (root: name/homepage + include[])
- *   - the README catalog                       (between the skills markers)
+ *   - the README catalog                       (between the catalog markers)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
@@ -28,26 +29,70 @@ const REGISTRY_HOMEPAGE = `https://github.com/${GITHUB_OWNER_REPO}`;
 const REGISTRY_SCHEMA = "https://ui.shadcn.com/schema/registry.json";
 
 const README_PATH = join(ROOT, "README.md");
-const README_START = "<!-- skills:start -->";
-const README_END = "<!-- skills:end -->";
+const CATALOG_START = "<!-- catalog:start -->";
+const CATALOG_END = "<!-- catalog:end -->";
 
 const ROOT_REGISTRY_PATH = join(ROOT, "registry.json");
 
 /**
- * Content-type seam. Adding hooks/agents/commands later = one more entry here;
- * no other code changes are required.
+ * Content-type seam. Each entry is one installable family. `layout` decides how
+ * an item maps onto the install tree:
+ *   - "folder": copy the whole item folder to `<targetBase>/<name>/<relpath>`,
+ *     preserving subfolders. Skills and hooks bundle companion files this way.
+ *   - "file": copy only the manifest to `<targetBase>/<name>.md`. Agents and
+ *     commands are a single markdown file Claude Code loads directly from
+ *     `.claude/agents/` or `.claude/commands/`.
+ *
+ * Adding another family = one more entry here; no other code changes required.
  */
 interface ContentType {
   /** Top-level folder that holds one `<category>/<item>` tree. */
   dir: string;
+  /** Plural label for the catalog section heading, e.g. "Skills". */
+  label: string;
+  /** Singular noun for the catalog table's first column, e.g. "Skill". */
+  noun: string;
   /** Manifest filename inside each item folder. */
   manifest: string;
-  /** Personal-scope install base; `<name>/<file>` is appended per file. */
+  /** Personal-scope install base; the per-item suffix depends on `layout`. */
   targetBase: string;
+  /** How the item maps onto the install tree (see above). */
+  layout: "folder" | "file";
 }
 
 const CONTENT_TYPES: readonly ContentType[] = [
-  { dir: "skills", manifest: "SKILL.md", targetBase: ".claude/skills" },
+  {
+    dir: "skills",
+    label: "Skills",
+    noun: "Skill",
+    manifest: "SKILL.md",
+    targetBase: ".claude/skills",
+    layout: "folder",
+  },
+  {
+    dir: "agents",
+    label: "Agents",
+    noun: "Agent",
+    manifest: "AGENT.md",
+    targetBase: ".claude/agents",
+    layout: "file",
+  },
+  {
+    dir: "commands",
+    label: "Commands",
+    noun: "Command",
+    manifest: "COMMAND.md",
+    targetBase: ".claude/commands",
+    layout: "file",
+  },
+  {
+    dir: "hooks",
+    label: "Hooks",
+    noun: "Hook",
+    manifest: "HOOK.md",
+    targetBase: ".claude/hooks",
+    layout: "folder",
+  },
 ];
 
 /** One skill, located at `<dir>/<category>/<name>/`. */
@@ -83,6 +128,12 @@ interface CatalogRow {
   folder: string;
   description: string;
   category: string;
+}
+
+interface CatalogGroup {
+  label: string;
+  noun: string;
+  rows: CatalogRow[];
 }
 
 interface GeneratedFile {
@@ -164,11 +215,28 @@ function buildItem(ct: ContentType, item: Item, fm: Frontmatter): RegistryItem {
     throw new Error(`${ct.dir}/${item.category}/${item.name} has no files to publish.`);
   }
 
-  const fileEntries: RegistryFile[] = files.map((rel) => ({
-    path: rel,
-    type: "registry:file",
-    target: `${ct.targetBase}/${item.name}/${rel}`,
-  }));
+  let fileEntries: RegistryFile[];
+  if (ct.layout === "file") {
+    // Single-file items (agents, commands) install to `<base>/<name>.md`; the
+    // manifest is renamed to the item name so Claude Code resolves it by file.
+    const extra = files.filter((rel) => rel !== ct.manifest);
+    if (extra.length > 0) {
+      throw new Error(
+        `${ct.dir}/${item.category}/${item.name} is "file"-layout and must contain only ` +
+          `${ct.manifest}; remove: ${extra.join(", ")}`,
+      );
+    }
+    fileEntries = [
+      { path: ct.manifest, type: "registry:file", target: `${ct.targetBase}/${item.name}.md` },
+    ];
+  } else {
+    // Folder items (skills, hooks) copy every file to `<base>/<name>/<relpath>`.
+    fileEntries = files.map((rel) => ({
+      path: rel,
+      type: "registry:file",
+      target: `${ct.targetBase}/${item.name}/${rel}`,
+    }));
+  }
 
   return {
     name: item.name,
@@ -188,31 +256,8 @@ function catalogRow(row: CatalogRow): string {
   return `| [${row.name}](${row.folder}) | ${inlineDescription(row.description)} | \`npx shadcn@latest add ${GITHUB_OWNER_REPO}/${row.name}\` |`;
 }
 
-function catalogSection(label: string, rows: CatalogRow[]): string[] {
-  const sorted = [...rows].sort((a, b) => a.name.localeCompare(b.name));
-  return [
-    `### ${label}`,
-    "",
-    "| Skill | Description | Install |",
-    "| --- | --- | --- |",
-    ...sorted.map(catalogRow),
-    "",
-  ];
-}
-
-function buildCatalog(rows: CatalogRow[]): string {
-  if (rows.length === 0) {
-    return [
-      README_START,
-      "",
-      "| Skill | Description | Install |",
-      "| --- | --- | --- |",
-      "| _none yet_ | | |",
-      "",
-      README_END,
-    ].join("\n");
-  }
-
+/** One content type's tables, grouped by category (`#### <Category>`). */
+function categorySection(noun: string, rows: CatalogRow[]): string[] {
   const byCategory = new Map<string, CatalogRow[]>();
   for (const row of rows) {
     const group = byCategory.get(row.category) ?? [];
@@ -220,29 +265,54 @@ function buildCatalog(rows: CatalogRow[]): string {
     byCategory.set(row.category, group);
   }
 
-  const sections: string[] = [];
+  const out: string[] = [];
   for (const category of [...byCategory.keys()].sort()) {
-    sections.push(...catalogSection(toTitle(category), byCategory.get(category) ?? []));
+    const sorted = [...(byCategory.get(category) ?? [])].sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+    out.push(
+      `#### ${toTitle(category)}`,
+      "",
+      `| ${noun} | Description | Install |`,
+      "| --- | --- | --- |",
+      ...sorted.map(catalogRow),
+      "",
+    );
+  }
+  return out;
+}
+
+/** The full catalog, grouped by content type (`### <Label>`) then category. */
+function buildCatalog(groups: CatalogGroup[]): string {
+  const nonEmpty = groups.filter((group) => group.rows.length > 0);
+  if (nonEmpty.length === 0) {
+    return [CATALOG_START, "", "_No items yet._", "", CATALOG_END].join("\n");
   }
 
-  return [README_START, "", ...sections, README_END].join("\n");
+  const sections: string[] = [];
+  for (const group of nonEmpty) {
+    sections.push(`### ${group.label}`, "", ...categorySection(group.noun, group.rows));
+  }
+
+  return [CATALOG_START, "", ...sections, CATALOG_END].join("\n");
 }
 
 function replaceCatalog(readme: string, catalog: string): string {
-  const start = readme.indexOf(README_START);
-  const end = readme.indexOf(README_END);
+  const start = readme.indexOf(CATALOG_START);
+  const end = readme.indexOf(CATALOG_END);
   if (start === -1 || end === -1 || end < start) {
-    throw new Error(`README.md is missing the "${README_START}" / "${README_END}" markers.`);
+    throw new Error(`README.md is missing the "${CATALOG_START}" / "${CATALOG_END}" markers.`);
   }
-  return readme.slice(0, start) + catalog + readme.slice(end + README_END.length);
+  return readme.slice(0, start) + catalog + readme.slice(end + CATALOG_END.length);
 }
 
 function generate(): GeneratedFile[] {
   const outputs: GeneratedFile[] = [];
   const includePaths: string[] = [];
-  const rows: CatalogRow[] = [];
+  const groups: CatalogGroup[] = [];
 
   for (const ct of CONTENT_TYPES) {
+    const rows: CatalogRow[] = [];
     for (const item of items(ct)) {
       const itemDir = join(ct.dir, item.category, item.name);
       const manifestPath = join(ROOT, itemDir, ct.manifest);
@@ -265,6 +335,7 @@ function generate(): GeneratedFile[] {
         category: item.category,
       });
     }
+    groups.push({ label: ct.label, noun: ct.noun, rows });
   }
 
   includePaths.sort();
@@ -281,7 +352,7 @@ function generate(): GeneratedFile[] {
   const readme = readFileSync(README_PATH, "utf8");
   outputs.push({
     path: README_PATH,
-    content: replaceCatalog(readme, buildCatalog(rows)),
+    content: replaceCatalog(readme, buildCatalog(groups)),
   });
 
   return outputs;

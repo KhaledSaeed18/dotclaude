@@ -26,9 +26,14 @@ interface ContentType {
   manifest: string;
 }
 
-const CONTENT_TYPES: readonly ContentType[] = [{ dir: "skills", manifest: "SKILL.md" }];
+const CONTENT_TYPES: readonly ContentType[] = [
+  { dir: "skills", manifest: "SKILL.md" },
+  { dir: "agents", manifest: "AGENT.md" },
+  { dir: "commands", manifest: "COMMAND.md" },
+  { dir: "hooks", manifest: "HOOK.md" },
+];
 
-/** One skill, located at `<dir>/<category>/<name>/`. */
+/** One item, located at `<dir>/<category>/<name>/`. */
 interface Item {
   category: string;
   name: string;
@@ -58,8 +63,8 @@ function subdirs(dir: string): string[] {
 
 /**
  * Walk `<dir>/<category>/<name>/`. A category folder that holds the manifest
- * directly (a skill placed without its own folder) is reported via `errors`
- * rather than silently treated as a skill.
+ * directly (an item placed without its own folder) is reported via `errors`
+ * rather than silently treated as an item.
  */
 function items(ct: ContentType, errors: string[]): Item[] {
   const base = join(ROOT, ct.dir);
@@ -69,7 +74,7 @@ function items(ct: ContentType, errors: string[]): Item[] {
     const categoryDir = join(base, category);
     if (existsSync(join(categoryDir, ct.manifest))) {
       errors.push(
-        `${ct.dir}/${category}: contains ${ct.manifest} directly; skills must live in ${ct.dir}/<category>/<name>/`,
+        `${ct.dir}/${category}: contains ${ct.manifest} directly; items must live in ${ct.dir}/<category>/<name>/`,
       );
       continue;
     }
@@ -159,7 +164,7 @@ function main(): void {
     for (const error of errors) console.error(`  - ${error}`);
     process.exit(1);
   }
-  console.log(`Skill checks passed (${seen.size} item(s)).`);
+  console.log(`Item checks passed (${seen.size} item(s)).`);
 
   if (process.argv.includes("--no-shadcn")) {
     console.log("Skipping `shadcn registry validate` (--no-shadcn).");

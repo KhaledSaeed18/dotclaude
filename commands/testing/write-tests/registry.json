@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "write-tests",
+      "type": "registry:item",
+      "title": "Write Tests",
+      "description": "Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions.",
+      "categories": [
+        "testing"
+      ],
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/write-tests.md"
+        }
+      ]
+    }
+  ]
+}
