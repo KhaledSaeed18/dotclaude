@@ -19,6 +19,8 @@
     "gen": "tsx scripts/gen.ts",
     "gen:check": "tsx scripts/gen.ts --check",
     "validate": "tsx scripts/validate.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome format --write ."
@@ -29,6 +31,7 @@
     "gray-matter": "^4.0.3",
     "tsx": "^4",
     "typescript": "^5",
+    "vitest": "^4.1.8",
     "zod": "^3.23.8"
   }
 }

@@ -1,0 +1,222 @@
+/**
+ * Black-box tests for the gen and validate scripts. Each case builds a throwaway
+ * fixture repo in a temp directory and runs the real script against it with that
+ * directory as the working directory, then asserts on the files written or the
+ * exit code and messages. Testing the scripts through their actual entry points
+ * (rather than importing internals) keeps the tests honest about the contract
+ * and lets them survive refactors of the scripts' internals.
+ */
+
+import { type SpawnSyncReturns, spawnSync } from "node:child_process";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
+import { afterEach, describe, expect, it } from "vitest";
+
+const REPO_ROOT = process.cwd();
+const TSX = join(REPO_ROOT, "node_modules", ".bin", "tsx");
+const GEN = join(REPO_ROOT, "scripts", "gen.ts");
+const VALIDATE = join(REPO_ROOT, "scripts", "validate.ts");
+
+/** A README with both marker pairs gen owns, used unless a test supplies one. */
+const DEFAULT_README = [
+  "# Fixture",
+  "",
+  "<!-- badges:start -->",
+  "<!-- badges:end -->",
+  "",
+  "<!-- catalog:start -->",
+  "<!-- catalog:end -->",
+  "",
+].join("\n");
+
+/** Build a manifest string from a flat frontmatter map plus an optional body. */
+function manifest(frontmatter: Record<string, string>, body = "Body."): string {
+  const yaml = Object.entries(frontmatter)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join("\n");
+  return `---\n${yaml}\n---\n\n${body}\n`;
+}
+
+let cleanups: Array<() => void> = [];
+afterEach(() => {
+  for (const cleanup of cleanups) cleanup();
+  cleanups = [];
+});
+
+/** Write a set of `relative path -> contents` files into a fresh temp repo. */
+function makeFixture(files: Record<string, string>): string {
+  const dir = mkdtempSync(join(tmpdir(), "dotclaude-test-"));
+  cleanups.push(() => rmSync(dir, { recursive: true, force: true }));
+  const all = { "README.md": DEFAULT_README, ...files };
+  for (const [rel, content] of Object.entries(all)) {
+    const full = join(dir, rel);
+    mkdirSync(dirname(full), { recursive: true });
+    writeFileSync(full, content);
+  }
+  return dir;
+}
+
+interface RunResult {
+  status: number;
+  output: string;
+}
+
+function run(script: string, cwd: string, args: string[]): RunResult {
+  const res: SpawnSyncReturns<string> = spawnSync(TSX, [script, ...args], {
+    cwd,
+    encoding: "utf8",
+  });
+  return { status: res.status ?? 1, output: `${res.stdout ?? ""}${res.stderr ?? ""}` };
+}
+
+const runGen = (cwd: string, args: string[] = []): RunResult => run(GEN, cwd, args);
+const runValidate = (cwd: string, args: string[] = ["--no-shadcn"]): RunResult =>
+  run(VALIDATE, cwd, args);
+
+const read = (dir: string, rel: string): string => readFileSync(join(dir, rel), "utf8");
+
+describe("gen", () => {
+  it("derives the install target per layout", () => {
+    const dir = makeFixture({
+      "agents/engineering/my-agent/AGENT.md": manifest({
+        name: "my-agent",
+        description: "An agent.",
+      }),
+      "skills/util/my-skill/SKILL.md": manifest({ name: "my-skill", description: "A skill." }),
+      "skills/util/my-skill/reference/extra.md": "# Extra\n",
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const agentReg = read(dir, "agents/engineering/my-agent/registry.json");
+    expect(agentReg).toContain('"path": "AGENT.md"');
+    expect(agentReg).toContain('"target": ".claude/agents/my-agent.md"');
+
+    const skillReg = read(dir, "skills/util/my-skill/registry.json");
+    expect(skillReg).toContain('"target": ".claude/skills/my-skill/SKILL.md"');
+    expect(skillReg).toContain('"target": ".claude/skills/my-skill/reference/extra.md"');
+  });
+
+  it("renders the catalog between the markers", () => {
+    const dir = makeFixture({
+      "agents/engineering/a-one/AGENT.md": manifest({ name: "a-one", description: "First agent." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const readme = read(dir, "README.md");
+    expect(readme).toContain("[a-one](agents/engineering/a-one/)");
+    expect(readme).toContain("add KhaledSaeed18/dotclaude/a-one");
+  });
+
+  it("auto-derives badge counts with correct pluralization", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest({ name: "s-one", description: "Skill one." }),
+      "skills/util/s-two/SKILL.md": manifest({ name: "s-two", description: "Skill two." }),
+      "agents/engineering/a-one/AGENT.md": manifest({ name: "a-one", description: "Agent one." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const readme = read(dir, "README.md");
+    expect(readme).toContain("Skills-2-2563eb");
+    expect(readme).toContain('alt="2 skills"');
+    expect(readme).toContain("Agents-1-7c3aed");
+    expect(readme).toContain('alt="1 agent"');
+    expect(readme).toContain("Commands-0-0891b2");
+    expect(readme).toContain('alt="0 commands"');
+  });
+
+  it("--check fails when a generated file is stale", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest({ name: "s-one", description: "Skill one." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+    expect(runGen(dir, ["--check"]).status).toBe(0);
+
+    // Corrupt a value inside the generated region; --check must notice.
+    writeFileSync(join(dir, "README.md"), read(dir, "README.md").replace("Skills-1-", "Skills-9-"));
+    const checked = runGen(dir, ["--check"]);
+    expect(checked.status).not.toBe(0);
+    expect(checked.output).toContain("out of date");
+  });
+});
+
+describe("validate", () => {
+  it("passes for a well-formed registry", () => {
+    const dir = makeFixture({
+      "agents/engineering/my-agent/AGENT.md": manifest({
+        name: "my-agent",
+        description: "An agent.",
+        color: "cyan",
+        memory: "user",
+        model: "opus",
+      }),
+      "skills/util/my-skill/SKILL.md": manifest({ name: "my-skill", description: "A skill." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+    expect(runValidate(dir).status).toBe(0);
+  });
+
+  it("rejects invalid agent color, memory, and model", () => {
+    const dir = makeFixture({
+      "agents/engineering/bad/AGENT.md": manifest({
+        name: "bad",
+        description: "Bad agent.",
+        color: "cyna",
+        memory: "global",
+        model: "gpt-4",
+      }),
+    });
+
+    // gen is lenient about fields it does not consume, so it still succeeds.
+    expect(runGen(dir).status).toBe(0);
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("color");
+    expect(result.output).toContain("memory");
+    expect(result.output).toContain("model");
+  });
+
+  it("detects duplicate names across categories", () => {
+    const dir = makeFixture({
+      "skills/cat-a/dup/SKILL.md": manifest({ name: "dup", description: "One." }),
+      "skills/cat-b/dup/SKILL.md": manifest({ name: "dup", description: "Two." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("duplicate name");
+  });
+
+  it("flags a manifest placed directly in a category folder", () => {
+    const dir = makeFixture({
+      "skills/loose/SKILL.md": manifest({ name: "loose", description: "Misplaced." }),
+    });
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("directly");
+  });
+
+  it("flags a frontmatter name that does not match its folder", () => {
+    const dir = makeFixture({
+      "skills/util/my-skill/SKILL.md": manifest({
+        name: "wrong-name",
+        description: "Mismatched.",
+      }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("does not match folder");
+  });
+});
