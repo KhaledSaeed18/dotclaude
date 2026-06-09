@@ -14,7 +14,7 @@
 
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { isAbsolute, join, relative, sep } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
 
@@ -169,6 +169,48 @@ function items(ct: ContentType, errors: string[]): Item[] {
   return out;
 }
 
+/**
+ * Drop fenced code blocks and inline code spans so example links inside them
+ * (`./reference/topic.md` shown as syntax) are not mistaken for real links.
+ */
+function stripCode(markdown: string): string {
+  return markdown.replace(/```[\s\S]*?```/g, "").replace(/`[^`\n]*`/g, "");
+}
+
+const LINK_RE = /\]\(([^)]+)\)/g;
+
+/**
+ * Check that every relative link in the manifest resolves to a real file inside
+ * the item folder. The manifest is the navigational entry point: a dead link to
+ * a companion would survive `gen` but break after install. Only the manifest is
+ * scanned, since reference and template files carry illustrative example links
+ * (`./reference/topic.md`) that are intentionally not real.
+ */
+function checkManifestLinks(
+  folder: string,
+  manifest: string,
+  label: string,
+  errors: string[],
+): void {
+  const body = stripCode(readFileSync(join(folder, manifest), "utf8"));
+  for (const match of body.matchAll(LINK_RE)) {
+    // Drop an optional title (`](path "title")`) and any anchor.
+    const target = (match[1] ?? "").trim().split(/\s+/)[0] ?? "";
+    const pathPart = target.split("#")[0] ?? "";
+    if (pathPart === "") continue;
+    // Skip absolute URLs (scheme:...) and protocol-relative links.
+    if (/^[a-z][a-z0-9+.-]*:/i.test(pathPart) || pathPart.startsWith("//")) continue;
+
+    const resolved = join(folder, pathPart);
+    const rel = relative(folder, resolved);
+    if (rel === ".." || rel.startsWith(`..${sep}`) || isAbsolute(rel)) {
+      errors.push(`${label}: ${manifest} links outside the item folder: "${pathPart}"`);
+    } else if (!existsSync(resolved)) {
+      errors.push(`${label}: ${manifest} has a broken relative link: "${pathPart}"`);
+    }
+  }
+}
+
 function checkRegistryFiles(folder: string, label: string, errors: string[]): void {
   const regPath = join(folder, "registry.json");
   if (!existsSync(regPath)) {
@@ -235,6 +277,7 @@ function main(): void {
       else seen.set(fm.name, label);
 
       checkRegistryFiles(folder, label, errors);
+      checkManifestLinks(folder, ct.manifest, label, errors);
     }
   }
 

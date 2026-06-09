@@ -223,6 +223,34 @@ describe("validate", () => {
     expect(result.output).toContain("directly");
   });
 
+  it("flags a broken relative link in a manifest", () => {
+    const dir = makeFixture({
+      "skills/util/linky/SKILL.md": manifest(
+        { name: "linky", description: "Has links." },
+        "See [missing](./reference/nope.md).",
+      ),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("broken relative link");
+  });
+
+  it("accepts a manifest link to a real companion and ignores example links", () => {
+    const dir = makeFixture({
+      "skills/util/linky/SKILL.md": manifest(
+        { name: "linky", description: "Has links." },
+        "Real: [ref](./reference/r.md). Example in code: `[x](./reference/nope.md)`.",
+      ),
+      "skills/util/linky/reference/r.md": "# R\n",
+    });
+
+    expect(runGen(dir).status).toBe(0);
+    expect(runValidate(dir).status).toBe(0);
+  });
+
   it("flags a frontmatter name that does not match its folder", () => {
     const dir = makeFixture({
       "skills/util/my-skill/SKILL.md": manifest({
