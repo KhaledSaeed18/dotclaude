@@ -6,9 +6,14 @@
       "type": "registry:item",
       "title": "Explain Codebase",
       "description": "Onboard to an unfamiliar codebase by mapping its architecture, entry points, and data flow. Use when starting work in a new or unknown repository and you need a navigable mental model fast.",
+      "author": "Khaled Saeed",
       "categories": [
         "engineering"
       ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/explain-codebase",
+      "meta": {
+        "type": "skill"
+      },
       "files": [
         {
           "path": "SKILL.md",

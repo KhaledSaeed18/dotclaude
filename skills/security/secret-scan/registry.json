@@ -6,9 +6,14 @@
       "type": "registry:item",
       "title": "Secret Scan",
       "description": "Scan code or a diff for hardcoded secrets (API keys, tokens, passwords, private keys, and other exposed credentials) before they get committed or shipped. Use before committing, during review, or when auditing a repository.",
+      "author": "Khaled Saeed",
       "categories": [
         "security"
       ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/security/secret-scan",
+      "meta": {
+        "type": "skill"
+      },
       "files": [
         {
           "path": "SKILL.md",

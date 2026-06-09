@@ -27,6 +27,9 @@ const REGISTRY_NAME = "dotclaude";
 const GITHUB_OWNER_REPO = "KhaledSaeed18/dotclaude";
 const REGISTRY_HOMEPAGE = `https://github.com/${GITHUB_OWNER_REPO}`;
 const REGISTRY_SCHEMA = "https://ui.shadcn.com/schema/registry.json";
+const REGISTRY_AUTHOR = "Khaled Saeed";
+/** Branch the per-item `docs` links point at. */
+const DOCS_BRANCH = "main";
 
 const README_PATH = join(ROOT, "README.md");
 const CATALOG_START = "<!-- catalog:start -->";
@@ -134,7 +137,10 @@ interface RegistryItem {
   type: "registry:item";
   title: string;
   description: string;
+  author: string;
   categories: string[];
+  docs: string;
+  meta: { type: string };
   files: RegistryFile[];
 }
 
@@ -253,12 +259,17 @@ function buildItem(ct: ContentType, item: Item, fm: Frontmatter): RegistryItem {
     }));
   }
 
+  const itemDir = toPosix(join(ct.dir, item.category, item.name));
+
   return {
     name: item.name,
     type: "registry:item",
     title: fm.title ?? toTitle(item.name),
     description: fm.description.replace(/\s+/g, " ").trim(),
+    author: REGISTRY_AUTHOR,
     categories: [item.category],
+    docs: `${REGISTRY_HOMEPAGE}/tree/${DOCS_BRANCH}/${itemDir}`,
+    meta: { type: ct.noun.toLowerCase() },
     files: fileEntries,
   };
 }

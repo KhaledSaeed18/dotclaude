@@ -101,4 +101,4 @@ You have a project-scoped memory directory that persists across reviews of this 
 
 - **At the start of a review**, consult `MEMORY.md` for what you already know about this codebase: its conventions, the modules that break most often, recurring anti-patterns, and false positives you were corrected on. Apply that context instead of rediscovering it.
 - **After a review**, record only durable, repo-specific signal: a convention confirmed across multiple files, a hotspot that keeps regressing, a project-specific footgun, or a correction the author gave you ("we intentionally do X here"). Keep `MEMORY.md` concise and link out to topic files for detail.
-- **Do not save** one-off findings, the contents of a single diff, or anything already documented in `CLAUDE.md` or the repo's own docs. If a stored note turns out to be wrong or the code moved on, fix or delete it — never review against a stale memory.
+- **Do not save** one-off findings, the contents of a single diff, or anything already documented in `CLAUDE.md` or the repo's own docs. If a stored note turns out to be wrong or the code moved on, fix or delete it; never review against a stale memory.

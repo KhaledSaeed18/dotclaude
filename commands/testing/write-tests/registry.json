@@ -6,9 +6,14 @@
       "type": "registry:item",
       "title": "Write Tests",
       "description": "Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions.",
+      "author": "Khaled Saeed",
       "categories": [
         "testing"
       ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/testing/write-tests",
+      "meta": {
+        "type": "command"
+      },
       "files": [
         {
           "path": "COMMAND.md",

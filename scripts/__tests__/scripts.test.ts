@@ -100,6 +100,21 @@ describe("gen", () => {
     expect(skillReg).toContain('"target": ".claude/skills/my-skill/reference/extra.md"');
   });
 
+  it("embeds author, docs link, and type metadata", () => {
+    const dir = makeFixture({
+      "agents/research/m-agent/AGENT.md": manifest({ name: "m-agent", description: "Meta agent." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const reg = read(dir, "agents/research/m-agent/registry.json");
+    expect(reg).toContain('"author": "Khaled Saeed"');
+    expect(reg).toContain(
+      '"docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/research/m-agent"',
+    );
+    expect(reg).toContain('"type": "agent"');
+  });
+
   it("renders the catalog between the markers", () => {
     const dir = makeFixture({
       "agents/engineering/a-one/AGENT.md": manifest({ name: "a-one", description: "First agent." }),

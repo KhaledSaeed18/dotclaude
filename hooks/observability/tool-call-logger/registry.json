@@ -6,9 +6,14 @@
       "type": "registry:item",
       "title": "Tool Call Logger",
       "description": "A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and payload truncation. Use to audit, debug, or observe exactly what Claude Code did during a session.",
+      "author": "Khaled Saeed",
       "categories": [
         "observability"
       ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/observability/tool-call-logger",
+      "meta": {
+        "type": "hook"
+      },
       "files": [
         {
           "path": "HOOK.md",
