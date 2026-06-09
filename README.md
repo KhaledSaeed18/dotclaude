@@ -11,7 +11,7 @@
   <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-17-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="17 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-2-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="2 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-1-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="1 command" /></a>
-  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-1-db2777.svg?split=true&logo=ri:RiPlugFill" alt="1 hook" /></a>
+  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-2-db2777.svg?split=true&logo=ri:RiPlugFill" alt="2 hooks" /></a>
 <!-- badges:end -->
 </div>
 
@@ -142,6 +142,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | Hook | Description | Install |
 | --- | --- | --- |
 | [tool-call-logger](hooks/observability/tool-call-logger/) | A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and payload truncation. Use to audit, debug, or observe exactly what Claude Code did during a session. | `npx shadcn@latest add KhaledSaeed18/dotclaude/tool-call-logger` |
+
+#### Security
+
+| Hook | Description | Install |
+| --- | --- | --- |
+| [command-guard](hooks/security/command-guard/) | A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of the filesystem root or home, fork bombs, writing to or formatting raw disk devices, recursive chmod 777 on root, and force-pushes to main or master), returning a clear reason. Use to add a deterministic safety net against destructive shell commands. | `npx shadcn@latest add KhaledSaeed18/dotclaude/command-guard` |
 
 <!-- catalog:end -->
 

@@ -7,6 +7,7 @@
     "agents/research/deep-research/registry.json",
     "commands/testing/write-tests/registry.json",
     "hooks/observability/tool-call-logger/registry.json",
+    "hooks/security/command-guard/registry.json",
     "skills/engineering/create-agent/registry.json",
     "skills/engineering/create-command/registry.json",
     "skills/engineering/create-hook/registry.json",

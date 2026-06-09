@@ -18,6 +18,7 @@ const TSX = join(REPO_ROOT, "node_modules", ".bin", "tsx");
 const GEN = join(REPO_ROOT, "scripts", "gen.ts");
 const VALIDATE = join(REPO_ROOT, "scripts", "validate.ts");
 const NEW = join(REPO_ROOT, "scripts", "new.ts");
+const COMMAND_GUARD = join(REPO_ROOT, "hooks", "security", "command-guard", "command-guard.mjs");
 
 /** A README with both marker pairs gen owns, used unless a test supplies one. */
 const DEFAULT_README = [
@@ -297,5 +298,40 @@ describe("new", () => {
     const badType = runNew(dir, baseArgs({ type: "widget" }));
     expect(badType.status).not.toBe(0);
     expect(badType.output).toContain("unknown type");
+  });
+});
+
+describe("command-guard hook", () => {
+  const runGuard = (command: string | null, toolName = "Bash"): number => {
+    const event =
+      command === null
+        ? { tool_name: toolName, tool_input: {} }
+        : { tool_name: toolName, tool_input: { command } };
+    const res = spawnSync(process.execPath, [COMMAND_GUARD], {
+      input: JSON.stringify(event),
+      encoding: "utf8",
+    });
+    return res.status ?? -1;
+  };
+
+  it("blocks catastrophic commands with exit 2", () => {
+    expect(runGuard("rm -rf /")).toBe(2);
+    expect(runGuard("sudo rm -fr ~")).toBe(2);
+    expect(runGuard(":(){ :|:& };:")).toBe(2);
+    expect(runGuard("dd if=/dev/zero of=/dev/sda")).toBe(2);
+    expect(runGuard("chmod -R 777 /")).toBe(2);
+    expect(runGuard("git push --force origin main")).toBe(2);
+  });
+
+  it("allows safe commands with exit 0", () => {
+    expect(runGuard("ls -la")).toBe(0);
+    expect(runGuard("rm -rf ./build")).toBe(0);
+    expect(runGuard("echo hi > /dev/null")).toBe(0);
+    expect(runGuard("git push --force origin my-feature")).toBe(0);
+  });
+
+  it("ignores non-Bash tools and missing commands", () => {
+    expect(runGuard("rm -rf /", "Write")).toBe(0);
+    expect(runGuard(null)).toBe(0);
   });
 });

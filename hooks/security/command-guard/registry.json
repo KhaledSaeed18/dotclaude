@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "command-guard",
+      "type": "registry:item",
+      "title": "Command Guard",
+      "description": "A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of the filesystem root or home, fork bombs, writing to or formatting raw disk devices, recursive chmod 777 on root, and force-pushes to main or master), returning a clear reason. Use to add a deterministic safety net against destructive shell commands.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "security"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/command-guard",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/command-guard/HOOK.md"
+        },
+        {
+          "path": "command-guard.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/command-guard/command-guard.mjs"
+        }
+      ]
+    }
+  ]
+}
