@@ -4,6 +4,7 @@
   "homepage": "https://github.com/KhaledSaeed18/dotclaude",
   "include": [
     "agents/engineering/code-reviewer/registry.json",
+    "agents/research/deep-research/registry.json",
     "commands/testing/write-tests/registry.json",
     "hooks/observability/tool-call-logger/registry.json",
     "skills/engineering/create-skill/registry.json",

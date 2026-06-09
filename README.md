@@ -8,7 +8,7 @@
 
 <div align="center">
   <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-14-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="14 skills" /></a>
-  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-1-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="1 agent" /></a>
+  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-2-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="2 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-1-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="1 command" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-1-db2777.svg?split=true&logo=ri:RiPlugFill" alt="1 hook" /></a>
 </div>
@@ -104,6 +104,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | Agent | Description | Install |
 | --- | --- | --- |
 | [code-reviewer](agents/engineering/code-reviewer/) | Expert reviewer for a code change (a diff, a staged set, a branch, or named files). Reviews for correctness, security, and maintainability across JavaScript/TypeScript stacks including React, Next.js, Node, Express, and NestJS. Use proactively after writing or modifying code, before opening a pull request, or when the user asks for a code review, a second pair of eyes, or feedback on a change. | `npx shadcn@latest add KhaledSaeed18/dotclaude/code-reviewer` |
+
+#### Research
+
+| Agent | Description | Install |
+| --- | --- | --- |
+| [deep-research](agents/research/deep-research/) | In-depth research agent for topics that need comprehensive, multi-source investigation with citations. Use when the user asks to research a topic thoroughly, gather and synthesize information from across the web, compare approaches or options, fact-check a claim against primary sources, or produce a sourced writeup or literature scan. Examples — "research the current state of WebGPU adoption", "compare Postgres vs SQLite for an offline-first app, with sources", "what does the evidence say about X, and where do experts disagree?" | `npx shadcn@latest add KhaledSaeed18/dotclaude/deep-research` |
 
 ### Commands
 

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "deep-research",
+      "type": "registry:item",
+      "title": "Deep Research",
+      "description": "In-depth research agent for topics that need comprehensive, multi-source investigation with citations. Use when the user asks to research a topic thoroughly, gather and synthesize information from across the web, compare approaches or options, fact-check a claim against primary sources, or produce a sourced writeup or literature scan. Examples — \"research the current state of WebGPU adoption\", \"compare Postgres vs SQLite for an offline-first app, with sources\", \"what does the evidence say about X, and where do experts disagree?\"",
+      "categories": [
+        "research"
+      ],
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/deep-research.md"
+        }
+      ]
+    }
+  ]
+}
