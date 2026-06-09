@@ -21,16 +21,94 @@ import { z } from "zod";
 const ROOT = process.cwd();
 const NAME_RE = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
 
+/**
+ * Frontmatter schemas, one per content type. The base shape (name/description,
+ * optional title) is required everywhere; each type then layers on the optional
+ * fields Claude Code understands for that family and validates their values.
+ * Every schema passes through unknown keys, so authors can add fields we do not
+ * model yet without tripping validation. The point is to catch typos in the
+ * constrained fields (a bad color, an invalid model alias), not to forbid
+ * anything Claude Code actually accepts.
+ */
+const AGENT_COLORS = [
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "purple",
+  "orange",
+  "pink",
+  "cyan",
+] as const;
+const MEMORY_SCOPES = ["user", "project", "local"] as const;
+const EFFORT_LEVELS = ["low", "medium", "high", "xhigh", "max"] as const;
+const PERMISSION_MODES = [
+  "default",
+  "acceptEdits",
+  "auto",
+  "dontAsk",
+  "bypassPermissions",
+  "plan",
+] as const;
+const MODEL_ALIASES = ["sonnet", "opus", "haiku", "inherit"] as const;
+
+/** A model alias, or a full model id such as `claude-opus-4-8`. */
+const modelSchema = z.union([
+  z.enum(MODEL_ALIASES),
+  z.string().regex(/^claude-[a-z0-9.-]+$/, "must be a model alias or a full claude model id"),
+]);
+
+/** Tool lists may be written as a comma string or a YAML array. */
+const toolListSchema = z.union([z.string(), z.array(z.string())]);
+
+const baseFrontmatter = z.object({
+  name: z.string(),
+  description: z.string(),
+  title: z.string().optional(),
+});
+
+const skillFrontmatter = baseFrontmatter
+  .extend({
+    "argument-hint": z.string().optional(),
+  })
+  .passthrough();
+
+const agentFrontmatter = baseFrontmatter
+  .extend({
+    tools: toolListSchema.optional(),
+    disallowedTools: toolListSchema.optional(),
+    model: modelSchema.optional(),
+    color: z.enum(AGENT_COLORS).optional(),
+    memory: z.enum(MEMORY_SCOPES).optional(),
+    effort: z.enum(EFFORT_LEVELS).optional(),
+    permissionMode: z.enum(PERMISSION_MODES).optional(),
+    isolation: z.literal("worktree").optional(),
+    background: z.boolean().optional(),
+    maxTurns: z.number().optional(),
+  })
+  .passthrough();
+
+const commandFrontmatter = baseFrontmatter
+  .extend({
+    "argument-hint": z.string().optional(),
+    "allowed-tools": toolListSchema.optional(),
+    model: modelSchema.optional(),
+  })
+  .passthrough();
+
+const hookFrontmatter = baseFrontmatter.passthrough();
+
 interface ContentType {
   dir: string;
   manifest: string;
+  frontmatter: z.ZodTypeAny;
 }
 
 const CONTENT_TYPES: readonly ContentType[] = [
-  { dir: "skills", manifest: "SKILL.md" },
-  { dir: "agents", manifest: "AGENT.md" },
-  { dir: "commands", manifest: "COMMAND.md" },
-  { dir: "hooks", manifest: "HOOK.md" },
+  { dir: "skills", manifest: "SKILL.md", frontmatter: skillFrontmatter },
+  { dir: "agents", manifest: "AGENT.md", frontmatter: agentFrontmatter },
+  { dir: "commands", manifest: "COMMAND.md", frontmatter: commandFrontmatter },
+  { dir: "hooks", manifest: "HOOK.md", frontmatter: hookFrontmatter },
 ];
 
 /** One item, located at `<dir>/<category>/<name>/`. */
@@ -39,11 +117,12 @@ interface Item {
   name: string;
 }
 
-const FrontmatterSchema = z.object({
-  name: z.string(),
-  description: z.string(),
-  title: z.string().optional(),
-});
+/** The base fields every manifest carries, used after a type-specific parse. */
+interface ParsedFrontmatter {
+  name: string;
+  description: string;
+  title?: string;
+}
 
 const RegistryChunkSchema = z.object({
   items: z.array(
@@ -132,7 +211,7 @@ function main(): void {
         continue;
       }
 
-      const parsed = FrontmatterSchema.safeParse(matter(readFileSync(manifestPath, "utf8")).data);
+      const parsed = ct.frontmatter.safeParse(matter(readFileSync(manifestPath, "utf8")).data);
       if (!parsed.success) {
         const reason = parsed.error.issues
           .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
@@ -140,7 +219,7 @@ function main(): void {
         errors.push(`${label}: invalid frontmatter: ${reason}`);
         continue;
       }
-      const fm = parsed.data;
+      const fm = parsed.data as ParsedFrontmatter;
 
       if (fm.name.trim() === "") errors.push(`${label}: empty name`);
       if (fm.description.trim() === "") errors.push(`${label}: empty description`);
