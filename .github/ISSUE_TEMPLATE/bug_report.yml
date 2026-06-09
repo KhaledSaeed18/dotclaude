@@ -1,0 +1,47 @@
+name: Bug report
+description: Something in this registry is broken or behaves unexpectedly.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report. Please fill in enough detail to reproduce it.
+
+  - type: input
+    id: item
+    attributes:
+      label: Affected item
+      description: Which skill, agent, command, or hook? Use the name, or "tooling/CI" if it is not item-specific.
+      placeholder: git-commit
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What went wrong, and what did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands or prompts, ideally starting from a fresh install.
+      placeholder: |
+        1. npx shadcn@latest add KhaledSaeed18/dotclaude/<name>
+        2. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Claude Code version, OS, Node and pnpm versions if relevant.
+      placeholder: |
+        Claude Code:
+        OS:
+        Node / pnpm:
+    validations:
+      required: false

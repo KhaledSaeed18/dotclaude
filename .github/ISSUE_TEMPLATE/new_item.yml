@@ -1,0 +1,69 @@
+name: New item proposal
+description: Propose a new skill, agent, command, or hook.
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: Propose a new extension. An item earns its place when it encodes a reusable, multi-step procedure with judgment, not a one-off instruction.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Skill
+        - Agent
+        - Command
+        - Hook
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name
+      description: kebab-case, and unique across all items.
+      placeholder: dependency-audit
+    validations:
+      required: true
+
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: An existing category folder, or a new one if a genuinely new family is justified.
+      placeholder: security
+    validations:
+      required: true
+
+  - type: textarea
+    id: job
+    attributes:
+      label: The one job
+      description: In a sentence or two, what does it do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: trigger
+    attributes:
+      label: When it should fire
+      description: The situations and phrasings that should load it (for a skill) or delegate to it (for an agent). This becomes the description.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why a new item
+      description: Why this is worth its own item rather than a plain instruction or an extension of an existing one.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched the catalog and this does not duplicate an existing item.
+          required: true

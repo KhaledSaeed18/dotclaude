@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "create-hook",
+      "type": "registry:item",
+      "title": "Create Hook",
+      "description": "Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring, documenting activation in HOOK.md, then regenerating the registry. Use when creating, scaffolding, or reviewing a hook in this repo.",
+      "categories": [
+        "engineering"
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/create-hook/SKILL.md"
+        },
+        {
+          "path": "reference/events.md",
+          "type": "registry:file",
+          "target": ".claude/skills/create-hook/reference/events.md"
+        }
+      ]
+    }
+  ]
+}

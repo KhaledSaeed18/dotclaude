@@ -1,0 +1,11 @@
+name: Idea or question
+description: Suggest an improvement to an existing item or the tooling, or ask a question.
+labels: ["question"]
+body:
+  - type: textarea
+    id: body
+    attributes:
+      label: What's on your mind
+      description: Describe the idea, improvement, or question. Link any relevant item or file.
+    validations:
+      required: true

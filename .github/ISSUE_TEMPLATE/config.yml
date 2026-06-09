@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Claude Code documentation
+    url: https://docs.claude.com/en/docs/claude-code
+    about: Questions about Claude Code itself (not this registry) are best answered in the official docs.

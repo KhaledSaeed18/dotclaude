@@ -8,7 +8,7 @@
  */
 
 import { type SpawnSyncReturns, spawnSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
@@ -17,6 +17,7 @@ const REPO_ROOT = process.cwd();
 const TSX = join(REPO_ROOT, "node_modules", ".bin", "tsx");
 const GEN = join(REPO_ROOT, "scripts", "gen.ts");
 const VALIDATE = join(REPO_ROOT, "scripts", "validate.ts");
+const NEW = join(REPO_ROOT, "scripts", "new.ts");
 
 /** A README with both marker pairs gen owns, used unless a test supplies one. */
 const DEFAULT_README = [
@@ -73,6 +74,7 @@ function run(script: string, cwd: string, args: string[]): RunResult {
 const runGen = (cwd: string, args: string[] = []): RunResult => run(GEN, cwd, args);
 const runValidate = (cwd: string, args: string[] = ["--no-shadcn"]): RunResult =>
   run(VALIDATE, cwd, args);
+const runNew = (cwd: string, args: string[]): RunResult => run(NEW, cwd, args);
 
 const read = (dir: string, rel: string): string => readFileSync(join(dir, rel), "utf8");
 
@@ -218,5 +220,67 @@ describe("validate", () => {
     const result = runValidate(dir);
     expect(result.status).not.toBe(0);
     expect(result.output).toContain("does not match folder");
+  });
+});
+
+describe("new", () => {
+  const baseArgs = (over: Partial<Record<string, string>> = {}): string[] => {
+    const flags: Record<string, string> = {
+      type: "agent",
+      category: "research",
+      name: "sample-agent",
+      description: "Does a thing. Use when testing the scaffolder.",
+      ...over,
+    };
+    return Object.entries(flags).flatMap(([key, value]) => [`--${key}`, value]);
+  };
+
+  it("scaffolds a manifest and regenerates the registry", () => {
+    const dir = makeFixture({});
+
+    const result = runNew(dir, baseArgs());
+    expect(result.status).toBe(0);
+
+    const agentMd = read(dir, "agents/research/sample-agent/AGENT.md");
+    expect(agentMd).toContain("name: sample-agent");
+    expect(agentMd).toContain("Does a thing. Use when testing the scaffolder.");
+    expect(agentMd).toContain("model: inherit");
+
+    // gen ran in-process, so the derived files exist and the catalog updated.
+    const reg = read(dir, "agents/research/sample-agent/registry.json");
+    expect(reg).toContain('"target": ".claude/agents/sample-agent.md"');
+    expect(read(dir, "README.md")).toContain("add KhaledSaeed18/dotclaude/sample-agent");
+  });
+
+  it("writes only the manifest with --no-gen", () => {
+    const dir = makeFixture({});
+
+    const result = runNew(dir, [...baseArgs({ type: "skill", name: "lonely-skill" }), "--no-gen"]);
+    expect(result.status).toBe(0);
+
+    expect(read(dir, "skills/research/lonely-skill/SKILL.md")).toContain("name: lonely-skill");
+    expect(existsSync(join(dir, "skills/research/lonely-skill/registry.json"))).toBe(false);
+  });
+
+  it("rejects a duplicate name", () => {
+    const dir = makeFixture({
+      "skills/util/taken/SKILL.md": manifest({ name: "taken", description: "Existing." }),
+    });
+
+    const result = runNew(dir, baseArgs({ type: "agent", name: "taken" }));
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("already exists");
+  });
+
+  it("rejects an invalid name and an unknown type", () => {
+    const dir = makeFixture({});
+
+    const badName = runNew(dir, baseArgs({ name: "Bad_Name" }));
+    expect(badName.status).not.toBe(0);
+    expect(badName.output).toContain("kebab-case");
+
+    const badType = runNew(dir, baseArgs({ type: "widget" }));
+    expect(badType.status).not.toBe(0);
+    expect(badType.output).toContain("unknown type");
   });
 });

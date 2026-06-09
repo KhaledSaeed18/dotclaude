@@ -8,7 +8,7 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-14-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="14 skills" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-17-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="17 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-2-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="2 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-1-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="1 command" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-1-db2777.svg?split=true&logo=ri:RiPlugFill" alt="1 hook" /></a>
@@ -69,6 +69,9 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 | Skill | Description | Install |
 | --- | --- | --- |
+| [create-agent](skills/engineering/create-agent/) | Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in frontmatter, then writing a focused system prompt and regenerating the registry. Use when creating, scaffolding, or reviewing an agent or subagent in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-agent` |
+| [create-command](skills/engineering/create-command/) | Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the prompt body, then regenerating the registry. Use when creating, scaffolding, or reviewing a slash command in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-command` |
+| [create-hook](skills/engineering/create-hook/) | Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring, documenting activation in HOOK.md, then regenerating the registry. Use when creating, scaffolding, or reviewing a hook in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-hook` |
 | [create-skill](skills/engineering/create-skill/) | Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting reference material into companion files, then regenerating the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-skill` |
 | [explain-codebase](skills/engineering/explain-codebase/) | Onboard to an unfamiliar codebase by mapping its architecture, entry points, and data flow. Use when starting work in a new or unknown repository and you need a navigable mental model fast. | `npx shadcn@latest add KhaledSaeed18/dotclaude/explain-codebase` |
 | [grill-with-docs](skills/engineering/grill-with-docs/) | Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise. | `npx shadcn@latest add KhaledSaeed18/dotclaude/grill-with-docs` |
