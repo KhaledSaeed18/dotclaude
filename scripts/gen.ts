@@ -31,6 +31,9 @@ const REGISTRY_SCHEMA = "https://ui.shadcn.com/schema/registry.json";
 const README_PATH = join(ROOT, "README.md");
 const CATALOG_START = "<!-- catalog:start -->";
 const CATALOG_END = "<!-- catalog:end -->";
+const BADGES_START = "<!-- badges:start -->";
+const BADGES_END = "<!-- badges:end -->";
+const SHIELD_BASE = "https://shieldcn.dev/badge";
 
 const ROOT_REGISTRY_PATH = join(ROOT, "registry.json");
 
@@ -58,6 +61,10 @@ interface ContentType {
   targetBase: string;
   /** How the item maps onto the install tree (see above). */
   layout: "folder" | "file";
+  /** Hex color (no leading `#`) for this type's count badge in the README. */
+  badgeColor: string;
+  /** Remix icon slug for the badge logo, e.g. `ri:RiRobot2Fill`. */
+  badgeLogo: string;
 }
 
 const CONTENT_TYPES: readonly ContentType[] = [
@@ -68,6 +75,8 @@ const CONTENT_TYPES: readonly ContentType[] = [
     manifest: "SKILL.md",
     targetBase: ".claude/skills",
     layout: "folder",
+    badgeColor: "2563eb",
+    badgeLogo: "ri:RiSparkling2Fill",
   },
   {
     dir: "agents",
@@ -76,6 +85,8 @@ const CONTENT_TYPES: readonly ContentType[] = [
     manifest: "AGENT.md",
     targetBase: ".claude/agents",
     layout: "file",
+    badgeColor: "7c3aed",
+    badgeLogo: "ri:RiRobot2Fill",
   },
   {
     dir: "commands",
@@ -84,6 +95,8 @@ const CONTENT_TYPES: readonly ContentType[] = [
     manifest: "COMMAND.md",
     targetBase: ".claude/commands",
     layout: "file",
+    badgeColor: "0891b2",
+    badgeLogo: "ri:RiTerminalBoxFill",
   },
   {
     dir: "hooks",
@@ -92,6 +105,8 @@ const CONTENT_TYPES: readonly ContentType[] = [
     manifest: "HOOK.md",
     targetBase: ".claude/hooks",
     layout: "folder",
+    badgeColor: "db2777",
+    badgeLogo: "ri:RiPlugFill",
   },
 ];
 
@@ -306,10 +321,40 @@ function replaceCatalog(readme: string, catalog: string): string {
   return readme.slice(0, start) + catalog + readme.slice(end + CATALOG_END.length);
 }
 
+/** Lowercase the singular noun and add a plain `s` when the count is not one. */
+function pluralize(noun: string, count: number): string {
+  const lower = noun.toLowerCase();
+  return count === 1 ? lower : `${lower}s`;
+}
+
+/** One shieldcn count badge linking to its catalog section. */
+function badgeLine(ct: ContentType, count: number): string {
+  const anchor = ct.label.toLowerCase();
+  const alt = `${count} ${pluralize(ct.noun, count)}`;
+  const url = `${SHIELD_BASE}/${ct.label}-${count}-${ct.badgeColor}.svg?split=true&logo=${ct.badgeLogo}`;
+  return `  <a href="#${anchor}"><img src="${url}" alt="${alt}" /></a>`;
+}
+
+/** The count-badge block, one badge per content type, in declaration order. */
+function buildBadges(counts: Map<string, number>): string {
+  const lines = CONTENT_TYPES.map((ct) => badgeLine(ct, counts.get(ct.label) ?? 0));
+  return [BADGES_START, ...lines, BADGES_END].join("\n");
+}
+
+function replaceBadges(readme: string, badges: string): string {
+  const start = readme.indexOf(BADGES_START);
+  const end = readme.indexOf(BADGES_END);
+  if (start === -1 || end === -1 || end < start) {
+    throw new Error(`README.md is missing the "${BADGES_START}" / "${BADGES_END}" markers.`);
+  }
+  return readme.slice(0, start) + badges + readme.slice(end + BADGES_END.length);
+}
+
 function generate(): GeneratedFile[] {
   const outputs: GeneratedFile[] = [];
   const includePaths: string[] = [];
   const groups: CatalogGroup[] = [];
+  const counts = new Map<string, number>();
 
   for (const ct of CONTENT_TYPES) {
     const rows: CatalogRow[] = [];
@@ -336,6 +381,7 @@ function generate(): GeneratedFile[] {
       });
     }
     groups.push({ label: ct.label, noun: ct.noun, rows });
+    counts.set(ct.label, rows.length);
   }
 
   includePaths.sort();
@@ -349,11 +395,10 @@ function generate(): GeneratedFile[] {
     }),
   });
 
-  const readme = readFileSync(README_PATH, "utf8");
-  outputs.push({
-    path: README_PATH,
-    content: replaceCatalog(readme, buildCatalog(groups)),
-  });
+  let readme = readFileSync(README_PATH, "utf8");
+  readme = replaceCatalog(readme, buildCatalog(groups));
+  readme = replaceBadges(readme, buildBadges(counts));
+  outputs.push({ path: README_PATH, content: readme });
 
   return outputs;
 }

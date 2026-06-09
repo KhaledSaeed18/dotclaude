@@ -7,10 +7,12 @@
 </div>
 
 <div align="center">
+<!-- badges:start -->
   <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-14-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="14 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-2-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="2 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-1-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="1 command" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-1-db2777.svg?split=true&logo=ri:RiPlugFill" alt="1 hook" /></a>
+<!-- badges:end -->
 </div>
 
 <br />
