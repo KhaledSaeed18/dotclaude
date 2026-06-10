@@ -3,8 +3,11 @@
   "name": "dotclaude",
   "homepage": "https://github.com/KhaledSaeed18/dotclaude",
   "include": [
+    "agents/engineering/architect-reviewer/registry.json",
     "agents/engineering/code-reviewer/registry.json",
+    "agents/engineering/debugger/registry.json",
     "agents/research/deep-research/registry.json",
+    "agents/security/security-auditor/registry.json",
     "commands/testing/write-tests/registry.json",
     "hooks/observability/tool-call-logger/registry.json",
     "hooks/security/command-guard/registry.json",

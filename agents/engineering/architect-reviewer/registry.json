@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "architect-reviewer",
+      "type": "registry:item",
+      "title": "Architect Reviewer",
+      "description": "Use this agent when you need a design-level architecture review of a module, a proposed change, or an entire codebase. Evaluates module boundaries, coupling and cohesion, layering violations, scalability risk, and structural decisions that will become expensive to undo. Complements code-reviewer by operating one level up — on the shapes and relationships of components, not individual functions.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/architect-reviewer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/architect-reviewer.md"
+        }
+      ]
+    }
+  ]
+}

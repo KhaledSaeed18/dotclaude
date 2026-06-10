@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "security-auditor",
+      "type": "registry:item",
+      "title": "Security Auditor",
+      "description": "Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, authentication and authorization logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk. Read-only: reports findings and concrete remediation steps; does not modify code.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "security"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/security/security-auditor",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/security-auditor.md"
+        }
+      ]
+    }
+  ]
+}

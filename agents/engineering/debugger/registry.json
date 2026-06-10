@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "debugger",
+      "type": "registry:item",
+      "title": "Debugger",
+      "description": "Use this agent when you need to diagnose a bug, test failure, crash, or unexpected behavior through systematic root-cause analysis. Gathers evidence, forms and tests hypotheses, and delivers a confirmed root cause with a targeted fix recommendation. Does not guess or apply speculative patches.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/debugger",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/debugger.md"
+        }
+      ]
+    }
+  ]
+}
