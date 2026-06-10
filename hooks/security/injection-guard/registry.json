@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "injection-guard",
+      "type": "registry:item",
+      "title": "Injection Guard",
+      "description": "A UserPromptSubmit hook that scans incoming prompts for prompt-injection and jailbreak patterns (instruction overrides, system-prompt extraction attempts, role reassignments, DAN/developer-mode activations) before Claude processes them. Use to add a deterministic pre-Claude safety layer against injection attacks.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "security"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/injection-guard",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/injection-guard/HOOK.md"
+        },
+        {
+          "path": "injection-guard.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/injection-guard/injection-guard.mjs"
+        }
+      ]
+    }
+  ]
+}

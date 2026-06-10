@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "sensitive-file-guard",
+      "type": "registry:item",
+      "title": "Sensitive File Guard",
+      "description": "A PreToolUse hook that blocks Read, Edit, Write, and Bash operations that target sensitive files (.env, credentials, SSH private keys, certificates, secrets, AWS config, netrc, and similar). Use to prevent Claude from autonomously reading or exfiltrating credential files.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "security"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/sensitive-file-guard",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/sensitive-file-guard/HOOK.md"
+        },
+        {
+          "path": "sensitive-file-guard.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/sensitive-file-guard/sensitive-file-guard.mjs"
+        }
+      ]
+    }
+  ]
+}

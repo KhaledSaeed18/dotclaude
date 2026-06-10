@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "smart-approve",
+      "type": "registry:item",
+      "title": "Smart Approve",
+      "description": "A PreToolUse hook that decomposes compound Bash commands (&&, ||, ;, |, $(), backticks) into their component sub-commands and checks each one independently against a deny list, closing the chain-smuggling gap where a dangerous operation is embedded inside a safe-looking command chain. Use to upgrade command-guard with compound-command awareness.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "security"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/smart-approve",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/smart-approve/HOOK.md"
+        },
+        {
+          "path": "smart-approve.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/smart-approve/smart-approve.mjs"
+        }
+      ]
+    }
+  ]
+}
