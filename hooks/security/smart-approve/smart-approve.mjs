@@ -78,15 +78,12 @@ function decompose(command) {
     if (trimmed) pieces.push(trimmed);
 
     // Extract $(...) sub-expressions
-    const dollar = /\$\(([^)]+)\)/g;
-    let m;
-    while ((m = dollar.exec(part)) !== null) {
-      if (m[1]) pieces.push(m[1].trim());
+    for (const dm of part.matchAll(/\$\(([^)]+)\)/g)) {
+      if (dm[1]) pieces.push(dm[1].trim());
     }
     // Extract backtick sub-expressions
-    const backtick = /`([^`]+)`/g;
-    while ((m = backtick.exec(part)) !== null) {
-      if (m[1]) pieces.push(m[1].trim());
+    for (const bm of part.matchAll(/`([^`]+)`/g)) {
+      if (bm[1]) pieces.push(bm[1].trim());
     }
   }
 

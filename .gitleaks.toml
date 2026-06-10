@@ -1,0 +1,12 @@
+title = "dotclaude"
+
+# Registry item documentation files (AGENT.md, SKILL.md, COMMAND.md, HOOK.md)
+# deliberately discuss security patterns, grep commands that match credential
+# keywords, and example code containing token/password/key terminology.
+# These are not secrets, they are documentation. Allowlist them globally so
+# gitleaks does not false-positive on the registry content.
+[allowlist]
+  description = "Registry item documentation discusses security patterns"
+  paths = [
+    '''.*/(AGENT|SKILL|COMMAND|HOOK)\.md$''',
+  ]

@@ -88,9 +88,7 @@ function extractPrompt(event) {
 
 function block(reason, snippet) {
   const preview = snippet.length > 120 ? `${snippet.slice(0, 120)}...` : snippet;
-  process.stderr.write(
-    `Blocked by injection-guard: ${reason}.\nPrompt snippet: ${preview}\n`,
-  );
+  process.stderr.write(`Blocked by injection-guard: ${reason}.\nPrompt snippet: ${preview}\n`);
   process.exit(2);
 }
 

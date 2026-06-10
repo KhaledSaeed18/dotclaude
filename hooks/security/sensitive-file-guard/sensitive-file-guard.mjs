@@ -127,24 +127,20 @@ async function main() {
 
     // Check if the bash command accesses a sensitive path
     const allPaths = [
-      ...(command.match(/(?:^|\s)([\w./~${}][^\s;|&>]*(?:\.env\S*|credentials?\S*|id_rsa\S*|\.pem\S*|\.key\S*|\.netrc\S*|secrets?\S*|service_account\S*))/gi) ?? []),
+      ...(command.match(
+        /(?:^|\s)([\w./~${}][^\s;|&>]*(?:\.env\S*|credentials?\S*|id_rsa\S*|\.pem\S*|\.key\S*|\.netrc\S*|secrets?\S*|service_account\S*))/gi,
+      ) ?? []),
     ].map((s) => s.trim());
 
     for (const p of allPaths) {
       if (isSensitivePath(p)) {
-        block(
-          `the Bash command targets "${p}" which matches a sensitive-file pattern`,
-          command,
-        );
+        block(`the Bash command targets "${p}" which matches a sensitive-file pattern`, command);
       }
     }
 
     // Check Bash-specific shell-read patterns
     if (isSensitiveBashCommand(command)) {
-      block(
-        "the Bash command reads or dumps a sensitive file or environment variables",
-        command,
-      );
+      block("the Bash command reads or dumps a sensitive file or environment variables", command);
     }
   }
 
