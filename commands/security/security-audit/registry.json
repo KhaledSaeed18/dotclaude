@@ -5,7 +5,7 @@
       "name": "security-audit",
       "type": "registry:item",
       "title": "Security Audit",
-      "description": "Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff.",
+      "description": "Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff. Produces a structured findings report ranked by severity. Pass a path to limit the audit to a specific module or directory.",
       "author": "Khaled Saeed",
       "categories": [
         "security"

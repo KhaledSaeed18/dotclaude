@@ -5,7 +5,7 @@
       "name": "performance-optimization",
       "type": "registry:item",
       "title": "Performance Optimization",
-      "description": "Optimize a performance problem by profiling to find the real bottleneck before changing anything, making one targeted change, and verifying both the improvement and that correctness did not degrade. Do not use to pre-optimize code that has not been measured to be slow.",
+      "description": "Optimize a performance problem by profiling to find the real bottleneck before changing anything, making one targeted change, and verifying both the improvement and that correctness did not degrade. Use when a feature is measurably slow, a page load or API response exceeds a budget, a query is taking too long, or a user reports sluggishness. Do not use to pre-optimize code that has not been measured to be slow.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

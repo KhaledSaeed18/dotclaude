@@ -5,7 +5,7 @@
       "name": "adversarial-reviewer",
       "type": "registry:item",
       "title": "Adversarial Reviewer",
-      "description": "Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a standard review feels too comfortable, when code is going into a critical path, or when you want coverage across correctness, clarity, and security in a single pass.",
+      "description": "Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a standard review feels too comfortable, when code is going into a critical path, when a previous review missed bugs that later surfaced, or when you want coverage across correctness, clarity, and security in a single pass.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

@@ -5,7 +5,7 @@
       "name": "explain-code",
       "type": "registry:item",
       "title": "Explain Code",
-      "description": "Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured the way it is. Suited for onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before.",
+      "description": "Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured the way it is. Suited for onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before. Pass a file path or a symbol name as the argument.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

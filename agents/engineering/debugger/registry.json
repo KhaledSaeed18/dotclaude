@@ -5,7 +5,7 @@
       "name": "debugger",
       "type": "registry:item",
       "title": "Debugger",
-      "description": "Use this agent when you need to diagnose a bug, test failure, crash, or unexpected behavior through systematic root-cause analysis. Gathers evidence, forms and tests hypotheses, and delivers a confirmed root cause with a targeted fix recommendation. Does not guess or apply speculative patches.",
+      "description": "Use this agent when you need to diagnose a bug, test failure, crash, or unexpected behavior through systematic root-cause analysis. Gathers evidence, forms and tests hypotheses, and delivers a confirmed root cause with a targeted fix recommendation. Does not guess or apply speculative patches. Use when a fix attempt has failed, when the bug is intermittent, when a stack trace needs tracing end-to-end, or when you want a second opinion on what is actually broken before touching code.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

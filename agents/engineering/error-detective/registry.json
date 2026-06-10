@@ -5,7 +5,7 @@
       "name": "error-detective",
       "type": "registry:item",
       "title": "Error Detective",
-      "description": "Use this agent when you need to correlate errors, stack traces, and log entries across multiple services or files to find the root cause of an incident or a failure that spans more than one component. Works from runtime artifacts rather than source code.",
+      "description": "Use this agent when you need to correlate errors, stack traces, and log entries across multiple services or files to find the root cause of an incident, a mysterious recurring error, or a failure that spans more than one component. Searches log files, cross-references timestamps, traces request IDs across service boundaries, and surfaces the originating cause rather than the downstream symptom. Distinct from the debugger agent, which traces bugs in source code; this agent works from runtime artifacts (logs, traces, crash dumps) and is most useful when the failure is happening in production or a staging environment where you cannot step through the code.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

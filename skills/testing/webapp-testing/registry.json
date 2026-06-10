@@ -5,7 +5,7 @@
       "name": "webapp-testing",
       "type": "registry:item",
       "title": "Webapp Testing",
-      "description": "Verify a web application works correctly in a real browser using Playwright. Covers page navigation, form submission, user interactions, console error detection, screenshot capture, and responsive layout checking. Use when you need to confirm a UI feature works end-to-end or catch regressions after a change.",
+      "description": "Verify a web application works correctly in a real browser using Playwright. Covers page navigation, form submission, user interactions, console error detection, screenshot capture, and responsive layout checking. Use when you need to confirm a UI feature actually works end-to-end, catch regressions after a change, verify a form flow completes, or check that the page is free of console errors. Requires Node.js; installs Playwright if not already present.",
       "author": "Khaled Saeed",
       "categories": [
         "testing"

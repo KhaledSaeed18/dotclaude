@@ -5,7 +5,7 @@
       "name": "prime",
       "type": "registry:item",
       "title": "Prime",
-      "description": "Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits, and directory structure so it can give better answers immediately.",
+      "description": "Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits, and directory structure so it can give better answers immediately. Use at the start of a session when switching to an unfamiliar repository or after a long break from a project.",
       "author": "Khaled Saeed",
       "categories": [
         "productivity"

@@ -5,7 +5,7 @@
       "name": "performance-engineer",
       "type": "registry:item",
       "title": "Performance Engineer",
-      "description": "Use this agent when you need to investigate, measure, and resolve a performance problem end-to-end. Profiles the running system, identifies the actual bottleneck with numbers, designs or runs load tests, recommends targeted changes, and verifies the improvement is real.",
+      "description": "Use this agent when you need to investigate, measure, and resolve a performance problem end-to-end. Profiles the running system, identifies the actual bottleneck with numbers, designs or runs load tests, recommends targeted changes, and verifies the improvement is real. Use for slow API responses, high CPU or memory usage, database query latency, build-time regressions, or when preparing a service for increased load. Distinct from the performance-optimization skill, which provides the methodology; this agent can execute profiling tools, analyze their output, and iterate through the full measure-change-verify cycle.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

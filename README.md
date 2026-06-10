@@ -8,10 +8,10 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-27-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="27 skills" /></a>
-  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-2-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="2 agents" /></a>
-  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-1-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="1 command" /></a>
-  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-2-db2777.svg?split=true&logo=ri:RiPlugFill" alt="2 hooks" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-31-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="31 skills" /></a>
+  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-7-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="7 agents" /></a>
+  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-5-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="5 commands" /></a>
+  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-5-db2777.svg?split=true&logo=ri:RiPlugFill" alt="5 hooks" /></a>
 <!-- badges:end -->
 </div>
 
@@ -80,6 +80,7 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 | Skill | Description | Install |
 | --- | --- | --- |
+| [adversarial-reviewer](skills/engineering/adversarial-reviewer/) | Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a standard review feels too comfortable, when code is going into a critical path, when a previous review missed bugs that later surfaced, or when you want coverage across correctness, clarity, and security in a single pass. | `npx shadcn@latest add KhaledSaeed18/dotclaude/adversarial-reviewer` |
 | [code-review-response](skills/engineering/code-review-response/) | Process code-review feedback with technical rigour — understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong. | `npx shadcn@latest add KhaledSaeed18/dotclaude/code-review-response` |
 | [create-agent](skills/engineering/create-agent/) | Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in frontmatter, then writing a focused system prompt and regenerating the registry. Use when creating, scaffolding, or reviewing an agent or subagent in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-agent` |
 | [create-command](skills/engineering/create-command/) | Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the prompt body, then regenerating the registry. Use when creating, scaffolding, or reviewing a slash command in this repo. | `npx shadcn@latest add KhaledSaeed18/dotclaude/create-command` |
@@ -89,6 +90,7 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [explain-codebase](skills/engineering/explain-codebase/) | Onboard to an unfamiliar codebase by mapping its architecture, entry points, and data flow. Use when starting work in a new or unknown repository and you need a navigable mental model fast. | `npx shadcn@latest add KhaledSaeed18/dotclaude/explain-codebase` |
 | [grill-with-docs](skills/engineering/grill-with-docs/) | Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise. | `npx shadcn@latest add KhaledSaeed18/dotclaude/grill-with-docs` |
 | [parallel-agents](skills/engineering/parallel-agents/) | Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks — separate failing test files, unrelated bugs, distinct subsystems — that share no state and don't depend on each other's order. | `npx shadcn@latest add KhaledSaeed18/dotclaude/parallel-agents` |
+| [performance-optimization](skills/engineering/performance-optimization/) | Optimize a performance problem by profiling to find the real bottleneck before changing anything, making one targeted change, and verifying both the improvement and that correctness did not degrade. Use when a feature is measurably slow, a page load or API response exceeds a budget, a query is taking too long, or a user reports sluggishness. Do not use to pre-optimize code that has not been measured to be slow. | `npx shadcn@latest add KhaledSaeed18/dotclaude/performance-optimization` |
 | [systematic-debugging](skills/engineering/systematic-debugging/) | Debug a bug, test failure, crash, or unexpected behaviour by finding the root cause before changing anything, instead of guessing at fixes. Works in any language or stack. Use when something is broken, a test is failing, behaviour is wrong, or a previous fix didn't hold. | `npx shadcn@latest add KhaledSaeed18/dotclaude/systematic-debugging` |
 | [test-driven-development](skills/engineering/test-driven-development/) | Implement a feature or bugfix test-first using the red-green-refactor cycle — write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works. | `npx shadcn@latest add KhaledSaeed18/dotclaude/test-driven-development` |
 | [verify-completion](skills/engineering/verify-completion/) | Gate every "it works / it's fixed / tests pass / done" claim behind fresh evidence — run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded. | `npx shadcn@latest add KhaledSaeed18/dotclaude/verify-completion` |
@@ -107,7 +109,14 @@ The catalog below lists every item in this repository, grouped by type and then 
 | Skill | Description | Install |
 | --- | --- | --- |
 | [dependency-audit](skills/security/dependency-audit/) | Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem, including npm/pnpm/yarn, pip/Poetry/uv, Cargo, Go modules, Maven/Gradle, Bundler, Composer, and others. | `npx shadcn@latest add KhaledSaeed18/dotclaude/dependency-audit` |
+| [owasp-security](skills/security/owasp-security/) | Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, catching vulnerability classes before they ship. Works in any language or stack. Use when writing authentication or authorization logic, handling user input, adding API endpoints, choosing cryptographic operations, processing file uploads, or making any change that touches a trust boundary. Complements secret-scan (which finds credentials) and dependency-audit (which checks packages) with line-level vulnerability review. | `npx shadcn@latest add KhaledSaeed18/dotclaude/owasp-security` |
 | [secret-scan](skills/security/secret-scan/) | Scan code or a diff for hardcoded secrets (API keys, tokens, passwords, private keys, and other exposed credentials) before they get committed or shipped. Use before committing, during review, or when auditing a repository. | `npx shadcn@latest add KhaledSaeed18/dotclaude/secret-scan` |
+
+#### Testing
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [webapp-testing](skills/testing/webapp-testing/) | Verify a web application works correctly in a real browser using Playwright. Covers page navigation, form submission, user interactions, console error detection, screenshot capture, and responsive layout checking. Use when you need to confirm a UI feature actually works end-to-end, catch regressions after a change, verify a form flow completes, or check that the page is free of console errors. Requires Node.js; installs Playwright if not already present. | `npx shadcn@latest add KhaledSaeed18/dotclaude/webapp-testing` |
 
 #### Version Control
 
@@ -129,7 +138,11 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 | Agent | Description | Install |
 | --- | --- | --- |
+| [architect-reviewer](agents/engineering/architect-reviewer/) | Use this agent when you need a design-level architecture review of a module, a proposed change, or an entire codebase. Evaluates module boundaries, coupling and cohesion, layering violations, scalability risk, and structural decisions that will become expensive to undo. Complements code-reviewer, which focuses on line-level correctness, by operating at the design level on shapes and relationships of components rather than individual functions. Use when designing a new service, refactoring a large module, evaluating a cross-cutting change, or when you want a second opinion on structural decisions before they harden. | `npx shadcn@latest add KhaledSaeed18/dotclaude/architect-reviewer` |
 | [code-reviewer](agents/engineering/code-reviewer/) | Expert reviewer for a code change (a diff, a staged set, a branch, or named files). Reviews for correctness, security, and maintainability across JavaScript/TypeScript stacks including React, Next.js, Node, Express, and NestJS. Use proactively after writing or modifying code, before opening a pull request, or when the user asks for a code review, a second pair of eyes, or feedback on a change. | `npx shadcn@latest add KhaledSaeed18/dotclaude/code-reviewer` |
+| [debugger](agents/engineering/debugger/) | Use this agent when you need to diagnose a bug, test failure, crash, or unexpected behavior through systematic root-cause analysis. Gathers evidence, forms and tests hypotheses, and delivers a confirmed root cause with a targeted fix recommendation. Does not guess or apply speculative patches. Use when a fix attempt has failed, when the bug is intermittent, when a stack trace needs tracing end-to-end, or when you want a second opinion on what is actually broken before touching code. | `npx shadcn@latest add KhaledSaeed18/dotclaude/debugger` |
+| [error-detective](agents/engineering/error-detective/) | Use this agent when you need to correlate errors, stack traces, and log entries across multiple services or files to find the root cause of an incident, a mysterious recurring error, or a failure that spans more than one component. Searches log files, cross-references timestamps, traces request IDs across service boundaries, and surfaces the originating cause rather than the downstream symptom. Distinct from the debugger agent, which traces bugs in source code; this agent works from runtime artifacts (logs, traces, crash dumps) and is most useful when the failure is happening in production or a staging environment where you cannot step through the code. | `npx shadcn@latest add KhaledSaeed18/dotclaude/error-detective` |
+| [performance-engineer](agents/engineering/performance-engineer/) | Use this agent when you need to investigate, measure, and resolve a performance problem end-to-end. Profiles the running system, identifies the actual bottleneck with numbers, designs or runs load tests, recommends targeted changes, and verifies the improvement is real. Use for slow API responses, high CPU or memory usage, database query latency, build-time regressions, or when preparing a service for increased load. Distinct from the performance-optimization skill, which provides the methodology; this agent can execute profiling tools, analyze their output, and iterate through the full measure-change-verify cycle. | `npx shadcn@latest add KhaledSaeed18/dotclaude/performance-engineer` |
 
 #### Research
 
@@ -137,13 +150,43 @@ The catalog below lists every item in this repository, grouped by type and then 
 | --- | --- | --- |
 | [deep-research](agents/research/deep-research/) | In-depth research agent for topics that need comprehensive, multi-source investigation with citations. Use when the user asks to research a topic thoroughly, gather and synthesize information from across the web, compare approaches or options, fact-check a claim against primary sources, or produce a sourced writeup or literature scan. For example, "research the current state of WebGPU adoption", "compare Postgres vs SQLite for an offline-first app, with sources", or "what does the evidence say about X, and where do experts disagree?" | `npx shadcn@latest add KhaledSaeed18/dotclaude/deep-research` |
 
+#### Security
+
+| Agent | Description | Install |
+| --- | --- | --- |
+| [security-auditor](agents/security/security-auditor/) | Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, authentication and authorization logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk. Reports findings and concrete remediation steps without modifying code. Use before a production release, after adding auth or payment flows, when onboarding a new dependency, or when a security review is required before merge. | `npx shadcn@latest add KhaledSaeed18/dotclaude/security-auditor` |
+
 ### Commands
+
+#### Engineering
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [explain-code](commands/engineering/explain-code/) | Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured the way it is. Suited for onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before. Pass a file path or a symbol name as the argument. | `npx shadcn@latest add KhaledSaeed18/dotclaude/explain-code` |
+
+#### Productivity
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [prime](commands/productivity/prime/) | Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits, and directory structure so it can give better answers immediately. Use at the start of a session when switching to an unfamiliar repository or after a long break from a project. | `npx shadcn@latest add KhaledSaeed18/dotclaude/prime` |
+
+#### Security
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [security-audit](commands/security/security-audit/) | Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff. Produces a structured findings report ranked by severity. Pass a path to limit the audit to a specific module or directory. | `npx shadcn@latest add KhaledSaeed18/dotclaude/security-audit` |
 
 #### Testing
 
 | Command | Description | Install |
 | --- | --- | --- |
 | [write-tests](commands/testing/write-tests/) | Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. | `npx shadcn@latest add KhaledSaeed18/dotclaude/write-tests` |
+
+#### Version Control
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [clean-branches](commands/version-control/clean-branches/) | List local Git branches that have been fully merged or are stale and delete them safely after showing what would be removed. Protects main, master, develop, and the currently checked-out branch. Pass --dry-run to preview without deleting anything. Distinct from the finish-branch skill, which closes a single active in-progress branch; this cleans up accumulated merged branches across the whole repository. | `npx shadcn@latest add KhaledSaeed18/dotclaude/clean-branches` |
 
 ### Hooks
 
@@ -158,6 +201,9 @@ The catalog below lists every item in this repository, grouped by type and then 
 | Hook | Description | Install |
 | --- | --- | --- |
 | [command-guard](hooks/security/command-guard/) | A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of the filesystem root or home, fork bombs, writing to or formatting raw disk devices, recursive chmod 777 on root, and force-pushes to main or master), returning a clear reason. Use to add a deterministic safety net against destructive shell commands. | `npx shadcn@latest add KhaledSaeed18/dotclaude/command-guard` |
+| [injection-guard](hooks/security/injection-guard/) | A UserPromptSubmit hook that scans incoming prompts for prompt-injection and jailbreak patterns (instruction overrides, system-prompt extraction attempts, role reassignments, DAN/developer-mode activations) before Claude processes them. Use to add a deterministic pre-Claude safety layer against injection attacks. | `npx shadcn@latest add KhaledSaeed18/dotclaude/injection-guard` |
+| [sensitive-file-guard](hooks/security/sensitive-file-guard/) | A PreToolUse hook that blocks Read, Edit, Write, and Bash operations that target sensitive files (.env, credentials, SSH private keys, certificates, secrets, AWS config, netrc, and similar). Use to prevent Claude from autonomously reading or exfiltrating credential files. | `npx shadcn@latest add KhaledSaeed18/dotclaude/sensitive-file-guard` |
+| [smart-approve](hooks/security/smart-approve/) | A PreToolUse hook that decomposes compound Bash commands (&&, \|\|, ;, \|, $(), backticks) into their component sub-commands and checks each one independently against a deny list, closing the chain-smuggling gap where a dangerous operation is embedded inside a safe-looking command chain. Use to upgrade command-guard with compound-command awareness. | `npx shadcn@latest add KhaledSaeed18/dotclaude/smart-approve` |
 
 <!-- catalog:end -->
 

@@ -5,7 +5,7 @@
       "name": "architect-reviewer",
       "type": "registry:item",
       "title": "Architect Reviewer",
-      "description": "Use this agent when you need a design-level architecture review of a module, a proposed change, or an entire codebase. Evaluates module boundaries, coupling and cohesion, layering violations, scalability risk, and structural decisions that will become expensive to undo. Complements code-reviewer by operating one level up — on the shapes and relationships of components, not individual functions.",
+      "description": "Use this agent when you need a design-level architecture review of a module, a proposed change, or an entire codebase. Evaluates module boundaries, coupling and cohesion, layering violations, scalability risk, and structural decisions that will become expensive to undo. Complements code-reviewer, which focuses on line-level correctness, by operating at the design level on shapes and relationships of components rather than individual functions. Use when designing a new service, refactoring a large module, evaluating a cross-cutting change, or when you want a second opinion on structural decisions before they harden.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"
