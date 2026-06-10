@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "clean-branches",
+      "type": "registry:item",
+      "title": "Clean Branches",
+      "description": "List local Git branches that have been fully merged or are stale and delete them safely after showing what would be removed. Protects main, master, develop, and the currently checked-out branch. Pass --dry-run to preview without deleting anything.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "version-control"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/clean-branches",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/clean-branches.md"
+        }
+      ]
+    }
+  ]
+}

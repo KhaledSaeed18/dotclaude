@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "security-audit",
+      "type": "registry:item",
+      "title": "Security Audit",
+      "description": "Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "security"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/security/security-audit",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/security-audit.md"
+        }
+      ]
+    }
+  ]
+}
