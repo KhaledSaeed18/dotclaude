@@ -213,12 +213,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 ### Attributions
 
-Some skills in this project were created from scratch, while others were inspired by, adapted from, or built upon work from the open-source community. Credit and thanks to the following resources:
+Some items in this project were created from scratch, while others were inspired by, adapted from, or built upon work from the open-source community. Credit and thanks to the following resources:
 
 | Source | Link | Items inspired by |
 |--------|------|-------------------|
-| Matt Pocock's Skills | [mattpocock/skills](https://github.com/mattpocock/skills) | earlier skills |
-| Obra's Superpowers | [obra/superpowers](https://github.com/obra/superpowers) | earlier skills |
+| Matt Pocock's Skills | [mattpocock/skills](https://github.com/mattpocock/skills) | skills |
+| Obra's Superpowers | [obra/superpowers](https://github.com/obra/superpowers) | skills |
 | Anthropic's Skills | [anthropics/skills](https://github.com/anthropics/skills) | webapp-testing |
 | Addy Osmani's Agent Skills | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | performance-optimization |
 | Alirezarezvani's Claude Skills | [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | adversarial-reviewer |
