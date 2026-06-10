@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "webapp-testing",
+      "type": "registry:item",
+      "title": "Webapp Testing",
+      "description": "Verify a web application works correctly in a real browser using Playwright. Covers page navigation, form submission, user interactions, console error detection, screenshot capture, and responsive layout checking. Use when you need to confirm a UI feature works end-to-end or catch regressions after a change.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "testing"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/testing/webapp-testing",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/webapp-testing/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

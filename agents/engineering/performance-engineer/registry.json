@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "performance-engineer",
+      "type": "registry:item",
+      "title": "Performance Engineer",
+      "description": "Use this agent when you need to investigate, measure, and resolve a performance problem end-to-end. Profiles the running system, identifies the actual bottleneck with numbers, designs or runs load tests, recommends targeted changes, and verifies the improvement is real.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/performance-engineer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/performance-engineer.md"
+        }
+      ]
+    }
+  ]
+}

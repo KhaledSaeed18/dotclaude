@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "error-detective",
+      "type": "registry:item",
+      "title": "Error Detective",
+      "description": "Use this agent when you need to correlate errors, stack traces, and log entries across multiple services or files to find the root cause of an incident or a failure that spans more than one component. Works from runtime artifacts rather than source code.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/error-detective",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/error-detective.md"
+        }
+      ]
+    }
+  ]
+}
