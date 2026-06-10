@@ -215,7 +215,16 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 Some skills in this project were created from scratch, while others were inspired by, adapted from, or built upon work from the open-source community. Credit and thanks to the following resources:
 
-| Source | Link |
-|--------|------|
-| Matt Pocock's Skills | [mattpocock/skills](https://github.com/mattpocock/skills) |
-| Obra's Superpowers | [obra/superpowers](https://github.com/obra/superpowers) |
+| Source | Link | Items inspired by |
+|--------|------|-------------------|
+| Matt Pocock's Skills | [mattpocock/skills](https://github.com/mattpocock/skills) | earlier skills |
+| Obra's Superpowers | [obra/superpowers](https://github.com/obra/superpowers) | earlier skills |
+| Anthropic's Skills | [anthropics/skills](https://github.com/anthropics/skills) | webapp-testing |
+| Addy Osmani's Agent Skills | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | performance-optimization |
+| Alirezarezvani's Claude Skills | [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | adversarial-reviewer |
+| Agamm's Claude Code OWASP | [agamm/claude-code-owasp](https://github.com/agamm/claude-code-owasp) | owasp-security |
+| QdHenry's Claude Command Suite | [qdhenry/Claude-Command-Suite](https://github.com/qdhenry/Claude-Command-Suite) | prime, explain-code, security-audit, clean-branches |
+| VoltAgent's Subagents | [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) | debugger, security-auditor, architect-reviewer, performance-engineer, error-detective |
+| Wshobson's Agents | [wshobson/agents](https://github.com/wshobson/agents) | debugger, security-auditor, architect-reviewer, performance-engineer, error-detective |
+| Disler's Hooks Mastery | [disler/claude-code-hooks-mastery](https://github.com/disler/claude-code-hooks-mastery) | sensitive-file-guard, injection-guard |
+| Rohitg00's Toolkit (via liberzon/claude-hooks) | [rohitg00/awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit) | smart-approve |
