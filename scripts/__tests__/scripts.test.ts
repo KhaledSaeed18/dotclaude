@@ -184,6 +184,43 @@ describe("gen", () => {
     expect(read(dir, "README.md")).toContain("/plugin install engineering@dotclaude");
   });
 
+  it("wires hook plugins with hooks.json and script copies", () => {
+    const dir = makeFixture({
+      "hooks/automation/notify/HOOK.md": manifest({ name: "notify", description: "N." }),
+      "hooks/automation/notify/notify.mjs": "// hook script\n",
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    // The generated hooks.json wires the event to the bundled script via
+    // ${CLAUDE_PLUGIN_ROOT}, so the plugin is active immediately on install.
+    const hooksJson = JSON.parse(read(dir, ".claude-plugin/plugins/notify/hooks/hooks.json"));
+    const entry = hooksJson.hooks.Notification[0].hooks[0];
+    expect(entry.type).toBe("command");
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: the literal placeholder is the contract — Claude Code substitutes it at runtime
+    expect(entry.command).toBe('node "${CLAUDE_PLUGIN_ROOT}/scripts/notify.mjs"');
+    expect(read(dir, ".claude-plugin/plugins/notify/scripts/notify.mjs")).toBe("// hook script\n");
+
+    const marketplace = JSON.parse(read(dir, ".claude-plugin/marketplace.json"));
+    expect(marketplace.plugins.map((p: { name: string }) => p.name)).toContain("notify");
+  });
+
+  it("errors when a hook plugin references some but not all of its scripts", () => {
+    const dir = makeFixture({
+      "hooks/security/smart-approve/HOOK.md": manifest({
+        name: "smart-approve",
+        description: "S.",
+      }),
+      "hooks/security/smart-approve/smart-approve.mjs": "// present\n",
+      // The security-hooks plugin also selects sensitive-file-guard.mjs and
+      // injection-guard.mjs, which are absent from this fixture.
+    });
+
+    const result = runGen(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("references missing hook scripts");
+  });
+
   it("removes orphaned plugin-tree files and --check flags them", () => {
     const dir = makeFixture({
       "skills/engineering/my-skill/SKILL.md": manifest({ name: "my-skill", description: "S." }),
