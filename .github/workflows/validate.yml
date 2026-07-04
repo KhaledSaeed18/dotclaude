@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -37,4 +40,5 @@ jobs:
         run: pnpm validate
 
       - name: Validate plugin marketplace
-        run: npx --yes @anthropic-ai/claude-code plugin validate .
+        # Pinned so CI never executes an unreviewed release; bump deliberately.
+        run: npx --yes @anthropic-ai/claude-code@2.1.201 plugin validate .

@@ -295,7 +295,8 @@ function main(): void {
 
   console.log("Running `shadcn registry validate ./registry.json` …");
   try {
-    execFileSync("npx", ["shadcn@latest", "registry", "validate", "./registry.json"], {
+    // Pinned so validation never executes an unreviewed release; bump deliberately.
+    execFileSync("npx", ["shadcn@4.13.0", "registry", "validate", "./registry.json"], {
       stdio: "inherit",
       cwd: ROOT,
     });
