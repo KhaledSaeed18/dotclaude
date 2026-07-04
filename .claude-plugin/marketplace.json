@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "engineering",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/engineering",
       "description": "Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work.",
       "author": {
         "name": "Khaled Saeed"
@@ -23,35 +23,11 @@
         "debugging",
         "code-review",
         "planning"
-      ],
-      "strict": false,
-      "skills": [
-        "./skills/engineering/adversarial-reviewer",
-        "./skills/engineering/code-review-response",
-        "./skills/engineering/executing-plans",
-        "./skills/engineering/explain-codebase",
-        "./skills/engineering/grill-with-docs",
-        "./skills/engineering/parallel-agents",
-        "./skills/engineering/performance-optimization",
-        "./skills/engineering/systematic-debugging",
-        "./skills/engineering/test-driven-development",
-        "./skills/engineering/verify-completion",
-        "./skills/engineering/writing-plans"
-      ],
-      "agents": [
-        "./agents/engineering/architect-reviewer/AGENT.md",
-        "./agents/engineering/code-reviewer/AGENT.md",
-        "./agents/engineering/debugger/AGENT.md",
-        "./agents/engineering/error-detective/AGENT.md",
-        "./agents/engineering/performance-engineer/AGENT.md"
-      ],
-      "commands": [
-        "./.claude-plugin/commands/explain-code.md"
       ]
     },
     {
       "name": "security",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/security",
       "description": "Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.",
       "author": {
         "name": "Khaled Saeed"
@@ -65,23 +41,11 @@
         "audit",
         "secrets",
         "dependencies"
-      ],
-      "strict": false,
-      "skills": [
-        "./skills/security/dependency-audit",
-        "./skills/security/owasp-security",
-        "./skills/security/secret-scan"
-      ],
-      "agents": [
-        "./agents/security/security-auditor/AGENT.md"
-      ],
-      "commands": [
-        "./.claude-plugin/commands/security-audit.md"
       ]
     },
     {
       "name": "security-hooks",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/security-hooks",
       "description": "Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening.",
       "author": {
         "name": "Khaled Saeed"
@@ -95,44 +59,11 @@
         "guardrails",
         "deny-list",
         "prompt-injection"
-      ],
-      "strict": false,
-      "hooks": {
-        "PreToolUse": [
-          {
-            "matcher": "Bash",
-            "hooks": [
-              {
-                "type": "command",
-                "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/security/smart-approve/smart-approve.mjs\""
-              }
-            ]
-          },
-          {
-            "matcher": ".*",
-            "hooks": [
-              {
-                "type": "command",
-                "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/security/sensitive-file-guard/sensitive-file-guard.mjs\""
-              }
-            ]
-          }
-        ],
-        "UserPromptSubmit": [
-          {
-            "hooks": [
-              {
-                "type": "command",
-                "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/security/injection-guard/injection-guard.mjs\""
-              }
-            ]
-          }
-        ]
-      }
+      ]
     },
     {
       "name": "git",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/git",
       "description": "Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup.",
       "author": {
         "name": "Khaled Saeed"
@@ -147,26 +78,11 @@
         "worktrees",
         "releases",
         "pull-requests"
-      ],
-      "strict": false,
-      "skills": [
-        "./skills/version-control/changelog",
-        "./skills/version-control/finish-branch",
-        "./skills/version-control/git-commit",
-        "./skills/version-control/git-undo",
-        "./skills/version-control/git-worktrees",
-        "./skills/version-control/gitignore",
-        "./skills/version-control/merge-conflict",
-        "./skills/version-control/pr-description",
-        "./skills/version-control/release-tag"
-      ],
-      "commands": [
-        "./.claude-plugin/commands/clean-branches.md"
       ]
     },
     {
       "name": "productivity",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/productivity",
       "description": "Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context.",
       "author": {
         "name": "Khaled Saeed"
@@ -180,20 +96,11 @@
         "handoff",
         "context",
         "planning"
-      ],
-      "strict": false,
-      "skills": [
-        "./skills/productivity/brainstorming",
-        "./skills/productivity/grill-me",
-        "./skills/productivity/handoff"
-      ],
-      "commands": [
-        "./.claude-plugin/commands/prime.md"
       ]
     },
     {
       "name": "testing",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/testing",
       "description": "Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions.",
       "author": {
         "name": "Khaled Saeed"
@@ -207,18 +114,11 @@
         "playwright",
         "e2e",
         "unit-tests"
-      ],
-      "strict": false,
-      "skills": [
-        "./skills/testing/webapp-testing"
-      ],
-      "commands": [
-        "./.claude-plugin/commands/write-tests.md"
       ]
     },
     {
       "name": "research",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/research",
       "description": "A deep-research subagent for multi-source investigation with citations: comparisons, fact-checking, and sourced writeups.",
       "author": {
         "name": "Khaled Saeed"
@@ -231,15 +131,11 @@
         "research",
         "citations",
         "web"
-      ],
-      "strict": false,
-      "agents": [
-        "./agents/research/deep-research/AGENT.md"
       ]
     },
     {
       "name": "tool-call-logger",
-      "source": "./",
+      "source": "./.claude-plugin/plugins/tool-call-logger",
       "description": "Observability hook that appends one sanitized JSON line per tool call to a local log, with secret redaction and payload truncation.",
       "author": {
         "name": "Khaled Saeed"
@@ -252,21 +148,7 @@
         "logging",
         "observability",
         "audit"
-      ],
-      "strict": false,
-      "hooks": {
-        "PostToolUse": [
-          {
-            "matcher": "*",
-            "hooks": [
-              {
-                "type": "command",
-                "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/observability/tool-call-logger/log-tool-calls.mjs\""
-              }
-            ]
-          }
-        ]
-      }
+      ]
     }
   ]
 }

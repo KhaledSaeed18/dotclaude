@@ -18,7 +18,7 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>`. From that location pl
 - each item's `registry.json`
 - the root `registry.json`
 - the README catalog, the count badges, and the plugins table
-- `.claude-plugin/marketplace.json` (the Claude Code plugin marketplace) and the renamed command copies under `.claude-plugin/commands/`
+- `.claude-plugin/marketplace.json` (the Claude Code plugin marketplace) and one plugin tree per bundle under `.claude-plugin/plugins/<plugin>/` (item copies in the standard plugin layout)
 
 **Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
 

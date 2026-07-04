@@ -170,17 +170,40 @@ describe("gen", () => {
 
     const plugin = marketplace.plugins[0];
     expect(plugin.name).toBe("engineering");
-    expect(plugin.source).toBe("./");
-    expect(plugin.strict).toBe(false);
-    expect(plugin.skills).toEqual(["./skills/engineering/my-skill"]);
-    expect(plugin.agents).toEqual(["./agents/engineering/my-agent/AGENT.md"]);
-    expect(plugin.commands).toEqual(["./.claude-plugin/commands/my-cmd.md"]);
+    expect(plugin.source).toBe("./.claude-plugin/plugins/engineering");
 
-    // The command copy carries the manifest content under the /name filename.
-    expect(read(dir, ".claude-plugin/commands/my-cmd.md")).toContain("Command body.");
+    // The generated tree uses the standard plugin layout: skill folders are
+    // copied whole, agents and commands become <name>.md files.
+    const tree = ".claude-plugin/plugins/engineering";
+    expect(read(dir, `${tree}/skills/my-skill/SKILL.md`)).toContain("name: my-skill");
+    expect(existsSync(join(dir, `${tree}/skills/create-skill`))).toBe(false);
+    expect(read(dir, `${tree}/agents/my-agent.md`)).toContain("name: my-agent");
+    expect(read(dir, `${tree}/commands/my-cmd.md`)).toContain("Command body.");
 
     // The README plugins table lists the plugin with its install command.
     expect(read(dir, "README.md")).toContain("/plugin install engineering@dotclaude");
+  });
+
+  it("removes orphaned plugin-tree files and --check flags them", () => {
+    const dir = makeFixture({
+      "skills/engineering/my-skill/SKILL.md": manifest({ name: "my-skill", description: "S." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+    expect(runGen(dir, ["--check"]).status).toBe(0);
+
+    // A leftover copy of a removed item is stale even though no listed output
+    // changed; --check must flag it and a plain gen must clear it.
+    const orphan = join(dir, ".claude-plugin/plugins/engineering/skills/gone/SKILL.md");
+    mkdirSync(dirname(orphan), { recursive: true });
+    writeFileSync(orphan, "leftover");
+
+    const checked = runGen(dir, ["--check"]);
+    expect(checked.status).not.toBe(0);
+    expect(checked.output).toContain("orphaned");
+
+    expect(runGen(dir).status).toBe(0);
+    expect(existsSync(orphan)).toBe(false);
   });
 
   it("omits plugins whose selectors match nothing", () => {

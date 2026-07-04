@@ -18,7 +18,7 @@
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
@@ -42,10 +42,11 @@ const SHIELD_BASE = "https://shieldcn.dev/badge";
 
 const ROOT_REGISTRY_PATH = join(ROOT, "registry.json");
 
-const MARKETPLACE_PATH = join(ROOT, ".claude-plugin", "marketplace.json");
+const PLUGIN_META_DIR = ".claude-plugin";
+const MARKETPLACE_PATH = join(ROOT, PLUGIN_META_DIR, "marketplace.json");
 const MARKETPLACE_OWNER_EMAIL = "khaled18saeed@gmail.com";
-/** Where the renamed command copies live, relative to the repo root. */
-const PLUGIN_COMMANDS_DIR = ".claude-plugin/commands";
+/** Where the generated per-plugin trees live, relative to the repo root. */
+const PLUGIN_TREES_DIR = `${PLUGIN_META_DIR}/plugins`;
 const PLUGINS_START = "<!-- plugins:start -->";
 const PLUGINS_END = "<!-- plugins:end -->";
 
@@ -135,20 +136,21 @@ interface Item {
  * a new item added under a selected category joins its plugin on the next
  * `pnpm gen` with no edit here.
  *
- * All plugins share `source: "./"` (this repo is both the marketplace and the
- * plugin source) with `strict: false`, so each marketplace entry is the entire
- * plugin definition:
- *   - skills: listed as `./skills/<category>/<name>` directories; the skill
- *     name comes from the directory, so the source tree is used as-is.
- *   - agents: listed as `AGENT.md` file paths; the agent name comes from
- *     frontmatter, so the source tree is used as-is.
- *   - commands: a plugin command's /name comes from its *filename*, and every
- *     source manifest is `COMMAND.md`, so gen emits a copy at
- *     `.claude-plugin/commands/<name>.md` and lists that (the same rename the
- *     shadcn target already does).
- *   - hooks: an inline hook config wired to `${CLAUDE_PLUGIN_ROOT}` script
- *     paths, so hook plugins are active immediately after install with no
- *     manual settings.json step.
+ * Each plugin gets a generated tree at `.claude-plugin/plugins/<name>/` in the
+ * standard plugin layout Claude Code discovers by default:
+ *   - `skills/<skill>/…`      full copies of each skill folder
+ *   - `agents/<name>.md`      copy of each AGENT.md
+ *   - `commands/<name>.md`    copy of each COMMAND.md (a plugin command's /name
+ *                             comes from its filename, the same rename the
+ *                             shadcn install target does)
+ *   - `hooks/hooks.json`      hook wiring, plus the scripts under `scripts/`,
+ *                             so hook plugins are active immediately after
+ *                             install with no manual settings.json step
+ *
+ * Dedicated trees, not `source: "./"` with custom component paths: pointing
+ * every plugin at the repo root makes Claude Code's default directory scans
+ * pick up the repo-level `agents/` and `commands/` folders for every plugin,
+ * leaking every agent and raw COMMAND.md into every plugin under mangled names.
  */
 interface PluginDef {
   name: string;
@@ -159,17 +161,21 @@ interface PluginDef {
   skills?: { category: string; exclude?: string[] };
   agents?: { category: string };
   commands?: { category: string };
-  /** Inline hooks config; scripts referenced via `${CLAUDE_PLUGIN_ROOT}/...`. */
-  hooks?: Record<string, unknown>;
+  /**
+   * Hook plugin: `scripts` are repo paths copied into the plugin's `scripts/`
+   * folder; `config` is the hooks.json event map, referencing them via
+   * `${CLAUDE_PLUGIN_ROOT}/scripts/<basename>`.
+   */
+  hooks?: { scripts: string[]; config: Record<string, unknown> };
 }
 
-/** An inline hook-config entry running one script via `${CLAUDE_PLUGIN_ROOT}`. */
-function hookCommand(scriptRepoPath: string): { type: "command"; command: string } {
+/** A hook-config entry running one bundled script via `${CLAUDE_PLUGIN_ROOT}`. */
+function hookCommand(scriptBasename: string): { type: "command"; command: string } {
   // The escaped \${...} reaches the JSON literally; Claude Code substitutes it
   // with the plugin's cache directory at runtime.
   return {
     type: "command",
-    command: `node "\${CLAUDE_PLUGIN_ROOT}/${scriptRepoPath}"`,
+    command: `node "\${CLAUDE_PLUGIN_ROOT}/scripts/${scriptBasename}"`,
   };
 }
 
@@ -206,21 +212,18 @@ const PLUGINS: readonly PluginDef[] = [
     category: "security",
     keywords: ["hooks", "guardrails", "deny-list", "prompt-injection"],
     hooks: {
-      PreToolUse: [
-        {
-          matcher: "Bash",
-          hooks: [hookCommand("hooks/security/smart-approve/smart-approve.mjs")],
-        },
-        {
-          matcher: ".*",
-          hooks: [hookCommand("hooks/security/sensitive-file-guard/sensitive-file-guard.mjs")],
-        },
+      scripts: [
+        "hooks/security/smart-approve/smart-approve.mjs",
+        "hooks/security/sensitive-file-guard/sensitive-file-guard.mjs",
+        "hooks/security/injection-guard/injection-guard.mjs",
       ],
-      UserPromptSubmit: [
-        {
-          hooks: [hookCommand("hooks/security/injection-guard/injection-guard.mjs")],
-        },
-      ],
+      config: {
+        PreToolUse: [
+          { matcher: "Bash", hooks: [hookCommand("smart-approve.mjs")] },
+          { matcher: ".*", hooks: [hookCommand("sensitive-file-guard.mjs")] },
+        ],
+        UserPromptSubmit: [{ hooks: [hookCommand("injection-guard.mjs")] }],
+      },
     },
   },
   {
@@ -265,12 +268,10 @@ const PLUGINS: readonly PluginDef[] = [
     category: "observability",
     keywords: ["logging", "observability", "audit"],
     hooks: {
-      PostToolUse: [
-        {
-          matcher: "*",
-          hooks: [hookCommand("hooks/observability/tool-call-logger/log-tool-calls.mjs")],
-        },
-      ],
+      scripts: ["hooks/observability/tool-call-logger/log-tool-calls.mjs"],
+      config: {
+        PostToolUse: [{ matcher: "*", hooks: [hookCommand("log-tool-calls.mjs")] }],
+      },
     },
   },
 ];
@@ -506,8 +507,8 @@ interface PluginRow {
 }
 
 interface PluginBuild {
-  marketplace: GeneratedFile;
-  commandCopies: GeneratedFile[];
+  /** marketplace.json plus every file of every per-plugin tree. */
+  files: GeneratedFile[];
   rows: PluginRow[];
 }
 
@@ -525,47 +526,80 @@ function namesIn(dir: string, category: string): string[] {
   return existsSync(base) ? subdirs(base) : [];
 }
 
-/** Every `${CLAUDE_PLUGIN_ROOT}/<path>` referenced anywhere in a hooks config. */
-function hookScriptPaths(hooks: Record<string, unknown>): string[] {
-  const out: string[] = [];
-  // Matched against the JSON-serialized config, where the closing quote of the
-  // command string is escaped, so the path ends at the backslash before it.
-  for (const match of JSON.stringify(hooks).matchAll(/\$\{CLAUDE_PLUGIN_ROOT\}\/([^"\\]+)/g)) {
-    if (match[1]) out.push(match[1]);
-  }
-  return out;
-}
-
 /**
- * Build `.claude-plugin/marketplace.json`, the renamed command copies it points
- * at, and the README plugins table rows. A plugin whose selectors match nothing
- * (or whose hook scripts are absent) is omitted rather than published empty.
+ * Build `.claude-plugin/marketplace.json` plus one generated plugin tree per
+ * entry under `.claude-plugin/plugins/<name>/`, and the README plugins table
+ * rows. A plugin whose selectors match nothing (or whose hook scripts are
+ * absent) is omitted rather than published empty.
  */
 function buildPluginArtifacts(): PluginBuild {
   const entries: unknown[] = [];
-  const commandCopies: GeneratedFile[] = [];
+  const files: GeneratedFile[] = [];
   const rows: PluginRow[] = [];
 
   for (const def of PLUGINS) {
+    const tree = join(ROOT, PLUGIN_TREES_DIR, def.name);
+    const treeFiles: GeneratedFile[] = [];
+
     const skillNames = def.skills
       ? namesIn("skills", def.skills.category).filter(
           (name) => !(def.skills?.exclude ?? []).includes(name),
         )
       : [];
-    const agentNames = def.agents ? namesIn("agents", def.agents.category) : [];
-    const commandNames = def.commands ? namesIn("commands", def.commands.category) : [];
+    for (const name of skillNames) {
+      const source = join(ROOT, "skills", def.skills?.category ?? "", name);
+      for (const rel of listFiles(source)) {
+        if (toPosix(rel) === "registry.json") continue;
+        treeFiles.push({
+          path: join(tree, "skills", name, rel),
+          content: readFileSync(join(source, rel), "utf8"),
+        });
+      }
+    }
 
-    let hooks: Record<string, unknown> | undefined;
+    const agentNames = def.agents ? namesIn("agents", def.agents.category) : [];
+    for (const name of agentNames) {
+      treeFiles.push({
+        path: join(tree, "agents", `${name}.md`),
+        content: readFileSync(
+          join(ROOT, "agents", def.agents?.category ?? "", name, "AGENT.md"),
+          "utf8",
+        ),
+      });
+    }
+
+    // A plugin command's /name comes from its filename, so the copy is renamed
+    // from COMMAND.md to <name>.md (the same rename the shadcn target does).
+    const commandNames = def.commands ? namesIn("commands", def.commands.category) : [];
+    for (const name of commandNames) {
+      treeFiles.push({
+        path: join(tree, "commands", `${name}.md`),
+        content: readFileSync(
+          join(ROOT, "commands", def.commands?.category ?? "", name, "COMMAND.md"),
+          "utf8",
+        ),
+      });
+    }
+
     let hookCount = 0;
     if (def.hooks) {
-      const scripts = hookScriptPaths(def.hooks);
-      const present = scripts.filter((rel) => existsSync(join(ROOT, rel)));
-      if (present.length === scripts.length && scripts.length > 0) {
-        hooks = def.hooks;
-        hookCount = new Set(scripts).size;
+      const present = def.hooks.scripts.filter((rel) => existsSync(join(ROOT, rel)));
+      if (present.length === def.hooks.scripts.length) {
+        for (const rel of def.hooks.scripts) {
+          const basename = rel.split("/").at(-1) ?? rel;
+          treeFiles.push({
+            path: join(tree, "scripts", basename),
+            content: readFileSync(join(ROOT, rel), "utf8"),
+          });
+        }
+        treeFiles.push({
+          path: join(tree, "hooks", "hooks.json"),
+          content: toJson({ hooks: def.hooks.config }),
+        });
+        hookCount = def.hooks.scripts.length;
       } else if (present.length > 0) {
         throw new Error(
-          `plugin "${def.name}" references missing hook scripts: ${scripts
+          `plugin "${def.name}" references missing hook scripts: ${def.hooks.scripts
             .filter((rel) => !present.includes(rel))
             .join(", ")}`,
         );
@@ -574,17 +608,10 @@ function buildPluginArtifacts(): PluginBuild {
 
     if (skillNames.length + agentNames.length + commandNames.length + hookCount === 0) continue;
 
-    for (const name of commandNames) {
-      const source = join(ROOT, "commands", def.commands?.category ?? "", name, "COMMAND.md");
-      commandCopies.push({
-        path: join(ROOT, PLUGIN_COMMANDS_DIR, `${name}.md`),
-        content: readFileSync(source, "utf8"),
-      });
-    }
-
+    files.push(...treeFiles);
     entries.push({
       name: def.name,
-      source: "./",
+      source: `./${PLUGIN_TREES_DIR}/${def.name}`,
       description: def.description,
       author: { name: REGISTRY_AUTHOR },
       homepage: REGISTRY_HOMEPAGE,
@@ -592,17 +619,6 @@ function buildPluginArtifacts(): PluginBuild {
       license: "MIT",
       category: def.category,
       keywords: def.keywords,
-      strict: false,
-      ...(skillNames.length > 0 && {
-        skills: skillNames.map((name) => `./skills/${def.skills?.category}/${name}`),
-      }),
-      ...(agentNames.length > 0 && {
-        agents: agentNames.map((name) => `./agents/${def.agents?.category}/${name}/AGENT.md`),
-      }),
-      ...(commandNames.length > 0 && {
-        commands: commandNames.map((name) => `./${PLUGIN_COMMANDS_DIR}/${name}.md`),
-      }),
-      ...(hooks && { hooks }),
     });
 
     rows.push({
@@ -617,7 +633,7 @@ function buildPluginArtifacts(): PluginBuild {
     });
   }
 
-  const marketplace: GeneratedFile = {
+  files.push({
     path: MARKETPLACE_PATH,
     content: toJson({
       name: REGISTRY_NAME,
@@ -626,9 +642,9 @@ function buildPluginArtifacts(): PluginBuild {
         "Claude Code skills, agents, commands, and hooks from the dotclaude registry, bundled as installable plugins.",
       plugins: entries,
     }),
-  };
+  });
 
-  return { marketplace, commandCopies, rows };
+  return { files, rows };
 }
 
 /** The README plugins table (between the plugins markers). */
@@ -703,7 +719,7 @@ function generate(): GeneratedFile[] {
   });
 
   const plugins = buildPluginArtifacts();
-  outputs.push(...plugins.commandCopies, plugins.marketplace);
+  outputs.push(...plugins.files);
 
   let readme = readFileSync(README_PATH, "utf8");
   readme = replaceRegion(readme, CATALOG_START, CATALOG_END, buildCatalog(groups));
@@ -714,6 +730,21 @@ function generate(): GeneratedFile[] {
   return outputs;
 }
 
+/**
+ * Files under `.claude-plugin/` that gen did not produce this run. The plugin
+ * trees are wholly owned by gen, so a leftover copy of a renamed or deleted
+ * item counts as stale just like an outdated file does.
+ */
+function orphanPluginFiles(outputs: GeneratedFile[]): string[] {
+  const base = join(ROOT, PLUGIN_META_DIR);
+  if (!existsSync(base)) return [];
+  const expected = new Set(outputs.map((out) => out.path));
+  return listFiles(base)
+    .map((rel) => join(base, rel))
+    .filter((full) => !expected.has(full))
+    .map((full) => toPosix(relative(ROOT, full)));
+}
+
 function main(): void {
   const check = process.argv.includes("--check");
   const outputs = generate();
@@ -722,14 +753,20 @@ function main(): void {
     const stale = outputs.filter(
       (out) => !existsSync(out.path) || readFileSync(out.path, "utf8") !== out.content,
     );
-    if (stale.length > 0) {
+    const orphans = orphanPluginFiles(outputs);
+    if (stale.length > 0 || orphans.length > 0) {
       console.error("Generated files are out of date. Run `pnpm gen`:");
       for (const out of stale) console.error(`  - ${toPosix(relative(ROOT, out.path))}`);
+      for (const orphan of orphans) console.error(`  - ${orphan} (orphaned)`);
       process.exit(1);
     }
     console.log(`All generated files are up to date (${outputs.length} checked).`);
     return;
   }
+
+  // The plugin trees are derived wholesale; clear them so renames and removals
+  // do not leave orphaned copies behind.
+  rmSync(join(ROOT, PLUGIN_META_DIR), { recursive: true, force: true });
 
   for (const out of outputs) {
     mkdirSync(dirname(out.path), { recursive: true });
