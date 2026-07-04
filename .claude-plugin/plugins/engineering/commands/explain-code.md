@@ -1,6 +1,6 @@
 ---
 name: explain-code
-description: Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured the way it is. Suited for onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before. Pass a file path or a symbol name as the argument.
+description: Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured the way it is. Suited for onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before. Pass a file path or a symbol name as the argument. Use when onboarding onto unfamiliar code or preparing to modify something not yet read.
 argument-hint: "<file-or-symbol>"
 allowed-tools: Read, Grep, Glob, Bash(git:*)
 model: inherit

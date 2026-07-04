@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved.
+description: Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision needs adversarial stress-testing before committing to it.
 argument-hint: "(optional) the plan, design, or idea to stress-test; paste it or point to a file"
 ---
 

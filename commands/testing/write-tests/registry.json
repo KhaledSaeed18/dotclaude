@@ -5,7 +5,7 @@
       "name": "write-tests",
       "type": "registry:item",
       "title": "Write Tests",
-      "description": "Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions.",
+      "description": "Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. Use when a source file needs a test suite that matches the project's existing conventions.",
       "author": "Khaled Saeed",
       "categories": [
         "testing"

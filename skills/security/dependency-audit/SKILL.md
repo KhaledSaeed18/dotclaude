@@ -1,6 +1,6 @@
 ---
 name: dependency-audit
-description: Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem, including npm/pnpm/yarn, pip/Poetry/uv, Cargo, Go modules, Maven/Gradle, Bundler, Composer, and others.
+description: Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem, including npm/pnpm/yarn, pip/Poetry/uv, Cargo, Go modules, Maven/Gradle, Bundler, Composer, and others. Use when checking a project's dependency health, planning upgrades, or responding to a vulnerability report.
 argument-hint: "(optional) a specific package, scope, or 'security-only'"
 ---
 

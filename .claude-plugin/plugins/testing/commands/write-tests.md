@@ -1,6 +1,6 @@
 ---
 name: write-tests
-description: Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions.
+description: Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. Use when a source file needs a test suite that matches the project's existing conventions.
 argument-hint: "<path/to/source/file> [runner]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(cat:*), Bash(npm:*), Bash(pnpm:*), Bash(yarn:*), Bash(npx:*)
 model: inherit

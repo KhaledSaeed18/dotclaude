@@ -1,6 +1,6 @@
 ---
 name: security-audit
-description: Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff. Produces a structured findings report ranked by severity. Pass a path to limit the audit to a specific module or directory.
+description: Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff. Produces a structured findings report ranked by severity. Pass a path to limit the audit to a specific module or directory. Use when a full-codebase or module-level security review is needed.
 argument-hint: "[scope-path]"
 allowed-tools: Read, Grep, Glob, Bash(npm:*), Bash(git:*), Bash(find:*), Bash(grep:*)
 model: inherit

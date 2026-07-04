@@ -1,6 +1,6 @@
 ---
 name: grill-with-docs
-description: Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise.
+description: Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise. Use when a plan or design needs to be checked against the project's documented domain model before implementation.
 argument-hint: "(optional) the plan, design, or idea to stress-test; paste it or point to a file"
 ---
 

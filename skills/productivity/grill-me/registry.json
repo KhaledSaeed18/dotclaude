@@ -5,7 +5,7 @@
       "name": "grill-me",
       "type": "registry:item",
       "title": "Grill Me",
-      "description": "Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved.",
+      "description": "Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision needs adversarial stress-testing before committing to it.",
       "author": "Khaled Saeed",
       "categories": [
         "productivity"

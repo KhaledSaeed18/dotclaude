@@ -253,7 +253,8 @@ function main(): void {
         continue;
       }
 
-      const parsed = ct.frontmatter.safeParse(matter(readFileSync(manifestPath, "utf8")).data);
+      const parsedFile = matter(readFileSync(manifestPath, "utf8"));
+      const parsed = ct.frontmatter.safeParse(parsedFile.data);
       if (!parsed.success) {
         const reason = parsed.error.issues
           .map((issue) => `${issue.path.join(".") || "(root)"}: ${issue.message}`)
@@ -265,6 +266,16 @@ function main(): void {
 
       if (fm.name.trim() === "") errors.push(`${label}: empty name`);
       if (fm.description.trim() === "") errors.push(`${label}: empty description`);
+      if (parsedFile.content.includes("<TODO:")) {
+        errors.push(`${label}: manifest still contains a <TODO:> scaffold marker`);
+      }
+      // The description decides when a skill loads or an agent is delegated
+      // to, so it must carry an explicit trigger clause ("Use when ...").
+      if (!/\bUse\b/.test(fm.description)) {
+        errors.push(
+          `${label}: description has no trigger clause; end it with "Use when ..." (see CONTRIBUTING.md)`,
+        );
+      }
       if (fm.name !== item.name) {
         errors.push(`${label}: frontmatter name "${fm.name}" does not match folder "${item.name}"`);
       }

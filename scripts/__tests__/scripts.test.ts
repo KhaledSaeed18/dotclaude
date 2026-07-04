@@ -241,12 +241,15 @@ describe("validate", () => {
     const dir = makeFixture({
       "agents/engineering/my-agent/AGENT.md": manifest({
         name: "my-agent",
-        description: "An agent.",
+        description: "An agent. Use when testing.",
         color: "cyan",
         memory: "user",
         model: "opus",
       }),
-      "skills/util/my-skill/SKILL.md": manifest({ name: "my-skill", description: "A skill." }),
+      "skills/util/my-skill/SKILL.md": manifest({
+        name: "my-skill",
+        description: "A skill. Use when testing.",
+      }),
     });
 
     expect(runGen(dir).status).toBe(0);
@@ -315,7 +318,7 @@ describe("validate", () => {
   it("accepts a manifest link to a real companion and ignores example links", () => {
     const dir = makeFixture({
       "skills/util/linky/SKILL.md": manifest(
-        { name: "linky", description: "Has links." },
+        { name: "linky", description: "Has links. Use when testing." },
         "Real: [ref](./reference/r.md). Example in code: `[x](./reference/nope.md)`.",
       ),
       "skills/util/linky/reference/r.md": "# R\n",
@@ -323,6 +326,41 @@ describe("validate", () => {
 
     expect(runGen(dir).status).toBe(0);
     expect(runValidate(dir).status).toBe(0);
+  });
+
+  it("rejects a manifest that still contains a scaffold TODO marker", () => {
+    const dir = makeFixture({
+      "skills/util/stub/SKILL.md": manifest(
+        { name: "stub", description: "A stub. Use when testing." },
+        "<TODO: fill this in>",
+      ),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("scaffold marker");
+  });
+
+  it("rejects a description without a trigger clause", () => {
+    const dir = makeFixture({
+      "skills/util/no-trigger/SKILL.md": manifest({
+        name: "no-trigger",
+        description: "A skill with no trigger clause.",
+      }),
+      "skills/util/with-trigger/SKILL.md": manifest({
+        name: "with-trigger",
+        description: "Does X. Use when Y.",
+      }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const result = runValidate(dir);
+    expect(result.status).not.toBe(0);
+    expect(result.output).toContain("no-trigger: description has no trigger clause");
+    expect(result.output).not.toContain("with-trigger: description");
   });
 
   it("flags a frontmatter name that does not match its folder", () => {
