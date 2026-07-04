@@ -538,9 +538,16 @@ function badgeLine(ct: ContentType, count: number): string {
   return `  <a href="#${anchor}"><img src="${url}" alt="${alt}" /></a>`;
 }
 
-/** The count-badge block, one badge per content type, in declaration order. */
-function buildBadges(counts: Map<string, number>): string {
+/**
+ * The count-badge block: one badge per content type, in declaration order,
+ * plus a plugins-count badge linking to the marketplace install section.
+ */
+function buildBadges(counts: Map<string, number>, pluginCount: number): string {
   const lines = CONTENT_TYPES.map((ct) => badgeLine(ct, counts.get(ct.label) ?? 0));
+  const pluginsUrl = `${SHIELD_BASE}/Plugins-${pluginCount}-059669.svg?split=true&logo=ri:RiPuzzle2Fill`;
+  lines.push(
+    `  <a href="#as-claude-code-plugins-recommended"><img src="${pluginsUrl}" alt="${pluginCount} ${pluralize("Plugin", pluginCount)}" /></a>`,
+  );
   return [BADGES_START, ...lines, BADGES_END].join("\n");
 }
 
@@ -767,7 +774,12 @@ function generate(): GeneratedFile[] {
 
   let readme = readFileSync(README_PATH, "utf8");
   readme = replaceRegion(readme, CATALOG_START, CATALOG_END, buildCatalog(groups));
-  readme = replaceRegion(readme, BADGES_START, BADGES_END, buildBadges(counts));
+  readme = replaceRegion(
+    readme,
+    BADGES_START,
+    BADGES_END,
+    buildBadges(counts, plugins.rows.length),
+  );
   readme = replaceRegion(readme, PLUGINS_START, PLUGINS_END, buildPluginsTable(plugins.rows));
   outputs.push({ path: README_PATH, content: readme });
 

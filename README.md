@@ -7,11 +7,17 @@
 </div>
 
 <div align="center">
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugin%20Marketplace-%2Fplugin%20marketplace%20add-D97757.svg?split=true&logo=claude" alt="Install via the Claude Code plugin marketplace" /></a>
+  <a href="#with-the-shadcn-cli-single-items"><img src="https://shieldcn.dev/badge/shadcn%20Registry-npx%20shadcn%20add-18181b.svg?split=true&logo=shadcnui" alt="Install via the shadcn CLI" /></a>
+</div>
+
+<div align="center">
 <!-- badges:start -->
   <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-38-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="38 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-8-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="8 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-6-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="6 commands" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-8-db2777.svg?split=true&logo=ri:RiPlugFill" alt="8 hooks" /></a>
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-11-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="11 plugins" /></a>
 <!-- badges:end -->
 </div>
 
