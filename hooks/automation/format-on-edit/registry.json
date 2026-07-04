@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "format-on-edit",
+      "type": "registry:item",
+      "title": "Format On Edit",
+      "description": "A PostToolUse hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on each file Claude Code edits or writes, so every change lands already formatted. Detects the formatter from project config, uses only locally installed binaries, and does nothing when no formatter applies. Use to eliminate style drift and formatting-only diffs from agent sessions.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "automation"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/automation/format-on-edit",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/format-on-edit/HOOK.md"
+        },
+        {
+          "path": "format-on-edit.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/format-on-edit/format-on-edit.mjs"
+        }
+      ]
+    }
+  ]
+}

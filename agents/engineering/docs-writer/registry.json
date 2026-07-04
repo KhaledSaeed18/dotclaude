@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "docs-writer",
+      "type": "registry:item",
+      "title": "Docs Writer",
+      "description": "Use this agent when you need documentation written or updated from the code itself - READMEs, API references, guides, architecture overviews, or upgrade notes. Reads the actual implementation before writing a word, so the docs match what the code does rather than what anyone remembers it doing, and flags found doc-vs-code contradictions instead of papering over them. Use after a feature lands without docs, when a README has drifted from reality, when onboarding docs are missing, or when public API changes need reference updates.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/docs-writer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/docs-writer.md"
+        }
+      ]
+    }
+  ]
+}

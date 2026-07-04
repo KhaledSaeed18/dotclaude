@@ -7,7 +7,16 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
@@ -16,6 +25,9 @@ const REPO_ROOT = process.cwd();
 const hook = (...segments: string[]): string => join(REPO_ROOT, "hooks", ...segments);
 
 const COMMAND_GUARD = hook("security", "command-guard", "command-guard.mjs");
+const FORMAT_ON_EDIT = hook("automation", "format-on-edit", "format-on-edit.mjs");
+const NOTIFY = hook("automation", "notify", "notify.mjs");
+const PRECOMPACT_SAVER = hook("context", "precompact-saver", "precompact-saver.mjs");
 const SMART_APPROVE = hook("security", "smart-approve", "smart-approve.mjs");
 const SENSITIVE_FILE_GUARD = hook("security", "sensitive-file-guard", "sensitive-file-guard.mjs");
 const INJECTION_GUARD = hook("security", "injection-guard", "injection-guard.mjs");
@@ -186,6 +198,111 @@ describe("injection-guard", () => {
       }).status,
     ).toBe(0);
     expect(runHook(INJECTION_GUARD, "not json").status).toBe(0);
+  });
+});
+
+describe("format-on-edit", () => {
+  it("formats an edited file with the project's Biome", () => {
+    // A fixture project configured for Biome, borrowing this repo's installed
+    // binary via node_modules/.bin so no network install happens.
+    const dir = makeTempDir();
+    writeFileSync(join(dir, "biome.json"), "{}\n");
+    // Whole-directory symlink so .bin's own relative links resolve correctly.
+    symlinkSync(join(REPO_ROOT, "node_modules"), join(dir, "node_modules"));
+
+    const file = join(dir, "messy.ts");
+    writeFileSync(file, "const   x   =   1\n");
+
+    const result = runHook(
+      FORMAT_ON_EDIT,
+      { tool_name: "Write", tool_input: { file_path: file }, cwd: dir },
+      { CLAUDE_PROJECT_DIR: dir },
+    );
+    expect(result.status).toBe(0);
+    expect(readFileSync(file, "utf8")).toBe("const x = 1;\n");
+  });
+
+  it("leaves files alone when no formatter is configured", () => {
+    const dir = makeTempDir();
+    const file = join(dir, "messy.ts");
+    writeFileSync(file, "const   x   =   1\n");
+
+    const result = runHook(
+      FORMAT_ON_EDIT,
+      { tool_name: "Edit", tool_input: { file_path: file }, cwd: dir },
+      { CLAUDE_PROJECT_DIR: dir },
+    );
+    expect(result.status).toBe(0);
+    expect(readFileSync(file, "utf8")).toBe("const   x   =   1\n");
+  });
+
+  it("ignores non-edit tools, missing files, and malformed payloads", () => {
+    expect(runHook(FORMAT_ON_EDIT, { tool_name: "Bash", tool_input: {} }).status).toBe(0);
+    expect(
+      runHook(FORMAT_ON_EDIT, { tool_name: "Write", tool_input: { file_path: "/nope/x.ts" } })
+        .status,
+    ).toBe(0);
+    expect(runHook(FORMAT_ON_EDIT, "not json").status).toBe(0);
+  });
+});
+
+describe("notify", () => {
+  // Only the no-notification paths run here; actually raising a desktop
+  // notification during tests would be noise on a developer machine.
+  it("exits 0 on malformed payloads and empty messages", () => {
+    expect(runHook(NOTIFY, "not json").status).toBe(0);
+    expect(runHook(NOTIFY, { hook_event_name: "Notification", message: "   " }).status).toBe(0);
+  });
+});
+
+describe("precompact-saver", () => {
+  it("snapshots the transcript into .claude/compact-backups", () => {
+    const dir = makeTempDir();
+    const transcript = join(dir, "transcript.jsonl");
+    writeFileSync(transcript, '{"role":"user"}\n');
+
+    const result = runHook(
+      PRECOMPACT_SAVER,
+      { hook_event_name: "PreCompact", transcript_path: transcript, session_id: "abcdef123456" },
+      { CLAUDE_PROJECT_DIR: dir },
+    );
+    expect(result.status).toBe(0);
+
+    const backups = readdirSync(join(dir, ".claude", "compact-backups"));
+    expect(backups).toHaveLength(1);
+    expect(backups[0]).toMatch(/^precompact-.*-abcdef12\.jsonl$/);
+  });
+
+  it("prunes old snapshots beyond the retention limit", () => {
+    const dir = makeTempDir();
+    const backupDir = join(dir, ".claude", "compact-backups");
+    mkdirSync(backupDir, { recursive: true });
+    for (let i = 0; i < 12; i++) {
+      writeFileSync(join(backupDir, `precompact-old-${String(i).padStart(2, "0")}.jsonl`), "{}");
+    }
+    const transcript = join(dir, "transcript.jsonl");
+    writeFileSync(transcript, "{}\n");
+
+    const result = runHook(
+      PRECOMPACT_SAVER,
+      { hook_event_name: "PreCompact", transcript_path: transcript, session_id: "s" },
+      { CLAUDE_PROJECT_DIR: dir },
+    );
+    expect(result.status).toBe(0);
+    expect(readdirSync(backupDir).length).toBe(10);
+  });
+
+  it("does nothing when the transcript path is missing or invalid", () => {
+    const dir = makeTempDir();
+    expect(
+      runHook(
+        PRECOMPACT_SAVER,
+        { hook_event_name: "PreCompact", transcript_path: "/nope.jsonl" },
+        { CLAUDE_PROJECT_DIR: dir },
+      ).status,
+    ).toBe(0);
+    expect(runHook(PRECOMPACT_SAVER, "not json").status).toBe(0);
+    expect(existsSync(join(dir, ".claude"))).toBe(false);
   });
 });
 

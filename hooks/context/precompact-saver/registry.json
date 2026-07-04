@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "precompact-saver",
+      "type": "registry:item",
+      "title": "Precompact Saver",
+      "description": "A PreCompact hook that snapshots the full session transcript to .claude/compact-backups/ right before Claude Code compacts the context, so exact instructions, tool output, and decisions survive after the summary drops them. Keeps the newest ten snapshots and prunes the rest. Use when long sessions get compacted and you need a reliable record of what was said before the summary.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "context"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/context/precompact-saver",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/precompact-saver/HOOK.md"
+        },
+        {
+          "path": "precompact-saver.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/precompact-saver/precompact-saver.mjs"
+        }
+      ]
+    }
+  ]
+}

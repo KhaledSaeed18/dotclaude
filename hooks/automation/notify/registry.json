@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "notify",
+      "type": "registry:item",
+      "title": "Notify",
+      "description": "A Notification hook that turns Claude Code notifications into native desktop notifications (macOS osascript, Linux notify-send), so long-running sessions can be left in the background and still get your attention when Claude needs input. Message text is sanitized before reaching the OS tool. Use when you run long agent sessions and miss the moments they stop to ask something.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "automation"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/automation/notify",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/notify/HOOK.md"
+        },
+        {
+          "path": "notify.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/notify/notify.mjs"
+        }
+      ]
+    }
+  ]
+}

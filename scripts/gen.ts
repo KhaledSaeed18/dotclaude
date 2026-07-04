@@ -262,6 +262,50 @@ const PLUGINS: readonly PluginDef[] = [
     agents: { category: "research" },
   },
   {
+    name: "format-on-edit",
+    description:
+      "Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted.",
+    category: "automation",
+    keywords: ["formatting", "prettier", "biome", "automation"],
+    hooks: {
+      scripts: ["hooks/automation/format-on-edit/format-on-edit.mjs"],
+      config: {
+        PostToolUse: [
+          {
+            matcher: "Edit|Write|MultiEdit|NotebookEdit",
+            hooks: [hookCommand("format-on-edit.mjs")],
+          },
+        ],
+      },
+    },
+  },
+  {
+    name: "notify",
+    description:
+      "Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background.",
+    category: "automation",
+    keywords: ["notifications", "desktop", "background"],
+    hooks: {
+      scripts: ["hooks/automation/notify/notify.mjs"],
+      config: {
+        Notification: [{ hooks: [hookCommand("notify.mjs")] }],
+      },
+    },
+  },
+  {
+    name: "precompact-saver",
+    description:
+      "Context-preservation hook that snapshots the full session transcript before every compaction, keeping the newest ten snapshots per project.",
+    category: "context",
+    keywords: ["compaction", "transcript", "context"],
+    hooks: {
+      scripts: ["hooks/context/precompact-saver/precompact-saver.mjs"],
+      config: {
+        PreCompact: [{ hooks: [hookCommand("precompact-saver.mjs")] }],
+      },
+    },
+  },
+  {
     name: "tool-call-logger",
     description:
       "Observability hook that appends one sanitized JSON line per tool call to a local log, with secret redaction and payload truncation.",
