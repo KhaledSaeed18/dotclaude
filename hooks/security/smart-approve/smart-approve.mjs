@@ -58,7 +58,9 @@ function isForcePushToProtected(cmd) {
   return (
     /\bgit\s+push\b/.test(cmd) &&
     /(-f\b|--force\b|--force-with-lease\b)/.test(cmd) &&
-    /\b(main|master)\b/.test(cmd)
+    // main/master must stand alone (whitespace, refspec colon, or string
+    // edges) so branch names like fix-main-menu are not caught.
+    /(?:^|[\s:])(main|master)(?=$|[\s'";&|])/.test(cmd)
   );
 }
 

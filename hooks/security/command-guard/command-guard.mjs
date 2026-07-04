@@ -44,6 +44,14 @@ const RULES = [
     test: /\bchmod\s+-R\s+0?777\s+\/(\s|$)/,
     reason: "recursive chmod 777 on the filesystem root",
   },
+  {
+    test: /\bcurl\b.*\|\s*(ba)?sh\b/,
+    reason: "piping curl output directly to a shell interpreter (remote code execution risk)",
+  },
+  {
+    test: /\bwget\b.*\|\s*(ba)?sh\b/,
+    reason: "piping wget output directly to a shell interpreter (remote code execution risk)",
+  },
 ];
 
 /** Force-pushing to a shared branch is a separate, three-part check. */
@@ -51,7 +59,9 @@ function isForcePushToProtected(command) {
   return (
     /\bgit\s+push\b/.test(command) &&
     /(-f\b|--force\b|--force-with-lease\b)/.test(command) &&
-    /\b(main|master)\b/.test(command)
+    // main/master must stand alone (whitespace, refspec colon, or string
+    // edges) so branch names like fix-main-menu are not caught.
+    /(?:^|[\s:])(main|master)(?=$|[\s'";&|])/.test(command)
   );
 }
 
