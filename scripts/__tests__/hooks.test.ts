@@ -162,6 +162,24 @@ describe("sensitive-file-guard", () => {
     expect(runHook(SENSITIVE_FILE_GUARD, bashEvent("git status")).status).toBe(0);
     expect(runHook(SENSITIVE_FILE_GUARD, bashEvent("printenv PATH")).status).toBe(0);
   });
+
+  it("allows template files, design tokens, and comment mentions", () => {
+    expect(runHook(SENSITIVE_FILE_GUARD, fileEvent("Read", "/project/.env.example")).status).toBe(
+      0,
+    );
+    expect(runHook(SENSITIVE_FILE_GUARD, fileEvent("Read", "/project/.env.sample")).status).toBe(0);
+    expect(runHook(SENSITIVE_FILE_GUARD, fileEvent("Read", "docs/tokens.json")).status).toBe(0);
+    expect(
+      runHook(SENSITIVE_FILE_GUARD, bashEvent("cat README.md # explains the .env.example setup"))
+        .status,
+    ).toBe(0);
+  });
+
+  it("still blocks real token files and commented sensitive reads", () => {
+    expect(runHook(SENSITIVE_FILE_GUARD, fileEvent("Read", "/home/u/.tokens.json")).status).toBe(2);
+    expect(runHook(SENSITIVE_FILE_GUARD, fileEvent("Read", "auth_token.json")).status).toBe(2);
+    expect(runHook(SENSITIVE_FILE_GUARD, bashEvent("cat .env # just checking")).status).toBe(2);
+  });
 });
 
 describe("injection-guard", () => {

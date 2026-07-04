@@ -23,8 +23,9 @@ import { stdin } from "node:process";
  * is not a case Claude Code needs to handle autonomously.
  */
 const SENSITIVE_PATH_PATTERNS = [
-  // .env files: .env, .env.local, .env.production, .env.test, etc.
-  /(?:^|\/)\.env(\.[a-zA-Z0-9]+)?$/,
+  // .env files: .env, .env.local, .env.production — but not the placeholder
+  // templates (.env.example, .env.sample, .env.template, .env.dist).
+  /(?:^|\/)\.env(\.(?!(example|sample|template|dist)$)[a-zA-Z0-9]+)?$/,
   // Generic credential files
   /(?:^|\/)credentials?(?:\.(json|ya?ml|toml|ini|txt))?$/i,
   // SSH private keys (not .pub — public keys are fine)
@@ -40,8 +41,11 @@ const SENSITIVE_PATH_PATTERNS = [
   /(?:^|\/)_netrc$/,
   // macOS Keychain exports
   /\.keychain(-db)?$/i,
-  // Token files
-  /(?:^|\/)\.?tokens?(?:\.(json|txt|env))?$/i,
+  // Token files: hidden dotfiles (.token, .tokens.json) and explicitly
+  // credential-flavored names (auth_token.json, api-tokens.txt). A bare
+  // tokens.json is the standard design-tokens file, not a secret.
+  /(?:^|\/)\.tokens?(?:\.(json|txt|env))?$/i,
+  /(?:^|\/)(auth|access|api|refresh|bearer)[-_]tokens?(?:\.(json|txt|env))?$/i,
   // Secret/secrets files
   /(?:^|\/)secrets?(?:\.(json|ya?ml|toml|env|txt))?$/i,
   // API key files
@@ -60,7 +64,7 @@ const SENSITIVE_PATH_PATTERNS = [
  */
 const SENSITIVE_BASH_PATTERNS = [
   // Shell commands that read file contents targeting sensitive names
-  /\b(cat|less|more|head|tail|bat|view|open|nano|vim?|emacs|code)\b[^|;&]*(?:\/|^)?\.env(\.[a-zA-Z0-9]+)?(\s|$|>|;)/,
+  /\b(cat|less|more|head|tail|bat|view|open|nano|vim?|emacs|code)\b[^|;&]*(?:\/|^)?\.env(\.(?!(example|sample|template|dist)\b)[a-zA-Z0-9]+)?(\s|$|>|;)/,
   /\b(cat|less|more|head|tail|bat)\b[^|;&]*\bcredentials?\b/i,
   /\b(cat|less|more|head|tail|bat)\b[^|;&]*\bid_(rsa|dsa|ecdsa|ed25519)\b/,
   /\b(cat|less|more|head|tail|bat)\b[^|;&]*\.aws\/credentials/,
@@ -80,6 +84,26 @@ function isSensitivePath(filePath) {
   if (!filePath || typeof filePath !== "string") return false;
   const normalized = filePath.replace(/\\/g, "/");
   return SENSITIVE_PATH_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+/**
+ * Drop an unquoted trailing comment (` # …`) so prose in a comment cannot
+ * trigger a block. Minimal state machine: a # outside quotes, preceded by
+ * whitespace or at position 0, starts a comment.
+ */
+function stripComment(command) {
+  let quote = null;
+  for (let i = 0; i < command.length; i++) {
+    const ch = command[i];
+    if (quote) {
+      if (ch === quote) quote = null;
+    } else if (ch === "'" || ch === '"') {
+      quote = ch;
+    } else if (ch === "#" && (i === 0 || /\s/.test(command[i - 1]))) {
+      return command.slice(0, i);
+    }
+  }
+  return command;
 }
 
 function isSensitiveBashCommand(command) {
@@ -124,10 +148,13 @@ async function main() {
 
   if (tool === "Bash") {
     const command = typeof input?.command === "string" ? input.command : "";
+    // Match against the command with trailing comments removed, so prose in a
+    // comment cannot trigger a block; report the original command when blocking.
+    const effective = stripComment(command);
 
     // Check if the bash command accesses a sensitive path
     const allPaths = [
-      ...(command.match(
+      ...(effective.match(
         /(?:^|\s)([\w./~${}][^\s;|&>]*(?:\.env\S*|credentials?\S*|id_rsa\S*|\.pem\S*|\.key\S*|\.netrc\S*|secrets?\S*|service_account\S*))/gi,
       ) ?? []),
     ].map((s) => s.trim());
@@ -139,7 +166,7 @@ async function main() {
     }
 
     // Check Bash-specific shell-read patterns
-    if (isSensitiveBashCommand(command)) {
+    if (isSensitiveBashCommand(effective)) {
       block("the Bash command reads or dumps a sensitive file or environment variables", command);
     }
   }
