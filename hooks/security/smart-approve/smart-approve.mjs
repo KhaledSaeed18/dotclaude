@@ -48,7 +48,7 @@ const RULES = [
     reason: "piping curl output directly to a shell interpreter (remote code execution risk)",
   },
   {
-    test: /\bwget\b.*-[qO-]*\s*-\s*\|\s*(ba)?sh\b/,
+    test: /\bwget\b.*\|\s*(ba)?sh\b/,
     reason: "piping wget output directly to a shell interpreter (remote code execution risk)",
   },
 ];
@@ -119,9 +119,13 @@ async function main() {
       : "";
   if (!command) process.exit(0);
 
-  const subCommands = decompose(command);
+  // Check the full command first, then each decomposed piece. The full-command
+  // pass is what catches patterns that span an operator the decomposer splits
+  // on: `curl … | sh`, `wget … | sh`, and the fork bomb all contain a `|` or
+  // `;`, so they can never survive inside a single sub-command.
+  const candidates = [command, ...decompose(command)];
 
-  for (const sub of subCommands) {
+  for (const sub of candidates) {
     const normalized = sub.replace(/\s+/g, " ").trim();
     for (const rule of RULES) {
       if (rule.test.test(normalized)) block(rule.reason, sub, command);
