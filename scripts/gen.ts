@@ -12,12 +12,14 @@
  *   - <type>/<category>/<name>/registry.json  (one shadcn item per item)
  *   - registry.json                           (root: name/homepage + include[])
  *   - the README catalog                       (between the catalog markers)
+ *   - .claude-plugin/marketplace.json          (the Claude Code plugin marketplace)
+ *   - .claude-plugin/commands/<name>.md        (command copies named for /name)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
 
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join, relative, sep } from "node:path";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join, relative, sep } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
 
@@ -39,6 +41,13 @@ const BADGES_END = "<!-- badges:end -->";
 const SHIELD_BASE = "https://shieldcn.dev/badge";
 
 const ROOT_REGISTRY_PATH = join(ROOT, "registry.json");
+
+const MARKETPLACE_PATH = join(ROOT, ".claude-plugin", "marketplace.json");
+const MARKETPLACE_OWNER_EMAIL = "khaled18saeed@gmail.com";
+/** Where the renamed command copies live, relative to the repo root. */
+const PLUGIN_COMMANDS_DIR = ".claude-plugin/commands";
+const PLUGINS_START = "<!-- plugins:start -->";
+const PLUGINS_END = "<!-- plugins:end -->";
 
 /**
  * Content-type seam. Each entry is one installable family. `layout` decides how
@@ -118,6 +127,153 @@ interface Item {
   category: string;
   name: string;
 }
+
+/**
+ * Plugin marketplace seam. Each entry is one installable Claude Code plugin,
+ * generated into `.claude-plugin/marketplace.json`. Membership is declarative:
+ * a plugin selects whole category folders per type (with optional excludes), so
+ * a new item added under a selected category joins its plugin on the next
+ * `pnpm gen` with no edit here.
+ *
+ * All plugins share `source: "./"` (this repo is both the marketplace and the
+ * plugin source) with `strict: false`, so each marketplace entry is the entire
+ * plugin definition:
+ *   - skills: listed as `./skills/<category>/<name>` directories; the skill
+ *     name comes from the directory, so the source tree is used as-is.
+ *   - agents: listed as `AGENT.md` file paths; the agent name comes from
+ *     frontmatter, so the source tree is used as-is.
+ *   - commands: a plugin command's /name comes from its *filename*, and every
+ *     source manifest is `COMMAND.md`, so gen emits a copy at
+ *     `.claude-plugin/commands/<name>.md` and lists that (the same rename the
+ *     shadcn target already does).
+ *   - hooks: an inline hook config wired to `${CLAUDE_PLUGIN_ROOT}` script
+ *     paths, so hook plugins are active immediately after install with no
+ *     manual settings.json step.
+ */
+interface PluginDef {
+  name: string;
+  description: string;
+  /** Marketplace category label (free-form, for the /plugin UI). */
+  category: string;
+  keywords: string[];
+  skills?: { category: string; exclude?: string[] };
+  agents?: { category: string };
+  commands?: { category: string };
+  /** Inline hooks config; scripts referenced via `${CLAUDE_PLUGIN_ROOT}/...`. */
+  hooks?: Record<string, unknown>;
+}
+
+/** An inline hook-config entry running one script via `${CLAUDE_PLUGIN_ROOT}`. */
+function hookCommand(scriptRepoPath: string): { type: "command"; command: string } {
+  // The escaped \${...} reaches the JSON literally; Claude Code substitutes it
+  // with the plugin's cache directory at runtime.
+  return {
+    type: "command",
+    command: `node "\${CLAUDE_PLUGIN_ROOT}/${scriptRepoPath}"`,
+  };
+}
+
+const PLUGINS: readonly PluginDef[] = [
+  {
+    name: "engineering",
+    description:
+      "Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work.",
+    category: "development",
+    keywords: ["workflow", "tdd", "debugging", "code-review", "planning"],
+    skills: {
+      category: "engineering",
+      // The create-* skills author items *for this repo*; they are not useful
+      // outside it, so they stay shadcn-only.
+      exclude: ["create-skill", "create-agent", "create-command", "create-hook"],
+    },
+    agents: { category: "engineering" },
+    commands: { category: "engineering" },
+  },
+  {
+    name: "security",
+    description:
+      "Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.",
+    category: "security",
+    keywords: ["owasp", "audit", "secrets", "dependencies"],
+    skills: { category: "security" },
+    agents: { category: "security" },
+    commands: { category: "security" },
+  },
+  {
+    name: "security-hooks",
+    description:
+      "Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening.",
+    category: "security",
+    keywords: ["hooks", "guardrails", "deny-list", "prompt-injection"],
+    hooks: {
+      PreToolUse: [
+        {
+          matcher: "Bash",
+          hooks: [hookCommand("hooks/security/smart-approve/smart-approve.mjs")],
+        },
+        {
+          matcher: ".*",
+          hooks: [hookCommand("hooks/security/sensitive-file-guard/sensitive-file-guard.mjs")],
+        },
+      ],
+      UserPromptSubmit: [
+        {
+          hooks: [hookCommand("hooks/security/injection-guard/injection-guard.mjs")],
+        },
+      ],
+    },
+  },
+  {
+    name: "git",
+    description:
+      "Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup.",
+    category: "version-control",
+    keywords: ["git", "commits", "worktrees", "releases", "pull-requests"],
+    skills: { category: "version-control" },
+    commands: { category: "version-control" },
+  },
+  {
+    name: "productivity",
+    description:
+      "Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context.",
+    category: "productivity",
+    keywords: ["brainstorming", "handoff", "context", "planning"],
+    skills: { category: "productivity" },
+    commands: { category: "productivity" },
+  },
+  {
+    name: "testing",
+    description:
+      "Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions.",
+    category: "testing",
+    keywords: ["testing", "playwright", "e2e", "unit-tests"],
+    skills: { category: "testing" },
+    commands: { category: "testing" },
+  },
+  {
+    name: "research",
+    description:
+      "A deep-research subagent for multi-source investigation with citations: comparisons, fact-checking, and sourced writeups.",
+    category: "research",
+    keywords: ["research", "citations", "web"],
+    agents: { category: "research" },
+  },
+  {
+    name: "tool-call-logger",
+    description:
+      "Observability hook that appends one sanitized JSON line per tool call to a local log, with secret redaction and payload truncation.",
+    category: "observability",
+    keywords: ["logging", "observability", "audit"],
+    hooks: {
+      PostToolUse: [
+        {
+          matcher: "*",
+          hooks: [hookCommand("hooks/observability/tool-call-logger/log-tool-calls.mjs")],
+        },
+      ],
+    },
+  },
+];
 
 const FrontmatterSchema = z.object({
   name: z.string(),
@@ -323,15 +479,6 @@ function buildCatalog(groups: CatalogGroup[]): string {
   return [CATALOG_START, "", ...sections, CATALOG_END].join("\n");
 }
 
-function replaceCatalog(readme: string, catalog: string): string {
-  const start = readme.indexOf(CATALOG_START);
-  const end = readme.indexOf(CATALOG_END);
-  if (start === -1 || end === -1 || end < start) {
-    throw new Error(`README.md is missing the "${CATALOG_START}" / "${CATALOG_END}" markers.`);
-  }
-  return readme.slice(0, start) + catalog + readme.slice(end + CATALOG_END.length);
-}
-
 /** Lowercase the singular noun and add a plain `s` when the count is not one. */
 function pluralize(noun: string, count: number): string {
   const lower = noun.toLowerCase();
@@ -352,13 +499,162 @@ function buildBadges(counts: Map<string, number>): string {
   return [BADGES_START, ...lines, BADGES_END].join("\n");
 }
 
-function replaceBadges(readme: string, badges: string): string {
-  const start = readme.indexOf(BADGES_START);
-  const end = readme.indexOf(BADGES_END);
-  if (start === -1 || end === -1 || end < start) {
-    throw new Error(`README.md is missing the "${BADGES_START}" / "${BADGES_END}" markers.`);
+interface PluginRow {
+  name: string;
+  description: string;
+  contents: string;
+}
+
+interface PluginBuild {
+  marketplace: GeneratedFile;
+  commandCopies: GeneratedFile[];
+  rows: PluginRow[];
+}
+
+/** `"3 skills"`-style summary fragments, joined with commas. */
+function contentsSummary(parts: Array<[number, string]>): string {
+  const out = parts
+    .filter(([count]) => count > 0)
+    .map(([count, noun]) => `${count} ${pluralize(noun, count)}`);
+  return out.join(", ");
+}
+
+/** Item names under `<dir>/<category>/`, sorted, or [] when absent. */
+function namesIn(dir: string, category: string): string[] {
+  const base = join(ROOT, dir, category);
+  return existsSync(base) ? subdirs(base) : [];
+}
+
+/** Every `${CLAUDE_PLUGIN_ROOT}/<path>` referenced anywhere in a hooks config. */
+function hookScriptPaths(hooks: Record<string, unknown>): string[] {
+  const out: string[] = [];
+  // Matched against the JSON-serialized config, where the closing quote of the
+  // command string is escaped, so the path ends at the backslash before it.
+  for (const match of JSON.stringify(hooks).matchAll(/\$\{CLAUDE_PLUGIN_ROOT\}\/([^"\\]+)/g)) {
+    if (match[1]) out.push(match[1]);
   }
-  return readme.slice(0, start) + badges + readme.slice(end + BADGES_END.length);
+  return out;
+}
+
+/**
+ * Build `.claude-plugin/marketplace.json`, the renamed command copies it points
+ * at, and the README plugins table rows. A plugin whose selectors match nothing
+ * (or whose hook scripts are absent) is omitted rather than published empty.
+ */
+function buildPluginArtifacts(): PluginBuild {
+  const entries: unknown[] = [];
+  const commandCopies: GeneratedFile[] = [];
+  const rows: PluginRow[] = [];
+
+  for (const def of PLUGINS) {
+    const skillNames = def.skills
+      ? namesIn("skills", def.skills.category).filter(
+          (name) => !(def.skills?.exclude ?? []).includes(name),
+        )
+      : [];
+    const agentNames = def.agents ? namesIn("agents", def.agents.category) : [];
+    const commandNames = def.commands ? namesIn("commands", def.commands.category) : [];
+
+    let hooks: Record<string, unknown> | undefined;
+    let hookCount = 0;
+    if (def.hooks) {
+      const scripts = hookScriptPaths(def.hooks);
+      const present = scripts.filter((rel) => existsSync(join(ROOT, rel)));
+      if (present.length === scripts.length && scripts.length > 0) {
+        hooks = def.hooks;
+        hookCount = new Set(scripts).size;
+      } else if (present.length > 0) {
+        throw new Error(
+          `plugin "${def.name}" references missing hook scripts: ${scripts
+            .filter((rel) => !present.includes(rel))
+            .join(", ")}`,
+        );
+      }
+    }
+
+    if (skillNames.length + agentNames.length + commandNames.length + hookCount === 0) continue;
+
+    for (const name of commandNames) {
+      const source = join(ROOT, "commands", def.commands?.category ?? "", name, "COMMAND.md");
+      commandCopies.push({
+        path: join(ROOT, PLUGIN_COMMANDS_DIR, `${name}.md`),
+        content: readFileSync(source, "utf8"),
+      });
+    }
+
+    entries.push({
+      name: def.name,
+      source: "./",
+      description: def.description,
+      author: { name: REGISTRY_AUTHOR },
+      homepage: REGISTRY_HOMEPAGE,
+      repository: REGISTRY_HOMEPAGE,
+      license: "MIT",
+      category: def.category,
+      keywords: def.keywords,
+      strict: false,
+      ...(skillNames.length > 0 && {
+        skills: skillNames.map((name) => `./skills/${def.skills?.category}/${name}`),
+      }),
+      ...(agentNames.length > 0 && {
+        agents: agentNames.map((name) => `./agents/${def.agents?.category}/${name}/AGENT.md`),
+      }),
+      ...(commandNames.length > 0 && {
+        commands: commandNames.map((name) => `./${PLUGIN_COMMANDS_DIR}/${name}.md`),
+      }),
+      ...(hooks && { hooks }),
+    });
+
+    rows.push({
+      name: def.name,
+      description: def.description,
+      contents: contentsSummary([
+        [skillNames.length, "skill"],
+        [agentNames.length, "agent"],
+        [commandNames.length, "command"],
+        [hookCount, "hook"],
+      ]),
+    });
+  }
+
+  const marketplace: GeneratedFile = {
+    path: MARKETPLACE_PATH,
+    content: toJson({
+      name: REGISTRY_NAME,
+      owner: { name: REGISTRY_AUTHOR, email: MARKETPLACE_OWNER_EMAIL },
+      description:
+        "Claude Code skills, agents, commands, and hooks from the dotclaude registry, bundled as installable plugins.",
+      plugins: entries,
+    }),
+  };
+
+  return { marketplace, commandCopies, rows };
+}
+
+/** The README plugins table (between the plugins markers). */
+function buildPluginsTable(rows: PluginRow[]): string {
+  if (rows.length === 0) {
+    return [PLUGINS_START, "", "_No plugins yet._", "", PLUGINS_END].join("\n");
+  }
+  const lines = [
+    "| Plugin | What you get | Install |",
+    "| --- | --- | --- |",
+    ...rows.map(
+      (row) =>
+        `| **${row.name}** | ${inlineDescription(row.description)} (${row.contents}) | \`/plugin install ${row.name}@${REGISTRY_NAME}\` |`,
+    ),
+  ];
+  return [PLUGINS_START, "", ...lines, "", PLUGINS_END].join("\n");
+}
+
+/** Replace the region between `start` and `end` markers in the README. */
+function replaceRegion(readme: string, start: string, end: string, next: string): string {
+  const from = readme.indexOf(start);
+  const to = readme.indexOf(end);
+  if (from === -1 || to === -1 || to < from) {
+    throw new Error(`README.md is missing the "${start}" / "${end}" markers.`);
+  }
+  return readme.slice(0, from) + next + readme.slice(to + end.length);
 }
 
 function generate(): GeneratedFile[] {
@@ -406,9 +702,13 @@ function generate(): GeneratedFile[] {
     }),
   });
 
+  const plugins = buildPluginArtifacts();
+  outputs.push(...plugins.commandCopies, plugins.marketplace);
+
   let readme = readFileSync(README_PATH, "utf8");
-  readme = replaceCatalog(readme, buildCatalog(groups));
-  readme = replaceBadges(readme, buildBadges(counts));
+  readme = replaceRegion(readme, CATALOG_START, CATALOG_END, buildCatalog(groups));
+  readme = replaceRegion(readme, BADGES_START, BADGES_END, buildBadges(counts));
+  readme = replaceRegion(readme, PLUGINS_START, PLUGINS_END, buildPluginsTable(plugins.rows));
   outputs.push({ path: README_PATH, content: readme });
 
   return outputs;
@@ -431,7 +731,10 @@ function main(): void {
     return;
   }
 
-  for (const out of outputs) writeFileSync(out.path, out.content);
+  for (const out of outputs) {
+    mkdirSync(dirname(out.path), { recursive: true });
+    writeFileSync(out.path, out.content);
+  }
   console.log(`Generated ${outputs.length} file(s).`);
 }
 

@@ -19,12 +19,15 @@ const GEN = join(REPO_ROOT, "scripts", "gen.ts");
 const VALIDATE = join(REPO_ROOT, "scripts", "validate.ts");
 const NEW = join(REPO_ROOT, "scripts", "new.ts");
 
-/** A README with both marker pairs gen owns, used unless a test supplies one. */
+/** A README with all three marker pairs gen owns, used unless a test supplies one. */
 const DEFAULT_README = [
   "# Fixture",
   "",
   "<!-- badges:start -->",
   "<!-- badges:end -->",
+  "",
+  "<!-- plugins:start -->",
+  "<!-- plugins:end -->",
   "",
   "<!-- catalog:start -->",
   "<!-- catalog:end -->",
@@ -143,6 +146,55 @@ describe("gen", () => {
     expect(readme).toContain('alt="1 agent"');
     expect(readme).toContain("Commands-0-0891b2");
     expect(readme).toContain('alt="0 commands"');
+  });
+
+  it("builds marketplace plugins from category folders", () => {
+    const dir = makeFixture({
+      "skills/engineering/my-skill/SKILL.md": manifest({ name: "my-skill", description: "S." }),
+      "skills/engineering/create-skill/SKILL.md": manifest({
+        name: "create-skill",
+        description: "Repo-authoring skill, excluded from plugins.",
+      }),
+      "agents/engineering/my-agent/AGENT.md": manifest({ name: "my-agent", description: "A." }),
+      "commands/engineering/my-cmd/COMMAND.md": manifest(
+        { name: "my-cmd", description: "C." },
+        "Command body.",
+      ),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const marketplace = JSON.parse(read(dir, ".claude-plugin/marketplace.json"));
+    expect(marketplace.name).toBe("dotclaude");
+    expect(marketplace.plugins).toHaveLength(1);
+
+    const plugin = marketplace.plugins[0];
+    expect(plugin.name).toBe("engineering");
+    expect(plugin.source).toBe("./");
+    expect(plugin.strict).toBe(false);
+    expect(plugin.skills).toEqual(["./skills/engineering/my-skill"]);
+    expect(plugin.agents).toEqual(["./agents/engineering/my-agent/AGENT.md"]);
+    expect(plugin.commands).toEqual(["./.claude-plugin/commands/my-cmd.md"]);
+
+    // The command copy carries the manifest content under the /name filename.
+    expect(read(dir, ".claude-plugin/commands/my-cmd.md")).toContain("Command body.");
+
+    // The README plugins table lists the plugin with its install command.
+    expect(read(dir, "README.md")).toContain("/plugin install engineering@dotclaude");
+  });
+
+  it("omits plugins whose selectors match nothing", () => {
+    const dir = makeFixture({
+      "skills/util/my-skill/SKILL.md": manifest({ name: "my-skill", description: "S." }),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    // No category matches a plugin selector, and no hook scripts exist in the
+    // fixture, so the marketplace publishes no plugins at all.
+    const marketplace = JSON.parse(read(dir, ".claude-plugin/marketplace.json"));
+    expect(marketplace.plugins).toEqual([]);
+    expect(read(dir, "README.md")).toContain("_No plugins yet._");
   });
 
   it("--check fails when a generated file is stale", () => {

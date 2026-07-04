@@ -9,4 +9,6 @@ title = "dotclaude"
   description = "Registry item documentation discusses security patterns"
   paths = [
     '''.*/(AGENT|SKILL|COMMAND|HOOK)\.md$''',
+    # Generated plugin command copies mirror COMMAND.md content one-to-one.
+    '''\.claude-plugin/commands/.*\.md$''',
   ]

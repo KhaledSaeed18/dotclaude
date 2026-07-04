@@ -34,7 +34,39 @@ The table under [What installs where](#what-installs-where) shows where each one
 
 ## Install
 
-Install any item with the shadcn CLI:
+There are two ways to get these items: **plugins** (bundles, managed by Claude Code, hooks pre-wired) or the **shadcn CLI** (one item at a time, copied into your project).
+
+### As Claude Code plugins (recommended)
+
+Add the marketplace once, then install any bundle:
+
+```
+/plugin marketplace add KhaledSaeed18/dotclaude
+/plugin install security@dotclaude
+```
+
+Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace their commands (`/security:security-audit`), and — unlike the shadcn route — **hook plugins activate immediately**, with no manual `settings.json` editing.
+
+<!-- plugins:start -->
+
+| Plugin | What you get | Install |
+| --- | --- | --- |
+| **engineering** | Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work. (11 skills, 5 agents, 1 command) | `/plugin install engineering@dotclaude` |
+| **security** | Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command. (3 skills, 1 agent, 1 command) | `/plugin install security@dotclaude` |
+| **security-hooks** | Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening. (3 hooks) | `/plugin install security-hooks@dotclaude` |
+| **git** | Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup. (9 skills, 1 command) | `/plugin install git@dotclaude` |
+| **productivity** | Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context. (3 skills, 1 command) | `/plugin install productivity@dotclaude` |
+| **testing** | Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions. (1 skill, 1 command) | `/plugin install testing@dotclaude` |
+| **research** | A deep-research subagent for multi-source investigation with citations: comparisons, fact-checking, and sourced writeups. (1 agent) | `/plugin install research@dotclaude` |
+| **tool-call-logger** | Observability hook that appends one sanitized JSON line per tool call to a local log, with secret redaction and payload truncation. (1 hook) | `/plugin install tool-call-logger@dotclaude` |
+
+<!-- plugins:end -->
+
+The four `create-*` authoring skills are intentionally not in any plugin; they exist to author items for this repository and install via shadcn only.
+
+### With the shadcn CLI (single items)
+
+Install any single item with the shadcn CLI:
 
 ```bash
 npx shadcn@latest add KhaledSaeed18/dotclaude/<item>

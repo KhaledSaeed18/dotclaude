@@ -17,9 +17,12 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>`. From that location pl
 
 - each item's `registry.json`
 - the root `registry.json`
-- the README catalog and the count badges
+- the README catalog, the count badges, and the plugins table
+- `.claude-plugin/marketplace.json` (the Claude Code plugin marketplace) and the renamed command copies under `.claude-plugin/commands/`
 
-**Never hand-edit a `registry.json`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
+**Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
+
+**Plugin membership is category-driven.** The `PLUGINS` list in `scripts/gen.ts` maps category folders to marketplace plugins (for example, everything under `skills/version-control/` ships in the `git` plugin). Add an item to a selected category and it joins that plugin on the next `pnpm gen`; only a genuinely new bundle needs a `PLUGINS` edit. Hook plugins wire their scripts inline via `${CLAUDE_PLUGIN_ROOT}`, so they activate on install with no manual `settings.json` step.
 
 ## Add an item in one command
 
