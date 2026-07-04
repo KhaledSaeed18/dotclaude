@@ -21,6 +21,14 @@
 <!-- badges:end -->
 </div>
 
+<div align="center">
+  <a href="https://github.com/KhaledSaeed18/dotclaude/actions/workflows/validate.yml"><img src="https://shieldcn.dev/github/KhaledSaeed18/dotclaude/ci.svg?workflow=validate.yml&label=validate&split=true&logo=githubactions" alt="validate workflow status" /></a>
+  <a href="https://github.com/KhaledSaeed18/dotclaude/actions/workflows/security.yml"><img src="https://shieldcn.dev/github/KhaledSaeed18/dotclaude/ci.svg?workflow=security.yml&label=security&split=true&logo=githubactions" alt="security workflow status" /></a>
+  <a href="https://github.com/KhaledSaeed18/dotclaude/stargazers"><img src="https://shieldcn.dev/github/KhaledSaeed18/dotclaude/stars.svg?split=true&logo=github&color=f59e0b" alt="GitHub stars" /></a>
+  <a href="LICENSE"><img src="https://shieldcn.dev/github/KhaledSaeed18/dotclaude/license.svg?split=true&logo=ri:RiScales3Fill&color=64748b" alt="MIT license" /></a>
+  <a href="https://github.com/KhaledSaeed18/dotclaude"><img src="https://shieldcn.dev/views/repo/KhaledSaeed18/dotclaude.svg?split=true&logo=ri:RiEyeFill&color=0ea5e9" alt="repository views" /></a>
+</div>
+
 <br />
 
 My personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) extensions, distributed as a [shadcn GitHub registry](https://ui.shadcn.com/docs/registry/github).
