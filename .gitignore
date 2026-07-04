@@ -13,5 +13,6 @@ node_modules/
 dist/
 *.log
 
-# Local Claude settings
+# Local Claude settings and runtime state
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
