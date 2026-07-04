@@ -57,7 +57,7 @@ If you'd rather have Claude Code drive it, this repo ships authoring skills that
 
 **Naming.** Item `name` and `category` are kebab-case (`merge-conflict`, `version-control`). The `name` must equal the folder name and be **globally unique across all four types**, since skills, agents, and commands install to flat directories where a collision would clobber.
 
-**Categories.** Reuse an existing category folder unless a genuinely new family is justified. Current categories: skills use `engineering` / `productivity` / `security` / `version-control`; agents use `engineering` / `research`; commands use `testing`; hooks use `observability`. Recategorizing later is just a `git mv` plus `pnpm gen`.
+**Categories.** Reuse an existing category folder unless a genuinely new family is justified. The category is just the folder an item lives in (there is no `category` field), so the current set is whatever `ls skills agents commands hooks` shows — at the time of writing: `engineering`, `productivity`, `research`, `security`, `testing`, `version-control`, and `observability`, in varying combinations per type. Recategorizing later is just a `git mv` plus `pnpm gen`.
 
 **Frontmatter.** `name` and `description` are always required. The `description` is load-bearing: it decides when a skill loads or an agent is delegated to. Write it third person, lead with the action, and end with an explicit **"Use when ..."** clause. Avoid a `: ` inside the value (it is YAML). Optional fields by type:
 

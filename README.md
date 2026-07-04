@@ -207,6 +207,10 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 <!-- catalog:end -->
 
+## Contributing
+
+Contributions are welcome — new items, fixes to existing ones, or tooling improvements. Every item is scaffolded with `pnpm new` and validated in CI; see [CONTRIBUTING.md](CONTRIBUTING.md) for the layout, conventions, and dev workflow, and [SECURITY.md](SECURITY.md) for how to report a vulnerability privately.
+
 ## License
 
 [MIT](LICENSE) © Khaled Saeed
