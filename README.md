@@ -45,6 +45,14 @@ Add the marketplace once, then install any bundle:
 /plugin install security@dotclaude
 ```
 
+A good starter set is **engineering + git + security-hooks** — the daily workflow skills, the branch lifecycle, and the deterministic guardrails. From a terminal you can install all three in one line (the CLI takes one plugin per call):
+
+```bash
+for p in engineering git security-hooks; do claude plugin install "$p@dotclaude"; done
+```
+
+Prefer browsing? After adding the marketplace, open `/plugin` and pick from the **Discover** tab — no typing needed.
+
 Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace their commands (`/security:security-audit`), and — unlike the shadcn route — **hook plugins activate immediately**, with no manual `settings.json` editing.
 
 <!-- plugins:start -->

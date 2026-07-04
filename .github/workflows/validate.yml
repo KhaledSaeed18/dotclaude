@@ -35,3 +35,6 @@ jobs:
 
       - name: Validate registry
         run: pnpm validate
+
+      - name: Validate plugin marketplace
+        run: npx --yes @anthropic-ai/claude-code plugin validate .
