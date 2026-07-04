@@ -11,6 +11,12 @@ Write the test before the code, watch it fail, then write only enough code to ma
 
 Exceptions worth asking the user about: throwaway prototypes, generated code, pure config. Everything else — features, bugfixes, behaviour changes — goes test-first. The thought "I'll skip TDD just this once" is the rationalisation this skill exists to catch.
 
+## Where the test goes: seams
+
+A **seam** is the public boundary you test at — the interface where behaviour is observable without reaching inside. Tests live at seams, never against internals: code behind the seam can be rewritten entirely and the tests shouldn't care. The tell that you've tested inside the seam is a test that breaks on a refactor even though behaviour didn't change.
+
+You can't test everything, so decide the seams before writing any test: name the public interface under test and, when the choice isn't obvious, confirm it with the user ("what's the public interface here, and which paths matter most?"). Agreed seams put the testing effort on critical paths and complex logic instead of spraying assertions over every private helper.
+
 ## The cycle: red → green → refactor
 
 ### Red — write one failing test
@@ -19,6 +25,8 @@ Write a single test for one behaviour, with a name that describes that behaviour
 
 Good: `test('retries a failed operation three times before giving up')` — clear name, one behaviour, real code path.
 Avoid: `test('retry works')` driving a pre-scripted mock — vague, and it verifies the mock's script rather than the implementation.
+
+Expected values come from an independent source of truth — a known-good literal, a worked example, the spec — never recomputed the way the code computes them. `expect(add(a, b)).toBe(a + b)` passes by construction and can never disagree with the code; it is a tautology wearing a test's clothes. Same for a hand-derived snapshot built with the same reasoning as the implementation.
 
 ### Verify red — watch it fail, for the right reason
 
@@ -58,6 +66,8 @@ A bug is a missing test. Write a test that reproduces the bug and fails, then fi
 - "Keep the code as reference and write tests around it."
 - "I've spent hours on this, deleting it is wasteful." (Sunk cost — untrusted code is the liability, not the deleted time.)
 - "TDD is dogmatic, I'm being pragmatic." (Test-first *is* the pragmatic path; the alternative is debugging in production.)
+- Writing all the tests first, then all the implementation. That's horizontal slicing: bulk tests verify *imagined* behaviour and commit you to a test structure before the implementation has taught you anything. Work in vertical slices — one test, one implementation, repeat — each test a tracer bullet shaped by what the last cycle revealed.
+- An assertion that mirrors the implementation's own arithmetic or a snapshot derived the same way the code derives it (see the tautology note under Red).
 
 ## Quick checklist before calling it done
 
