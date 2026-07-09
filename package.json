@@ -28,10 +28,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.3",
-    "@types/node": "^26",
+    "@types/node": "^26.1.1",
     "gray-matter": "^4.0.3",
-    "tsx": "^4",
-    "typescript": "^6",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.10",
     "zod": "^4.4.3"
   }
