@@ -49,6 +49,7 @@
     "skills/productivity/handoff/registry.json",
     "skills/productivity/issue-writer/registry.json",
     "skills/productivity/standup-summary/registry.json",
+    "skills/research/x-social-research/registry.json",
     "skills/security/dependency-audit/registry.json",
     "skills/security/owasp-security/registry.json",
     "skills/security/secret-scan/registry.json",
