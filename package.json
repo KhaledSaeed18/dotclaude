@@ -30,8 +30,8 @@
     "@biomejs/biome": "2.5.3",
     "@types/node": "^26.1.1",
     "gray-matter": "^4.0.3",
-    "tsx": "^4.23.0",
     "typescript": "^7.0.2",
+    "tsx": "^4.23.1",
     "vitest": "^4.1.10",
     "zod": "^4.4.3"
   }
