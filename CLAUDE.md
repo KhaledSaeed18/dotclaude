@@ -12,6 +12,8 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>` (`SKILL.md`, `AGENT.md
 
 **Never hand-edit generated files.** Edit the source manifest, run `pnpm gen`, and commit the regenerated output. `pnpm gen:check` fails CI when anything is stale.
 
+One thing deliberately sits outside that rule: `.agents/skills/improve/`, surfaced to this repo's own sessions through the `.claude/skills/improve` symlink. It is tooling *for* working on the registry, not an item *in* it — so it is invisible to `gen` and `validate`, follows none of the item conventions, and ships to nobody. Anything under `skills/`, `agents/`, `commands/`, or `hooks/` is a registry item; `.agents/` is not.
+
 ## Verification gate
 
 Run before considering any change done (same as CI):
