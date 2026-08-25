@@ -13,7 +13,7 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-39-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="39 skills" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-40-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="40 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-8-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="8 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-6-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="6 commands" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-8-db2777.svg?split=true&logo=ri:RiPlugFill" alt="8 hooks" /></a>
@@ -79,7 +79,7 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 | **git** | Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup. (9 skills, 1 command) | `/plugin install git@dotclaude` |
 | **productivity** | Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context. (5 skills, 2 commands) | `/plugin install productivity@dotclaude` |
 | **testing** | Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions. (2 skills, 1 command) | `/plugin install testing@dotclaude` |
-| **research** | Investigation toolkit: a deep-research subagent for multi-source work with citations, and a name-check skill that clears a project name across registries, domains, and app stores. (1 skill, 1 agent) | `/plugin install research@dotclaude` |
+| **research** | Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers). (2 skills, 1 agent) | `/plugin install research@dotclaude` |
 | **format-on-edit** | Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted. (1 hook) | `/plugin install format-on-edit@dotclaude` |
 | **notify** | Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background. (1 hook) | `/plugin install notify@dotclaude` |
 | **precompact-saver** | Context-preservation hook that snapshots the full session transcript before every compaction, keeping the newest ten snapshots per project. (1 hook) | `/plugin install precompact-saver@dotclaude` |
@@ -171,7 +171,8 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 | Skill | Description | Install |
 | --- | --- | --- |
-| [name-check](skills/research/name-check/) | Vet a candidate project name across package registries, domains, app stores, code hosts, and existing projects, then report which candidate is actually free. Use when picking or clearing a name for a software project, package, app, or CLI. | `npx shadcn@latest add KhaledSaeed18/dotclaude/name-check` |
+| [business-name-check](skills/research/business-name-check/) | Vet a candidate business or brand name across domains, social handles, commerce and listing platforms, company registers, and existing businesses, then report which candidate is actually claimable. Use when naming a company, product brand, store, studio, agency, or newsletter. For a package, library, or app name, use project-name-check instead. | `npx shadcn@latest add KhaledSaeed18/dotclaude/business-name-check` |
+| [project-name-check](skills/research/project-name-check/) | Vet a candidate name for a software project across package registries, domains, app stores, code hosts, and existing projects, then report which candidate is actually free. Use when picking or clearing a name for a package, library, app, CLI, extension, or repository. For a company or brand name, use business-name-check instead. | `npx shadcn@latest add KhaledSaeed18/dotclaude/project-name-check` |
 
 #### Security
 

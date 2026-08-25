@@ -1,12 +1,14 @@
 ---
-name: name-check
-description: Vet a candidate project name across package registries, domains, app stores, code hosts, and existing projects, then report which candidate is actually free. Use when picking or clearing a name for a software project, package, app, or CLI.
+name: project-name-check
+description: Vet a candidate name for a software project across package registries, domains, app stores, code hosts, and existing projects, then report which candidate is actually free. Use when picking or clearing a name for a package, library, app, CLI, extension, or repository. For a company or brand name, use business-name-check instead.
 argument-hint: "(optional) the candidate name(s), and what the project is"
 ---
 
 Clear a name before it gets stamped into a repo, a package manifest, a domain, and a logo. The whole skill rests on one rule: **a name is only "available" where you checked it, with evidence you can show.** Registry APIs and RDAP answer definitively; search engines do not. Report what you verified, name what you could not, and never round an unchecked surface up to "free".
 
 You investigate and report. You do not register, purchase, publish, or reserve anything.
+
+This skill covers the surfaces a *shipped artifact* lives on. If the name is for a company, a product brand, or a storefront, the surfaces that decide it are social handles, commerce platforms, company registers, and trademarks: use the `business-name-check` skill for that, or run both when the project and the company share a name.
 
 ## Step 1: Frame the check
 

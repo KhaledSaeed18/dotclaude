@@ -119,7 +119,7 @@
     {
       "name": "research",
       "source": "./.claude-plugin/plugins/research",
-      "description": "Investigation toolkit: a deep-research subagent for multi-source work with citations, and a name-check skill that clears a project name across registries, domains, and app stores.",
+      "description": "Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers).",
       "author": {
         "name": "Khaled Saeed"
       },
@@ -132,7 +132,8 @@
         "citations",
         "web",
         "naming",
-        "availability"
+        "availability",
+        "branding"
       ]
     },
     {

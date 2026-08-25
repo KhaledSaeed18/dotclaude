@@ -256,9 +256,9 @@ const PLUGINS: readonly PluginDef[] = [
   {
     name: "research",
     description:
-      "Investigation toolkit: a deep-research subagent for multi-source work with citations, and a name-check skill that clears a project name across registries, domains, and app stores.",
+      "Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers).",
     category: "research",
-    keywords: ["research", "citations", "web", "naming", "availability"],
+    keywords: ["research", "citations", "web", "naming", "availability", "branding"],
     skills: { category: "research" },
     agents: { category: "research" },
   },
