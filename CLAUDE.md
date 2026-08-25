@@ -22,6 +22,8 @@ Run before considering any change done (same as CI):
 pnpm typecheck && pnpm lint && pnpm test && pnpm gen:check && pnpm validate
 ```
 
+`pnpm smoke` is the slower end-to-end check CI also runs, kept out of the line above because it drives the real Claude Code CLI: it installs every generated plugin into a throwaway config dir, diffs the installed tree against the generated one, and runs each bundled hook script from its installed path (including that the deny rules still block). Run it after touching `gen.ts`'s plugin logic or any hook script. It needs no auth or network beyond resolving the CLI, and leaves nothing behind.
+
 `pnpm validate` also enforces content rules: no `<TODO:` scaffold markers in manifests, and every description must carry a trigger clause ("Use when ..."). `pnpm format` fixes Biome formatting.
 
 ## Adding an item

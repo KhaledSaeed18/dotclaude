@@ -92,6 +92,19 @@ Run the same checks CI runs:
 pnpm typecheck && pnpm lint && pnpm test && pnpm gen:check && pnpm validate
 ```
 
+If you touched a hook script, or the plugin logic in `scripts/gen.ts`, also run
+the end-to-end check:
+
+```bash
+pnpm smoke
+```
+
+It installs every generated plugin into a throwaway config directory with the
+real Claude Code CLI, diffs each installed tree against the generated one, and
+runs the bundled hook scripts from their installed paths — including that the
+deny rules still block what they claim to. It needs no auth and leaves nothing
+behind.
+
 Then confirm:
 
 - The item earns its place (a reusable, multi-step procedure with judgment, not a one-liner).
@@ -106,7 +119,7 @@ Commit messages follow [Conventional Commits](https://www.conventionalcommits.or
 
 Two workflows run on every pull request:
 
-- **validate** ([.github/workflows/validate.yml](.github/workflows/validate.yml)): typecheck, lint, test, `gen:check`, and registry validation.
+- **validate** ([.github/workflows/validate.yml](.github/workflows/validate.yml)): typecheck, lint, test, `gen:check`, registry validation, plugin-manifest validation, and the `pnpm smoke` install test.
 - **security** ([.github/workflows/security.yml](.github/workflows/security.yml)): secret scanning and a dependency audit, plus a weekly scheduled run.
 
 ## Trying an item locally
