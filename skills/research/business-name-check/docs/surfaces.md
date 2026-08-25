@@ -4,6 +4,11 @@ Four groups: **core** surfaces every brand should clear, **social handles**, **c
 
 Read every check by status: `404` / `NXDOMAIN` means free, `200` means taken. Where a check needs a login or trips a bot wall, mark the surface **unverified** and put the direct link in the report's "not checked" list so a human can close it in seconds.
 
+Two mechanical traps that silently produce wrong verdicts:
+
+- **Follow redirects.** `rdap.org` answers `302` and redirects to the authoritative registry, so an unfollowed request reads as neither taken nor free. Use `curl -sL -o /dev/null -w '%{http_code}'`, never a bare request.
+- **Calibrate any surface that soft-200s** before reading a single candidate's result. See the section below.
+
 ## Core
 
 | Surface | Authoritative check | Notes |
@@ -14,6 +19,19 @@ Read every check by status: `404` / `NXDOMAIN` means free, `200` means taken. Wh
 | Cross-jurisdiction company search | `https://opencorporates.com/companies?q=<name>` | Fast first pass over many national registers at once. Confirm any hit in the national register itself. |
 | Web search | Bare name, plus name + category, plus name + city or country | Finds the trading business no register or platform will show you. |
 | Trademark signals | See the jurisdiction table below | Report class, status, owner, link. Signal scan, not a clearance search. |
+
+## Calibrating a soft-200 surface
+
+Most social platforms return `200` whether or not the handle exists, because the answer is rendered by JavaScript. Do not guess, and do not give up either. Probe the surface twice first, with a **known-taken** handle and a **known-free** one (a random string), diff the two response bodies, and use whatever marker separates them for the real candidates.
+
+Telegram, worked through as the example:
+
+```
+curl -sL https://t.me/telegram       | grep -o 'tgme_page_context_link\|tgme_icon_user'   # taken -> tgme_page_context_link
+curl -sL https://t.me/zqx7vv9lmk2wp  | grep -o 'tgme_page_context_link\|tgme_icon_user'   # free  -> tgme_icon_user
+```
+
+That converts an `unverified` into a real verdict in two extra requests. When the two probes produce no usable difference (X, TikTok, and Instagram commonly do not, because the shell is identical and the content is fetched later), stop: the surface is genuinely **unverified**, and it goes in the report with its direct link rather than a guess.
 
 ## Social handles
 
@@ -44,7 +62,7 @@ Pick by how the business actually sells.
 
 | Surface | Check |
 | ------- | ----- |
-| Shopify store subdomain | `https://<name>.myshopify.com` (resolves = taken) |
+| Shopify store subdomain | `https://<name>.myshopify.com` — `200` taken, `404` free, and **`402` also means taken**: the store exists but is frozen or unpaid |
 | Etsy shop | `https://www.etsy.com/shop/<name>` |
 | Amazon | Search the storefront for the name; Brand Registry itself is not publicly searchable, so treat this as a competitor check |
 | eBay store | `https://www.ebay.com/str/<name>` |

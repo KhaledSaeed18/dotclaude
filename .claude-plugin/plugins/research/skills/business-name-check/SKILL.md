@@ -37,7 +37,8 @@ Read results by status, not by page copy:
 - **404 from RDAP or a register API** means free. **200** means taken.
 - A parked page, a for-sale listing, or a squatter's placeholder means **registered**, not free.
 - A social profile that exists but has zero posts still means the handle is **taken**. Some platforms release dormant handles on request, and some do not; note the possibility, never assume it.
-- A platform that returns a soft 200 with "user not found" in the body, or that requires login to search, is **unverified**. Say so.
+- A platform that returns a soft 200 whatever you ask for is not automatically **unverified**. First calibrate it: probe the same surface with a known-taken handle and a random free one, diff the bodies, and use the marker that separates them. Two extra requests routinely turn a shrug into a real verdict. Only when the probes come back indistinguishable is the surface genuinely unverified. The surfaces doc works this through.
+- Follow redirects on every lookup. RDAP in particular answers `302` and redirects to the authoritative registry, so an unfollowed request reads as neither taken nor free.
 - A search engine finding nothing means nothing was found, which is not evidence of availability.
 
 Record for every surface: the exact URL or command, the raw result, and a verdict of **taken**, **free**, or **unverified**. Social platforms will produce a lot of `unverified` because of login walls and bot defenses. That is an honest outcome and it belongs in the report as itself; the user can confirm those by hand in two minutes if the rest of the sweep is clean.

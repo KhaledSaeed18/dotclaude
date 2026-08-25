@@ -4,6 +4,8 @@ Two groups: **universal** surfaces every software project should clear, and **ec
 
 Read every check by status: `404` / `E404` / `NXDOMAIN` means free, `200` means taken. Where a check needs a browser or a login, mark the surface **unverified** rather than guessing.
 
+Follow redirects on every HTTP lookup: `rdap.org` answers `302` and redirects to the authoritative registry, so an unfollowed request reads as neither taken nor free. Use `curl -sL -o /dev/null -w '%{http_code}'`, never a bare request.
+
 ## Universal
 
 | Surface | Authoritative check | Notes |
