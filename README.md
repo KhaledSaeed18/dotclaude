@@ -13,7 +13,7 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-38-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="38 skills" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-39-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="39 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-8-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="8 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-6-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="6 commands" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-8-db2777.svg?split=true&logo=ri:RiPlugFill" alt="8 hooks" /></a>
@@ -79,7 +79,7 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 | **git** | Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup. (9 skills, 1 command) | `/plugin install git@dotclaude` |
 | **productivity** | Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context. (5 skills, 2 commands) | `/plugin install productivity@dotclaude` |
 | **testing** | Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions. (2 skills, 1 command) | `/plugin install testing@dotclaude` |
-| **research** | A deep-research subagent for multi-source investigation with citations: comparisons, fact-checking, and sourced writeups. (1 agent) | `/plugin install research@dotclaude` |
+| **research** | Investigation toolkit: a deep-research subagent for multi-source work with citations, and a name-check skill that clears a project name across registries, domains, and app stores. (1 skill, 1 agent) | `/plugin install research@dotclaude` |
 | **format-on-edit** | Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted. (1 hook) | `/plugin install format-on-edit@dotclaude` |
 | **notify** | Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background. (1 hook) | `/plugin install notify@dotclaude` |
 | **precompact-saver** | Context-preservation hook that snapshots the full session transcript before every compaction, keeping the newest ten snapshots per project. (1 hook) | `/plugin install precompact-saver@dotclaude` |
@@ -166,6 +166,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [handoff](skills/productivity/handoff/) | Compact the current conversation into a handoff document for another agent to pick up. Use when ending a session, switching agents, or preserving context before compaction. | `npx shadcn@latest add KhaledSaeed18/dotclaude/handoff` |
 | [issue-writer](skills/productivity/issue-writer/) | Turn a rough bug report, idea, or complaint into a well-formed, actionable issue - investigating the codebase first to add reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria - then filing it with gh or emitting paste-ready markdown. Use when the user says "file an issue for this", "write this up", describes a bug in passing that should be tracked, or wants a feature request made concrete. | `npx shadcn@latest add KhaledSaeed18/dotclaude/issue-writer` |
 | [standup-summary](skills/productivity/standup-summary/) | Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into done / in progress / blocked / next, written in plain human sentences rather than commit-message-speak. Use when preparing a daily standup, a weekly review, a sprint update, or answering "what did I work on this week". | `npx shadcn@latest add KhaledSaeed18/dotclaude/standup-summary` |
+
+#### Research
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [name-check](skills/research/name-check/) | Vet a candidate project name across package registries, domains, app stores, code hosts, and existing projects, then report which candidate is actually free. Use when picking or clearing a name for a software project, package, app, or CLI. | `npx shadcn@latest add KhaledSaeed18/dotclaude/name-check` |
 
 #### Security
 

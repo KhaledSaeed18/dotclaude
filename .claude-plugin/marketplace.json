@@ -119,7 +119,7 @@
     {
       "name": "research",
       "source": "./.claude-plugin/plugins/research",
-      "description": "A deep-research subagent for multi-source investigation with citations: comparisons, fact-checking, and sourced writeups.",
+      "description": "Investigation toolkit: a deep-research subagent for multi-source work with citations, and a name-check skill that clears a project name across registries, domains, and app stores.",
       "author": {
         "name": "Khaled Saeed"
       },
@@ -130,7 +130,9 @@
       "keywords": [
         "research",
         "citations",
-        "web"
+        "web",
+        "naming",
+        "availability"
       ]
     },
     {
