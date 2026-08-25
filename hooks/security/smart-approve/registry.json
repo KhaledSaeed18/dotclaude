@@ -5,7 +5,7 @@
       "name": "smart-approve",
       "type": "registry:item",
       "title": "Smart Approve",
-      "description": "A PreToolUse hook that decomposes compound Bash commands (&&, ||, ;, |, $(), backticks) into their component sub-commands and checks each one independently against a deny list, closing the chain-smuggling gap where a dangerous operation is embedded inside a safe-looking command chain. Use to upgrade command-guard with compound-command awareness.",
+      "description": "A PreToolUse hook that decomposes compound Bash commands (&&, ||, ;, |, $(), backticks, subshell parens) into their component sub-commands and checks each one independently against the same deny list command-guard uses, catching destructive operations hidden in command substitution or a subshell where a full-string match misses them. Use to upgrade command-guard with decomposition, or as the command guard bundled in the security-hooks plugin.",
       "author": "Khaled Saeed",
       "categories": [
         "security"

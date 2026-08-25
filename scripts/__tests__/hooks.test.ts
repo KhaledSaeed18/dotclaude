@@ -123,6 +123,48 @@ describe("smart-approve", () => {
   });
 });
 
+describe("smart-approve decomposition beyond command-guard", () => {
+  // These are the cases that justify smart-approve existing at all, verified
+  // against both hooks: plain chaining is NOT one of them (command-guard's
+  // unanchored rules already catch `git status && rm -rf ~`). The real gap is
+  // wrapping syntax that breaks a rule's end-of-token terminator, which
+  // decomposition restores.
+  const WRAPPED: string[] = [
+    "echo $(rm -rf /)",
+    "echo `chmod -R 777 /`",
+    "(rm -rf /)",
+    "if true; then rm -rf /; fi",
+    "echo $(git push --force origin main)",
+    "VAR=$(rm -rf ~) echo done",
+  ];
+
+  it("blocks destructive commands hidden in substitution or a subshell", () => {
+    for (const command of WRAPPED) {
+      expect(runHook(SMART_APPROVE, bashEvent(command)).status, command).toBe(2);
+    }
+  });
+
+  it("documents that command-guard misses exactly these", () => {
+    // Not an endorsement — this pins the documented difference between the two
+    // hooks. If command-guard ever grows decomposition, the docs comparing
+    // them (and this test) must change together.
+    for (const command of WRAPPED) {
+      expect(runHook(COMMAND_GUARD, bashEvent(command)).status, command).toBe(0);
+    }
+  });
+
+  it("does not fire on ordinary commands containing parens", () => {
+    for (const command of [
+      "git log --format=%(refname) | head",
+      "echo (test)",
+      "npm run build && npm test",
+      "awk '{print $1}' file.txt",
+    ]) {
+      expect(runHook(SMART_APPROVE, bashEvent(command)).status, command).toBe(0);
+    }
+  });
+});
+
 describe("command-guard and smart-approve rule parity", () => {
   // The two hooks are standalone single-file scripts by design (they install
   // as individual files), so their shared deny rules are duplicated in both

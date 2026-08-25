@@ -5,7 +5,7 @@
       "name": "command-guard",
       "type": "registry:item",
       "title": "Command Guard",
-      "description": "A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of the filesystem root or home, fork bombs, writing to or formatting raw disk devices, recursive chmod 777 on root, and force-pushes to main or master), returning a clear reason. Use to add a deterministic safety net against destructive shell commands.",
+      "description": "A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of the filesystem root or home, fork bombs, writing to or formatting raw disk devices, recursive chmod 777 on root, and force-pushes to main or master), returning a clear reason. Tests the command as one string; `smart-approve` is the strict superset that also decomposes compound chains, and is the one bundled in the security-hooks plugin. Use to add a minimal, auditable safety net against destructive shell commands when chain decomposition is not needed.",
       "author": "Khaled Saeed",
       "categories": [
         "security"

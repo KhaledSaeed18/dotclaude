@@ -1,12 +1,18 @@
 #!/usr/bin/env node
 /**
  * smart-approve: a PreToolUse hook that decomposes compound Bash commands
- * (&&, ||, ;, |, $(...), backticks) into their component sub-commands and
- * checks each one independently against a deny list.
+ * (&&, ||, ;, |, $(...), backticks, subshell parens) into their component
+ * sub-commands and checks each one independently against a deny list.
  *
- * This closes the chain-smuggling gap in simpler guards: a dangerous operation
- * embedded inside `safe-command && rm -rf /` would pass a guard that only
- * reads the full command string without decomposing it.
+ * What decomposition actually buys, stated precisely: the deny rules are
+ * unanchored, so plain chaining (`safe-command && rm -rf /`) is already caught
+ * by matching the full string. The gap is wrapping syntax that breaks a rule's
+ * end-of-token terminator — `echo $(rm -rf /)`, `` `chmod -R 777 /` ``,
+ * `(rm -rf /)`, `if true; then rm -rf /; fi`. Splitting hands each rule an
+ * isolated sub-command with a clean boundary, so those match too.
+ *
+ * The rules here are identical to command-guard's; the added protection comes
+ * from where they are applied, not from extra rules.
  *
  * Fails open: any error in the hook itself exits 0 so it can never break a
  * legitimate command. Zero dependencies (Node standard library, node >= 18).
@@ -72,8 +78,11 @@ function isForcePushToProtected(cmd) {
 function decompose(command) {
   const pieces = [];
 
-  // Split on &&, ||, ;, and single-pipe (| not followed by another |)
-  const parts = command.split(/&&|\|\|?|;/);
+  // Split on &&, ||, ;, single-pipe, and subshell parens. The parens matter:
+  // `(rm -rf /)` evades the deny rules on the full string because the closing
+  // `)` defeats the rule's end-of-token terminator. Splitting there hands the
+  // rule a clean `rm -rf /` to match.
+  const parts = command.split(/&&|\|\|?|;|\(|\)/);
 
   for (const part of parts) {
     const trimmed = part.trim();
