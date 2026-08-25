@@ -88,11 +88,9 @@ function decompose(command) {
     const trimmed = part.trim();
     if (trimmed) pieces.push(trimmed);
 
-    // Extract $(...) sub-expressions
-    for (const dm of part.matchAll(/\$\(([^)]+)\)/g)) {
-      if (dm[1]) pieces.push(dm[1].trim());
-    }
-    // Extract backtick sub-expressions
+    // Backticks still need lifting out: unlike parens they are not split on,
+    // so `echo \`rm -rf ~\`` would otherwise only ever be seen whole.
+    // ($(...) needs no equivalent — splitting on parens already isolates it.)
     for (const bm of part.matchAll(/`([^`]+)`/g)) {
       if (bm[1]) pieces.push(bm[1].trim());
     }

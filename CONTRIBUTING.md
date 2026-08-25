@@ -119,7 +119,7 @@ Commit messages follow [Conventional Commits](https://www.conventionalcommits.or
 
 Two workflows run on every pull request:
 
-- **validate** ([.github/workflows/validate.yml](.github/workflows/validate.yml)): typecheck, lint, test, `gen:check`, registry validation, plugin-manifest validation, and the `pnpm smoke` install test.
+- **validate** ([.github/workflows/validate.yml](.github/workflows/validate.yml)): typecheck, lint, test, `pnpm coverage` (90% floor), `gen:check`, registry validation, plugin-manifest validation, and the `pnpm smoke` install test.
 - **security** ([.github/workflows/security.yml](.github/workflows/security.yml)): secret scanning and a dependency audit, plus a weekly scheduled run.
 
 ## Trying an item locally

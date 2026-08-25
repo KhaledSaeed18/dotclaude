@@ -33,6 +33,11 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Coverage
+        # The suite is black-box, so this collects V8 coverage from the spawned
+        # child processes; ordinary tooling would report 0% here.
+        run: pnpm coverage
+
       - name: Check generated files are in sync
         run: pnpm gen:check
 

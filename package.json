@@ -21,6 +21,7 @@
     "gen:check": "tsx scripts/gen.ts --check",
     "validate": "tsx scripts/validate.ts",
     "smoke": "tsx scripts/smoke.ts",
+    "coverage": "tsx scripts/coverage.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
