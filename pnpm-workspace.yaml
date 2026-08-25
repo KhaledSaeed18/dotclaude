@@ -3,3 +3,8 @@
 # allow it so installs don't fail under strictDepBuilds.
 allowBuilds:
   esbuild: true
+
+# GHSA-5p4m-2wfm-xmqj: quadratic CPU consumption in js-yaml's !!omap resolution.
+# gray-matter's range (^3.13.1) still allows vulnerable 3.x; pin to the patched release.
+overrides:
+  js-yaml@^3: ^3.15.1
