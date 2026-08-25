@@ -510,3 +510,218 @@ describe("tool-call-logger", () => {
     expect(() => readFileSync(logPath, "utf8")).toThrow();
   });
 });
+
+/**
+ * Documentation-parity tests.
+ *
+ * Each HOOK.md makes concrete, checkable promises — a table of patterns a hook
+ * blocks, a retention count, an "injection-safe" claim. Auditing those claims
+ * against real behaviour turned up several that were simply untrue, including
+ * an advertised secret pattern that never matched. These tests pin the
+ * documented promises to the shipped behaviour so a claim cannot quietly rot
+ * again: if you change a rule, a table row here changes with it, or CI fails.
+ */
+describe("HOOK.md claims match behaviour", () => {
+  describe("sensitive-file-guard", () => {
+    // Every row of the "What it blocks" table in its HOOK.md.
+    const DOCUMENTED_SECRETS = [
+      ".env",
+      ".env.local",
+      ".env.production",
+      ".env.test",
+      "credentials.json",
+      "credentials.yaml",
+      "id_rsa",
+      "id_ed25519",
+      "id_ecdsa",
+      "cert.pem",
+      "key.p12",
+      "store.pfx",
+      "c.cer",
+      "server.key",
+      "/home/u/.aws/credentials",
+      "/home/u/.aws/config",
+      ".netrc",
+      "_netrc",
+      "login.keychain",
+      "login.keychain-db",
+      ".token",
+      ".tokens.json",
+      ".tokens.txt",
+      "secrets.json",
+      "secrets.yaml",
+      "secrets.env",
+      "api_keys.json",
+      "api-keys.yaml",
+      "backup.gpg",
+      ".oauth_token",
+      // Documented in the table but matched by neither `cred` nor `creds`
+      // before the pattern was widened to `cred(ential)?s?`.
+      ".oauth_credentials.json",
+      "service_account.json",
+      "service-account.yaml",
+    ];
+
+    it("blocks every pattern its table advertises", () => {
+      for (const path of DOCUMENTED_SECRETS) {
+        expect(
+          runHook(SENSITIVE_FILE_GUARD, {
+            tool_name: "Read",
+            tool_input: { file_path: path },
+          }).status,
+          path,
+        ).toBe(2);
+      }
+    });
+
+    it("covers all five documented tool surfaces", () => {
+      for (const tool of ["Read", "Edit", "Write", "MultiEdit"]) {
+        expect(
+          runHook(SENSITIVE_FILE_GUARD, {
+            tool_name: tool,
+            tool_input: { file_path: ".env" },
+          }).status,
+          tool,
+        ).toBe(2);
+      }
+      expect(runHook(SENSITIVE_FILE_GUARD, bashEvent("cat .env")).status).toBe(2);
+    });
+
+    it("honours its stated exceptions", () => {
+      // The table promises public keys are exempt, and the pattern comments
+      // promise design-token and template files are too. Over-blocking these
+      // is what makes people uninstall a guard.
+      for (const path of [
+        "id_rsa.pub",
+        "tokens.json",
+        ".env.example",
+        ".env.sample",
+        ".env.template",
+        "credential-flow.md",
+        "oauthlib.py",
+        "README.md",
+      ]) {
+        expect(
+          runHook(SENSITIVE_FILE_GUARD, {
+            tool_name: "Read",
+            tool_input: { file_path: path },
+          }).status,
+          path,
+        ).toBe(0);
+      }
+    });
+
+    it("blocks the shell env dumps and read patterns it lists", () => {
+      for (const command of [
+        "env > dump.txt",
+        "printenv > out.txt",
+        "less .env.local",
+        "cat credentials.json",
+      ]) {
+        expect(runHook(SENSITIVE_FILE_GUARD, bashEvent(command)).status, command).toBe(2);
+      }
+    });
+  });
+
+  describe("notify", () => {
+    // "Injection-safe: the notification text is stripped of quotes,
+    // backslashes, and control characters before being passed to the OS tool."
+    // The macOS path interpolates the message into an AppleScript string
+    // literal, so a surviving quote or backslash is command injection.
+    //
+    // Tested the way the rest of this file tests: as a black box. A fake
+    // `osascript`/`notify-send` is put on PATH to record the argv it is handed,
+    // so the assertion is on what really reaches the OS tool rather than on a
+    // copy of the hook's internals.
+    function captureNotification(message: string): string {
+      const dir = makeTempDir();
+      const record = join(dir, "argv.txt");
+      for (const name of ["osascript", "notify-send"]) {
+        const shim = join(dir, name);
+        writeFileSync(shim, `#!/bin/sh\nprintf '%s' "$*" > "${record}"\n`, { mode: 0o755 });
+      }
+      const res = runHook(
+        NOTIFY,
+        { hook_event_name: "Notification", message },
+        {
+          PATH: `${dir}:${process.env.PATH ?? ""}`,
+        },
+      );
+      expect(res.status).toBe(0);
+      return existsSync(record) ? readFileSync(record, "utf8") : "";
+    }
+
+    it("neutralises AppleScript-escape payloads", () => {
+      // A benign message establishes how many quotes the command template
+      // itself contributes (two pairs on macOS's osascript, none on Linux's
+      // notify-send). Any payload that pushes the count above that baseline
+      // has escaped its string literal.
+      const baselineQuotes = (captureNotification("just a message").match(/"/g) ?? []).length;
+
+      const payloads = [
+        'x" with title "PWNED',
+        'x"\n do shell script "touch /tmp/pwned"\n display notification "y',
+        'x\\" & (do shell script "id") & "',
+        "x`id`y",
+        "line1\u0000\u001b[31m\u007fline2",
+      ];
+      for (const payload of payloads) {
+        const received = captureNotification(payload);
+        expect(received, payload).not.toBe("");
+        expect((received.match(/"/g) ?? []).length, payload).toBe(baselineQuotes);
+        expect(received, payload).not.toMatch(/[\\`]/);
+        // biome-ignore lint/suspicious/noControlCharactersInRegex: asserting they are gone is the point
+        expect(received, payload).not.toMatch(/[\u0000-\u001f\u007f]/);
+      }
+    });
+
+    it("caps the message length it hands to the OS", () => {
+      const received = captureNotification("A".repeat(500));
+      expect(received.length).toBeLessThanOrEqual(260);
+    });
+  });
+
+  describe("tool-call-logger", () => {
+    it("redacts secret-looking keys nested at any depth", () => {
+      // "Safe by default" is worth little if it only reaches top-level keys;
+      // real tool payloads nest.
+      const dir = makeTempDir();
+      runHook(
+        TOOL_CALL_LOGGER,
+        {
+          hook_event_name: "PreToolUse",
+          tool_name: "Bash",
+          cwd: dir,
+          tool_input: {
+            outer: { password: "NESTED1", deep: { apiKey: "NESTED2" } },
+            arr: [{ token: "NESTED3" }],
+            normal: "keepme",
+          },
+        },
+        { CLAUDE_PROJECT_DIR: dir },
+      );
+      const log = readFileSync(join(dir, ".claude", "logs", "tool-calls.jsonl"), "utf8");
+      for (const secret of ["NESTED1", "NESTED2", "NESTED3"]) {
+        expect(log, secret).not.toContain(secret);
+      }
+      expect(log).toContain("keepme");
+    });
+  });
+
+  describe("precompact-saver", () => {
+    it("keeps exactly the ten snapshots its docs promise", () => {
+      const dir = makeTempDir();
+      for (let i = 0; i < 14; i++) {
+        const transcript = join(dir, `t${i}.jsonl`);
+        writeFileSync(transcript, `transcript ${i}\n`);
+        runHook(
+          PRECOMPACT_SAVER,
+          { hook_event_name: "PreCompact", transcript_path: transcript, cwd: dir },
+          { CLAUDE_PROJECT_DIR: dir },
+        );
+      }
+      const kept = readdirSync(join(dir, ".claude", "compact-backups"));
+      expect(kept.length).toBe(10);
+    });
+  });
+});

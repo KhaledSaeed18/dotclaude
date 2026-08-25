@@ -1,6 +1,6 @@
 ---
 name: sensitive-file-guard
-description: A PreToolUse hook that blocks Read, Edit, Write, and Bash operations that target sensitive files (.env, credentials, SSH private keys, certificates, secrets, AWS config, netrc, and similar). Use to prevent Claude from autonomously reading or exfiltrating credential files.
+description: A PreToolUse hook that blocks Read, Edit, Write, MultiEdit, and Bash operations that target sensitive files (.env, credentials, SSH private keys, certificates, secrets, AWS config, netrc, and similar). Use to prevent Claude from autonomously reading or exfiltrating credential files.
 ---
 
 # sensitive-file-guard
@@ -8,7 +8,7 @@ description: A PreToolUse hook that blocks Read, Edit, Write, and Bash operation
 A Claude Code hook that intercepts file-access operations before they run and blocks any that target well-known sensitive-file patterns.
 
 - **Closes the exfiltration gap.** `command-guard` blocks destructive commands. But `cat .env` is not destructive — it reads a secret that could then be sent elsewhere. This hook prevents Claude from reading secrets in the first place.
-- **Covers four tool surfaces.** Intercepts `Read`, `Edit`, `Write` (by file path), and `Bash` (by command string and path extraction).
+- **Covers five tool surfaces.** Intercepts `Read`, `Edit`, `Write`, and `MultiEdit` (by file path), and `Bash` (by command string and path extraction).
 - **Fails open.** Any error in the hook exits `0`, so it can never break a legitimate file operation.
 - **Zero dependencies.** Node standard library only (`node >= 18`).
 

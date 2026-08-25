@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * sensitive-file-guard: a PreToolUse hook that blocks Read, Edit, Write, and
- * Bash tool operations that target sensitive files (.env, credentials, SSH keys,
+ * sensitive-file-guard: a PreToolUse hook that blocks Read, Edit, Write,
+ * MultiEdit, and Bash tool operations that target sensitive files (.env, credentials, SSH keys,
  * certificates, secret files, AWS config, netrc, and similar).
  *
  * Motivation: command-guard blocks destructive shell commands, but a `cat .env`
@@ -52,8 +52,9 @@ const SENSITIVE_PATH_PATTERNS = [
   /(?:^|\/)api[_-]?keys?(?:\.(json|ya?ml|toml|txt))?$/i,
   // GPG private key exports
   /(?:^|\/).*\.gpg$/i,
-  // OAuth token stores
-  /(?:^|\/)\.?oauth[_-]?(token|cred)s?(?:\.(json|txt))?$/i,
+  // OAuth token stores. `cred(ential)?s?` matters: the documented example is
+  // `.oauth_credentials.json`, which `cred|creds` alone does not match.
+  /(?:^|\/)\.?oauth[_-]?(token|cred(ential)?)s?(?:\.(json|txt))?$/i,
   // Service account / auth files common to GCP/Firebase
   /(?:^|\/)service[_-]?account(?:s)?(?:\.(json|ya?ml))?$/i,
 ];
