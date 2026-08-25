@@ -3,9 +3,12 @@
  * injection-guard: a UserPromptSubmit hook that scans incoming prompts for
  * common prompt-injection and jailbreak patterns before Claude processes them.
  *
- * This provides a deterministic, pre-Claude layer of defense. It catches
- * explicit injection attempts in user input and in data that Claude reads from
- * files or external sources (via system-prompt override attacks).
+ * Scope, precisely: this event carries only text the user submits — typed or
+ * pasted. Content Claude pulls in later (a Read, a WebFetch, a tool result) is
+ * never routed through UserPromptSubmit, so this hook does not screen it. The
+ * attack it actually defends against is adversarial text riding along in a
+ * prompt: a pasted issue body, log excerpt, or error message carrying
+ * instructions aimed at Claude rather than at the user's task.
  *
  * The patterns are intentionally conservative to minimize false positives on
  * legitimate developer prompts. This is a safety net, not a firewall.
@@ -39,11 +42,14 @@ const INJECTION_RULES = [
   },
   // System prompt extraction
   {
-    test: /(print|output|reveal|show|display|repeat|tell\s+me|what\s+(is|are))\s+(your\s+)?(full\s+)?(system\s+prompt|system\s+instructions?|initial\s+instructions?|original\s+prompt)/i,
+    test: /(print|output|reveal|show|display|repeat|tell|what\s+(is|are))\s+(me\s+)?(your\s+)?(full\s+|exact\s+|verbatim\s+)?(system\s+prompt|system\s+instructions?|initial\s+(instructions?|prompt)|original\s+(instructions?|prompt))/i,
     reason: "system-prompt extraction attempt",
   },
   {
-    test: /what\s+(were\s+you|are\s+your)\s+(told|instructed|programmed|trained|configured|given)/i,
+    // Requires an adversarial qualifier. Without one this matched ordinary
+    // questions a user has every right to ask ("what are your instructions for
+    // this repo?"), and blocking the user — the trust root — buys no security.
+    test: /what\s+(were|are)\s+you(r)?\s+(originally|initially|actually|really|secretly|exactly|truly)\s+(told|instructed|programmed|trained|configured|given)/i,
     reason: "system-prompt extraction attempt",
   },
   // Hard role overrides — must be explicit enough to not false-positive on legitimate prompts
