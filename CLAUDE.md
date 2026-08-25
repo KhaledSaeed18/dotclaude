@@ -35,7 +35,7 @@ The scaffolder writes a stub manifest and regenerates. Fill in the stub (validat
 
 - Agents and commands are **file-layout**: their folder must contain only the manifest; `pnpm gen` rejects extras. Skills and hooks are **folder-layout**: companion files ride along.
 - Item names are globally unique across all four types and must match their folder name.
-- Hook scripts are standalone, zero-dependency `.mjs` files (Node stdlib, node >= 18) that fail open (exit 0 on any internal error, exit 2 to block). They are copied verbatim into plugin trees, so a shared runtime module is not possible — `command-guard` and `smart-approve` intentionally duplicate their deny rules, and the parity table in `scripts/__tests__/hooks.test.ts` is the drift guard: change the rules in both files and the table together.
+- Hook scripts are standalone, zero-dependency `.mjs` files (Node stdlib, node >= 18 — deliberately below the repo's own `engines.node >= 20`, because hooks run in the *user's* environment, not this repo's toolchain) that fail open (exit 0 on any internal error, exit 2 to block). They are copied verbatim into plugin trees, so a shared runtime module is not possible — `command-guard` and `smart-approve` intentionally duplicate their deny rules, and the parity table in `scripts/__tests__/hooks.test.ts` is the drift guard: change the rules in both files and the table together.
 - Tests are black-box: hooks are spawned with the event JSON on stdin; gen/validate/new run against fixture repos in temp dirs. Follow those patterns.
 
 ## Voice
