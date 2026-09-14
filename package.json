@@ -28,6 +28,11 @@
     "lint": "biome check .",
     "format": "biome format --write ."
   },
+  "pnpm": {
+    "overrides": {
+      "js-yaml": "3.15.2"
+    }
+  },
   "devDependencies": {
     "@biomejs/biome": "2.5.12",
     "@types/node": "^26.4.1",
