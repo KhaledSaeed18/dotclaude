@@ -563,8 +563,29 @@ describe("validate", () => {
     );
     expect(res.output).not.toContain("skills/util/s-two");
     // NOTICE.md lists the well-formed one.
-    expect(read(dir, "NOTICE.md")).toContain("## skills/util/s-two");
+    expect(read(dir, "NOTICE.md")).toContain("### skills/util/s-two");
     expect(read(dir, "NOTICE.md")).toContain("https://github.com/a/x");
+  });
+
+  it("requires a URL in an Inspired by section and lists it separately in NOTICE.md", () => {
+    const dir = makeFixture({
+      "agents/review/a-one/AGENT.md": manifest(
+        { name: "a-one", description: "Shaped after another. Use when needed." },
+        "Body.\n\n## Inspired by\n\nFollows the shape of a tool somewhere.\n",
+      ),
+      "agents/review/a-two/AGENT.md": manifest(
+        { name: "a-two", description: "Shaped after another. Use when needed." },
+        "Body.\n\n## Inspired by\n\nFollows [that tool](https://github.com/x/y); nothing copied.\n",
+      ),
+    });
+    runGen(dir);
+    const res = runValidate(dir);
+    expect(res.status).not.toBe(0);
+    expect(res.output).toContain("agents/review/a-one: Inspired by section has no source URL");
+    expect(res.output).not.toContain("a-two");
+    const notice = read(dir, "NOTICE.md");
+    expect(notice.indexOf("## Inspired by")).toBeGreaterThan(notice.indexOf("## Adapted material"));
+    expect(notice).toContain("### agents/review/a-two");
   });
 
   it("flags a reference to an item that does not exist and accepts real ones", () => {

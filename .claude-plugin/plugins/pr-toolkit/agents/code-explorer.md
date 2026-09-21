@@ -55,3 +55,7 @@ Files a change here will most likely touch, and why.
 ```
 
 Keep it under 60 lines for a typical request. Precision beats coverage: every line must carry a path.
+
+## Inspired by
+
+The role and scope follow the feature-dev plugin's code-explorer agent in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.

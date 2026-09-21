@@ -76,3 +76,7 @@ Always `cd` to the main repo root before `git worktree remove`, running it from 
 - Cleaning up the worktree for option 2 (the user still needs it).
 - Removing a worktree you didn't create, or running `git worktree remove` from inside it.
 - Deleting the branch before removing its worktree.
+
+## Attribution
+
+Adapted from the `finishing-a-development-branch` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

@@ -55,3 +55,7 @@ Tests: 48 passed before, 48 passed after. Diff: 312 lines → 241 lines.
 Left alone (needs the author):
 - `src/db/orders.ts:15` has a retry loop that looks redundant with the client's; could be intentional.
 ```
+
+## Inspired by
+
+The role and scope follow the pr-review-toolkit plugin's code-simplifier agent in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.

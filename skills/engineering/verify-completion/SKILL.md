@@ -49,3 +49,7 @@ Different phrasing doesn't exempt you: a paraphrase that implies the work is don
 ## The bottom line
 
 Run the command. Read the output. *Then* make the claim. There's no shortcut that preserves the honesty of the statement.
+
+## Attribution
+
+Adapted from the `verification-before-completion` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

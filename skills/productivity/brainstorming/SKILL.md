@@ -48,3 +48,7 @@ Fix what you find inline. If the spec covers several independent subsystems, not
 ## Step 6: Hand off to planning
 
 Once the spec is written and the user has reviewed it, the natural next step is an implementation plan: use the `writing-plans` skill to turn the approved design into task-by-task work. Don't start coding directly from the brainstorm: the plan is where the design becomes executable.
+
+## Attribution
+
+Adapted from the `brainstorming` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

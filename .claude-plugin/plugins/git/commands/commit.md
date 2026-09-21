@@ -35,3 +35,7 @@ Apply the `git-commit` skill end to end for exactly one commit. In short:
 7. Report the commit hash and subject. Do not push; that is `/pr` or an explicit request.
 
 If there is nothing to commit, say so and stop.
+
+## Inspired by
+
+The role and scope follow the commit-commands plugin's /commit command in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/commit-commands) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.

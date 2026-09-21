@@ -35,7 +35,7 @@ some branches are platform-specific and unreachable on a given OS.
 
 `pnpm smoke` is the slower end-to-end check CI also runs, kept out of the line above because it drives the real Claude Code CLI: it installs every generated plugin into a throwaway config dir, diffs the installed tree against the generated one, and runs each bundled hook script from its installed path (including that the deny rules still block). Run it after touching `gen.ts`'s plugin logic or any hook script. It needs no auth or network beyond resolving the CLI, and leaves nothing behind.
 
-`pnpm validate` also enforces content rules: no `<TODO:` scaffold markers in manifests, every description carries a trigger clause ("Use when ..."), no em dash anywhere in an item's markdown (manifest or companion file), an `## Attribution` section (required on any item adapted from elsewhere) names a source URL and a permissive licence, and a cross-reference like "the `paper-reader` skill" or "the `/pr` command" must name an item that exists. `pnpm format` fixes Biome formatting.
+`pnpm validate` also enforces content rules: no `<TODO:` scaffold markers in manifests, every description carries a trigger clause ("Use when ..."), no em dash anywhere in an item's markdown (manifest or companion file), an `## Attribution` section (required on any item adapted from elsewhere) names a source URL and a permissive licence, an `## Inspired by` section (for a shape followed with nothing copied) names a source URL, and a cross-reference like "the `paper-reader` skill" or "the `/pr` command" must name an item that exists. `pnpm format` fixes Biome formatting.
 
 ## Adding an item
 

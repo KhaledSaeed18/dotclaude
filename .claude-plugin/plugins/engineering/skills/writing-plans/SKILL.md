@@ -62,3 +62,7 @@ Save the plan as a markdown file (a `docs/plans/YYYY-MM-DD-<feature>.md` locatio
 - **Subagent-driven**: a fresh subagent per task with review between, when the platform supports subagents and the tasks are largely independent.
 
 If the work should be isolated from the current branch, note that an isolated workspace should be set up at execution time via the `git-worktrees` skill, and that the branch gets wrapped up afterward with the `finish-branch` skill.
+
+## Attribution
+
+Adapted from the `writing-plans` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

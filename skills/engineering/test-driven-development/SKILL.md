@@ -79,3 +79,7 @@ A bug is a missing test. Write a test that reproduces the bug and fails, then fi
 - Edge cases and error paths are covered.
 
 Can't tick every box? You drifted off TDD: go back to the last green point and restart test-first from there.
+
+## Attribution
+
+Adapted from the `test-driven-development` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

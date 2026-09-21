@@ -47,3 +47,7 @@ Contrast the failure modes: "fix all the tests" is too broad and the agent gets 
 ## Why it pays off
 
 Each subagent has a narrow scope and little to track, so it stays accurate. The investigations happen at once instead of back to back. And because the domains are independent by construction, the fixes integrate cleanly. The cost is yours to manage: you own the split, the context you hand each agent, and the integration check at the end.
+
+## Attribution
+
+Adapted from the `dispatching-parallel-agents` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

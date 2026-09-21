@@ -81,3 +81,7 @@ If they fail, report the failures and ask whether to proceed or investigate firs
 - **Skipping the ignore check**: project-local worktree contents end up tracked and pollute `git status`. Always `git check-ignore` first.
 - **Assuming the directory**: guess and you violate the project's convention. Follow the priority order.
 - **Proceeding on a failing baseline**: you lose the ability to attribute failures. Report and ask.
+
+## Attribution
+
+Adapted from the `using-git-worktrees` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

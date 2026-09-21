@@ -76,3 +76,7 @@ You review the shape of data, not the flow of control. Good types make a class o
 ### Fine
 - `Result<T, E>` in `src/lib/result.ts` is used consistently.
 ```
+
+## Inspired by
+
+The role and scope follow the pr-review-toolkit plugin's type-design-analyzer agent in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.
