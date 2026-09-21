@@ -14,7 +14,7 @@
       "layout": "folder",
       "targetBase": ".claude/skills",
       "color": "#2563eb",
-      "count": 54
+      "count": 59
     },
     {
       "type": "agent",
@@ -32,7 +32,7 @@
       "layout": "file",
       "targetBase": ".claude/commands",
       "color": "#0891b2",
-      "count": 12
+      "count": 14
     },
     {
       "type": "hook",
@@ -47,7 +47,7 @@
   "plugins": [
     {
       "name": "engineering",
-      "description": "Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work.",
+      "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work.",
       "category": "development",
       "keywords": [
         "workflow",
@@ -67,6 +67,7 @@
         "skill/grill-with-docs",
         "skill/parallel-agents",
         "skill/performance-optimization",
+        "skill/refactoring-recipes",
         "skill/solid-principles",
         "skill/systematic-debugging",
         "skill/test-driven-development",
@@ -78,7 +79,27 @@
         "agent/docs-writer",
         "agent/error-detective",
         "agent/performance-engineer",
-        "command/explain-code"
+        "command/explain-code",
+        "command/feature"
+      ]
+    },
+    {
+      "name": "docs",
+      "description": "Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI.",
+      "category": "documentation",
+      "keywords": [
+        "documentation",
+        "adr",
+        "readme",
+        "openapi",
+        "technical-writing"
+      ],
+      "items": [
+        "skill/adr-writing",
+        "skill/openapi-spec",
+        "skill/readme-writing",
+        "skill/technical-writing",
+        "command/adr"
       ]
     },
     {
@@ -551,6 +572,70 @@
       ]
     },
     {
+      "key": "skill/adr-writing",
+      "name": "adr-writing",
+      "type": "skill",
+      "category": "documentation",
+      "title": "Adr Writing",
+      "description": "Write Architecture Decision Records that a future engineer can act on: a numbered, immutable record with the context that forced the decision, the options weighed with real trade-offs, the decision in one sentence, and the consequences including what becomes harder. Covers when a decision deserves an ADR, how to supersede one, and how to keep an index. Use when a design choice has cross-cutting or long-lived effects, when reviewers keep asking why, or when onboarding depends on decisions nobody wrote down.",
+      "path": "skills/documentation/adr-writing",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/adr-writing",
+      "targets": [
+        ".claude/skills/adr-writing/SKILL.md"
+      ],
+      "plugins": [
+        "docs"
+      ]
+    },
+    {
+      "key": "skill/openapi-spec",
+      "name": "openapi-spec",
+      "type": "skill",
+      "category": "documentation",
+      "title": "Openapi Spec",
+      "description": "Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas, examples, errors, auth, pagination), and usable by tooling (validation, client generation, mock servers). Covers design-first and code-first workflows, linting with Spectral, and keeping the spec in sync in CI. Use when documenting an API, when a client generator or contract test needs a spec, or when the existing spec no longer matches the routes.",
+      "path": "skills/documentation/openapi-spec",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/openapi-spec",
+      "targets": [
+        ".claude/skills/openapi-spec/SKILL.md"
+      ],
+      "plugins": [
+        "docs"
+      ]
+    },
+    {
+      "key": "skill/readme-writing",
+      "name": "readme-writing",
+      "type": "skill",
+      "category": "documentation",
+      "title": "Readme Writing",
+      "description": "Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the actual code, then usage, configuration, and contribution pointers in the order a new user needs them, with nothing the code contradicts. Reads the repository first and never documents behaviour it has not confirmed. Use when a project has no README, when the README has drifted from the code, or before publishing a package or repository.",
+      "path": "skills/documentation/readme-writing",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/readme-writing",
+      "targets": [
+        ".claude/skills/readme-writing/SKILL.md"
+      ],
+      "plugins": [
+        "docs"
+      ]
+    },
+    {
+      "key": "skill/technical-writing",
+      "name": "technical-writing",
+      "type": "skill",
+      "category": "documentation",
+      "title": "Technical Writing",
+      "description": "Write and edit developer documentation, guides, design notes, and engineering blog posts with a working writer's discipline: audience and purpose first, one idea per paragraph, examples before abstractions, precise verbs, consistent terms, and structure the reader can scan. Includes formats for how-to guides, reference pages, explanations, and tutorials, and an editing checklist. Use when writing docs, a design note, a release announcement, or a post, or when a draft is accurate but nobody can follow it.",
+      "path": "skills/documentation/technical-writing",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/technical-writing",
+      "targets": [
+        ".claude/skills/technical-writing/SKILL.md"
+      ],
+      "plugins": [
+        "docs"
+      ]
+    },
+    {
       "key": "skill/adversarial-reviewer",
       "name": "adversarial-reviewer",
       "type": "skill",
@@ -768,6 +853,22 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/performance-optimization",
       "targets": [
         ".claude/skills/performance-optimization/SKILL.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "skill/refactoring-recipes",
+      "name": "refactoring-recipes",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Refactoring Recipes",
+      "description": "Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with polymorphism or lookup, introduce parameter object, replace flag argument, split phase, move function, encapsulate collection, strangler for large rewrites), each with when to apply it, the mechanical steps that keep the code working at every step, and the test to run between steps. Use when code is hard to change, before adding a feature to a tangled area, or when a reviewer asks for a structure change without saying how.",
+      "path": "skills/engineering/refactoring-recipes",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/refactoring-recipes",
+      "targets": [
+        ".claude/skills/refactoring-recipes/SKILL.md"
       ],
       "plugins": [
         "engineering"
@@ -1497,6 +1598,22 @@
       ]
     },
     {
+      "key": "command/adr",
+      "name": "adr",
+      "type": "command",
+      "category": "documentation",
+      "title": "Adr",
+      "description": "Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the options considered with their trade-offs, the decision, and its consequences, in the adr-writing skill's format and the repo's existing ADR style if one exists. Use when a design choice has just been made in conversation, when a reviewer asks why something was done this way, or when a decision needs to outlive the people who made it.",
+      "path": "commands/documentation/adr",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/documentation/adr",
+      "targets": [
+        ".claude/commands/adr.md"
+      ],
+      "plugins": [
+        "docs"
+      ]
+    },
+    {
       "key": "command/explain-code",
       "name": "explain-code",
       "type": "command",
@@ -1507,6 +1624,22 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/explain-code",
       "targets": [
         ".claude/commands/explain-code.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "command/feature",
+      "name": "feature",
+      "type": "command",
+      "category": "engineering",
+      "title": "Feature",
+      "description": "Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify requirements, write a task-by-task plan with the writing-plans skill, execute it with test-driven development, simplify with the code-simplifier agent, verify completion, and hand off ready for /pr. Each phase produces an artifact and stops for agreement at the plan. Use when starting any feature or non-trivial change, or when an implementation keeps drifting because it started without a plan.",
+      "path": "commands/engineering/feature",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/feature",
+      "targets": [
+        ".claude/commands/feature.md"
       ],
       "plugins": [
         "engineering"

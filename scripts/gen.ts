@@ -213,7 +213,7 @@ const PLUGINS: readonly PluginDef[] = [
   {
     name: "engineering",
     description:
-      "Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work.",
+      "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work.",
     category: "development",
     keywords: ["workflow", "tdd", "debugging", "code-review", "planning"],
     skills: {
@@ -224,6 +224,15 @@ const PLUGINS: readonly PluginDef[] = [
     },
     agents: { category: "engineering" },
     commands: { category: "engineering" },
+  },
+  {
+    name: "docs",
+    description:
+      "Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI.",
+    category: "documentation",
+    keywords: ["documentation", "adr", "readme", "openapi", "technical-writing"],
+    skills: { category: "documentation" },
+    commands: { category: "documentation" },
   },
   {
     name: "pr-toolkit",
