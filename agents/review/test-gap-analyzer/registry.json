@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "test-gap-analyzer",
+      "type": "registry:item",
+      "title": "Test Gap Analyzer",
+      "description": "Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries, contracts), maps existing tests onto them by reading the test files rather than trusting coverage numbers, and returns the gaps as concrete test names with the arrange, act, and assert for each. Read-only. Use during review, before merging a change with thin tests, or when coverage is high but bugs still ship.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "review"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/test-gap-analyzer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/test-gap-analyzer.md"
+        }
+      ]
+    }
+  ]
+}

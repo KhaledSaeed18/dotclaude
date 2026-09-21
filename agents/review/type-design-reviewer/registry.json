@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "type-design-reviewer",
+      "type": "registry:item",
+      "title": "Type Design Reviewer",
+      "description": "Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable, whether nullability and optionality reflect reality, whether unions and enums are exhaustive and closed, whether boundary types (API bodies, DB rows, events) are validated rather than asserted, and whether names say what the values mean. Read-only, TypeScript-first with Python, Go, and Rust guidance. Use when a change adds or alters types, when a bug came from a value that should have been impossible, or when a module's types have grown by accretion.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "review"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/type-design-reviewer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/type-design-reviewer.md"
+        }
+      ]
+    }
+  ]
+}

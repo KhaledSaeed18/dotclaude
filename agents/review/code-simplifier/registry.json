@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "code-simplifier",
+      "type": "registry:item",
+      "title": "Code Simplifier",
+      "description": "Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead branches, needless abstraction, over-general parameters, and comments that restate code, while keeping behaviour and tests identical. Edits the working tree and reports each simplification with its reason. Use when a diff has grown during implementation, when a reviewer says it is more complex than it needs to be, or as the last step of executing a plan.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "review"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-simplifier",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/code-simplifier.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "review-pr",
+      "type": "registry:item",
+      "title": "Review Pr",
+      "description": "Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter, test-gap-analyzer, type-design-reviewer), then merge their findings into one severity-ranked review with file:line anchors and no duplicates, optionally posted to the PR with gh. Use when a PR is ready for review, before requesting human review, or when a branch needs a thorough second opinion in one pass.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "review"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/review/review-pr",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/review-pr.md"
+        }
+      ]
+    }
+  ]
+}

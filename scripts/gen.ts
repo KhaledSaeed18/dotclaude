@@ -226,6 +226,15 @@ const PLUGINS: readonly PluginDef[] = [
     commands: { category: "engineering" },
   },
   {
+    name: "pr-toolkit",
+    description:
+      "Pull-request review as a set of specialists: a read-only code explorer, a behaviour-preserving simplifier, hunters for silent failures and test gaps, a type-design reviewer, and a /review-pr command that runs them in parallel and merges one ranked review.",
+    category: "development",
+    keywords: ["review", "pull-request", "tests", "types", "simplify"],
+    agents: { category: "review" },
+    commands: { category: "review" },
+  },
+  {
     name: "security",
     description:
       "Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.",

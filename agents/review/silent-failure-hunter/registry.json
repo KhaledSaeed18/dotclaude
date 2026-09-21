@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "silent-failure-hunter",
+      "type": "registry:item",
+      "title": "Silent Failure Hunter",
+      "description": "Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and promise results, error paths that log and continue, fallbacks that hide the real failure, and success responses sent on error. Read-only; reports each with file:line, the scenario that triggers it, and the fix. Use during code review, before shipping error-handling code, or when a bug report says something failed with no error.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "review"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/silent-failure-hunter",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/silent-failure-hunter.md"
+        }
+      ]
+    }
+  ]
+}
