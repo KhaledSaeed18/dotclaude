@@ -261,16 +261,23 @@ const ALLOWED_LICENSES =
   /\b(MIT|Apache[- ]2\.0|CC0|CC[- ]BY(?:[- ]4\.0)?|BSD[- ]?[23]?[- ]?Clause|ISC|Unlicense)\b/i;
 
 function checkAttribution(body: string, label: string, errors: string[]): void {
-  const match = body.match(/^## Attribution\s*\n([\s\S]*?)(?=^## |\s*$)/m);
-  if (!match) return;
-  const section = match[1] ?? "";
-  if (!/https?:\/\/\S+/.test(section)) {
-    errors.push(`${label}: Attribution section has no source URL`);
+  const adapted = body.match(/^## Attribution\s*\n([\s\S]*?)(?=^## |\s*$)/m);
+  if (adapted) {
+    const section = adapted[1] ?? "";
+    if (!/https?:\/\/\S+/.test(section)) {
+      errors.push(`${label}: Attribution section has no source URL`);
+    }
+    if (!ALLOWED_LICENSES.test(section)) {
+      errors.push(
+        `${label}: Attribution section names no permissive licence (MIT, Apache-2.0, CC0, CC-BY, BSD, ISC)`,
+      );
+    }
   }
-  if (!ALLOWED_LICENSES.test(section)) {
-    errors.push(
-      `${label}: Attribution section names no permissive licence (MIT, Apache-2.0, CC0, CC-BY, BSD, ISC)`,
-    );
+  // "Inspired by" credits a shape or idea from a source nothing was copied
+  // from (typically one that is not open-licensed); it needs a link only.
+  const inspired = body.match(/^## Inspired by\s*\n([\s\S]*?)(?=^## |\s*$)/m);
+  if (inspired && !/https?:\/\/\S+/.test(inspired[1] ?? "")) {
+    errors.push(`${label}: Inspired by section has no source URL`);
   }
 }
 

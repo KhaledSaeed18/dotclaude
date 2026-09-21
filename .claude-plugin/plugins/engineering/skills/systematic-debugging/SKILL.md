@@ -58,3 +58,7 @@ These thoughts all mean *return to Step 1*:
 ## If there really is no single root cause
 
 Occasionally thorough investigation shows the issue is genuinely environmental, timing-dependent, or external. Then: document what you ruled out, implement appropriate handling (retry, timeout, a clear error, monitoring), and move on. But reach this conclusion only after the investigation above, most "no root cause" calls are just incomplete ones.
+
+## Attribution
+
+Adapted from the `systematic-debugging` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

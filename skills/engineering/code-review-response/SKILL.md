@@ -34,3 +34,7 @@ Sometimes a suggestion is incorrect for this codebase: it misreads the code, con
 - Verify each change before the next: the `verify-completion` skill is the standard: run the check, read the output, then move on.
 - For anything non-trivial, a failing-test-first approach (the `test-driven-development` skill) proves the change does what the reviewer asked.
 - Track which items you've addressed and which you've deferred, so the reviewer can see what happened to each comment.
+
+## Attribution
+
+Adapted from the `receiving-code-review` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

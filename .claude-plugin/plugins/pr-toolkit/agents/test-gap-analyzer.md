@@ -51,3 +51,7 @@ Runner: `pnpm vitest run src/services` (48 passing). Existing style: describe/it
 ```
 
 Cap at the ten highest-risk gaps; say how many more exist.
+
+## Inspired by
+
+The role and scope follow the pr-review-toolkit plugin's pr-test-analyzer agent in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.

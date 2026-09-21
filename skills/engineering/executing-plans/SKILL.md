@@ -44,3 +44,7 @@ Once every task is done and its verifications pass, don't just stop, wrap up the
 - When the plan references another skill, use it.
 - Stop when blocked instead of guessing.
 - Don't claim a task is done off a code change alone: the `verify-completion` skill is the standard here: run the check, read the output, then claim the result.
+
+## Attribution
+
+Adapted from the `executing-plans` entry of [superpowers](https://github.com/obra/superpowers) by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry's other items are this repository's.

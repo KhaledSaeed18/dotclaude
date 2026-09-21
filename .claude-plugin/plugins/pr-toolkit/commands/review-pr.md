@@ -81,3 +81,7 @@ Never approve or request changes through the GitHub review API; the human review
 ### Also noted
 - ...
 ```
+
+## Inspired by
+
+The role and scope follow the pr-review-toolkit plugin's /review-pr command in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.

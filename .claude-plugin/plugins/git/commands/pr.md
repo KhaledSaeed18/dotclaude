@@ -35,3 +35,7 @@ Options: `$ARGUMENTS`
 5. **Write the PR** with the `pr-description` skill from `git diff <base>...HEAD` and the commit messages: a title under 70 characters in the repo's convention, and a body with what changed, why, risk, and how it was tested. If a PR template exists (`.github/pull_request_template.md`), fill its sections instead. If the arguments include an issue number, add `Closes #<n>`.
 6. **Show** the title, body, base, and draft status, then ask for a yes before `gh pr create --base <base> --title ... --body-file ...` (`--draft` when asked). Base defaults to the repo's default branch.
 7. **Report** the PR URL. Do not enable auto-merge, request reviewers, or add labels unless asked.
+
+## Inspired by
+
+The role and scope follow the commit-commands plugin's /commit-push-pr command in Anthropic's [claude-code](https://github.com/anthropics/claude-code/tree/main/plugins/commit-commands) repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.
