@@ -1,6 +1,6 @@
 ---
 name: parallel-agents
-description: Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks — separate failing test files, unrelated bugs, distinct subsystems — that share no state and don't depend on each other's order.
+description: Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks (separate failing test files, unrelated bugs, distinct subsystems) that share no state and don't depend on each other's order.
 ---
 
 When you have several independent problems, investigating them one after another wastes time that could be spent in parallel. Hand each one to its own subagent with precisely the context it needs, let them work at once, then pull the results together. Each subagent should get exactly what you construct for it — never your whole session history — so it stays focused, and so your own context stays free for coordination.

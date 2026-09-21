@@ -5,7 +5,7 @@
       "name": "brainstorming",
       "type": "registry:item",
       "title": "Brainstorming",
-      "description": "Turn a rough idea into a fully formed, written design through collaborative dialogue — exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.",
+      "description": "Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.",
       "author": "Khaled Saeed",
       "categories": [
         "productivity"

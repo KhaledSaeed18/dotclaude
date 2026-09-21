@@ -15,6 +15,8 @@
  *   - .claude-plugin/marketplace.json          (the Claude Code plugin marketplace)
  *   - .claude-plugin/commands/<name>.md        (command copies named for /name)
  *   - site/data.json                          (the catalog site's single data file)
+ *   - site/index.html                         (pre-rendered rows + JSON-LD, between markers)
+ *   - site/llms.txt                           (the catalog as markdown, for AI crawlers)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
@@ -58,6 +60,18 @@ const PLUGINS_END = "<!-- plugins:end -->";
  */
 const SITE_DATA_PATH = join(ROOT, "site", "data.json");
 const SITE_URL = "https://dotclaude.khaledsaeed.tech";
+/**
+ * The site's HTML is hand-written, but two regions inside it are generated so
+ * crawlers that do not run JavaScript (most AI crawlers) still see the whole
+ * catalog: the item rows (which app.js re-renders once data.json loads) and a
+ * JSON-LD ItemList in the head. `llms.txt` is the same catalog as markdown.
+ */
+const SITE_INDEX_PATH = join(ROOT, "site", "index.html");
+const SITE_LLMS_PATH = join(ROOT, "site", "llms.txt");
+const SITE_ROWS_START = "<!-- rows:start -->";
+const SITE_ROWS_END = "<!-- rows:end -->";
+const SITE_JSONLD_START = "<!-- jsonld:start -->";
+const SITE_JSONLD_END = "<!-- jsonld:end -->";
 
 /**
  * Content-type seam. Each entry is one installable family. `layout` decides how
@@ -755,17 +769,32 @@ function buildPluginArtifacts(): PluginBuild {
   return { files, rows, site };
 }
 
+interface SiteModel {
+  registry: { name: string; owner: string; homepage: string; site: string; author: string };
+  types: Array<{
+    type: string;
+    label: string;
+    noun: string;
+    layout: string;
+    targetBase: string;
+    color: string;
+    count: number;
+  }>;
+  plugins: SitePlugin[];
+  items: SiteItem[];
+}
+
 /**
- * `site/data.json`: everything the catalog site renders, in one fetch. Types
- * are listed in declaration order so the site's filters and count pills match
- * the README badges. Plugin membership is inverted onto each item so the
- * detail view can show which bundles carry it without a second lookup.
+ * Everything the catalog site renders, in one object. Types are listed in
+ * declaration order so the site's filters and count pills match the README
+ * badges. Plugin membership is inverted onto each item so the detail view can
+ * show which bundles carry it without a second lookup.
  */
-function buildSiteData(
+function buildSiteModel(
   siteItems: SiteItem[],
   counts: Map<string, number>,
   plugins: SitePlugin[],
-): string {
+): SiteModel {
   const memberships = new Map<string, string[]>();
   for (const plugin of plugins) {
     for (const key of plugin.items) {
@@ -774,9 +803,7 @@ function buildSiteData(
       memberships.set(key, list);
     }
   }
-  const items = siteItems.map((item) => ({ ...item, plugins: memberships.get(item.key) ?? [] }));
-
-  return toJson({
+  return {
     registry: {
       name: REGISTRY_NAME,
       owner: GITHUB_OWNER_REPO,
@@ -794,8 +821,151 @@ function buildSiteData(
       count: counts.get(ct.label) ?? 0,
     })),
     plugins,
-    items,
-  });
+    items: siteItems.map((item) => ({ ...item, plugins: memberships.get(item.key) ?? [] })),
+  };
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/**
+ * The item rows as static HTML, in the exact markup app.js produces, so the
+ * page is complete before (or without) JavaScript and the takeover is
+ * invisible.
+ */
+function buildSiteRows(model: SiteModel): string {
+  const rows = model.items.map((item) =>
+    [
+      `<li class="row"><a class="row-link" href="#/${item.key}" data-type="${item.type}">`,
+      `<span class="row-rail" aria-hidden="true"></span><span class="row-main">`,
+      `<span class="row-head"><code class="row-name">${escapeHtml(item.name)}</code>`,
+      `<span class="row-type">${item.type}</span>`,
+      `<span class="row-category">${escapeHtml(item.category)}</span></span>`,
+      `<span class="row-desc">${escapeHtml(item.description)}</span></span></a></li>`,
+    ].join(""),
+  );
+  return [SITE_ROWS_START, ...rows, SITE_ROWS_END].join("\n");
+}
+
+/** Schema.org JSON-LD: the site, its repository, and every item as a ListItem. */
+function buildSiteJsonLd(model: SiteModel): string {
+  const { registry } = model;
+  const graph = [
+    {
+      "@type": "WebSite",
+      "@id": `${registry.site}/#website`,
+      url: `${registry.site}/`,
+      name: registry.name,
+      description:
+        "Claude Code skills, agents, commands, and hooks, installable as plugins or single items.",
+      author: {
+        "@type": "Person",
+        name: registry.author,
+        url: `https://github.com/${registry.owner.split("/")[0]}`,
+      },
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": `${registry.homepage}/#code`,
+      name: registry.name,
+      url: `${registry.site}/`,
+      codeRepository: registry.homepage,
+      license: "https://opensource.org/license/mit",
+      author: { "@type": "Person", name: registry.author },
+      keywords: [
+        "Claude Code",
+        "skills",
+        "agents",
+        "commands",
+        "hooks",
+        "plugins",
+        "shadcn registry",
+      ],
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${registry.site}/#catalog`,
+      name: "dotclaude catalog",
+      numberOfItems: model.items.length,
+      itemListElement: model.items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${registry.site}/#/${item.key}`,
+        name: item.name,
+        description: item.description,
+      })),
+    },
+  ];
+  // `<` is escaped so no description can ever close the script element.
+  const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(
+    /</g,
+    "\\u003c",
+  );
+  return [
+    SITE_JSONLD_START,
+    `<script type="application/ld+json">${json}</script>`,
+    SITE_JSONLD_END,
+  ].join("\n");
+}
+
+/** llms.txt: the catalog as markdown, for AI crawlers and assistants. */
+function buildLlmsTxt(model: SiteModel): string {
+  const { registry } = model;
+  const lines = [
+    `# ${registry.name}`,
+    "",
+    "> Claude Code skills, agents, commands, and hooks by " +
+      `${registry.author}, installable as Claude Code plugins or as single items with the shadcn CLI.`,
+    "",
+    `Site: ${registry.site}/`,
+    `Source: ${registry.homepage}`,
+    "",
+    "Install a plugin (a bundle of related items; hook plugins activate on install):",
+    "",
+    "```",
+    `/plugin marketplace add ${registry.owner}`,
+    `/plugin install <plugin>@${registry.name}`,
+    "```",
+    "",
+    "Install a single item into the current project with the shadcn CLI:",
+    "",
+    "```",
+    `npx shadcn@latest add ${registry.owner}/<item>`,
+    "```",
+    "",
+    "A skill is a procedure Claude loads on its own when the request matches its description. " +
+      "An agent is a specialist subagent Claude delegates a side task to. " +
+      "A command is a /name shortcut the user runs. " +
+      "A hook is a script that runs on a Claude Code event.",
+    "",
+  ];
+  for (const type of model.types) {
+    const items = model.items.filter((item) => item.type === type.type);
+    if (items.length === 0) continue;
+    lines.push(`## ${type.label}`, "");
+    for (const item of items) {
+      const plugins = item.plugins.length > 0 ? ` Plugins: ${item.plugins.join(", ")}.` : "";
+      lines.push(
+        `- [${item.name}](${item.docs}) (${item.category}): ${item.description}${plugins}`,
+      );
+    }
+    lines.push("");
+  }
+  if (model.plugins.length > 0) {
+    lines.push("## Plugins", "");
+    for (const plugin of model.plugins) {
+      lines.push(
+        `- ${plugin.name}: ${plugin.description} Contains: ${plugin.items.map((k) => k.split("/")[1]).join(", ")}.`,
+      );
+    }
+    lines.push("");
+  }
+  return lines.join("\n");
 }
 
 /** The README plugins table (between the plugins markers). */
@@ -815,13 +985,19 @@ function buildPluginsTable(rows: PluginRow[]): string {
 }
 
 /** Replace the region between `start` and `end` markers in the README. */
-function replaceRegion(readme: string, start: string, end: string, next: string): string {
-  const from = readme.indexOf(start);
-  const to = readme.indexOf(end);
+function replaceRegion(
+  source: string,
+  start: string,
+  end: string,
+  next: string,
+  file = "README.md",
+): string {
+  const from = source.indexOf(start);
+  const to = source.indexOf(end);
   if (from === -1 || to === -1 || to < from) {
-    throw new Error(`README.md is missing the "${start}" / "${end}" markers.`);
+    throw new Error(`${file} is missing the "${start}" / "${end}" markers.`);
   }
-  return readme.slice(0, from) + next + readme.slice(to + end.length);
+  return source.slice(0, from) + next + source.slice(to + end.length);
 }
 
 function generate(): GeneratedFile[] {
@@ -884,7 +1060,29 @@ function generate(): GeneratedFile[] {
 
   const plugins = buildPluginArtifacts();
   outputs.push(...plugins.files);
-  outputs.push({ path: SITE_DATA_PATH, content: buildSiteData(siteItems, counts, plugins.site) });
+  const site = buildSiteModel(siteItems, counts, plugins.site);
+  outputs.push({ path: SITE_DATA_PATH, content: toJson(site) });
+  outputs.push({ path: SITE_LLMS_PATH, content: buildLlmsTxt(site) });
+  // The site's HTML is hand-written; only its two marked regions are derived.
+  // A fixture repo without a site keeps working.
+  if (existsSync(SITE_INDEX_PATH)) {
+    let html = readFileSync(SITE_INDEX_PATH, "utf8");
+    html = replaceRegion(
+      html,
+      SITE_ROWS_START,
+      SITE_ROWS_END,
+      buildSiteRows(site),
+      "site/index.html",
+    );
+    html = replaceRegion(
+      html,
+      SITE_JSONLD_START,
+      SITE_JSONLD_END,
+      buildSiteJsonLd(site),
+      "site/index.html",
+    );
+    outputs.push({ path: SITE_INDEX_PATH, content: html });
+  }
 
   let readme = readFileSync(README_PATH, "utf8");
   readme = replaceRegion(readme, CATALOG_START, CATALOG_END, buildCatalog(groups));

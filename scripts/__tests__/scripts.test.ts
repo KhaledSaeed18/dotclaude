@@ -319,6 +319,49 @@ describe("gen", () => {
     ]);
   });
 
+  it("pre-renders site/index.html regions and writes llms.txt", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest({
+        name: "s-one",
+        description: "Skill <one> & more.",
+      }),
+      "site/index.html": [
+        "<head><!-- jsonld:start --><!-- jsonld:end --></head>",
+        "<ol><!-- rows:start --><!-- rows:end --></ol>",
+        "",
+      ].join("\n"),
+    });
+
+    expect(runGen(dir).status).toBe(0);
+
+    const html = read(dir, "site/index.html");
+    // Rows are escaped and use the same markup app.js renders.
+    expect(html).toContain('<a class="row-link" href="#/skill/s-one" data-type="skill">');
+    expect(html).toContain('<span class="row-desc">Skill &lt;one&gt; &amp; more.</span>');
+    // JSON-LD lists every item and never contains a raw "<".
+    const jsonld = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1] ?? "";
+    expect(jsonld).not.toContain("<");
+    const graph = JSON.parse(jsonld)["@graph"];
+    const list = graph.find((n: { "@type": string }) => n["@type"] === "ItemList");
+    expect(list.numberOfItems).toBe(1);
+    expect(list.itemListElement[0].url).toBe("https://dotclaude.khaledsaeed.tech/#/skill/s-one");
+
+    const llms = read(dir, "site/llms.txt");
+    expect(llms).toContain("# dotclaude");
+    expect(llms).toContain("## Skills");
+    expect(llms).toContain(
+      "- [s-one](https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/util/s-one) (util): Skill <one> & more.",
+    );
+
+    // A fixture without a site still generates (data.json and llms.txt only).
+    const bare = makeFixture({
+      "skills/util/s-two/SKILL.md": manifest({ name: "s-two", description: "Two." }),
+    });
+    expect(runGen(bare).status).toBe(0);
+    expect(existsSync(join(bare, "site/index.html"))).toBe(false);
+    expect(existsSync(join(bare, "site/llms.txt"))).toBe(true);
+  });
+
   it("--check fails when a generated file is stale", () => {
     const dir = makeFixture({
       "skills/util/s-one/SKILL.md": manifest({ name: "s-one", description: "Skill one." }),

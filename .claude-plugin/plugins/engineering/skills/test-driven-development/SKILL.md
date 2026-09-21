@@ -1,6 +1,6 @@
 ---
 name: test-driven-development
-description: Implement a feature or bugfix test-first using the red-green-refactor cycle — write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.
+description: Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.
 ---
 
 Write the test before the code, watch it fail, then write only enough code to make it pass. The point of seeing it fail first is simple: a test you never watched fail might be testing nothing. Tests written after the fact pass immediately, and a test that has only ever passed proves nothing about whether it would catch the bug.

@@ -8,7 +8,7 @@
  *          "plugins"       the plugin bundles
  *          "install"       install instructions and type explainer
  *          "<type>/<name>" an item, opened over the list
- *   query  q, type, category, plugin — the list filters
+ *   query  q, type, category, plugin: the list filters
  */
 
 const DATA_URL = "data.json";

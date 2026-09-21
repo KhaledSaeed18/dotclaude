@@ -286,7 +286,7 @@
       "type": "skill",
       "category": "engineering",
       "title": "Code Review Response",
-      "description": "Process code-review feedback with technical rigour — understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong.",
+      "description": "Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong.",
       "path": "skills/engineering/code-review-response",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/code-review-response",
       "targets": [
@@ -445,7 +445,7 @@
       "type": "skill",
       "category": "engineering",
       "title": "Parallel Agents",
-      "description": "Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks — separate failing test files, unrelated bugs, distinct subsystems — that share no state and don't depend on each other's order.",
+      "description": "Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks (separate failing test files, unrelated bugs, distinct subsystems) that share no state and don't depend on each other's order.",
       "path": "skills/engineering/parallel-agents",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/parallel-agents",
       "targets": [
@@ -509,7 +509,7 @@
       "type": "skill",
       "category": "engineering",
       "title": "Test Driven Development",
-      "description": "Implement a feature or bugfix test-first using the red-green-refactor cycle — write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.",
+      "description": "Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.",
       "path": "skills/engineering/test-driven-development",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/test-driven-development",
       "targets": [
@@ -525,7 +525,7 @@
       "type": "skill",
       "category": "engineering",
       "title": "Verify Completion",
-      "description": "Gate every \"it works / it's fixed / tests pass / done\" claim behind fresh evidence — run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded.",
+      "description": "Gate every \"it works / it's fixed / tests pass / done\" claim behind fresh evidence. Run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded.",
       "path": "skills/engineering/verify-completion",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/verify-completion",
       "targets": [
@@ -557,7 +557,7 @@
       "type": "skill",
       "category": "productivity",
       "title": "Brainstorming",
-      "description": "Turn a rough idea into a fully formed, written design through collaborative dialogue — exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.",
+      "description": "Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.",
       "path": "skills/productivity/brainstorming",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/brainstorming",
       "targets": [
@@ -767,7 +767,7 @@
       "type": "skill",
       "category": "version-control",
       "title": "Finish Branch",
-      "description": "Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options and executing the chosen one safely — including correct worktree and branch cleanup. Use when implementation is done, tests should be green, and you need to integrate or put away the work.",
+      "description": "Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options and executing the chosen one safely, including correct worktree and branch cleanup. Use when implementation is done, tests should be green, and you need to integrate or put away the work.",
       "path": "skills/version-control/finish-branch",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/finish-branch",
       "targets": [
@@ -815,7 +815,7 @@
       "type": "skill",
       "category": "version-control",
       "title": "Git Worktrees",
-      "description": "Set up an isolated workspace for feature work so the current branch and working tree stay untouched — detecting existing isolation first, preferring the platform's native worktree tooling, and falling back to git worktrees only when nothing native exists. Use before starting feature work that needs isolation, or before executing an implementation plan.",
+      "description": "Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the platform's native worktree tooling, and falling back to git worktrees only when nothing native exists. Use before starting feature work that needs isolation, or before executing an implementation plan.",
       "path": "skills/version-control/git-worktrees",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-worktrees",
       "targets": [

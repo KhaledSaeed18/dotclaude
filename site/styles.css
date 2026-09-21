@@ -186,10 +186,19 @@ button {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-family: var(--mono);
   font-weight: 600;
   text-decoration: none;
   letter-spacing: -0.01em;
+}
+
+.brand-mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
 }
 
 .masthead-nav {

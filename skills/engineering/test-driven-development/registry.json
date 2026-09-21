@@ -5,7 +5,7 @@
       "name": "test-driven-development",
       "type": "registry:item",
       "title": "Test Driven Development",
-      "description": "Implement a feature or bugfix test-first using the red-green-refactor cycle — write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.",
+      "description": "Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

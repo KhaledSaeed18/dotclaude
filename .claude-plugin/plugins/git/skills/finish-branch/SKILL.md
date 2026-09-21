@@ -1,6 +1,6 @@
 ---
 name: finish-branch
-description: Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options and executing the chosen one safely — including correct worktree and branch cleanup. Use when implementation is done, tests should be green, and you need to integrate or put away the work.
+description: Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options and executing the chosen one safely, including correct worktree and branch cleanup. Use when implementation is done, tests should be green, and you need to integrate or put away the work.
 ---
 
 Bring a finished branch to a clean conclusion: confirm the work actually passes, figure out what kind of workspace you're in, offer the user a small set of concrete options, and carry out their choice without losing anything. The shape is always the same — verify, detect, present, execute, clean up.
