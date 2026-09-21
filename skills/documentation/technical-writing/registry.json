@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "technical-writing",
+      "type": "registry:item",
+      "title": "Technical Writing",
+      "description": "Write and edit developer documentation, guides, design notes, and engineering blog posts with a working writer's discipline: audience and purpose first, one idea per paragraph, examples before abstractions, precise verbs, consistent terms, and structure the reader can scan. Includes formats for how-to guides, reference pages, explanations, and tutorials, and an editing checklist. Use when writing docs, a design note, a release announcement, or a post, or when a draft is accurate but nobody can follow it.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "documentation"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/technical-writing",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/technical-writing/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

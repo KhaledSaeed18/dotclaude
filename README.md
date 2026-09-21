@@ -13,11 +13,11 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-54-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="54 skills" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-59-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="59 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-15-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="15 agents" /></a>
-  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-12-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="12 commands" /></a>
+  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-14-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="14 commands" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-15-db2777.svg?split=true&logo=ri:RiPlugFill" alt="15 hooks" /></a>
-  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-15-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="15 plugins" /></a>
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-16-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="16 plugins" /></a>
 <!-- badges:end -->
 </div>
 
@@ -79,7 +79,8 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 
 | Plugin | What you get | Install |
 | --- | --- | --- |
-| **engineering** | Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work. (15 skills, 6 agents, 1 command) | `/plugin install engineering@dotclaude` |
+| **engineering** | Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work. (16 skills, 6 agents, 2 commands) | `/plugin install engineering@dotclaude` |
+| **docs** | Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI. (4 skills, 1 command) | `/plugin install docs@dotclaude` |
 | **pr-toolkit** | Pull-request review as a set of specialists: a read-only code explorer, a behaviour-preserving simplifier, hunters for silent failures and test gaps, a type-design reviewer, and a /review-pr command that runs them in parallel and merges one ranked review. (5 agents, 1 command) | `/plugin install pr-toolkit@dotclaude` |
 | **security** | Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command. (3 skills, 1 agent, 1 command) | `/plugin install security@dotclaude` |
 | **security-hooks** | Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening. (3 hooks) | `/plugin install security-hooks@dotclaude` |
@@ -179,6 +180,15 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [supervisor-update](skills/academic/supervisor-update/) | Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken and their reasons, results with numbers, blockers with the specific help needed, and the next steps with dates, in under a page. Use before a supervisor meeting, when asked for a progress email, or at a milestone. | `npx shadcn@latest add KhaledSaeed18/dotclaude/supervisor-update` |
 | [thesis-proposal](skills/academic/thesis-proposal/) | Draft or revise a master's thesis proposal from a research question record, reading notes, and the department's template: problem statement, gap, research questions, method, evaluation, timeline, risks, and a chapter plan, in the student's own claims with citations only to sources they actually have. Use when a proposal is due, a supervisor asks for a written plan, or the research question is settled and needs a structured document around it. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-proposal` |
 
+#### Documentation
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [adr-writing](skills/documentation/adr-writing/) | Write Architecture Decision Records that a future engineer can act on: a numbered, immutable record with the context that forced the decision, the options weighed with real trade-offs, the decision in one sentence, and the consequences including what becomes harder. Covers when a decision deserves an ADR, how to supersede one, and how to keep an index. Use when a design choice has cross-cutting or long-lived effects, when reviewers keep asking why, or when onboarding depends on decisions nobody wrote down. | `npx shadcn@latest add KhaledSaeed18/dotclaude/adr-writing` |
+| [openapi-spec](skills/documentation/openapi-spec/) | Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas, examples, errors, auth, pagination), and usable by tooling (validation, client generation, mock servers). Covers design-first and code-first workflows, linting with Spectral, and keeping the spec in sync in CI. Use when documenting an API, when a client generator or contract test needs a spec, or when the existing spec no longer matches the routes. | `npx shadcn@latest add KhaledSaeed18/dotclaude/openapi-spec` |
+| [readme-writing](skills/documentation/readme-writing/) | Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the actual code, then usage, configuration, and contribution pointers in the order a new user needs them, with nothing the code contradicts. Reads the repository first and never documents behaviour it has not confirmed. Use when a project has no README, when the README has drifted from the code, or before publishing a package or repository. | `npx shadcn@latest add KhaledSaeed18/dotclaude/readme-writing` |
+| [technical-writing](skills/documentation/technical-writing/) | Write and edit developer documentation, guides, design notes, and engineering blog posts with a working writer's discipline: audience and purpose first, one idea per paragraph, examples before abstractions, precise verbs, consistent terms, and structure the reader can scan. Includes formats for how-to guides, reference pages, explanations, and tutorials, and an editing checklist. Use when writing docs, a design note, a release announcement, or a post, or when a draft is accurate but nobody can follow it. | `npx shadcn@latest add KhaledSaeed18/dotclaude/technical-writing` |
+
 #### Engineering
 
 | Skill | Description | Install |
@@ -197,6 +207,7 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [grill-with-docs](skills/engineering/grill-with-docs/) | Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise. Use when a plan or design needs to be checked against the project's documented domain model before implementation. | `npx shadcn@latest add KhaledSaeed18/dotclaude/grill-with-docs` |
 | [parallel-agents](skills/engineering/parallel-agents/) | Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks (separate failing test files, unrelated bugs, distinct subsystems) that share no state and don't depend on each other's order. | `npx shadcn@latest add KhaledSaeed18/dotclaude/parallel-agents` |
 | [performance-optimization](skills/engineering/performance-optimization/) | Fix a performance problem by profiling first, making one targeted change, and verifying both the speedup and that correctness held. Use when a feature is measurably slow, a page or API exceeds its budget, or a query takes too long. Do not use to pre-optimize code that has not been measured. | `npx shadcn@latest add KhaledSaeed18/dotclaude/performance-optimization` |
+| [refactoring-recipes](skills/engineering/refactoring-recipes/) | Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with polymorphism or lookup, introduce parameter object, replace flag argument, split phase, move function, encapsulate collection, strangler for large rewrites), each with when to apply it, the mechanical steps that keep the code working at every step, and the test to run between steps. Use when code is hard to change, before adding a feature to a tangled area, or when a reviewer asks for a structure change without saying how. | `npx shadcn@latest add KhaledSaeed18/dotclaude/refactoring-recipes` |
 | [solid-principles](skills/engineering/solid-principles/) | Apply the SOLID principles as design diagnostics, detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix rather than imposing ceremony. Use when designing a new module or class, reviewing object-oriented code, or untangling a class that keeps changing for unrelated reasons. | `npx shadcn@latest add KhaledSaeed18/dotclaude/solid-principles` |
 | [systematic-debugging](skills/engineering/systematic-debugging/) | Debug a bug, test failure, crash, or unexpected behaviour by finding the root cause before changing anything, instead of guessing at fixes. Works in any language or stack. Use when something is broken, a test is failing, behaviour is wrong, or a previous fix didn't hold. | `npx shadcn@latest add KhaledSaeed18/dotclaude/systematic-debugging` |
 | [test-driven-development](skills/engineering/test-driven-development/) | Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works. | `npx shadcn@latest add KhaledSaeed18/dotclaude/test-driven-development` |
@@ -307,11 +318,18 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [thesis-chapter](commands/academic/thesis-chapter/) | Draft or revise one thesis chapter from the outline, the research question record, the reading notes, and the results, applying the academic-writing skill section by section and finishing with citation verification and a humanize pass, so a chapter arrives structured, traceable, and free of invented references. Use when a chapter is due, when starting a chapter from an approved outline, or when a draft chapter needs a full revision pass. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-chapter` |
 | [thesis-progress](commands/academic/thesis-progress/) | Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health (cited keys, undefined keys, unverifiable entries), notes read versus reading list, open items in the research log, and days to the next deadline. Use at the start of a working session, before a supervisor meeting, or whenever the answer to how far along am I is a guess. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-progress` |
 
+#### Documentation
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [adr](commands/documentation/adr/) | Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the options considered with their trade-offs, the decision, and its consequences, in the adr-writing skill's format and the repo's existing ADR style if one exists. Use when a design choice has just been made in conversation, when a reviewer asks why something was done this way, or when a decision needs to outlive the people who made it. | `npx shadcn@latest add KhaledSaeed18/dotclaude/adr` |
+
 #### Engineering
 
 | Command | Description | Install |
 | --- | --- | --- |
 | [explain-code](commands/engineering/explain-code/) | Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol name as the argument. Use when onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before. | `npx shadcn@latest add KhaledSaeed18/dotclaude/explain-code` |
+| [feature](commands/engineering/feature/) | Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify requirements, write a task-by-task plan with the writing-plans skill, execute it with test-driven development, simplify with the code-simplifier agent, verify completion, and hand off ready for /pr. Each phase produces an artifact and stops for agreement at the plan. Use when starting any feature or non-trivial change, or when an implementation keeps drifting because it started without a plan. | `npx shadcn@latest add KhaledSaeed18/dotclaude/feature` |
 
 #### Productivity
 

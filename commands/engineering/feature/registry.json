@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "feature",
+      "type": "registry:item",
+      "title": "Feature",
+      "description": "Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify requirements, write a task-by-task plan with the writing-plans skill, execute it with test-driven development, simplify with the code-simplifier agent, verify completion, and hand off ready for /pr. Each phase produces an artifact and stops for agreement at the plan. Use when starting any feature or non-trivial change, or when an implementation keeps drifting because it started without a plan.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/feature",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/feature.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "adr",
+      "type": "registry:item",
+      "title": "Adr",
+      "description": "Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the options considered with their trade-offs, the decision, and its consequences, in the adr-writing skill's format and the repo's existing ADR style if one exists. Use when a design choice has just been made in conversation, when a reviewer asks why something was done this way, or when a decision needs to outlive the people who made it.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "documentation"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/documentation/adr",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/adr.md"
+        }
+      ]
+    }
+  ]
+}

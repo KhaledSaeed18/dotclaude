@@ -9,7 +9,7 @@
     {
       "name": "engineering",
       "source": "./.claude-plugin/plugins/engineering",
-      "description": "Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work.",
+      "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work.",
       "author": {
         "name": "Khaled Saeed"
       },
@@ -23,6 +23,25 @@
         "debugging",
         "code-review",
         "planning"
+      ]
+    },
+    {
+      "name": "docs",
+      "source": "./.claude-plugin/plugins/docs",
+      "description": "Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI.",
+      "author": {
+        "name": "Khaled Saeed"
+      },
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=docs",
+      "repository": "https://github.com/KhaledSaeed18/dotclaude",
+      "license": "MIT",
+      "category": "documentation",
+      "keywords": [
+        "documentation",
+        "adr",
+        "readme",
+        "openapi",
+        "technical-writing"
       ]
     },
     {
