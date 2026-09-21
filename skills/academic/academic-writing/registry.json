@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "academic-writing",
+      "type": "registry:item",
+      "title": "Academic Writing",
+      "description": "Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the conventions of computer-science writing: claim-first paragraphs, tense and voice by section, hedging matched to evidence, signposting, defined terms, and figures and tables that carry their own argument. Works from the student's outline and notes and never invents a result or a citation. Use when drafting a chapter, when a supervisor says a section is unclear or unstructured, or when turning results into a discussion.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/academic-writing",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/academic-writing/SKILL.md"
+        }
+      ]
+    }
+  ]
+}
