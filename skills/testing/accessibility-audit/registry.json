@@ -5,7 +5,7 @@
       "name": "accessibility-audit",
       "type": "registry:item",
       "title": "Accessibility Audit",
-      "description": "Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus management, labels, contrast, ARIA misuse, and motion, verifying in a real browser with axe-core when one is available and by code review when not. Produces findings ranked by user impact with concrete fixes. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.",
+      "description": "Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core in a real browser when available and code review when not, with findings ranked by user impact. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.",
       "author": "Khaled Saeed",
       "categories": [
         "testing"

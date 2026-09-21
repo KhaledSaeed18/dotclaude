@@ -1,6 +1,6 @@
 ---
 name: security-auditor
-description: Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, authentication and authorization logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk. Reports findings and concrete remediation steps without modifying code. Use before a production release, after adding auth or payment flows, when onboarding a new dependency, or when a security review is required before merge.
+description: Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, auth logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk, reporting findings and remediation steps without modifying code. Use before a production release, after adding auth or payment flows, when onboarding a dependency, or when a review is required before merge.
 tools: Read, Grep, Glob, Bash
 model: inherit
 color: red

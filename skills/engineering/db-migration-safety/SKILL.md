@@ -1,7 +1,7 @@
 ---
 name: db-migration-safety
 title: DB Migration Safety
-description: Review or write a database schema migration with production safety as the bar, checking lock behavior, table rewrites, backfill strategy, deploy-order compatibility (expand-contract), index creation, and rollback, for Postgres, MySQL, and common ORMs' migration tools. Use when adding or reviewing a migration, renaming or dropping columns, adding constraints or indexes to large tables, or planning a backfill.
+description: Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order, index creation, and rollback for Postgres, MySQL, and common ORMs. Use when adding or reviewing a migration, dropping or renaming columns, or adding constraints or indexes to large tables.
 ---
 
 A migration that is correct on an empty dev database can still take a production table offline. Judge every migration by what it does under load on the largest table it touches: what lock it takes, for how long, and what the old application version does while the new schema is live. When any answer is "depends", assume the worst table and the slowest query.

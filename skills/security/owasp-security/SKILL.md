@@ -1,7 +1,7 @@
 ---
 name: owasp-security
 title: "OWASP Security"
-description: Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, catching vulnerability classes before they ship. Works in any language or stack. Use when writing authentication or authorization logic, handling user input, adding API endpoints, choosing cryptographic operations, processing file uploads, or making any change that touches a trust boundary. Complements secret-scan (which finds credentials) and dependency-audit (which checks packages) with line-level vulnerability review.
+description: Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, in any language or stack, catching vulnerability classes before they ship. Use when writing auth logic, handling user input, adding API endpoints, choosing cryptography, processing uploads, or touching any trust boundary. Complements secret-scan and dependency-audit with line-level review.
 ---
 
 Check code against the vulnerability classes most likely to produce real incidents. This is a line-level review of code being written or changed, not a full codebase sweep. Read the changed code and its immediate context (callers, middleware, schema) before forming any finding. Report only what can be demonstrated from the code - not what might theoretically apply.

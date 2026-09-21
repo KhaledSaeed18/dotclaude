@@ -1,6 +1,6 @@
 ---
 name: docs-writer
-description: Use this agent when you need documentation written or updated from the code itself - READMEs, API references, guides, architecture overviews, or upgrade notes. Reads the actual implementation before writing a word, so the docs match what the code does rather than what anyone remembers it doing, and flags found doc-vs-code contradictions instead of papering over them. Use after a feature lands without docs, when a README has drifted from reality, when onboarding docs are missing, or when public API changes need reference updates.
+description: Use this agent when you need documentation written or updated from the code itself, such as READMEs, API references, guides, architecture overviews, or upgrade notes. Reads the implementation before writing so the docs match what the code does, and flags doc-vs-code contradictions instead of papering over them. Use after a feature lands without docs, when a README has drifted, or when a public API changes.
 tools: Read, Grep, Glob, Bash, Write, Edit
 model: inherit
 color: blue

@@ -5,7 +5,7 @@
       "name": "solid-principles",
       "type": "registry:item",
       "title": "Solid Principles",
-      "description": "Apply the SOLID principles as design diagnostics when writing, reviewing, or refactoring code with classes, modules, or service boundaries - detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix. Treats SOLID as a smell detector, not a ceremony to impose. Use when designing a new module or class, reviewing object-oriented code, untangling a class that keeps changing for unrelated reasons, or deciding where an abstraction belongs.",
+      "description": "Apply the SOLID principles as design diagnostics, detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix rather than imposing ceremony. Use when designing a new module or class, reviewing object-oriented code, or untangling a class that keeps changing for unrelated reasons.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

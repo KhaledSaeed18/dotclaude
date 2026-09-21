@@ -1,6 +1,6 @@
 ---
 name: issue-writer
-description: Turn a rough bug report, idea, or complaint into a well-formed, actionable issue - investigating the codebase first to add reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria - then filing it with gh or emitting paste-ready markdown. Use when the user says "file an issue for this", "write this up", describes a bug in passing that should be tracked, or wants a feature request made concrete.
+description: Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria, then filing it with gh or emitting paste-ready markdown. Use when asked to file or write up an issue, or when a bug mentioned in passing should be tracked.
 ---
 
 An issue is a work order for someone with none of this conversation's context. Write it so that a developer who picks it up cold can reproduce the problem, knows when they are done, and starts in the right file - and do the investigating now, while the context exists, rather than leaving it to them. A two-minute look at the code turns "the export is broken" into an issue with a suspected cause and a pointer.

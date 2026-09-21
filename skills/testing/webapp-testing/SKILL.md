@@ -1,6 +1,6 @@
 ---
 name: webapp-testing
-description: Verify a web application works correctly in a real browser using Playwright. Covers page navigation, form submission, user interactions, console error detection, screenshot capture, and responsive layout checking. Use when you need to confirm a UI feature actually works end-to-end, catch regressions after a change, verify a form flow completes, or check that the page is free of console errors. Requires Node.js; installs Playwright if not already present.
+description: Verify a web application works in a real browser with Playwright, covering navigation, form submission, interactions, console errors, screenshots, and responsive layout. Use when a UI feature needs end-to-end confirmation, a form flow must complete, or a change needs regression checking. Requires Node.js and installs Playwright if absent.
 ---
 
 Test the application in a real browser rather than claiming it works from a code read alone. A passing type-check or unit test does not mean the page renders, the form submits, or the network request succeeds. Run the app, drive it with Playwright, and report what actually happened.
