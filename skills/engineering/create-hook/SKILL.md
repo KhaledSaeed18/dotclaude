@@ -34,7 +34,7 @@ From the repo root:
 pnpm new --type hook --category <category> --name <name> --description "<what it does>"
 ```
 
-Current hook category: `observability`. Reuse it or add a new folder if justified. The scaffolder creates the folder and a `HOOK.md` stub and regenerates the registry; you then add the script.
+Current hook categories: `academic`, `automation`, `context`, `observability`, `security`, `workflow` (run `ls hooks` for the live list). Reuse one or add a new folder if justified. The scaffolder creates the folder and a `HOOK.md` stub and regenerates the registry; you then add the script.
 
 ## Step 3: Write the hook script
 

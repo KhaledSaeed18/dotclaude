@@ -31,7 +31,7 @@ From the repo root:
 pnpm new --type command --category <category> --name <name> --description "<what it does>"
 ```
 
-Current command category: `testing`. Reuse it or add a new folder if a different family is justified. The scaffolder enforces kebab-case and global name uniqueness and regenerates the registry.
+Current command categories: `academic`, `documentation`, `engineering`, `productivity`, `review`, `security`, `testing`, `version-control` (run `ls commands` for the live list). Reuse one or add a new folder if a different family is justified. The scaffolder enforces kebab-case and global name uniqueness and regenerates the registry.
 
 ## Step 3: Write the frontmatter
 

@@ -524,6 +524,77 @@ describe("validate", () => {
     expect(result.output).not.toContain("with-trigger: description");
   });
 
+  it("rejects an em dash in a description", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest({
+        name: "s-one",
+        description: "Does a thing \u2014 well. Use when needed.",
+      }),
+    });
+    runGen(dir);
+    const res = runValidate(dir);
+    expect(res.status).not.toBe(0);
+    expect(res.output).toContain("description contains an em dash");
+  });
+
+  it("requires a source URL and a permissive licence in an Attribution section", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest(
+        { name: "s-one", description: "Adapted. Use when needed." },
+        "Body.\n\n## Attribution\n\nBorrowed from somewhere.\n",
+      ),
+      "skills/util/s-two/SKILL.md": manifest(
+        { name: "s-two", description: "Adapted. Use when needed." },
+        "Body.\n\n## Attribution\n\nAdapted from [x](https://github.com/a/x) (MIT).\n",
+      ),
+    });
+    runGen(dir);
+    const res = runValidate(dir);
+    expect(res.status).not.toBe(0);
+    expect(res.output).toContain("skills/util/s-one: Attribution section has no source URL");
+    expect(res.output).toContain(
+      "skills/util/s-one: Attribution section names no permissive licence",
+    );
+    expect(res.output).not.toContain("skills/util/s-two");
+    // NOTICE.md lists the well-formed one.
+    expect(read(dir, "NOTICE.md")).toContain("## skills/util/s-two");
+    expect(read(dir, "NOTICE.md")).toContain("https://github.com/a/x");
+  });
+
+  it("flags a reference to an item that does not exist and accepts real ones", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest(
+        { name: "s-one", description: "Uses others. Use when needed." },
+        "Run the `s-two` skill, then the `ghost` agent, then the `/nope` command.\n```\nthe `fenced` skill\n```\nA `command` hook is fine.\n",
+      ),
+      "skills/util/s-two/SKILL.md": manifest({
+        name: "s-two",
+        description: "Two. Use when needed.",
+      }),
+    });
+    runGen(dir);
+    const res = runValidate(dir);
+    expect(res.status).not.toBe(0);
+    expect(res.output).toContain("references `ghost` as an item");
+    expect(res.output).toContain("references `nope` as an item");
+    expect(res.output).not.toContain("`s-two`");
+    expect(res.output).not.toContain("`fenced`");
+    expect(res.output).not.toContain("`command`");
+  });
+
+  it("writes plugin versions into the marketplace", () => {
+    const dir = makeFixture({
+      "skills/security/s-one/SKILL.md": manifest({
+        name: "s-one",
+        description: "S. Use when needed.",
+      }),
+    });
+    expect(runGen(dir).status).toBe(0);
+    const marketplace = JSON.parse(read(dir, ".claude-plugin/marketplace.json"));
+    const security = marketplace.plugins.find((p: { name: string }) => p.name === "security");
+    expect(security.version).toMatch(/^\d+\.\d+\.\d+$/);
+  });
+
   it("flags a frontmatter name that does not match its folder", () => {
     const dir = makeFixture({
       "skills/util/my-skill/SKILL.md": manifest({

@@ -238,9 +238,56 @@ function checkRegistryFiles(folder: string, label: string, errors: string[]): vo
   }
 }
 
+/**
+ * Licences under which content may be adapted into this registry. An item whose
+ * manifest carries an `## Attribution` section must name one of these and link
+ * to the source, so the provenance of borrowed material is never ambiguous.
+ */
+const ALLOWED_LICENSES =
+  /\b(MIT|Apache[- ]2\.0|CC0|CC[- ]BY(?:[- ]4\.0)?|BSD[- ]?[23]?[- ]?Clause|ISC|Unlicense)\b/i;
+
+function checkAttribution(body: string, label: string, errors: string[]): void {
+  const match = body.match(/^## Attribution\s*\n([\s\S]*?)(?=^## |\s*$)/m);
+  if (!match) return;
+  const section = match[1] ?? "";
+  if (!/https?:\/\/\S+/.test(section)) {
+    errors.push(`${label}: Attribution section has no source URL`);
+  }
+  if (!ALLOWED_LICENSES.test(section)) {
+    errors.push(
+      `${label}: Attribution section names no permissive licence (MIT, Apache-2.0, CC0, CC-BY, BSD, ISC)`,
+    );
+  }
+}
+
+/**
+ * Cross-references between items: "the \`paper-reader\` skill", "\`code-explorer\`
+ * agent", "the \`/review-pr\` command". A reference to an item that does not exist is a broken
+ * promise to the model reading the manifest, so it fails validation.
+ */
+const XREF_RE =
+  /`([a-z0-9-]+)`\s+(?:skill|agent|command|hook)s?\b|\b(?:skill|agent|command|hook)s?\s+`([a-z0-9-]+)`|`\/([a-z0-9-]+)`\s+command\b/g;
+
+/** Words the pattern matches that are not item references. */
+const XREF_IGNORE = new Set([
+  "command", // "a `command` hook" is the hook type, not an item
+  "worktree", // git-worktrees describes a hypothetical `/worktree` command
+]);
+
+function collectXrefs(body: string): string[] {
+  const out = new Set<string>();
+  const prose = body.replace(/```[\s\S]*?```/g, "");
+  for (const m of prose.matchAll(XREF_RE)) {
+    const name = m[1] ?? m[2] ?? m[3];
+    if (name && !XREF_IGNORE.has(name)) out.add(name);
+  }
+  return [...out];
+}
+
 function main(): void {
   const errors: string[] = [];
   const seen = new Map<string, string>();
+  const xrefs: Array<{ label: string; name: string }> = [];
 
   for (const ct of CONTENT_TYPES) {
     for (const item of items(ct, errors)) {
@@ -293,6 +340,13 @@ function main(): void {
       if (!NAME_RE.test(fm.name)) {
         errors.push(`${label}: name "${fm.name}" violates convention ${NAME_RE.source}`);
       }
+      // Descriptions reach the README, the site, and every install UI as one
+      // line; the registry's prose rule is no em dashes there.
+      if (fm.description.includes("\u2014")) {
+        errors.push(`${label}: description contains an em dash; use a comma, colon, or full stop`);
+      }
+      checkAttribution(parsedFile.content, label, errors);
+      for (const name of collectXrefs(parsedFile.content)) xrefs.push({ label, name });
 
       const prior = seen.get(fm.name);
       if (prior) errors.push(`duplicate name "${fm.name}" in ${prior} and ${label}`);
@@ -300,6 +354,12 @@ function main(): void {
 
       checkRegistryFiles(folder, label, errors);
       checkManifestLinks(folder, ct.manifest, label, errors);
+    }
+  }
+
+  for (const { label, name } of xrefs) {
+    if (!seen.has(name)) {
+      errors.push(`${label}: references \`${name}\` as an item, but no item by that name exists`);
     }
   }
 

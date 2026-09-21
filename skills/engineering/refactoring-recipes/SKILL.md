@@ -52,6 +52,6 @@ Run the narrowest test that covers the change, then the module's tests, then the
 
 For each refactoring: the smell, the recipe, the files, and the test run. If a refactoring exposed a bug, fix it in a separate commit with its own test and say so; a refactoring commit must be behaviour-neutral. Hand the result to `code-simplifier` for a final pass if the diff is large.
 
-## Attribution
+## Source
 
 Recipe names follow Martin Fowler's catalogue (Refactoring, 2nd edition); the steps and ordering here are this repository's summary.

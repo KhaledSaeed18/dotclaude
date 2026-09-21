@@ -17,6 +17,7 @@
  *   - site/data.json                          (the catalog site's single data file)
  *   - site/index.html                         (pre-rendered rows + JSON-LD, between markers)
  *   - site/llms.txt                           (the catalog as markdown, for AI crawlers)
+ *   - NOTICE.md                               (every item adapted from another project)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
@@ -67,6 +68,8 @@ const SITE_URL = "https://dotclaude.khaledsaeed.tech";
  * JSON-LD ItemList in the head. `llms.txt` is the same catalog as markdown.
  */
 const SITE_INDEX_PATH = join(ROOT, "site", "index.html");
+/** Third-party attributions, collected from each manifest's `## Attribution` section. */
+const NOTICE_PATH = join(ROOT, "NOTICE.md");
 const SITE_LLMS_PATH = join(ROOT, "site", "llms.txt");
 const SITE_ROWS_START = "<!-- rows:start -->";
 const SITE_ROWS_END = "<!-- rows:end -->";
@@ -177,6 +180,8 @@ interface Item {
  */
 interface PluginDef {
   name: string;
+  /** Semver shown in the marketplace; bump the minor when items are added, the patch when they change. */
+  version: string;
   description: string;
   /** Marketplace category label (free-form, for the /plugin UI). */
   category: string;
@@ -212,6 +217,7 @@ function hookCommand(
 const PLUGINS: readonly PluginDef[] = [
   {
     name: "engineering",
+    version: "1.0.0",
     description:
       "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring, error handling, observability, containers, CI pipelines, dependency upgrades, migration planning, incident postmortems, code review, completion verification, and performance work.",
     category: "development",
@@ -227,6 +233,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "docs",
+    version: "1.0.0",
     description:
       "Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI.",
     category: "documentation",
@@ -236,6 +243,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "pr-toolkit",
+    version: "1.0.0",
     description:
       "Pull-request review as a set of specialists: a read-only code explorer, a behaviour-preserving simplifier, hunters for silent failures and test gaps, a type-design reviewer, and a /review-pr command that runs them in parallel and merges one ranked review.",
     category: "development",
@@ -245,6 +253,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "security",
+    version: "1.0.0",
     description:
       "Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.",
     category: "security",
@@ -255,6 +264,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "security-hooks",
+    version: "1.0.0",
     description:
       "Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening.",
     category: "security",
@@ -276,6 +286,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "git",
+    version: "1.0.0",
     description:
       "Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup.",
     category: "version-control",
@@ -285,6 +296,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "productivity",
+    version: "1.0.0",
     description:
       "Session and personal productivity: collaborative brainstorming, plan stress-testing, session handoffs, meeting notes, a decision log, learning plans, a /prime command that loads project context, and a /weekly-review that assembles the week from evidence.",
     category: "productivity",
@@ -294,6 +306,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "testing",
+    version: "1.0.0",
     description:
       "Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions.",
     category: "testing",
@@ -303,6 +316,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "research",
+    version: "1.0.0",
     description:
       "Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers).",
     category: "research",
@@ -312,6 +326,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "thesis",
+    version: "1.0.0",
     description:
       "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, research design and design science, statistics planning and reporting, PRISMA systematic reviews, citation-graph expansion, reproducible experiments and benchmark reporting, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
     category: "research",
@@ -331,6 +346,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "writing",
+    version: "1.0.0",
     description:
       "Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide.",
     category: "writing",
@@ -339,6 +355,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "workflow-hooks",
+    version: "1.0.0",
     description:
       "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",
     category: "development",
@@ -366,6 +383,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "format-on-edit",
+    version: "1.0.0",
     description:
       "Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted.",
     category: "automation",
@@ -384,6 +402,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "notify",
+    version: "1.0.0",
     description:
       "Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background.",
     category: "automation",
@@ -397,6 +416,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "precompact-saver",
+    version: "1.0.0",
     description:
       "Context-preservation hook that snapshots the full session transcript before every compaction, keeping the newest ten snapshots per project.",
     category: "context",
@@ -410,6 +430,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "tool-call-logger",
+    version: "1.0.0",
     description:
       "Observability hook that appends one sanitized JSON line per tool call to a local log, with secret redaction and payload truncation.",
     category: "observability",
@@ -827,6 +848,7 @@ function buildPluginArtifacts(): PluginBuild {
     files.push(...treeFiles);
     entries.push({
       name: def.name,
+      version: def.version,
       source: `./${PLUGIN_TREES_DIR}/${def.name}`,
       description: def.description,
       author: { name: REGISTRY_AUTHOR },
@@ -1113,12 +1135,36 @@ function replaceRegion(
   return source.slice(0, from) + next + source.slice(to + end.length);
 }
 
+/**
+ * NOTICE.md: one entry per item whose manifest carries an `## Attribution`
+ * section, so third-party provenance is visible in one place. `validate`
+ * requires each such section to name a source URL and a permissive licence.
+ */
+function buildNotice(attributions: Array<{ path: string; text: string }>): string {
+  const lines = [
+    "# Notice",
+    "",
+    "This registry is MIT licensed (see LICENSE). The items below adapt material from other",
+    "projects under their own permissive licences; each item's manifest carries the same",
+    "attribution in its `## Attribution` section. This file is generated by `pnpm gen`.",
+    "",
+  ];
+  if (attributions.length === 0) {
+    lines.push("_No adapted items._", "");
+  }
+  for (const { path, text } of attributions) {
+    lines.push(`## ${path}`, "", text, "");
+  }
+  return lines.join("\n");
+}
+
 function generate(): GeneratedFile[] {
   const outputs: GeneratedFile[] = [];
   const includePaths: string[] = [];
   const groups: CatalogGroup[] = [];
   const counts = new Map<string, number>();
   const siteItems: SiteItem[] = [];
+  const attributions: Array<{ path: string; text: string }> = [];
 
   for (const ct of CONTENT_TYPES) {
     const rows: CatalogRow[] = [];
@@ -1130,6 +1176,12 @@ function generate(): GeneratedFile[] {
       }
       const fm = readFrontmatter(manifestPath);
       const registryItem = buildItem(ct, item, fm);
+      const attribution = readFileSync(manifestPath, "utf8").match(
+        /^## Attribution\s*\n([\s\S]*?)(?=^## |\s*$)/m,
+      );
+      if (attribution?.[1]) {
+        attributions.push({ path: toPosix(itemDir), text: attribution[1].trim() });
+      }
 
       outputs.push({
         path: join(ROOT, itemDir, "registry.json"),
@@ -1173,6 +1225,8 @@ function generate(): GeneratedFile[] {
 
   const plugins = buildPluginArtifacts();
   outputs.push(...plugins.files);
+  outputs.push({ path: NOTICE_PATH, content: buildNotice(attributions) });
+
   const site = buildSiteModel(siteItems, counts, plugins.site);
   outputs.push({ path: SITE_DATA_PATH, content: toJson(site) });
   outputs.push({ path: SITE_LLMS_PATH, content: buildLlmsTxt(site) });

@@ -36,7 +36,7 @@ From the repo root, let the scaffolder create the folder, stub, and regenerate i
 pnpm new --type agent --category <category> --name <name> --description "<what it does. Use when ...>"
 ```
 
-Current agent categories: `engineering`, `research`. Reuse one unless a genuinely new family is justified. The scaffolder enforces kebab-case and global name uniqueness, so a bad name fails fast.
+Current agent categories: `academic`, `engineering`, `research`, `review`, `security` (run `ls agents` for the live list). Reuse one unless a genuinely new family is justified. The scaffolder enforces kebab-case and global name uniqueness, so a bad name fails fast.
 
 ## Step 3: Write the frontmatter
 
