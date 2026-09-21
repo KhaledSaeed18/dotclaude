@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "presentation-outline",
+      "type": "registry:item",
+      "title": "Presentation Outline",
+      "description": "Structure a talk, thesis defence, or project presentation as a slide-by-slide outline with one message per slide, an opening that states the point, evidence slides that carry a claim in the title, a timed run of show, anticipated questions with answers, and speaker notes, sized to the slot. Produces the outline and notes, not the slide design. Use when preparing a defence, a conference or team talk, a demo, or a status presentation, or when a deck has content but no argument.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "writing"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/writing/presentation-outline",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/presentation-outline/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

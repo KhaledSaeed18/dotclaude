@@ -27,6 +27,7 @@
     "commands/engineering/feature/registry.json",
     "commands/productivity/prime/registry.json",
     "commands/productivity/todo-triage/registry.json",
+    "commands/productivity/weekly-review/registry.json",
     "commands/review/review-pr/registry.json",
     "commands/security/security-audit/registry.json",
     "commands/testing/write-tests/registry.json",
@@ -99,9 +100,12 @@
     "skills/engineering/verify-completion/registry.json",
     "skills/engineering/writing-plans/registry.json",
     "skills/productivity/brainstorming/registry.json",
+    "skills/productivity/decision-log/registry.json",
     "skills/productivity/grill-me/registry.json",
     "skills/productivity/handoff/registry.json",
     "skills/productivity/issue-writer/registry.json",
+    "skills/productivity/learning-plan/registry.json",
+    "skills/productivity/meeting-notes/registry.json",
     "skills/productivity/standup-summary/registry.json",
     "skills/research/business-name-check/registry.json",
     "skills/research/project-name-check/registry.json",
@@ -119,6 +123,8 @@
     "skills/version-control/merge-conflict/registry.json",
     "skills/version-control/pr-description/registry.json",
     "skills/version-control/release-tag/registry.json",
-    "skills/writing/humanize/registry.json"
+    "skills/writing/email-draft/registry.json",
+    "skills/writing/humanize/registry.json",
+    "skills/writing/presentation-outline/registry.json"
   ]
 }

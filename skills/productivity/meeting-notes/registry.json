@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "meeting-notes",
+      "type": "registry:item",
+      "title": "Meeting Notes",
+      "description": "Turn a meeting transcript, recording summary, or rough notes into a record people act on: decisions with their reasons, action items with one owner and a date each, open questions, and a short summary, in the team's existing notes format, with nothing invented and unclear attributions marked. Use after a meeting, when a transcript needs to become a shareable record, or when action items from a meeting keep getting lost.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "productivity"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/meeting-notes",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/meeting-notes/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

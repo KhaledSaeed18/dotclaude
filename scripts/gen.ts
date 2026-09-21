@@ -286,7 +286,7 @@ const PLUGINS: readonly PluginDef[] = [
   {
     name: "productivity",
     description:
-      "Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context.",
+      "Session and personal productivity: collaborative brainstorming, plan stress-testing, session handoffs, meeting notes, a decision log, learning plans, a /prime command that loads project context, and a /weekly-review that assembles the week from evidence.",
     category: "productivity",
     keywords: ["brainstorming", "handoff", "context", "planning"],
     skills: { category: "productivity" },
@@ -332,7 +332,7 @@ const PLUGINS: readonly PluginDef[] = [
   {
     name: "writing",
     description:
-      "Prose quality for anything a human will read: strip machine-writing tells from READMEs, docs, PR descriptions, and chapters without changing what they say.",
+      "Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide.",
     category: "writing",
     keywords: ["writing", "editing", "humanize", "prose"],
     skills: { category: "writing" },
