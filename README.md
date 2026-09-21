@@ -31,6 +31,12 @@
 
 <br />
 
+<div align="center">
+  <strong>Browse, search, and filter the catalog at <a href="https://dotclaude.khaledsaeed.tech">dotclaude.khaledsaeed.tech</a>.</strong>
+</div>
+
+<br />
+
 My personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) extensions, distributed as a [shadcn GitHub registry](https://ui.shadcn.com/docs/registry/github).
 
 Items install into the **current project** under `.claude/`, so run the install command from your project root. (shadcn writes into the project you run it in; its `~` means "project root", not your home directory, so a skill lands in `<project>/.claude/skills/<name>/`.)

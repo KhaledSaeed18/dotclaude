@@ -32,7 +32,7 @@
   },
   "overrides": [
     {
-      "includes": ["**/registry.json", ".claude-plugin/**"],
+      "includes": ["**/registry.json", ".claude-plugin/**", "site/data.json"],
       "formatter": { "enabled": false },
       "linter": { "enabled": false },
       "assist": { "enabled": false }

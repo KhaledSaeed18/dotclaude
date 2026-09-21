@@ -18,9 +18,10 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>`. From that location pl
 - each item's `registry.json`
 - the root `registry.json`
 - the README catalog, the count badges, and the plugins table
+- `site/data.json`, the single file the catalog site at [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) renders
 - `.claude-plugin/marketplace.json` (the Claude Code plugin marketplace) and one plugin tree per bundle under `.claude-plugin/plugins/<plugin>/` (item copies in the standard plugin layout)
 
-**Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
+**Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, `site/data.json`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
 
 **Plugin membership is category-driven.** The `PLUGINS` list in `scripts/gen.ts` maps category folders to marketplace plugins (for example, everything under `skills/version-control/` ships in the `git` plugin). Add an item to a selected category and it joins that plugin on the next `pnpm gen`; only a genuinely new bundle needs a `PLUGINS` edit. Hook plugins wire their scripts inline via `${CLAUDE_PLUGIN_ROOT}`, so they activate on install with no manual `settings.json` step.
 
@@ -76,7 +77,7 @@ If you'd rather have Claude Code drive it, this repo ships authoring skills that
 | Command           | What it does                                                            |
 | ----------------- | ----------------------------------------------------------------------- |
 | `pnpm new`        | Scaffold a new item and regenerate.                                     |
-| `pnpm gen`        | Write all derived files (registry + README catalog + badges).           |
+| `pnpm gen`        | Write all derived files (registry + README catalog + badges + site data). |
 | `pnpm gen:check`  | Fail if any generated file is stale. Runs in CI.                        |
 | `pnpm validate`   | Check frontmatter values and layout, then `shadcn registry validate`.   |
 | `pnpm test`       | Run the Vitest suite for the generator and validator.                   |
@@ -119,6 +120,7 @@ Commit messages follow [Conventional Commits](https://www.conventionalcommits.or
 
 Two workflows run on every pull request:
 
+- **pages** ([.github/workflows/pages.yml](.github/workflows/pages.yml)): deploys `site/` to GitHub Pages at [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) on pushes to `main` that touch `site/`. The site is static with no build step; it renders the generated `site/data.json`, so an item change reaches the site on the next merge with no site edits. Preview locally with `python3 -m http.server 4173 --directory site`.
 - **validate** ([.github/workflows/validate.yml](.github/workflows/validate.yml)): typecheck, lint, test, `pnpm coverage` (90% floor), `gen:check`, registry validation, plugin-manifest validation, and the `pnpm smoke` install test.
 - **security** ([.github/workflows/security.yml](.github/workflows/security.yml)): secret scanning and a dependency audit, plus a weekly scheduled run.
 

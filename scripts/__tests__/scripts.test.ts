@@ -257,6 +257,68 @@ describe("gen", () => {
     expect(read(dir, "README.md")).toContain("_No plugins yet._");
   });
 
+  it("writes site/data.json with items, type counts, and plugin membership", () => {
+    const dir = makeFixture({
+      "skills/security/s-one/SKILL.md": manifest({ name: "s-one", description: "Skill one." }),
+      "skills/util/s-two/SKILL.md": manifest({ name: "s-two", description: "Skill two." }),
+      "agents/security/a-one/AGENT.md": manifest({ name: "a-one", description: "Agent one." }),
+      "hooks/security/smart-approve/HOOK.md": manifest({
+        name: "smart-approve",
+        description: "Hook.",
+      }),
+      "hooks/security/smart-approve/smart-approve.mjs": "process.exit(0);\n",
+      "hooks/security/sensitive-file-guard/HOOK.md": manifest({
+        name: "sensitive-file-guard",
+        description: "Hook.",
+      }),
+      "hooks/security/sensitive-file-guard/sensitive-file-guard.mjs": "process.exit(0);\n",
+      "hooks/security/injection-guard/HOOK.md": manifest({
+        name: "injection-guard",
+        description: "Hook.",
+      }),
+      "hooks/security/injection-guard/injection-guard.mjs": "process.exit(0);\n",
+    });
+
+    expect(runGen(dir).status).toBe(0);
+    expect(runGen(dir, ["--check"]).status).toBe(0);
+
+    const data = JSON.parse(read(dir, "site/data.json"));
+    expect(data.registry.name).toBe("dotclaude");
+    expect(data.types.map((t: { type: string; count: number }) => [t.type, t.count])).toEqual([
+      ["skill", 2],
+      ["agent", 1],
+      ["command", 0],
+      ["hook", 3],
+    ]);
+    expect(data.items).toHaveLength(6);
+
+    // A skill in a plugin-selected category carries its plugin; one outside
+    // any selected category carries none.
+    const byKey = new Map(data.items.map((i: { key: string }) => [i.key, i]));
+    expect(byKey.get("skill/s-one")).toMatchObject({
+      name: "s-one",
+      type: "skill",
+      category: "security",
+      path: "skills/security/s-one",
+      targets: [".claude/skills/s-one/SKILL.md"],
+      plugins: ["security"],
+    });
+    expect(byKey.get("skill/s-two")).toMatchObject({ plugins: [] });
+    expect(byKey.get("agent/a-one")).toMatchObject({
+      targets: [".claude/agents/a-one.md"],
+      plugins: ["security"],
+    });
+    // Hook plugin membership is derived from the script paths.
+    expect(byKey.get("hook/smart-approve")).toMatchObject({ plugins: ["security-hooks"] });
+
+    const securityHooks = data.plugins.find((p: { name: string }) => p.name === "security-hooks");
+    expect(securityHooks.items).toEqual([
+      "hook/smart-approve",
+      "hook/sensitive-file-guard",
+      "hook/injection-guard",
+    ]);
+  });
+
   it("--check fails when a generated file is stale", () => {
     const dir = makeFixture({
       "skills/util/s-one/SKILL.md": manifest({ name: "s-one", description: "Skill one." }),
