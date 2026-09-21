@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "weekly-review",
+      "type": "registry:item",
+      "title": "Weekly Review",
+      "description": "Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened, decisions logged, research log entries, action items done and overdue, and what stalled, then a short plan for next week; written to a dated file so reviews accumulate. Use at the end of a working week, before a one-on-one or a status update, or when the week felt busy and it is unclear what got done.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "productivity"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/productivity/weekly-review",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/weekly-review.md"
+        }
+      ]
+    }
+  ]
+}
