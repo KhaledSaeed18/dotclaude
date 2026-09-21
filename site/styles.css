@@ -236,15 +236,17 @@ button {
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin: 0 0 12px;
-  max-width: 22ch;
 }
 
 .lede,
 .section-lede {
   color: var(--ink-2);
-  max-width: var(--measure);
   margin: 0;
   font-size: 16px;
+}
+
+.section-lede {
+  max-width: var(--measure);
 }
 
 .counts {
