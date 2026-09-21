@@ -13,11 +13,11 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-40-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="40 skills" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-48-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="48 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-8-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="8 agents" /></a>
-  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-6-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="6 commands" /></a>
-  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-14-db2777.svg?split=true&logo=ri:RiPlugFill" alt="14 hooks" /></a>
-  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-12-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="12 plugins" /></a>
+  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-7-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="7 commands" /></a>
+  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-15-db2777.svg?split=true&logo=ri:RiPlugFill" alt="15 hooks" /></a>
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-14-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="14 plugins" /></a>
 <!-- badges:end -->
 </div>
 
@@ -86,6 +86,8 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 | **productivity** | Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context. (5 skills, 2 commands) | `/plugin install productivity@dotclaude` |
 | **testing** | Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions. (2 skills, 1 command) | `/plugin install testing@dotclaude` |
 | **research** | Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers). (2 skills, 1 agent) | `/plugin install research@dotclaude` |
+| **thesis** | The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, a research log, and a humanize pass for the prose. (8 skills, 1 command, 1 hook) | `/plugin install thesis@dotclaude` |
+| **writing** | Prose quality for anything a human will read: strip machine-writing tells from READMEs, docs, PR descriptions, and chapters without changing what they say. (1 skill) | `/plugin install writing@dotclaude` |
 | **workflow-hooks** | Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log. (6 hooks) | `/plugin install workflow-hooks@dotclaude` |
 | **format-on-edit** | Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted. (1 hook) | `/plugin install format-on-edit@dotclaude` |
 | **notify** | Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background. (1 hook) | `/plugin install notify@dotclaude` |
@@ -143,7 +145,8 @@ Hooks that take settings read one optional file, `<project>/.claude/dotclaude.js
   "stopGate": { "command": "pnpm test", "timeoutMs": 120000, "onlyWhenDirty": true },
   "typecheckOnEdit": { "enabled": true, "maxLines": 25 },
   "sessionContext": { "commits": 3, "handoffFile": "HANDOFF.md" },
-  "subagentSummary": { "logFile": ".claude/subagents.log" }
+  "subagentSummary": { "logFile": ".claude/subagents.log" },
+  "citationGuard": { "bibFile": "references.bib" }
 }
 ```
 
@@ -156,6 +159,18 @@ The catalog below lists every item in this repository, grouped by type and then 
 <!-- catalog:start -->
 
 ### Skills
+
+#### Academic
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [bibtex-manager](skills/academic/bibtex-manager/) | Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation keys (firstauthorYEARkeyword), deduplicate entries, fix fields BibTeX and biblatex care about, and export to Zotero-friendly form when the writing happens in Word. Use when adding references, cleaning a messy bibliography, resolving duplicate keys, or converting a reading list into a .bib. | `npx shadcn@latest add KhaledSaeed18/dotclaude/bibtex-manager` |
+| [citation-verifier](skills/academic/citation-verifier/) | Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a live DOI or arXiv record whose title, authors, and year match, and each claim attributed to a source must be supported by that source's note or text. Reports unverified, mismatched, and unsupported citations with the fix. Use before sending a draft to a supervisor, before submission, or whenever text was drafted with AI assistance and a fabricated reference would be fatal. | `npx shadcn@latest add KhaledSaeed18/dotclaude/citation-verifier` |
+| [lit-review-synthesis](skills/academic/lit-review-synthesis/) | Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological patterns, locate the gap the thesis fills, and draft the review chapter so that each paragraph advances a claim rather than summarising one paper. Every citation comes from the notes and the .bib. Use when the reading is done and the related-work or background chapter needs writing, or when a draft review reads like an annotated bibliography. | `npx shadcn@latest add KhaledSaeed18/dotclaude/lit-review-synthesis` |
+| [literature-search](skills/academic/literature-search/) | Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP), deduplicating by DOI, ranking by relevance, citations, and recency, and producing a reading list with verified identifiers ready for paper-reader and bibtex-manager. Use when starting a literature review, checking whether a gap is real, or looking for the papers that cite or are cited by a known key paper. | `npx shadcn@latest add KhaledSaeed18/dotclaude/literature-search` |
+| [paper-reader](skills/academic/paper-reader/) | Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student's research question, and quotable passages with locations, so that lit-review-synthesis can build an argument from many notes. Use when working through a reading list, when a supervisor asks what a paper actually shows, or before citing a paper for a specific claim. | `npx shadcn@latest add KhaledSaeed18/dotclaude/paper-reader` |
+| [research-question](skills/academic/research-question/) | Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing the unit of analysis, and testing the question for answerability, novelty, and fit to a master's timeline. Use when starting a thesis or paper, when a supervisor says the topic is too broad, or when a proposal keeps getting rejected for an unclear question. | `npx shadcn@latest add KhaledSaeed18/dotclaude/research-question` |
+| [thesis-proposal](skills/academic/thesis-proposal/) | Draft or revise a master's thesis proposal from a research question record, reading notes, and the department's template: problem statement, gap, research questions, method, evaluation, timeline, risks, and a chapter plan, in the student's own claims with citations only to sources they actually have. Use when a proposal is due, a supervisor asks for a written plan, or the research question is settled and needs a structured document around it. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-proposal` |
 
 #### Engineering
 
@@ -227,6 +242,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [pr-description](skills/version-control/pr-description/) | Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body. | `npx shadcn@latest add KhaledSaeed18/dotclaude/pr-description` |
 | [release-tag](skills/version-control/release-tag/) | Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated (optionally signed) Git tag, and pushing the release safely after pre-flight checks. Use when tagging a version, bumping the version, or preparing a release. | `npx shadcn@latest add KhaledSaeed18/dotclaude/release-tag` |
 
+#### Writing
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [humanize](skills/writing/humanize/) | Rewrite prose that reads as machine-generated so it reads as the writer, without changing what it says or adding any fact: removes not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dash overuse, stacked hedges, inflated significance, stock AI vocabulary, decorative bold and headings, and chatbot residue. Works on READMEs, PR descriptions, docs, thesis chapters, and emails. Use when editing or reviewing any text before it reaches a human reader, or when a draft was produced with AI assistance. | `npx shadcn@latest add KhaledSaeed18/dotclaude/humanize` |
+
 ### Agents
 
 #### Engineering
@@ -253,6 +274,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [security-auditor](agents/security/security-auditor/) | Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, auth logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk, reporting findings and remediation steps without modifying code. Use before a production release, after adding auth or payment flows, when onboarding a dependency, or when a review is required before merge. | `npx shadcn@latest add KhaledSaeed18/dotclaude/security-auditor` |
 
 ### Commands
+
+#### Academic
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [research-log](commands/academic/research-log/) | Append a dated entry to the thesis research log (RESEARCH_LOG.md) recording what was read, done, decided, and what comes next, pulling the day's evidence from git history, new reading notes, and the conversation, so progress is never reconstructed from memory before a supervisor meeting. Use at the end of a working session, after a decision, or when asked what happened this week. | `npx shadcn@latest add KhaledSaeed18/dotclaude/research-log` |
 
 #### Engineering
 
@@ -286,6 +313,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [clean-branches](commands/version-control/clean-branches/) | List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and the current branch. Pass --dry-run to preview. Unlike the finish-branch skill, which closes one active branch, this cleans up accumulated branches across the repository. Use when local branches have piled up and need safe cleanup. | `npx shadcn@latest add KhaledSaeed18/dotclaude/clean-branches` |
 
 ### Hooks
+
+#### Academic
+
+| Hook | Description | Install |
+| --- | --- | --- |
+| [citation-guard](hooks/academic/citation-guard/) | A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project's .bib and reports the ones that do not exist, and after a .bib edit reports duplicate keys and entries with no DOI, arXiv id, or URL. Catches an invented citation in the same step it was written. Use when drafting a thesis, paper, or proposal with AI assistance, where a fabricated reference is the one unrecoverable error. | `npx shadcn@latest add KhaledSaeed18/dotclaude/citation-guard` |
 
 #### Automation
 

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "research-log",
+      "type": "registry:item",
+      "title": "Research Log",
+      "description": "Append a dated entry to the thesis research log (RESEARCH_LOG.md) recording what was read, done, decided, and what comes next, pulling the day's evidence from git history, new reading notes, and the conversation, so progress is never reconstructed from memory before a supervisor meeting. Use at the end of a working session, after a decision, or when asked what happened this week.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/research-log",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/research-log.md"
+        }
+      ]
+    }
+  ]
+}

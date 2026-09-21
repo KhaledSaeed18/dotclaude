@@ -14,7 +14,7 @@
       "layout": "folder",
       "targetBase": ".claude/skills",
       "color": "#2563eb",
-      "count": 40
+      "count": 48
     },
     {
       "type": "agent",
@@ -32,7 +32,7 @@
       "layout": "file",
       "targetBase": ".claude/commands",
       "color": "#0891b2",
-      "count": 6
+      "count": 7
     },
     {
       "type": "hook",
@@ -41,7 +41,7 @@
       "layout": "folder",
       "targetBase": ".claude/hooks",
       "color": "#db2777",
-      "count": 14
+      "count": 15
     }
   ],
   "plugins": [
@@ -194,6 +194,45 @@
       ]
     },
     {
+      "name": "thesis",
+      "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, a research log, and a humanize pass for the prose.",
+      "category": "research",
+      "keywords": [
+        "thesis",
+        "research",
+        "literature-review",
+        "citations",
+        "bibtex",
+        "academic"
+      ],
+      "items": [
+        "skill/bibtex-manager",
+        "skill/citation-verifier",
+        "skill/lit-review-synthesis",
+        "skill/literature-search",
+        "skill/paper-reader",
+        "skill/research-question",
+        "skill/thesis-proposal",
+        "skill/humanize",
+        "command/research-log",
+        "hook/citation-guard"
+      ]
+    },
+    {
+      "name": "writing",
+      "description": "Prose quality for anything a human will read: strip machine-writing tells from READMEs, docs, PR descriptions, and chapters without changing what they say.",
+      "category": "writing",
+      "keywords": [
+        "writing",
+        "editing",
+        "humanize",
+        "prose"
+      ],
+      "items": [
+        "skill/humanize"
+      ]
+    },
+    {
       "name": "workflow-hooks",
       "description": "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",
       "category": "development",
@@ -269,6 +308,120 @@
     }
   ],
   "items": [
+    {
+      "key": "skill/bibtex-manager",
+      "name": "bibtex-manager",
+      "type": "skill",
+      "category": "academic",
+      "title": "Bibtex Manager",
+      "description": "Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation keys (firstauthorYEARkeyword), deduplicate entries, fix fields BibTeX and biblatex care about, and export to Zotero-friendly form when the writing happens in Word. Use when adding references, cleaning a messy bibliography, resolving duplicate keys, or converting a reading list into a .bib.",
+      "path": "skills/academic/bibtex-manager",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/bibtex-manager",
+      "targets": [
+        ".claude/skills/bibtex-manager/SKILL.md",
+        ".claude/skills/bibtex-manager/reference/fields.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/citation-verifier",
+      "name": "citation-verifier",
+      "type": "skill",
+      "category": "academic",
+      "title": "Citation Verifier",
+      "description": "Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a live DOI or arXiv record whose title, authors, and year match, and each claim attributed to a source must be supported by that source's note or text. Reports unverified, mismatched, and unsupported citations with the fix. Use before sending a draft to a supervisor, before submission, or whenever text was drafted with AI assistance and a fabricated reference would be fatal.",
+      "path": "skills/academic/citation-verifier",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-verifier",
+      "targets": [
+        ".claude/skills/citation-verifier/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/lit-review-synthesis",
+      "name": "lit-review-synthesis",
+      "type": "skill",
+      "category": "academic",
+      "title": "Lit Review Synthesis",
+      "description": "Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological patterns, locate the gap the thesis fills, and draft the review chapter so that each paragraph advances a claim rather than summarising one paper. Every citation comes from the notes and the .bib. Use when the reading is done and the related-work or background chapter needs writing, or when a draft review reads like an annotated bibliography.",
+      "path": "skills/academic/lit-review-synthesis",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/lit-review-synthesis",
+      "targets": [
+        ".claude/skills/lit-review-synthesis/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/literature-search",
+      "name": "literature-search",
+      "type": "skill",
+      "category": "academic",
+      "title": "Literature Search",
+      "description": "Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP), deduplicating by DOI, ranking by relevance, citations, and recency, and producing a reading list with verified identifiers ready for paper-reader and bibtex-manager. Use when starting a literature review, checking whether a gap is real, or looking for the papers that cite or are cited by a known key paper.",
+      "path": "skills/academic/literature-search",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/literature-search",
+      "targets": [
+        ".claude/skills/literature-search/SKILL.md",
+        ".claude/skills/literature-search/reference/apis.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/paper-reader",
+      "name": "paper-reader",
+      "type": "skill",
+      "category": "academic",
+      "title": "Paper Reader",
+      "description": "Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student's research question, and quotable passages with locations, so that lit-review-synthesis can build an argument from many notes. Use when working through a reading list, when a supervisor asks what a paper actually shows, or before citing a paper for a specific claim.",
+      "path": "skills/academic/paper-reader",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/paper-reader",
+      "targets": [
+        ".claude/skills/paper-reader/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/research-question",
+      "name": "research-question",
+      "type": "skill",
+      "category": "academic",
+      "title": "Research Question",
+      "description": "Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing the unit of analysis, and testing the question for answerability, novelty, and fit to a master's timeline. Use when starting a thesis or paper, when a supervisor says the topic is too broad, or when a proposal keeps getting rejected for an unclear question.",
+      "path": "skills/academic/research-question",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-question",
+      "targets": [
+        ".claude/skills/research-question/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/thesis-proposal",
+      "name": "thesis-proposal",
+      "type": "skill",
+      "category": "academic",
+      "title": "Thesis Proposal",
+      "description": "Draft or revise a master's thesis proposal from a research question record, reading notes, and the department's template: problem statement, gap, research questions, method, evaluation, timeline, risks, and a chapter plan, in the student's own claims with citations only to sources they actually have. Use when a proposal is due, a supervisor asks for a written plan, or the research question is settled and needs a structured document around it.",
+      "path": "skills/academic/thesis-proposal",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/thesis-proposal",
+      "targets": [
+        ".claude/skills/thesis-proposal/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
     {
       "key": "skill/adversarial-reviewer",
       "name": "adversarial-reviewer",
@@ -911,6 +1064,23 @@
       ]
     },
     {
+      "key": "skill/humanize",
+      "name": "humanize",
+      "type": "skill",
+      "category": "writing",
+      "title": "Humanize",
+      "description": "Rewrite prose that reads as machine-generated so it reads as the writer, without changing what it says or adding any fact: removes not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dash overuse, stacked hedges, inflated significance, stock AI vocabulary, decorative bold and headings, and chatbot residue. Works on READMEs, PR descriptions, docs, thesis chapters, and emails. Use when editing or reviewing any text before it reaches a human reader, or when a draft was produced with AI assistance.",
+      "path": "skills/writing/humanize",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/writing/humanize",
+      "targets": [
+        ".claude/skills/humanize/SKILL.md"
+      ],
+      "plugins": [
+        "thesis",
+        "writing"
+      ]
+    },
+    {
       "key": "agent/architect-reviewer",
       "name": "architect-reviewer",
       "type": "agent",
@@ -1039,6 +1209,22 @@
       ]
     },
     {
+      "key": "command/research-log",
+      "name": "research-log",
+      "type": "command",
+      "category": "academic",
+      "title": "Research Log",
+      "description": "Append a dated entry to the thesis research log (RESEARCH_LOG.md) recording what was read, done, decided, and what comes next, pulling the day's evidence from git history, new reading notes, and the conversation, so progress is never reconstructed from memory before a supervisor meeting. Use at the end of a working session, after a decision, or when asked what happened this week.",
+      "path": "commands/academic/research-log",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/research-log",
+      "targets": [
+        ".claude/commands/research-log.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "command/explain-code",
       "name": "explain-code",
       "type": "command",
@@ -1132,6 +1318,23 @@
       ],
       "plugins": [
         "git"
+      ]
+    },
+    {
+      "key": "hook/citation-guard",
+      "name": "citation-guard",
+      "type": "hook",
+      "category": "academic",
+      "title": "Citation Guard",
+      "description": "A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project's .bib and reports the ones that do not exist, and after a .bib edit reports duplicate keys and entries with no DOI, arXiv id, or URL. Catches an invented citation in the same step it was written. Use when drafting a thesis, paper, or proposal with AI assistance, where a fabricated reference is the one unrecoverable error.",
+      "path": "hooks/academic/citation-guard",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/academic/citation-guard",
+      "targets": [
+        ".claude/hooks/citation-guard/HOOK.md",
+        ".claude/hooks/citation-guard/citation-guard.mjs"
+      ],
+      "plugins": [
+        "thesis"
       ]
     },
     {

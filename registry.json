@@ -11,12 +11,14 @@
     "agents/engineering/performance-engineer/registry.json",
     "agents/research/deep-research/registry.json",
     "agents/security/security-auditor/registry.json",
+    "commands/academic/research-log/registry.json",
     "commands/engineering/explain-code/registry.json",
     "commands/productivity/prime/registry.json",
     "commands/productivity/todo-triage/registry.json",
     "commands/security/security-audit/registry.json",
     "commands/testing/write-tests/registry.json",
     "commands/version-control/clean-branches/registry.json",
+    "hooks/academic/citation-guard/registry.json",
     "hooks/automation/format-on-edit/registry.json",
     "hooks/automation/notify/registry.json",
     "hooks/context/precompact-saver/registry.json",
@@ -31,6 +33,13 @@
     "hooks/workflow/stop-gate/registry.json",
     "hooks/workflow/subagent-summary/registry.json",
     "hooks/workflow/typecheck-on-edit/registry.json",
+    "skills/academic/bibtex-manager/registry.json",
+    "skills/academic/citation-verifier/registry.json",
+    "skills/academic/lit-review-synthesis/registry.json",
+    "skills/academic/literature-search/registry.json",
+    "skills/academic/paper-reader/registry.json",
+    "skills/academic/research-question/registry.json",
+    "skills/academic/thesis-proposal/registry.json",
     "skills/engineering/adversarial-reviewer/registry.json",
     "skills/engineering/api-design-review/registry.json",
     "skills/engineering/code-review-response/registry.json",
@@ -70,6 +79,7 @@
     "skills/version-control/gitignore/registry.json",
     "skills/version-control/merge-conflict/registry.json",
     "skills/version-control/pr-description/registry.json",
-    "skills/version-control/release-tag/registry.json"
+    "skills/version-control/release-tag/registry.json",
+    "skills/writing/humanize/registry.json"
   ]
 }

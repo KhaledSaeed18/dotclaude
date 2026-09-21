@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "research-question",
+      "type": "registry:item",
+      "title": "Research Question",
+      "description": "Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing the unit of analysis, and testing the question for answerability, novelty, and fit to a master's timeline. Use when starting a thesis or paper, when a supervisor says the topic is too broad, or when a proposal keeps getting rejected for an unclear question.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-question",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/research-question/SKILL.md"
+        }
+      ]
+    }
+  ]
+}
