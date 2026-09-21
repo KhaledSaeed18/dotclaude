@@ -1,6 +1,6 @@
 ---
 name: accessibility-audit
-description: Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus management, labels, contrast, ARIA misuse, and motion, verifying in a real browser with axe-core when one is available and by code review when not. Produces findings ranked by user impact with concrete fixes. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.
+description: Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core in a real browser when available and code review when not, with findings ranked by user impact. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.
 ---
 
 Audit for the users who hit the wall, not for the checklist: someone on a keyboard who cannot reach the button, a screen-reader user who hears "button button", a low-vision user who cannot read grey-on-white hints. Automated checks catch at most a third of real barriers; the rest come from reading the code and walking the flows. Prefer fixing semantics over adding ARIA; the first rule of ARIA is not to use it when native HTML already does the job.

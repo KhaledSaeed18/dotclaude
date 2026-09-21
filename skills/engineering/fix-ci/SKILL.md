@@ -1,5 +1,6 @@
 ---
 name: fix-ci
+title: Fix CI
 description: Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause rather than the symptom, and verifying green before and after pushing. Use when a GitHub Actions run is red, a PR check is failing, or CI passes locally but fails remotely.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: todo-triage
-description: Inventory every TODO, FIXME, HACK, and XXX comment in the codebase, enrich each with age and author from git blame, classify them into actionable buckets (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan to a directory. Use when technical-debt comments have accumulated and nobody knows which ones still matter.
+description: Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan. Use when technical-debt comments have accumulated and nobody knows which ones still matter.
 argument-hint: "[path]"
 allowed-tools: Read, Grep, Glob, Bash(git:*)
 model: inherit

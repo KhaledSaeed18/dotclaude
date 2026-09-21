@@ -1,6 +1,6 @@
 ---
 name: smart-approve
-description: A PreToolUse hook that decomposes compound Bash commands (&&, ||, ;, |, $(), backticks, subshell parens) into their component sub-commands and checks each one independently against the same deny list command-guard uses, catching destructive operations hidden in command substitution or a subshell where a full-string match misses them. Use to upgrade command-guard with decomposition, or as the command guard bundled in the security-hooks plugin.
+description: A PreToolUse hook that splits compound Bash commands (&&, ||, ;, |, $(), backticks, subshells) into their parts and checks each against the same deny list as command-guard, catching destructive operations hidden in substitutions or subshells that a full-string match misses. Use to upgrade command-guard with decomposition, or as the guard bundled in the security-hooks plugin.
 ---
 
 # smart-approve

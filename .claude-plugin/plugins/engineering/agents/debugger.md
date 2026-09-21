@@ -1,6 +1,6 @@
 ---
 name: debugger
-description: Use this agent when you need to diagnose a bug, test failure, crash, or unexpected behavior through systematic root-cause analysis. Gathers evidence, forms and tests hypotheses, and delivers a confirmed root cause with a targeted fix recommendation. Does not guess or apply speculative patches. Use when a fix attempt has failed, when the bug is intermittent, when a stack trace needs tracing end-to-end, or when you want a second opinion on what is actually broken before touching code.
+description: Use this agent when you need a bug, test failure, crash, or unexpected behaviour diagnosed through systematic root-cause analysis. Gathers evidence, tests hypotheses, and returns a confirmed cause with a targeted fix, never a speculative patch. Use when a fix attempt has failed, the bug is intermittent, a stack trace needs tracing end-to-end, or you want a second opinion before touching code.
 tools: Read, Grep, Glob, Bash
 model: inherit
 color: red

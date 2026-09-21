@@ -1,6 +1,6 @@
 ---
 name: solid-principles
-description: Apply the SOLID principles as design diagnostics when writing, reviewing, or refactoring code with classes, modules, or service boundaries - detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix. Treats SOLID as a smell detector, not a ceremony to impose. Use when designing a new module or class, reviewing object-oriented code, untangling a class that keeps changing for unrelated reasons, or deciding where an abstraction belongs.
+description: Apply the SOLID principles as design diagnostics, detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix rather than imposing ceremony. Use when designing a new module or class, reviewing object-oriented code, or untangling a class that keeps changing for unrelated reasons.
 ---
 
 Use SOLID to diagnose, not to decorate. Each principle names a specific way designs rot under change; the skill is recognizing the rot early and making the smallest cut that stops it. The failure mode of SOLID is applying it as ceremony - an interface for every class, a factory for every constructor - which produces the same unmaintainability it was meant to prevent, with more files. Every abstraction this skill recommends must be justified by a change pressure that actually exists in this codebase, not one imagined.

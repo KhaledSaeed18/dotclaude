@@ -1,6 +1,6 @@
 ---
 name: error-detective
-description: Use this agent when you need to correlate errors, stack traces, and log entries across multiple services or files to find the root cause of an incident, a mysterious recurring error, or a failure that spans more than one component. Searches log files, cross-references timestamps, traces request IDs across service boundaries, and surfaces the originating cause rather than the downstream symptom. Distinct from the debugger agent, which traces bugs in source code; this agent works from runtime artifacts (logs, traces, crash dumps) and is most useful when the failure is happening in production or a staging environment where you cannot step through the code.
+description: Use this agent when you need errors, stack traces, and logs correlated across services or files to find the root cause of an incident or recurring failure. Cross-references timestamps, traces request IDs across boundaries, and surfaces the originating cause rather than the downstream symptom. Works from runtime artifacts where the debugger agent works from source; use when the failure is in production or staging and you cannot step through the code.
 tools: Read, Grep, Glob, Bash
 model: inherit
 color: red

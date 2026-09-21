@@ -438,8 +438,26 @@ function items(ct: ContentType): Item[] {
   return out;
 }
 
+/**
+ * Parse a manifest's frontmatter, turning a YAML syntax error into a message
+ * that names the file and the usual cause. Descriptions are unquoted scalars,
+ * so a `: ` inside one (a colon followed by a space) makes the whole
+ * frontmatter unparseable; without this the run dies on a js-yaml stack trace.
+ */
+function parseManifest(manifestPath: string): matter.GrayMatterFile<string> {
+  try {
+    return matter(readFileSync(manifestPath, "utf8"));
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.split("\n")[0] : String(error);
+    throw new Error(
+      `Invalid YAML frontmatter in ${relative(ROOT, manifestPath)}: ${reason}. ` +
+        'If a value contains ": " or starts with a special character, wrap it in double quotes.',
+    );
+  }
+}
+
 function readFrontmatter(manifestPath: string): Frontmatter {
-  const parsed = matter(readFileSync(manifestPath, "utf8"));
+  const parsed = parseManifest(manifestPath);
   const result = FrontmatterSchema.safeParse(parsed.data);
   if (!result.success) {
     const reason = result.error.issues
@@ -719,7 +737,9 @@ function buildPluginArtifacts(): PluginBuild {
       source: `./${PLUGIN_TREES_DIR}/${def.name}`,
       description: def.description,
       author: { name: REGISTRY_AUTHOR },
-      homepage: REGISTRY_HOMEPAGE,
+      // The catalog site, filtered to this plugin's items; the repo stays
+      // under `repository`.
+      homepage: `${SITE_URL}/#/?plugin=${def.name}`,
       repository: REGISTRY_HOMEPAGE,
       license: "MIT",
       category: def.category,
@@ -1053,7 +1073,7 @@ function generate(): GeneratedFile[] {
     content: toJson({
       $schema: REGISTRY_SCHEMA,
       name: REGISTRY_NAME,
-      homepage: REGISTRY_HOMEPAGE,
+      homepage: SITE_URL,
       include: includePaths,
     }),
   });

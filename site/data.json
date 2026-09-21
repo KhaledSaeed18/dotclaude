@@ -269,7 +269,7 @@
       "name": "api-design-review",
       "type": "skill",
       "category": "engineering",
-      "title": "Api Design Review",
+      "title": "API Design Review",
       "description": "Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape, pagination, versioning, idempotency, and backward compatibility, and producing concrete revisions rather than abstract advice. Use when designing new endpoints, changing an existing API's surface, or reviewing a PR that adds or modifies API routes.",
       "path": "skills/engineering/api-design-review",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/api-design-review",
@@ -362,8 +362,8 @@
       "name": "db-migration-safety",
       "type": "skill",
       "category": "engineering",
-      "title": "Db Migration Safety",
-      "description": "Review or write a database schema migration with production safety as the bar, checking lock behavior, table rewrites, backfill strategy, deploy-order compatibility (expand-contract), index creation, and rollback, for Postgres, MySQL, and common ORMs' migration tools. Use when adding or reviewing a migration, renaming or dropping columns, adding constraints or indexes to large tables, or planning a backfill.",
+      "title": "DB Migration Safety",
+      "description": "Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order, index creation, and rollback for Postgres, MySQL, and common ORMs. Use when adding or reviewing a migration, dropping or renaming columns, or adding constraints or indexes to large tables.",
       "path": "skills/engineering/db-migration-safety",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/db-migration-safety",
       "targets": [
@@ -410,7 +410,7 @@
       "name": "fix-ci",
       "type": "skill",
       "category": "engineering",
-      "title": "Fix Ci",
+      "title": "Fix CI",
       "description": "Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause rather than the symptom, and verifying green before and after pushing. Use when a GitHub Actions run is red, a PR check is failing, or CI passes locally but fails remotely.",
       "path": "skills/engineering/fix-ci",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/fix-ci",
@@ -461,7 +461,7 @@
       "type": "skill",
       "category": "engineering",
       "title": "Performance Optimization",
-      "description": "Optimize a performance problem by profiling to find the real bottleneck before changing anything, making one targeted change, and verifying both the improvement and that correctness did not degrade. Use when a feature is measurably slow, a page load or API response exceeds a budget, a query is taking too long, or a user reports sluggishness. Do not use to pre-optimize code that has not been measured to be slow.",
+      "description": "Fix a performance problem by profiling first, making one targeted change, and verifying both the speedup and that correctness held. Use when a feature is measurably slow, a page or API exceeds its budget, or a query takes too long. Do not use to pre-optimize code that has not been measured.",
       "path": "skills/engineering/performance-optimization",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/performance-optimization",
       "targets": [
@@ -477,7 +477,7 @@
       "type": "skill",
       "category": "engineering",
       "title": "Solid Principles",
-      "description": "Apply the SOLID principles as design diagnostics when writing, reviewing, or refactoring code with classes, modules, or service boundaries - detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix. Treats SOLID as a smell detector, not a ceremony to impose. Use when designing a new module or class, reviewing object-oriented code, untangling a class that keeps changing for unrelated reasons, or deciding where an abstraction belongs.",
+      "description": "Apply the SOLID principles as design diagnostics, detecting god classes, fragile hierarchies, fat interfaces, and hard-wired dependencies, and prescribing the smallest structural fix rather than imposing ceremony. Use when designing a new module or class, reviewing object-oriented code, or untangling a class that keeps changing for unrelated reasons.",
       "path": "skills/engineering/solid-principles",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/solid-principles",
       "targets": [
@@ -605,7 +605,7 @@
       "type": "skill",
       "category": "productivity",
       "title": "Issue Writer",
-      "description": "Turn a rough bug report, idea, or complaint into a well-formed, actionable issue - investigating the codebase first to add reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria - then filing it with gh or emitting paste-ready markdown. Use when the user says \"file an issue for this\", \"write this up\", describes a bug in passing that should be tracked, or wants a feature request made concrete.",
+      "description": "Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria, then filing it with gh or emitting paste-ready markdown. Use when asked to file or write up an issue, or when a bug mentioned in passing should be tracked.",
       "path": "skills/productivity/issue-writer",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/issue-writer",
       "targets": [
@@ -687,7 +687,7 @@
       "type": "skill",
       "category": "security",
       "title": "OWASP Security",
-      "description": "Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, catching vulnerability classes before they ship. Works in any language or stack. Use when writing authentication or authorization logic, handling user input, adding API endpoints, choosing cryptographic operations, processing file uploads, or making any change that touches a trust boundary. Complements secret-scan (which finds credentials) and dependency-audit (which checks packages) with line-level vulnerability review.",
+      "description": "Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, in any language or stack, catching vulnerability classes before they ship. Use when writing auth logic, handling user input, adding API endpoints, choosing cryptography, processing uploads, or touching any trust boundary. Complements secret-scan and dependency-audit with line-level review.",
       "path": "skills/security/owasp-security",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/security/owasp-security",
       "targets": [
@@ -719,7 +719,7 @@
       "type": "skill",
       "category": "testing",
       "title": "Accessibility Audit",
-      "description": "Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus management, labels, contrast, ARIA misuse, and motion, verifying in a real browser with axe-core when one is available and by code review when not. Produces findings ranked by user impact with concrete fixes. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.",
+      "description": "Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core in a real browser when available and code review when not, with findings ranked by user impact. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.",
       "path": "skills/testing/accessibility-audit",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/testing/accessibility-audit",
       "targets": [
@@ -735,7 +735,7 @@
       "type": "skill",
       "category": "testing",
       "title": "Webapp Testing",
-      "description": "Verify a web application works correctly in a real browser using Playwright. Covers page navigation, form submission, user interactions, console error detection, screenshot capture, and responsive layout checking. Use when you need to confirm a UI feature actually works end-to-end, catch regressions after a change, verify a form flow completes, or check that the page is free of console errors. Requires Node.js; installs Playwright if not already present.",
+      "description": "Verify a web application works in a real browser with Playwright, covering navigation, form submission, interactions, console errors, screenshots, and responsive layout. Use when a UI feature needs end-to-end confirmation, a form flow must complete, or a change needs regression checking. Requires Node.js and installs Playwright if absent.",
       "path": "skills/testing/webapp-testing",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/testing/webapp-testing",
       "targets": [
@@ -862,7 +862,7 @@
       "name": "pr-description",
       "type": "skill",
       "category": "version-control",
-      "title": "Pr Description",
+      "title": "PR Description",
       "description": "Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body.",
       "path": "skills/version-control/pr-description",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/pr-description",
@@ -895,7 +895,7 @@
       "type": "agent",
       "category": "engineering",
       "title": "Architect Reviewer",
-      "description": "Use this agent when you need a design-level architecture review of a module, a proposed change, or an entire codebase. Evaluates module boundaries, coupling and cohesion, layering violations, scalability risk, and structural decisions that will become expensive to undo. Complements code-reviewer, which focuses on line-level correctness, by operating at the design level on shapes and relationships of components rather than individual functions. Use when designing a new service, refactoring a large module, evaluating a cross-cutting change, or when you want a second opinion on structural decisions before they harden.",
+      "description": "Use this agent when you need a design-level architecture review of a module, a proposed change, or a whole codebase. Evaluates boundaries, coupling and cohesion, layering violations, scalability risk, and decisions that get expensive to undo, at the level of component shapes rather than individual functions (code-reviewer covers those). Use when designing a new service, refactoring a large module, or before a structural decision hardens.",
       "path": "agents/engineering/architect-reviewer",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/architect-reviewer",
       "targets": [
@@ -927,7 +927,7 @@
       "type": "agent",
       "category": "engineering",
       "title": "Debugger",
-      "description": "Use this agent when you need to diagnose a bug, test failure, crash, or unexpected behavior through systematic root-cause analysis. Gathers evidence, forms and tests hypotheses, and delivers a confirmed root cause with a targeted fix recommendation. Does not guess or apply speculative patches. Use when a fix attempt has failed, when the bug is intermittent, when a stack trace needs tracing end-to-end, or when you want a second opinion on what is actually broken before touching code.",
+      "description": "Use this agent when you need a bug, test failure, crash, or unexpected behaviour diagnosed through systematic root-cause analysis. Gathers evidence, tests hypotheses, and returns a confirmed cause with a targeted fix, never a speculative patch. Use when a fix attempt has failed, the bug is intermittent, a stack trace needs tracing end-to-end, or you want a second opinion before touching code.",
       "path": "agents/engineering/debugger",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/debugger",
       "targets": [
@@ -943,7 +943,7 @@
       "type": "agent",
       "category": "engineering",
       "title": "Docs Writer",
-      "description": "Use this agent when you need documentation written or updated from the code itself - READMEs, API references, guides, architecture overviews, or upgrade notes. Reads the actual implementation before writing a word, so the docs match what the code does rather than what anyone remembers it doing, and flags found doc-vs-code contradictions instead of papering over them. Use after a feature lands without docs, when a README has drifted from reality, when onboarding docs are missing, or when public API changes need reference updates.",
+      "description": "Use this agent when you need documentation written or updated from the code itself, such as READMEs, API references, guides, architecture overviews, or upgrade notes. Reads the implementation before writing so the docs match what the code does, and flags doc-vs-code contradictions instead of papering over them. Use after a feature lands without docs, when a README has drifted, or when a public API changes.",
       "path": "agents/engineering/docs-writer",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/docs-writer",
       "targets": [
@@ -959,7 +959,7 @@
       "type": "agent",
       "category": "engineering",
       "title": "Error Detective",
-      "description": "Use this agent when you need to correlate errors, stack traces, and log entries across multiple services or files to find the root cause of an incident, a mysterious recurring error, or a failure that spans more than one component. Searches log files, cross-references timestamps, traces request IDs across service boundaries, and surfaces the originating cause rather than the downstream symptom. Distinct from the debugger agent, which traces bugs in source code; this agent works from runtime artifacts (logs, traces, crash dumps) and is most useful when the failure is happening in production or a staging environment where you cannot step through the code.",
+      "description": "Use this agent when you need errors, stack traces, and logs correlated across services or files to find the root cause of an incident or recurring failure. Cross-references timestamps, traces request IDs across boundaries, and surfaces the originating cause rather than the downstream symptom. Works from runtime artifacts where the debugger agent works from source; use when the failure is in production or staging and you cannot step through the code.",
       "path": "agents/engineering/error-detective",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/error-detective",
       "targets": [
@@ -975,7 +975,7 @@
       "type": "agent",
       "category": "engineering",
       "title": "Performance Engineer",
-      "description": "Use this agent when you need to investigate, measure, and resolve a performance problem end-to-end. Profiles the running system, identifies the actual bottleneck with numbers, designs or runs load tests, recommends targeted changes, and verifies the improvement is real. Use for slow API responses, high CPU or memory usage, database query latency, build-time regressions, or when preparing a service for increased load. Distinct from the performance-optimization skill, which provides the methodology; this agent can execute profiling tools, analyze their output, and iterate through the full measure-change-verify cycle.",
+      "description": "Use this agent when you need a performance problem investigated, measured, and resolved end-to-end. Profiles the running system, finds the real bottleneck with numbers, runs load tests, recommends targeted changes, and verifies the gain. Use for slow API responses, high CPU or memory, query latency, build-time regressions, or preparing for more load. The performance-optimization skill gives the method; this agent runs the full cycle.",
       "path": "agents/engineering/performance-engineer",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/performance-engineer",
       "targets": [
@@ -991,7 +991,7 @@
       "type": "agent",
       "category": "research",
       "title": "Deep Research",
-      "description": "In-depth research agent for topics that need comprehensive, multi-source investigation with citations. Use when the user asks to research a topic thoroughly, gather and synthesize information from across the web, compare approaches or options, fact-check a claim against primary sources, or produce a sourced writeup or literature scan. For example, \"research the current state of WebGPU adoption\", \"compare Postgres vs SQLite for an offline-first app, with sources\", or \"what does the evidence say about X, and where do experts disagree?\"",
+      "description": "In-depth research agent for topics that need multi-source investigation with citations. Use when the user asks to research a topic thoroughly, synthesize information from across the web, compare options, fact-check a claim against primary sources, or produce a sourced writeup or literature scan, for example \"compare Postgres vs SQLite for an offline-first app, with sources\".",
       "path": "agents/research/deep-research",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/research/deep-research",
       "targets": [
@@ -1007,7 +1007,7 @@
       "type": "agent",
       "category": "security",
       "title": "Security Auditor",
-      "description": "Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, authentication and authorization logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk. Reports findings and concrete remediation steps without modifying code. Use before a production release, after adding auth or payment flows, when onboarding a new dependency, or when a security review is required before merge.",
+      "description": "Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, auth logic, secret handling, input validation, dependency vulnerabilities, and supply-chain risk, reporting findings and remediation steps without modifying code. Use before a production release, after adding auth or payment flows, when onboarding a dependency, or when a review is required before merge.",
       "path": "agents/security/security-auditor",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/security/security-auditor",
       "targets": [
@@ -1023,7 +1023,7 @@
       "type": "command",
       "category": "engineering",
       "title": "Explain Code",
-      "description": "Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured the way it is. Suited for onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before. Pass a file path or a symbol name as the argument. Use when onboarding onto unfamiliar code or preparing to modify something not yet read.",
+      "description": "Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol name as the argument. Use when onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before.",
       "path": "commands/engineering/explain-code",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/explain-code",
       "targets": [
@@ -1055,7 +1055,7 @@
       "type": "command",
       "category": "productivity",
       "title": "Todo Triage",
-      "description": "Inventory every TODO, FIXME, HACK, and XXX comment in the codebase, enrich each with age and author from git blame, classify them into actionable buckets (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan to a directory. Use when technical-debt comments have accumulated and nobody knows which ones still matter.",
+      "description": "Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan. Use when technical-debt comments have accumulated and nobody knows which ones still matter.",
       "path": "commands/productivity/todo-triage",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/productivity/todo-triage",
       "targets": [
@@ -1071,7 +1071,7 @@
       "type": "command",
       "category": "security",
       "title": "Security Audit",
-      "description": "Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, authentication and authorization logic, secret handling, input validation, dependency CVEs, and supply-chain risk. Broader than the secret-scan skill, which scans a single diff. Produces a structured findings report ranked by severity. Pass a path to limit the audit to a specific module or directory. Use when a full-codebase or module-level security review is needed.",
+      "description": "Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and supply-chain risk, producing a findings report ranked by severity. Broader than the secret-scan skill, which scans a single diff. Pass a path to limit the audit. Use when a full-codebase or module-level security review is needed.",
       "path": "commands/security/security-audit",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/security/security-audit",
       "targets": [
@@ -1103,7 +1103,7 @@
       "type": "command",
       "category": "version-control",
       "title": "Clean Branches",
-      "description": "List local Git branches that have been fully merged or are stale and delete them safely after showing what would be removed. Protects main, master, develop, and the currently checked-out branch. Pass --dry-run to preview without deleting anything. Distinct from the finish-branch skill, which closes a single active in-progress branch; this cleans up accumulated merged branches across the whole repository. Use when local branches have accumulated and need safe cleanup.",
+      "description": "List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and the current branch. Pass --dry-run to preview. Unlike the finish-branch skill, which closes one active branch, this cleans up accumulated branches across the repository. Use when local branches have piled up and need safe cleanup.",
       "path": "commands/version-control/clean-branches",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/clean-branches",
       "targets": [
@@ -1187,7 +1187,7 @@
       "type": "hook",
       "category": "security",
       "title": "Command Guard",
-      "description": "A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of the filesystem root or home, fork bombs, writing to or formatting raw disk devices, recursive chmod 777 on root, and force-pushes to main or master), returning a clear reason. Tests the command as one string; `smart-approve` is the strict superset that also decomposes compound chains, and is the one bundled in the security-hooks plugin. Use to add a minimal, auditable safety net against destructive shell commands when chain decomposition is not needed.",
+      "description": "A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk devices, recursive chmod 777 on root, force-pushes to main or master) with a clear reason. Tests the command as one string; smart-approve is the superset that also decomposes compound chains and is the one bundled in the security-hooks plugin. Use when a minimal, auditable safety net is enough.",
       "path": "hooks/security/command-guard",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/command-guard",
       "targets": [
@@ -1236,7 +1236,7 @@
       "type": "hook",
       "category": "security",
       "title": "Smart Approve",
-      "description": "A PreToolUse hook that decomposes compound Bash commands (&&, ||, ;, |, $(), backticks, subshell parens) into their component sub-commands and checks each one independently against the same deny list command-guard uses, catching destructive operations hidden in command substitution or a subshell where a full-string match misses them. Use to upgrade command-guard with decomposition, or as the command guard bundled in the security-hooks plugin.",
+      "description": "A PreToolUse hook that splits compound Bash commands (&&, ||, ;, |, $(), backticks, subshells) into their parts and checks each against the same deny list as command-guard, catching destructive operations hidden in substitutions or subshells that a full-string match misses. Use to upgrade command-guard with decomposition, or as the guard bundled in the security-hooks plugin.",
       "path": "hooks/security/smart-approve",
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/smart-approve",
       "targets": [

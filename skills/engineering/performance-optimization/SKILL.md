@@ -1,6 +1,6 @@
 ---
 name: performance-optimization
-description: Optimize a performance problem by profiling to find the real bottleneck before changing anything, making one targeted change, and verifying both the improvement and that correctness did not degrade. Use when a feature is measurably slow, a page load or API response exceeds a budget, a query is taking too long, or a user reports sluggishness. Do not use to pre-optimize code that has not been measured to be slow.
+description: Fix a performance problem by profiling first, making one targeted change, and verifying both the speedup and that correctness held. Use when a feature is measurably slow, a page or API exceeds its budget, or a query takes too long. Do not use to pre-optimize code that has not been measured.
 ---
 
 Profile first. Every performance intuition is wrong until the profiler confirms it. The code that looks slow is rarely the bottleneck; the bottleneck is almost always somewhere the code looks unremarkable. An optimization without a measurement is a guess. A guess that happens to speed things up does not mean you found the right thing.

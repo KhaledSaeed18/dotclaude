@@ -4,8 +4,8 @@
     {
       "name": "db-migration-safety",
       "type": "registry:item",
-      "title": "Db Migration Safety",
-      "description": "Review or write a database schema migration with production safety as the bar, checking lock behavior, table rewrites, backfill strategy, deploy-order compatibility (expand-contract), index creation, and rollback, for Postgres, MySQL, and common ORMs' migration tools. Use when adding or reviewing a migration, renaming or dropping columns, adding constraints or indexes to large tables, or planning a backfill.",
+      "title": "DB Migration Safety",
+      "description": "Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order, index creation, and rollback for Postgres, MySQL, and common ORMs. Use when adding or reviewing a migration, dropping or renaming columns, or adding constraints or indexes to large tables.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

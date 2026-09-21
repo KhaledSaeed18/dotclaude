@@ -1,5 +1,6 @@
 ---
 name: pr-description
+title: PR Description
 description: Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body.
 argument-hint: "(optional) base branch, ticket, or PR focus"
 ---

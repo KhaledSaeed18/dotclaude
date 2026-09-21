@@ -1,6 +1,6 @@
 ---
 name: clean-branches
-description: List local Git branches that have been fully merged or are stale and delete them safely after showing what would be removed. Protects main, master, develop, and the currently checked-out branch. Pass --dry-run to preview without deleting anything. Distinct from the finish-branch skill, which closes a single active in-progress branch; this cleans up accumulated merged branches across the whole repository. Use when local branches have accumulated and need safe cleanup.
+description: List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and the current branch. Pass --dry-run to preview. Unlike the finish-branch skill, which closes one active branch, this cleans up accumulated branches across the repository. Use when local branches have piled up and need safe cleanup.
 argument-hint: "[--dry-run]"
 allowed-tools: Bash(git:*)
 model: inherit
