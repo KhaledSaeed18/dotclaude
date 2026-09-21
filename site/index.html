@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dotclaude — Claude Code skills, agents, commands, and hooks</title>
+    <meta
+      name="description"
+      content="Browse and install Claude Code skills, agents, commands, and hooks from the dotclaude registry, as plugins or single items."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content="dotclaude" />
+    <meta
+      property="og:description"
+      content="Claude Code skills, agents, commands, and hooks, ready to install."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#results">Skip to results</a>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="#/">dotclaude</a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="#/" data-nav="items">Items</a>
+          <a href="#/plugins" data-nav="plugins">Plugins</a>
+          <a href="#/install" data-nav="install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page" id="app">
+      <section class="intro">
+        <h1>Claude Code extensions, ready to install.</h1>
+        <p class="lede">
+          A personal registry of skills, agents, commands, and hooks. Install a bundle as a plugin,
+          or copy a single item into your project with the shadcn CLI.
+        </p>
+        <ul class="counts" id="counts" aria-label="Item counts"></ul>
+      </section>
+
+      <div class="catalog" id="view-items">
+        <aside class="filters" aria-label="Filters">
+          <label class="search">
+            <span class="visually-hidden">Search items</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Search by name or description"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+          <div class="filter-group" data-filter="type">
+            <h2>Type</h2>
+            <div class="chips" id="filter-type"></div>
+          </div>
+          <div class="filter-group" data-filter="category">
+            <h2>Category</h2>
+            <div class="chips" id="filter-category"></div>
+          </div>
+          <div class="filter-group" data-filter="plugin">
+            <h2>Plugin</h2>
+            <div class="chips" id="filter-plugin"></div>
+          </div>
+          <button class="clear" id="clear" type="button" hidden>Clear filters</button>
+        </aside>
+
+        <section class="results" id="results" aria-live="polite">
+          <p class="results-summary" id="summary"></p>
+          <ol class="rows" id="rows"></ol>
+          <p class="empty" id="empty" hidden>
+            Nothing matches. Try fewer filters or a different word.
+          </p>
+        </section>
+      </div>
+
+      <section class="plugins" id="view-plugins" hidden>
+        <p class="section-lede">
+          Plugins are bundles managed by Claude Code. Hook plugins activate on install with no
+          <code>settings.json</code> editing. Add the marketplace once, then install any bundle.
+        </p>
+        <div class="command-block" data-copy="/plugin marketplace add KhaledSaeed18/dotclaude">
+          <code>/plugin marketplace add KhaledSaeed18/dotclaude</code>
+          <button type="button" class="copy" aria-label="Copy command">Copy</button>
+        </div>
+        <ol class="plugin-list" id="plugin-list"></ol>
+      </section>
+
+      <section class="install" id="view-install" hidden>
+        <h2>Two ways to install</h2>
+        <div class="install-cols">
+          <article>
+            <h3>As a plugin</h3>
+            <p>
+              Bundles of related items, managed by Claude Code. Updates with
+              <code>/plugin marketplace update dotclaude</code>, namespaces commands
+              (<code>/security:security-audit</code>), and wires hooks automatically.
+            </p>
+            <div class="command-block" data-copy="/plugin marketplace add KhaledSaeed18/dotclaude">
+              <code>/plugin marketplace add KhaledSaeed18/dotclaude</code>
+              <button type="button" class="copy" aria-label="Copy command">Copy</button>
+            </div>
+            <div class="command-block" data-copy="/plugin install engineering@dotclaude">
+              <code>/plugin install engineering@dotclaude</code>
+              <button type="button" class="copy" aria-label="Copy command">Copy</button>
+            </div>
+            <p>
+              A good starter set is <strong>engineering</strong>, <strong>git</strong>, and
+              <strong>security-hooks</strong>.
+            </p>
+          </article>
+          <article>
+            <h3>As a single item</h3>
+            <p>
+              The shadcn CLI copies one item into the project you run it from, under
+              <code>.claude/</code>. Hooks installed this way need their documented block added
+              to <code>.claude/settings.json</code>.
+            </p>
+            <div
+              class="command-block"
+              data-copy="npx shadcn@latest add KhaledSaeed18/dotclaude/handoff"
+            >
+              <code>npx shadcn@latest add KhaledSaeed18/dotclaude/handoff</code>
+              <button type="button" class="copy" aria-label="Copy command">Copy</button>
+            </div>
+            <p>
+              To make an item global, copy it from <code>.claude/</code> into
+              <code>~/.claude/</code>: folders for skills and hooks, single files for agents and
+              commands.
+            </p>
+          </article>
+        </div>
+
+        <h2>What each type is</h2>
+        <dl class="types-dl" id="types-dl">
+          <div>
+            <dt><span class="dot" data-type="skill"></span>Skill</dt>
+            <dd>
+              A procedure Claude loads on its own when your request matches its description. You
+              never call it by name. Installs to <code>.claude/skills/&lt;name&gt;/</code>.
+            </dd>
+          </div>
+          <div>
+            <dt><span class="dot" data-type="agent"></span>Agent</dt>
+            <dd>
+              A specialist Claude hands a whole side task to, in its own context, returning only
+              the result. Installs to <code>.claude/agents/&lt;name&gt;.md</code>.
+            </dd>
+          </div>
+          <div>
+            <dt><span class="dot" data-type="command"></span>Command</dt>
+            <dd>
+              A shortcut you trigger yourself by typing <code>/name</code>. Installs to
+              <code>.claude/commands/&lt;name&gt;.md</code>.
+            </dd>
+          </div>
+          <div>
+            <dt><span class="dot" data-type="hook"></span>Hook</dt>
+            <dd>
+              A script that runs on a Claude Code event, every time, with no model judgment.
+              Installs to <code>.claude/hooks/&lt;name&gt;/</code>.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <p class="load-error" id="load-error" hidden>
+        The catalog could not be loaded. Reload the page, or browse the
+        <a href="https://github.com/KhaledSaeed18/dotclaude#catalog">README on GitHub</a>.
+      </p>
+    </main>
+
+    <div class="detail-backdrop" id="detail-backdrop" hidden></div>
+    <aside class="detail" id="detail" aria-label="Item details" hidden>
+      <div class="detail-inner" id="detail-inner"></div>
+    </aside>
+
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+
+
+    <script src="app.js"></script>
+  </body>
+</html>

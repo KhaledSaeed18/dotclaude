@@ -14,6 +14,7 @@
  *   - the README catalog                       (between the catalog markers)
  *   - .claude-plugin/marketplace.json          (the Claude Code plugin marketplace)
  *   - .claude-plugin/commands/<name>.md        (command copies named for /name)
+ *   - site/data.json                          (the catalog site's single data file)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
  */
@@ -49,6 +50,14 @@ const MARKETPLACE_OWNER_EMAIL = "khaled18saeed@gmail.com";
 const PLUGIN_TREES_DIR = `${PLUGIN_META_DIR}/plugins`;
 const PLUGINS_START = "<!-- plugins:start -->";
 const PLUGINS_END = "<!-- plugins:end -->";
+
+/**
+ * The catalog site under `site/` is static HTML that fetches this one file, so
+ * it never reads the per-item registry files or the README. Whatever the site
+ * needs to render an item (or a plugin) is serialized here, and nothing else.
+ */
+const SITE_DATA_PATH = join(ROOT, "site", "data.json");
+const SITE_URL = "https://dotclaude.khaledsaeed.tech";
 
 /**
  * Content-type seam. Each entry is one installable family. `layout` decides how
@@ -558,10 +567,39 @@ interface PluginRow {
   contents: string;
 }
 
+/** One marketplace plugin as the site renders it: metadata plus its members. */
+interface SitePlugin {
+  name: string;
+  description: string;
+  category: string;
+  keywords: string[];
+  /** `<type>/<name>` keys, e.g. `skill/handoff`, matching SiteItem.key. */
+  items: string[];
+}
+
+/** One item as the site renders it. */
+interface SiteItem {
+  /** `<type>/<name>`, the site's stable identity for deep links. */
+  key: string;
+  name: string;
+  type: string;
+  category: string;
+  title: string;
+  description: string;
+  /** Repo path of the item folder, e.g. `skills/productivity/handoff`. */
+  path: string;
+  docs: string;
+  /** Install targets, relative to the project root. */
+  targets: string[];
+  /** Names of the marketplace plugins that bundle this item. */
+  plugins: string[];
+}
+
 interface PluginBuild {
   /** marketplace.json plus every file of every per-plugin tree. */
   files: GeneratedFile[];
   rows: PluginRow[];
+  site: SitePlugin[];
 }
 
 /** `"3 skills"`-style summary fragments, joined with commas. */
@@ -588,6 +626,7 @@ function buildPluginArtifacts(): PluginBuild {
   const entries: unknown[] = [];
   const files: GeneratedFile[] = [];
   const rows: PluginRow[] = [];
+  const site: SitePlugin[] = [];
 
   for (const def of PLUGINS) {
     const tree = join(ROOT, PLUGIN_TREES_DIR, def.name);
@@ -683,6 +722,23 @@ function buildPluginArtifacts(): PluginBuild {
         [hookCount, "hook"],
       ]),
     });
+
+    // A hook script lives at `hooks/<category>/<name>/<file>`, so the item
+    // name is the third path segment.
+    const hookNames =
+      hookCount > 0 ? (def.hooks?.scripts ?? []).map((rel) => rel.split("/")[2]) : [];
+    site.push({
+      name: def.name,
+      description: def.description,
+      category: def.category,
+      keywords: def.keywords,
+      items: [
+        ...skillNames.map((name) => `skill/${name}`),
+        ...agentNames.map((name) => `agent/${name}`),
+        ...commandNames.map((name) => `command/${name}`),
+        ...hookNames.map((name) => `hook/${name}`),
+      ],
+    });
   }
 
   files.push({
@@ -696,7 +752,50 @@ function buildPluginArtifacts(): PluginBuild {
     }),
   });
 
-  return { files, rows };
+  return { files, rows, site };
+}
+
+/**
+ * `site/data.json`: everything the catalog site renders, in one fetch. Types
+ * are listed in declaration order so the site's filters and count pills match
+ * the README badges. Plugin membership is inverted onto each item so the
+ * detail view can show which bundles carry it without a second lookup.
+ */
+function buildSiteData(
+  siteItems: SiteItem[],
+  counts: Map<string, number>,
+  plugins: SitePlugin[],
+): string {
+  const memberships = new Map<string, string[]>();
+  for (const plugin of plugins) {
+    for (const key of plugin.items) {
+      const list = memberships.get(key) ?? [];
+      list.push(plugin.name);
+      memberships.set(key, list);
+    }
+  }
+  const items = siteItems.map((item) => ({ ...item, plugins: memberships.get(item.key) ?? [] }));
+
+  return toJson({
+    registry: {
+      name: REGISTRY_NAME,
+      owner: GITHUB_OWNER_REPO,
+      homepage: REGISTRY_HOMEPAGE,
+      site: SITE_URL,
+      author: REGISTRY_AUTHOR,
+    },
+    types: CONTENT_TYPES.map((ct) => ({
+      type: ct.noun.toLowerCase(),
+      label: ct.label,
+      noun: ct.noun,
+      layout: ct.layout,
+      targetBase: ct.targetBase,
+      color: `#${ct.badgeColor}`,
+      count: counts.get(ct.label) ?? 0,
+    })),
+    plugins,
+    items,
+  });
 }
 
 /** The README plugins table (between the plugins markers). */
@@ -730,6 +829,7 @@ function generate(): GeneratedFile[] {
   const includePaths: string[] = [];
   const groups: CatalogGroup[] = [];
   const counts = new Map<string, number>();
+  const siteItems: SiteItem[] = [];
 
   for (const ct of CONTENT_TYPES) {
     const rows: CatalogRow[] = [];
@@ -754,6 +854,18 @@ function generate(): GeneratedFile[] {
         description: registryItem.description,
         category: item.category,
       });
+      siteItems.push({
+        key: `${registryItem.meta.type}/${item.name}`,
+        name: item.name,
+        type: registryItem.meta.type,
+        category: item.category,
+        title: registryItem.title,
+        description: registryItem.description,
+        path: toPosix(itemDir),
+        docs: registryItem.docs,
+        targets: registryItem.files.map((file) => file.target),
+        plugins: [],
+      });
     }
     groups.push({ label: ct.label, noun: ct.noun, rows });
     counts.set(ct.label, rows.length);
@@ -772,6 +884,7 @@ function generate(): GeneratedFile[] {
 
   const plugins = buildPluginArtifacts();
   outputs.push(...plugins.files);
+  outputs.push({ path: SITE_DATA_PATH, content: buildSiteData(siteItems, counts, plugins.site) });
 
   let readme = readFileSync(README_PATH, "utf8");
   readme = replaceRegion(readme, CATALOG_START, CATALOG_END, buildCatalog(groups));

@@ -9,8 +9,11 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>` (`SKILL.md`, `AGENT.md
 - each item's `registry.json` and the root `registry.json`
 - the README catalog, badges, and plugins table (between `<!-- ... -->` markers)
 - everything under `.claude-plugin/` (marketplace + per-plugin trees)
+- `site/data.json`, the one file the catalog site reads
 
 **Never hand-edit generated files.** Edit the source manifest, run `pnpm gen`, and commit the regenerated output. `pnpm gen:check` fails CI when anything is stale.
+
+The catalog site lives in `site/`: static HTML, CSS, and JS with no build step and no dependencies, deployed to [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) by `.github/workflows/pages.yml` on every push to `main` that touches `site/`. Its only data source is the generated `site/data.json`, so the site never needs editing when items change; `index.html`, `styles.css`, and `app.js` are hand-written and Biome-linted like the rest of the repo. Preview locally with any static server, e.g. `python3 -m http.server 4173 --directory site`.
 
 One thing deliberately sits outside that rule: `.agents/skills/improve/`, surfaced to this repo's own sessions through the `.claude/skills/improve` symlink. It is tooling *for* working on the registry, not an item *in* it — so it is invisible to `gen` and `validate`, follows none of the item conventions, and ships to nobody. Anything under `skills/`, `agents/`, `commands/`, or `hooks/` is a registry item; `.agents/` is not.
 
