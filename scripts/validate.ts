@@ -253,7 +253,18 @@ function main(): void {
         continue;
       }
 
-      const parsedFile = matter(readFileSync(manifestPath, "utf8"));
+      let parsedFile: ReturnType<typeof matter>;
+      try {
+        parsedFile = matter(readFileSync(manifestPath, "utf8"));
+      } catch (error) {
+        // Unquoted descriptions break on ": "; say so instead of crashing.
+        const reason = error instanceof Error ? error.message.split("\n")[0] : String(error);
+        errors.push(
+          `${label}: invalid YAML frontmatter (${reason}); ` +
+            'wrap values containing ": " in double quotes',
+        );
+        continue;
+      }
       const parsed = ct.frontmatter.safeParse(parsedFile.data);
       if (!parsed.success) {
         const reason = parsed.error.issues

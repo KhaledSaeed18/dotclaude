@@ -398,6 +398,25 @@ describe("validate", () => {
     expect(runValidate(dir).status).toBe(0);
   });
 
+  it("reports unparseable YAML frontmatter with the file and a hint", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest({
+        name: "s-one",
+        description: "Does this: and that. Use when needed.",
+      }),
+    });
+
+    const validated = runValidate(dir);
+    expect(validated.status).not.toBe(0);
+    expect(validated.output).toContain("skills/util/s-one: invalid YAML frontmatter");
+    expect(validated.output).toContain("double quotes");
+
+    const generated = runGen(dir);
+    expect(generated.status).not.toBe(0);
+    expect(generated.output).toContain("Invalid YAML frontmatter in skills/util/s-one/SKILL.md");
+    expect(generated.output).not.toContain("at generateError");
+  });
+
   it("rejects invalid agent color, memory, and model", () => {
     const dir = makeFixture({
       "agents/engineering/bad/AGENT.md": manifest({
