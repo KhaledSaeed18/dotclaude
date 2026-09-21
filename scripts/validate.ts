@@ -211,6 +211,20 @@ function checkManifestLinks(
   }
 }
 
+/** Every .md file under an item folder, as paths relative to it. */
+function listMarkdown(folder: string): string[] {
+  const out: string[] = [];
+  const walk = (dir: string, prefix: string) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+      if (entry.isDirectory()) walk(join(dir, entry.name), rel);
+      else if (entry.name.endsWith(".md")) out.push(rel);
+    }
+  };
+  walk(folder, "");
+  return out.sort();
+}
+
 function checkRegistryFiles(folder: string, label: string, errors: string[]): void {
   const regPath = join(folder, "registry.json");
   if (!existsSync(regPath)) {
@@ -340,10 +354,16 @@ function main(): void {
       if (!NAME_RE.test(fm.name)) {
         errors.push(`${label}: name "${fm.name}" violates convention ${NAME_RE.source}`);
       }
-      // Descriptions reach the README, the site, and every install UI as one
-      // line; the registry's prose rule is no em dashes there.
-      if (fm.description.includes("\u2014")) {
-        errors.push(`${label}: description contains an em dash; use a comma, colon, or full stop`);
+      // The registry's prose rule: no em dashes anywhere in an item, manifest
+      // or companion file, so what ships reads as the writer, not a model.
+      for (const rel of listMarkdown(folder)) {
+        const text = readFileSync(join(folder, rel), "utf8");
+        const line = text.split("\n").findIndex((l) => l.includes("\u2014"));
+        if (line !== -1) {
+          errors.push(
+            `${label}: ${rel}:${line + 1} contains an em dash; use a comma, colon, semicolon, or full stop`,
+          );
+        }
       }
       checkAttribution(parsedFile.content, label, errors);
       for (const name of collectXrefs(parsedFile.content)) xrefs.push({ label, name });

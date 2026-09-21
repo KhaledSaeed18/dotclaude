@@ -7,7 +7,7 @@ description: A PreToolUse hook that blocks Read, Edit, Write, MultiEdit, and Bas
 
 A Claude Code hook that intercepts file-access operations before they run and blocks any that target well-known sensitive-file patterns.
 
-- **Closes the exfiltration gap.** `command-guard` blocks destructive commands. But `cat .env` is not destructive — it reads a secret that could then be sent elsewhere. This hook prevents Claude from reading secrets in the first place.
+- **Closes the exfiltration gap.** `command-guard` blocks destructive commands. But `cat .env` is not destructive; it reads a secret that could then be sent elsewhere. This hook prevents Claude from reading secrets in the first place.
 - **Covers five tool surfaces.** Intercepts `Read`, `Edit`, `Write`, and `MultiEdit` (by file path), and `Bash` (by command string and path extraction).
 - **Fails open.** Any error in the hook exits `0`, so it can never break a legitimate file operation.
 - **Zero dependencies.** Node standard library only (`node >= 18`).
@@ -43,7 +43,7 @@ After `npx shadcn@latest add KhaledSaeed18/dotclaude/sensitive-file-guard`, both
 
 ## Activate it (required manual step)
 
-Add this to `.claude/settings.json` (project) or `~/.claude/settings.json` (global):
+Add this to `.claude/settings.json` (project), or `~/.claude/settings.json` (global):
 
 ```json
 {
@@ -72,15 +72,15 @@ Open `sensitive-file-guard.mjs` and edit `SENSITIVE_PATH_PATTERNS` and `SENSITIV
 ## Verify it
 
 ```bash
-# Attempt to Read .env — should be blocked (exit 2)
+# Attempt to Read .env: should be blocked (exit 2)
 echo '{"tool_name":"Read","tool_input":{"file_path":".env"}}' \
   | node .claude/hooks/sensitive-file-guard/sensitive-file-guard.mjs; echo "exit: $?"
 
-# Attempt to cat .env via Bash — should be blocked (exit 2)
+# Attempt to cat .env via Bash: should be blocked (exit 2)
 echo '{"tool_name":"Bash","tool_input":{"command":"cat .env"}}' \
   | node .claude/hooks/sensitive-file-guard/sensitive-file-guard.mjs; echo "exit: $?"
 
-# A safe read — should pass (exit 0)
+# A safe read: should pass (exit 0)
 echo '{"tool_name":"Read","tool_input":{"file_path":"README.md"}}' \
   | node .claude/hooks/sensitive-file-guard/sensitive-file-guard.mjs; echo "exit: $?"
 ```

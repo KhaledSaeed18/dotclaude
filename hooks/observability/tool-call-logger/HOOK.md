@@ -22,7 +22,7 @@ After `npx shadcn@latest add KhaledSaeed18/dotclaude/tool-call-logger`, both lan
 
 ## Activate it (required manual step)
 
-The installer copies the files but **cannot** edit your `settings.json` — hooks are configuration, not loadable files, so you wire it up once by hand. Add this to `.claude/settings.json` (project) or `~/.claude/settings.json` (global):
+The installer copies the files but **cannot** edit your `settings.json`, hooks are configuration, not loadable files, so you wire it up once by hand. Add this to `.claude/settings.json` (project), or `~/.claude/settings.json` (global):
 
 ```json
 {
@@ -44,7 +44,7 @@ The installer copies the files but **cannot** edit your `settings.json` — hook
 
 - `matcher: "*"` logs every tool. Narrow it to specific tools with a regex, e.g. `"Edit|Write|Bash"`.
 - `$CLAUDE_PROJECT_DIR` is set by Claude Code to the project root, so the path resolves no matter the working directory. If you installed the script globally under `~/.claude/`, point the command there instead.
-- **`PostToolUse`** captures the tool input **and** its response. To log the *intent* before a tool runs (no response yet), add the same block under **`PreToolUse`** — the script handles both events. Wiring both gives you a before/after trail.
+- **`PostToolUse`** captures the tool input **and** its response. To log the *intent* before a tool runs (no response yet), add the same block under **`PreToolUse`**: the script handles both events. Wiring both gives you a before/after trail.
 
 Run `/hooks` in Claude Code (or restart the session) to load the change. For safety, Claude Code captures a snapshot of hooks at startup, so external edits aren't applied mid-session until you review them via `/hooks`.
 
@@ -70,7 +70,7 @@ Each line:
 }
 ```
 
-Read it back with standard tools — e.g. the last 20 Bash calls:
+Read it back with standard tools, e.g. the last 20 Bash calls:
 
 ```bash
 grep '"tool_name":"Bash"' .claude/logs/tool-calls.jsonl | tail -20 | jq .
@@ -105,7 +105,7 @@ The log can grow quickly and may contain repo paths or snippets. Add it to `.git
     | node .claude/hooks/tool-call-logger/log-tool-calls.mjs
   cat .claude/logs/tool-calls.jsonl
   ```
-- **A value shows `[redacted]`.** That key matched the secret pattern — expected. Adjust the `SECRET_KEY` regex in the script if it's over-eager for your data.
+- **A value shows `[redacted]`.** That key matched the secret pattern, expected. Adjust the `SECRET_KEY` regex in the script if it's over-eager for your data.
 - **Lines are cut with `…(+N chars)`.** Raise `CLAUDE_TOOL_LOG_MAXLEN`.
 
 > Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it, and only register hooks you trust.

