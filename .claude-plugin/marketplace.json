@@ -137,6 +137,44 @@
       ]
     },
     {
+      "name": "thesis",
+      "source": "./.claude-plugin/plugins/thesis",
+      "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, a research log, and a humanize pass for the prose.",
+      "author": {
+        "name": "Khaled Saeed"
+      },
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=thesis",
+      "repository": "https://github.com/KhaledSaeed18/dotclaude",
+      "license": "MIT",
+      "category": "research",
+      "keywords": [
+        "thesis",
+        "research",
+        "literature-review",
+        "citations",
+        "bibtex",
+        "academic"
+      ]
+    },
+    {
+      "name": "writing",
+      "source": "./.claude-plugin/plugins/writing",
+      "description": "Prose quality for anything a human will read: strip machine-writing tells from READMEs, docs, PR descriptions, and chapters without changing what they say.",
+      "author": {
+        "name": "Khaled Saeed"
+      },
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=writing",
+      "repository": "https://github.com/KhaledSaeed18/dotclaude",
+      "license": "MIT",
+      "category": "writing",
+      "keywords": [
+        "writing",
+        "editing",
+        "humanize",
+        "prose"
+      ]
+    },
+    {
       "name": "workflow-hooks",
       "source": "./.claude-plugin/plugins/workflow-hooks",
       "description": "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "paper-reader",
+      "type": "registry:item",
+      "title": "Paper Reader",
+      "description": "Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student's research question, and quotable passages with locations, so that lit-review-synthesis can build an argument from many notes. Use when working through a reading list, when a supervisor asks what a paper actually shows, or before citing a paper for a specific claim.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/paper-reader",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/paper-reader/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

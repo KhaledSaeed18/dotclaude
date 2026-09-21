@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "citation-guard",
+      "type": "registry:item",
+      "title": "Citation Guard",
+      "description": "A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project's .bib and reports the ones that do not exist, and after a .bib edit reports duplicate keys and entries with no DOI, arXiv id, or URL. Catches an invented citation in the same step it was written. Use when drafting a thesis, paper, or proposal with AI assistance, where a fabricated reference is the one unrecoverable error.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/academic/citation-guard",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/citation-guard/HOOK.md"
+        },
+        {
+          "path": "citation-guard.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/citation-guard/citation-guard.mjs"
+        }
+      ]
+    }
+  ]
+}

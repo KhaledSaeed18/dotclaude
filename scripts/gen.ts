@@ -182,6 +182,8 @@ interface PluginDef {
   category: string;
   keywords: string[];
   skills?: { category: string; exclude?: string[] };
+  /** Extra skills by repo path (`skills/<category>/<name>`), for a skill that belongs in more than one bundle. */
+  extraSkills?: string[];
   agents?: { category: string };
   commands?: { category: string };
   /**
@@ -289,6 +291,33 @@ const PLUGINS: readonly PluginDef[] = [
     keywords: ["research", "citations", "web", "naming", "availability", "branding"],
     skills: { category: "research" },
     agents: { category: "research" },
+  },
+  {
+    name: "thesis",
+    description:
+      "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, a research log, and a humanize pass for the prose.",
+    category: "research",
+    keywords: ["thesis", "research", "literature-review", "citations", "bibtex", "academic"],
+    skills: { category: "academic" },
+    extraSkills: ["skills/writing/humanize"],
+    agents: { category: "academic" },
+    commands: { category: "academic" },
+    hooks: {
+      scripts: ["hooks/academic/citation-guard/citation-guard.mjs"],
+      config: {
+        PostToolUse: [
+          { matcher: "Edit|Write|MultiEdit", hooks: [hookCommand("citation-guard.mjs")] },
+        ],
+      },
+    },
+  },
+  {
+    name: "writing",
+    description:
+      "Prose quality for anything a human will read: strip machine-writing tells from READMEs, docs, PR descriptions, and chapters without changing what they say.",
+    category: "writing",
+    keywords: ["writing", "editing", "humanize", "prose"],
+    skills: { category: "writing" },
   },
   {
     name: "workflow-hooks",
@@ -701,8 +730,22 @@ function buildPluginArtifacts(): PluginBuild {
           (name) => !(def.skills?.exclude ?? []).includes(name),
         )
       : [];
-    for (const name of skillNames) {
-      const source = join(ROOT, "skills", def.skills?.category ?? "", name);
+    const skillSources = skillNames.map((name) => ({
+      name,
+      source: join(ROOT, "skills", def.skills?.category ?? "", name),
+      key: `skill/${name}`,
+    }));
+    for (const rel of def.extraSkills ?? []) {
+      const source = join(ROOT, rel);
+      // Absent in a fixture repo or after a rename: the plugin simply ships
+      // without it, which the README contents column makes visible.
+      if (!existsSync(source)) continue;
+      const name = rel.split("/").at(-1) ?? rel;
+      if (!skillSources.some((s) => s.name === name)) {
+        skillSources.push({ name, source, key: `skill/${name}` });
+      }
+    }
+    for (const { name, source } of skillSources) {
       for (const rel of listFiles(source)) {
         if (toPosix(rel) === "registry.json") continue;
         treeFiles.push({
@@ -761,7 +804,7 @@ function buildPluginArtifacts(): PluginBuild {
       }
     }
 
-    if (skillNames.length + agentNames.length + commandNames.length + hookCount === 0) continue;
+    if (skillSources.length + agentNames.length + commandNames.length + hookCount === 0) continue;
 
     files.push(...treeFiles);
     entries.push({
@@ -782,7 +825,7 @@ function buildPluginArtifacts(): PluginBuild {
       name: def.name,
       description: def.description,
       contents: contentsSummary([
-        [skillNames.length, "skill"],
+        [skillSources.length, "skill"],
         [agentNames.length, "agent"],
         [commandNames.length, "command"],
         [hookCount, "hook"],
@@ -799,7 +842,7 @@ function buildPluginArtifacts(): PluginBuild {
       category: def.category,
       keywords: def.keywords,
       items: [
-        ...skillNames.map((name) => `skill/${name}`),
+        ...skillSources.map((s) => s.key),
         ...agentNames.map((name) => `agent/${name}`),
         ...commandNames.map((name) => `command/${name}`),
         ...hookNames.map((name) => `hook/${name}`),
