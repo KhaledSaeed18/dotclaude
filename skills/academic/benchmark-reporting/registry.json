@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "benchmark-reporting",
+      "type": "registry:item",
+      "title": "Benchmark Reporting",
+      "description": "Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions, multiple seeds with variance, hardware and configuration disclosed, tables generated from result files with consistent precision and the best result marked by rule, ablations that isolate each component, and honest treatment of losses and failure cases. Use when writing the results chapter of a systems or ML thesis, when a comparison table needs to be built, or when a reviewer questions whether a comparison is fair.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/benchmark-reporting",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/benchmark-reporting/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

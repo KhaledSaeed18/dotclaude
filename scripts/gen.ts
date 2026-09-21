@@ -313,7 +313,7 @@ const PLUGINS: readonly PluginDef[] = [
   {
     name: "thesis",
     description:
-      "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
+      "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, research design and design science, statistics planning and reporting, PRISMA systematic reviews, citation-graph expansion, reproducible experiments and benchmark reporting, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
     category: "research",
     keywords: ["thesis", "research", "literature-review", "citations", "bibtex", "academic"],
     skills: { category: "academic" },
