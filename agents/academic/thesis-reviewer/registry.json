@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "thesis-reviewer",
+      "type": "registry:item",
+      "title": "Thesis Reviewer",
+      "description": "Use this agent to get an examiner's read of a thesis chapter or full draft before the supervisor or committee sees it: it checks whether the research questions are answered by the evidence, whether the contribution is clear and honestly sized, whether the method supports the claims (validity threats, baselines, statistics), whether the related work covers what an examiner would expect, and what the hardest defence questions will be. Read-only; returns a ranked report with locations. Use before submitting a chapter, before the defence, or when a draft feels finished but has not been challenged.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/academic/thesis-reviewer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/thesis-reviewer.md"
+        }
+      ]
+    }
+  ]
+}

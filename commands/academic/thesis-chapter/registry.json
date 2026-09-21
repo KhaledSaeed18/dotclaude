@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "thesis-chapter",
+      "type": "registry:item",
+      "title": "Thesis Chapter",
+      "description": "Draft or revise one thesis chapter from the outline, the research question record, the reading notes, and the results, applying the academic-writing skill section by section and finishing with citation verification and a humanize pass, so a chapter arrives structured, traceable, and free of invented references. Use when a chapter is due, when starting a chapter from an approved outline, or when a draft chapter needs a full revision pass.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/thesis-chapter",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/thesis-chapter.md"
+        }
+      ]
+    }
+  ]
+}

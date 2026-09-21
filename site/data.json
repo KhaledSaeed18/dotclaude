@@ -14,7 +14,7 @@
       "layout": "folder",
       "targetBase": ".claude/skills",
       "color": "#2563eb",
-      "count": 48
+      "count": 54
     },
     {
       "type": "agent",
@@ -23,7 +23,7 @@
       "layout": "file",
       "targetBase": ".claude/agents",
       "color": "#7c3aed",
-      "count": 13
+      "count": 15
     },
     {
       "type": "command",
@@ -32,7 +32,7 @@
       "layout": "file",
       "targetBase": ".claude/commands",
       "color": "#0891b2",
-      "count": 10
+      "count": 12
     },
     {
       "type": "hook",
@@ -217,7 +217,7 @@
     },
     {
       "name": "thesis",
-      "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, a research log, and a humanize pass for the prose.",
+      "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
       "category": "research",
       "keywords": [
         "thesis",
@@ -228,15 +228,25 @@
         "academic"
       ],
       "items": [
+        "skill/academic-writing",
         "skill/bibtex-manager",
         "skill/citation-verifier",
+        "skill/docx-thesis",
+        "skill/latex-toolkit",
         "skill/lit-review-synthesis",
         "skill/literature-search",
         "skill/paper-reader",
+        "skill/proofread-academic",
+        "skill/research-figures",
         "skill/research-question",
+        "skill/supervisor-update",
         "skill/thesis-proposal",
         "skill/humanize",
+        "agent/paper-critic",
+        "agent/thesis-reviewer",
         "command/research-log",
+        "command/thesis-chapter",
+        "command/thesis-progress",
         "hook/citation-guard"
       ]
     },
@@ -331,6 +341,22 @@
   ],
   "items": [
     {
+      "key": "skill/academic-writing",
+      "name": "academic-writing",
+      "type": "skill",
+      "category": "academic",
+      "title": "Academic Writing",
+      "description": "Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the conventions of computer-science writing: claim-first paragraphs, tense and voice by section, hedging matched to evidence, signposting, defined terms, and figures and tables that carry their own argument. Works from the student's outline and notes and never invents a result or a citation. Use when drafting a chapter, when a supervisor says a section is unclear or unstructured, or when turning results into a discussion.",
+      "path": "skills/academic/academic-writing",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/academic-writing",
+      "targets": [
+        ".claude/skills/academic-writing/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "skill/bibtex-manager",
       "name": "bibtex-manager",
       "type": "skill",
@@ -358,6 +384,38 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-verifier",
       "targets": [
         ".claude/skills/citation-verifier/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/docx-thesis",
+      "name": "docx-thesis",
+      "type": "skill",
+      "category": "academic",
+      "title": "Docx Thesis",
+      "description": "Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a reference .docx that carries the department's styles, manage citations through Zotero with Better BibTeX so the .bib stays the source of truth, and handle the Word-specific submission checks (styles, table of contents, captions, tracked changes). Use when the department requires .docx, the supervisor comments in Word, or a LaTeX draft must become a Word document.",
+      "path": "skills/academic/docx-thesis",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/docx-thesis",
+      "targets": [
+        ".claude/skills/docx-thesis/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/latex-toolkit",
+      "name": "latex-toolkit",
+      "type": "skill",
+      "category": "academic",
+      "title": "Latex Toolkit",
+      "description": "Set up, build, and debug a LaTeX thesis: project layout with one file per chapter, latexmk builds, biblatex or natbib bibliography wiring, university template adoption, compile-error diagnosis from the .log (undefined control sequence, missing $, overfull boxes, undefined citations), cross-references, figures and tables, and the packages worth using. Use when starting a LaTeX thesis, when a build fails, when references show as question marks, or when adopting a department template.",
+      "path": "skills/academic/latex-toolkit",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/latex-toolkit",
+      "targets": [
+        ".claude/skills/latex-toolkit/SKILL.md"
       ],
       "plugins": [
         "thesis"
@@ -413,6 +471,38 @@
       ]
     },
     {
+      "key": "skill/proofread-academic",
+      "name": "proofread-academic",
+      "type": "skill",
+      "category": "academic",
+      "title": "Proofread Academic",
+      "description": "Proofread a thesis chapter or paper against a checklist of the errors examiners and reviewers actually flag: structure and signposting, undefined acronyms, notation and terminology consistency, figure and table references, numbers and statistics reporting (n, variance, p, effect sizes), citation placement, tense and voice by section, and mechanical issues, producing a findings list with locations and fixes rather than a rewritten file. Use before sending a draft to a supervisor, before submission, or after merging chapters written weeks apart.",
+      "path": "skills/academic/proofread-academic",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/proofread-academic",
+      "targets": [
+        ".claude/skills/proofread-academic/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/research-figures",
+      "name": "research-figures",
+      "type": "skill",
+      "category": "academic",
+      "title": "Research Figures",
+      "description": "Produce publication-grade figures for a thesis or paper from result data: matplotlib with a consistent, colour-blind-safe style file, vector output sized to the text width, one figure per claim, variance shown, direct labels over legends, and captions that carry the argument; plus TikZ for architecture and method diagrams. Use when a results section needs figures, when a supervisor calls a plot unreadable, or when the document's figures do not match each other.",
+      "path": "skills/academic/research-figures",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-figures",
+      "targets": [
+        ".claude/skills/research-figures/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "skill/research-question",
       "name": "research-question",
       "type": "skill",
@@ -423,6 +513,22 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-question",
       "targets": [
         ".claude/skills/research-question/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/supervisor-update",
+      "name": "supervisor-update",
+      "type": "skill",
+      "category": "academic",
+      "title": "Supervisor Update",
+      "description": "Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken and their reasons, results with numbers, blockers with the specific help needed, and the next steps with dates, in under a page. Use before a supervisor meeting, when asked for a progress email, or at a milestone.",
+      "path": "skills/academic/supervisor-update",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/supervisor-update",
+      "targets": [
+        ".claude/skills/supervisor-update/SKILL.md"
       ],
       "plugins": [
         "thesis"
@@ -1103,6 +1209,38 @@
       ]
     },
     {
+      "key": "agent/paper-critic",
+      "name": "paper-critic",
+      "type": "agent",
+      "category": "academic",
+      "title": "Paper Critic",
+      "description": "Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak baselines, unfair comparisons, leakage, missing variance, cherry-picked settings), checks whether the conclusions follow, and returns a critique the student can use to position their own work or to decide how much to trust the paper. Read-only. Use when a paper is central to the thesis, when its results look too good, or when preparing to argue against it in related work.",
+      "path": "agents/academic/paper-critic",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/academic/paper-critic",
+      "targets": [
+        ".claude/agents/paper-critic.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "agent/thesis-reviewer",
+      "name": "thesis-reviewer",
+      "type": "agent",
+      "category": "academic",
+      "title": "Thesis Reviewer",
+      "description": "Use this agent to get an examiner's read of a thesis chapter or full draft before the supervisor or committee sees it: it checks whether the research questions are answered by the evidence, whether the contribution is clear and honestly sized, whether the method supports the claims (validity threats, baselines, statistics), whether the related work covers what an examiner would expect, and what the hardest defence questions will be. Read-only; returns a ranked report with locations. Use before submitting a chapter, before the defence, or when a draft feels finished but has not been challenged.",
+      "path": "agents/academic/thesis-reviewer",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/academic/thesis-reviewer",
+      "targets": [
+        ".claude/agents/thesis-reviewer.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "agent/architect-reviewer",
       "name": "architect-reviewer",
       "type": "agent",
@@ -1321,6 +1459,38 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/research-log",
       "targets": [
         ".claude/commands/research-log.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "command/thesis-chapter",
+      "name": "thesis-chapter",
+      "type": "command",
+      "category": "academic",
+      "title": "Thesis Chapter",
+      "description": "Draft or revise one thesis chapter from the outline, the research question record, the reading notes, and the results, applying the academic-writing skill section by section and finishing with citation verification and a humanize pass, so a chapter arrives structured, traceable, and free of invented references. Use when a chapter is due, when starting a chapter from an approved outline, or when a draft chapter needs a full revision pass.",
+      "path": "commands/academic/thesis-chapter",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/thesis-chapter",
+      "targets": [
+        ".claude/commands/thesis-chapter.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "command/thesis-progress",
+      "name": "thesis-progress",
+      "type": "command",
+      "category": "academic",
+      "title": "Thesis Progress",
+      "description": "Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health (cited keys, undefined keys, unverifiable entries), notes read versus reading list, open items in the research log, and days to the next deadline. Use at the start of a working session, before a supervisor meeting, or whenever the answer to how far along am I is a guess.",
+      "path": "commands/academic/thesis-progress",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/thesis-progress",
+      "targets": [
+        ".claude/commands/thesis-progress.md"
       ],
       "plugins": [
         "thesis"

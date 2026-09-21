@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "paper-critic",
+      "type": "registry:item",
+      "title": "Paper Critic",
+      "description": "Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak baselines, unfair comparisons, leakage, missing variance, cherry-picked settings), checks whether the conclusions follow, and returns a critique the student can use to position their own work or to decide how much to trust the paper. Read-only. Use when a paper is central to the thesis, when its results look too good, or when preparing to argue against it in related work.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/academic/paper-critic",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/paper-critic.md"
+        }
+      ]
+    }
+  ]
+}

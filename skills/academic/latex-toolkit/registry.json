@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "latex-toolkit",
+      "type": "registry:item",
+      "title": "Latex Toolkit",
+      "description": "Set up, build, and debug a LaTeX thesis: project layout with one file per chapter, latexmk builds, biblatex or natbib bibliography wiring, university template adoption, compile-error diagnosis from the .log (undefined control sequence, missing $, overfull boxes, undefined citations), cross-references, figures and tables, and the packages worth using. Use when starting a LaTeX thesis, when a build fails, when references show as question marks, or when adopting a department template.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/latex-toolkit",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/latex-toolkit/SKILL.md"
+        }
+      ]
+    }
+  ]
+}
