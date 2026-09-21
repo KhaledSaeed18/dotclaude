@@ -14,10 +14,10 @@
 <div align="center">
 <!-- badges:start -->
   <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-48-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="48 skills" /></a>
-  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-8-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="8 agents" /></a>
-  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-7-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="7 commands" /></a>
+  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-13-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="13 agents" /></a>
+  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-10-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="10 commands" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-15-db2777.svg?split=true&logo=ri:RiPlugFill" alt="15 hooks" /></a>
-  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-14-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="14 plugins" /></a>
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-15-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="15 plugins" /></a>
 <!-- badges:end -->
 </div>
 
@@ -80,9 +80,10 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 | Plugin | What you get | Install |
 | --- | --- | --- |
 | **engineering** | Engineering workflow skills and review agents: planning, test-driven development, systematic debugging, code review, completion verification, and performance work. (15 skills, 6 agents, 1 command) | `/plugin install engineering@dotclaude` |
+| **pr-toolkit** | Pull-request review as a set of specialists: a read-only code explorer, a behaviour-preserving simplifier, hunters for silent failures and test gaps, a type-design reviewer, and a /review-pr command that runs them in parallel and merges one ranked review. (5 agents, 1 command) | `/plugin install pr-toolkit@dotclaude` |
 | **security** | Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command. (3 skills, 1 agent, 1 command) | `/plugin install security@dotclaude` |
 | **security-hooks** | Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening. (3 hooks) | `/plugin install security-hooks@dotclaude` |
-| **git** | Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup. (9 skills, 1 command) | `/plugin install git@dotclaude` |
+| **git** | Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup. (9 skills, 3 commands) | `/plugin install git@dotclaude` |
 | **productivity** | Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context. (5 skills, 2 commands) | `/plugin install productivity@dotclaude` |
 | **testing** | Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions. (2 skills, 1 command) | `/plugin install testing@dotclaude` |
 | **research** | Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers). (2 skills, 1 agent) | `/plugin install research@dotclaude` |
@@ -267,6 +268,16 @@ The catalog below lists every item in this repository, grouped by type and then 
 | --- | --- | --- |
 | [deep-research](agents/research/deep-research/) | In-depth research agent for topics that need multi-source investigation with citations. Use when the user asks to research a topic thoroughly, synthesize information from across the web, compare options, fact-check a claim against primary sources, or produce a sourced writeup or literature scan, for example "compare Postgres vs SQLite for an offline-first app, with sources". | `npx shadcn@latest add KhaledSaeed18/dotclaude/deep-research` |
 
+#### Review
+
+| Agent | Description | Install |
+| --- | --- | --- |
+| [code-explorer](agents/review/code-explorer/) | Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the tests and configs that touch them, and returns a compact orientation report with file:line anchors instead of a dump. Read-only. Use when starting a feature or fix in an unfamiliar area, when a bug's location is unknown, or when you need to know what a change will touch before planning it. | `npx shadcn@latest add KhaledSaeed18/dotclaude/code-explorer` |
+| [code-simplifier](agents/review/code-simplifier/) | Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead branches, needless abstraction, over-general parameters, and comments that restate code, while keeping behaviour and tests identical. Edits the working tree and reports each simplification with its reason. Use when a diff has grown during implementation, when a reviewer says it is more complex than it needs to be, or as the last step of executing a plan. | `npx shadcn@latest add KhaledSaeed18/dotclaude/code-simplifier` |
+| [silent-failure-hunter](agents/review/silent-failure-hunter/) | Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and promise results, error paths that log and continue, fallbacks that hide the real failure, and success responses sent on error. Read-only; reports each with file:line, the scenario that triggers it, and the fix. Use during code review, before shipping error-handling code, or when a bug report says something failed with no error. | `npx shadcn@latest add KhaledSaeed18/dotclaude/silent-failure-hunter` |
+| [test-gap-analyzer](agents/review/test-gap-analyzer/) | Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries, contracts), maps existing tests onto them by reading the test files rather than trusting coverage numbers, and returns the gaps as concrete test names with the arrange, act, and assert for each. Read-only. Use during review, before merging a change with thin tests, or when coverage is high but bugs still ship. | `npx shadcn@latest add KhaledSaeed18/dotclaude/test-gap-analyzer` |
+| [type-design-reviewer](agents/review/type-design-reviewer/) | Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable, whether nullability and optionality reflect reality, whether unions and enums are exhaustive and closed, whether boundary types (API bodies, DB rows, events) are validated rather than asserted, and whether names say what the values mean. Read-only, TypeScript-first with Python, Go, and Rust guidance. Use when a change adds or alters types, when a bug came from a value that should have been impossible, or when a module's types have grown by accretion. | `npx shadcn@latest add KhaledSaeed18/dotclaude/type-design-reviewer` |
+
 #### Security
 
 | Agent | Description | Install |
@@ -294,6 +305,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [prime](commands/productivity/prime/) | Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits, and directory structure so it can give better answers immediately. Use at the start of a session when switching to an unfamiliar repository or after a long break from a project. | `npx shadcn@latest add KhaledSaeed18/dotclaude/prime` |
 | [todo-triage](commands/productivity/todo-triage/) | Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan. Use when technical-debt comments have accumulated and nobody knows which ones still matter. | `npx shadcn@latest add KhaledSaeed18/dotclaude/todo-triage` |
 
+#### Review
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [review-pr](commands/review/review-pr/) | Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter, test-gap-analyzer, type-design-reviewer), then merge their findings into one severity-ranked review with file:line anchors and no duplicates, optionally posted to the PR with gh. Use when a PR is ready for review, before requesting human review, or when a branch needs a thorough second opinion in one pass. | `npx shadcn@latest add KhaledSaeed18/dotclaude/review-pr` |
+
 #### Security
 
 | Command | Description | Install |
@@ -311,6 +328,8 @@ The catalog below lists every item in this repository, grouped by type and then 
 | Command | Description | Install |
 | --- | --- | --- |
 | [clean-branches](commands/version-control/clean-branches/) | List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and the current branch. Pass --dry-run to preview. Unlike the finish-branch skill, which closes one active branch, this cleans up accumulated branches across the repository. Use when local branches have piled up and need safe cleanup. | `npx shadcn@latest add KhaledSaeed18/dotclaude/clean-branches` |
+| [commit](commands/version-control/commit/) | Create one well-formed commit from the current changes using the git-commit skill's rules: inspect the diff, honour the repo's commitlint and hooks, stage only understood files explicitly, write a conventional message whose body says why, and confirm before committing. Never pushes. Use when a piece of work is ready to be recorded in history, or when asked to commit. | `npx shadcn@latest add KhaledSaeed18/dotclaude/commit` |
+| [pr](commands/version-control/pr/) | Take the current branch from uncommitted work to an open pull request: commit outstanding changes with the git-commit rules if asked, push with upstream tracking, write the PR title and body with the pr-description skill from the full branch diff, link the issue, and open it with gh against the right base. Confirms before pushing and before creating. Use when a branch is ready for review or when asked to open a PR. | `npx shadcn@latest add KhaledSaeed18/dotclaude/pr` |
 
 ### Hooks
 

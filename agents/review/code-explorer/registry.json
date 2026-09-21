@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "code-explorer",
+      "type": "registry:item",
+      "title": "Code Explorer",
+      "description": "Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the tests and configs that touch them, and returns a compact orientation report with file:line anchors instead of a dump. Read-only. Use when starting a feature or fix in an unfamiliar area, when a bug's location is unknown, or when you need to know what a change will touch before planning it.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "review"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-explorer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/code-explorer.md"
+        }
+      ]
+    }
+  ]
+}

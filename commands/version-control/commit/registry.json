@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "commit",
+      "type": "registry:item",
+      "title": "Commit",
+      "description": "Create one well-formed commit from the current changes using the git-commit skill's rules: inspect the diff, honour the repo's commitlint and hooks, stage only understood files explicitly, write a conventional message whose body says why, and confirm before committing. Never pushes. Use when a piece of work is ready to be recorded in history, or when asked to commit.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "version-control"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/commit",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/commit.md"
+        }
+      ]
+    }
+  ]
+}

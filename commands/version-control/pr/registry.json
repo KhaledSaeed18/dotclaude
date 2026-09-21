@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "pr",
+      "type": "registry:item",
+      "title": "Pr",
+      "description": "Take the current branch from uncommitted work to an open pull request: commit outstanding changes with the git-commit rules if asked, push with upstream tracking, write the PR title and body with the pr-description skill from the full branch diff, link the issue, and open it with gh against the right base. Confirms before pushing and before creating. Use when a branch is ready for review or when asked to open a PR.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "version-control"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/pr",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/pr.md"
+        }
+      ]
+    }
+  ]
+}
