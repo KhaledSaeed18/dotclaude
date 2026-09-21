@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "branch-protect",
+      "type": "registry:item",
+      "title": "Branch Protect",
+      "description": "A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "workflow"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/branch-protect/HOOK.md"
+        },
+        {
+          "path": "branch-protect.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/branch-protect/branch-protect.mjs"
+        }
+      ]
+    }
+  ]
+}

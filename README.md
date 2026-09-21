@@ -16,8 +16,8 @@
   <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-40-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="40 skills" /></a>
   <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-8-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="8 agents" /></a>
   <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-6-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="6 commands" /></a>
-  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-8-db2777.svg?split=true&logo=ri:RiPlugFill" alt="8 hooks" /></a>
-  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-11-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="11 plugins" /></a>
+  <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-14-db2777.svg?split=true&logo=ri:RiPlugFill" alt="14 hooks" /></a>
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-12-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="12 plugins" /></a>
 <!-- badges:end -->
 </div>
 
@@ -86,6 +86,7 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 | **productivity** | Session productivity skills: collaborative brainstorming, plan stress-testing, session handoff documents, and a /prime command that loads project context. (5 skills, 2 commands) | `/plugin install productivity@dotclaude` |
 | **testing** | Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions. (2 skills, 1 command) | `/plugin install testing@dotclaude` |
 | **research** | Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers). (2 skills, 1 agent) | `/plugin install research@dotclaude` |
+| **workflow-hooks** | Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log. (6 hooks) | `/plugin install workflow-hooks@dotclaude` |
 | **format-on-edit** | Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted. (1 hook) | `/plugin install format-on-edit@dotclaude` |
 | **notify** | Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background. (1 hook) | `/plugin install notify@dotclaude` |
 | **precompact-saver** | Context-preservation hook that snapshots the full session transcript before every compaction, keeping the newest ten snapshots per project. (1 hook) | `/plugin install precompact-saver@dotclaude` |
@@ -130,6 +131,23 @@ cp .claude/agents/code-reviewer.md ~/.claude/agents/  # agents & commands: singl
 ```
 
 Skills and hooks that bundle companion files install them in the same folder, and the `cp -R` above carries them across automatically.
+
+### Hook configuration
+
+Hooks that take settings read one optional file, `<project>/.claude/dotclaude.json`, and fall back to sensible defaults when it is absent or unreadable. Each hook reads only its own key; a full example:
+
+```json
+{
+  "gitGuard": { "protectedBranches": ["main", "master", "develop", "release/*"], "allowNoVerify": false },
+  "branchProtect": { "protectedBranches": ["main", "master", "develop"] },
+  "stopGate": { "command": "pnpm test", "timeoutMs": 120000, "onlyWhenDirty": true },
+  "typecheckOnEdit": { "enabled": true, "maxLines": 25 },
+  "sessionContext": { "commits": 3, "handoffFile": "HANDOFF.md" },
+  "subagentSummary": { "logFile": ".claude/subagents.log" }
+}
+```
+
+Each hook's `HOOK.md` documents its keys.
 
 ## Catalog
 
@@ -296,6 +314,17 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [injection-guard](hooks/security/injection-guard/) | A UserPromptSubmit hook that scans incoming prompts for prompt-injection and jailbreak patterns (instruction overrides, system-prompt extraction attempts, role reassignments, DAN/developer-mode activations) before Claude processes them. Use to add a deterministic pre-Claude safety layer against injection attacks. | `npx shadcn@latest add KhaledSaeed18/dotclaude/injection-guard` |
 | [sensitive-file-guard](hooks/security/sensitive-file-guard/) | A PreToolUse hook that blocks Read, Edit, Write, MultiEdit, and Bash operations that target sensitive files (.env, credentials, SSH private keys, certificates, secrets, AWS config, netrc, and similar). Use to prevent Claude from autonomously reading or exfiltrating credential files. | `npx shadcn@latest add KhaledSaeed18/dotclaude/sensitive-file-guard` |
 | [smart-approve](hooks/security/smart-approve/) | A PreToolUse hook that splits compound Bash commands (&&, \|\|, ;, \|, $(), backticks, subshells) into their parts and checks each against the same deny list as command-guard, catching destructive operations hidden in substitutions or subshells that a full-string match misses. Use to upgrade command-guard with decomposition, or as the guard bundled in the security-hooks plugin. | `npx shadcn@latest add KhaledSaeed18/dotclaude/smart-approve` |
+
+#### Workflow
+
+| Hook | Description | Install |
+| --- | --- | --- |
+| [branch-protect](hooks/workflow/branch-protect/) | A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first. | `npx shadcn@latest add KhaledSaeed18/dotclaude/branch-protect` |
+| [git-guard](hooks/workflow/git-guard/) | A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and deletions of protected branches (main, master, develop, or a configured list with globs), commit --no-verify, git clean -f, stash drop and clear, and hard resets, checkouts, or restores that would discard uncommitted changes. Splits compound commands so nothing hides behind a prefix. Use when Claude has git access and a mistake would cost shared history or uncommitted work. | `npx shadcn@latest add KhaledSaeed18/dotclaude/git-guard` |
+| [session-context](hooks/workflow/session-context/) | A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the last few commits, and any HANDOFF.md left by a previous session as context. Reads only; writes nothing. Use when sessions keep starting cold, re-discovering repo state, or missing a handoff document that was written for them. | `npx shadcn@latest add KhaledSaeed18/dotclaude/session-context` |
+| [stop-gate](hooks/workflow/stop-gate/) | A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output when tests fail. Detects the command from package.json, Makefile, Cargo.toml, go.mod, or pytest config, or takes one from .claude/dotclaude.json. Never loops (respects stop_hook_active) and never runs on a clean tree. Use to make "done" mean the tests pass, mechanically, without relying on the model remembering to run them. | `npx shadcn@latest add KhaledSaeed18/dotclaude/stop-gate` |
+| [subagent-summary](hooks/workflow/subagent-summary/) | A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its final report), giving delegated and parallel work an audit trail. Use when sessions fan work out to subagents and you want to see afterwards what each one did and reported. | `npx shadcn@latest add KhaledSaeed18/dotclaude/subagent-summary` |
+| [typecheck-on-edit](hooks/workflow/typecheck-on-edit/) | A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing the edited file's errors first. Uses only the project's own tsc, pyright or mypy, or go vet, and stays silent when none applies. Use to catch type errors in the same step as the edit that caused them instead of at the end of the session. | `npx shadcn@latest add KhaledSaeed18/dotclaude/typecheck-on-edit` |
 
 <!-- catalog:end -->
 

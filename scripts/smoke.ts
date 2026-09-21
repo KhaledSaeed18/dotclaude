@@ -72,6 +72,14 @@ const MUST_BLOCK: Record<string, { event: unknown; label: string }> = {
       tool_input: { file_path: "/repo/.env" },
     },
   },
+  "git-guard.mjs": {
+    label: "force-push to main",
+    event: {
+      hook_event_name: "PreToolUse",
+      tool_name: "Bash",
+      tool_input: { command: "git push --force origin main" },
+    },
+  },
   "injection-guard.mjs": {
     label: "ignore previous instructions",
     event: {

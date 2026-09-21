@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "git-guard",
+      "type": "registry:item",
+      "title": "Git Guard",
+      "description": "A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and deletions of protected branches (main, master, develop, or a configured list with globs), commit --no-verify, git clean -f, stash drop and clear, and hard resets, checkouts, or restores that would discard uncommitted changes. Splits compound commands so nothing hides behind a prefix. Use when Claude has git access and a mistake would cost shared history or uncommitted work.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "workflow"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/git-guard",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/git-guard/HOOK.md"
+        },
+        {
+          "path": "git-guard.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/git-guard/git-guard.mjs"
+        }
+      ]
+    }
+  ]
+}
