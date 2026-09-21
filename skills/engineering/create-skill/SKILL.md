@@ -31,7 +31,7 @@ If the purpose is fuzzy or sounds like two things, sharpen or split it now.
 
 ## Step 2: Name and place it
 
-- **Category**: pick the folder it belongs in. Current categories: `engineering`, `productivity`, `security`, `version-control`. Recategorising later is just a `git mv`.
+- **Category**: pick the folder it belongs in. Current categories: `academic`, `documentation`, `engineering`, `productivity`, `research`, `security`, `testing`, `version-control`, `writing` (run `ls skills` for the live list). Recategorising later is just a `git mv`.
 - **Name**: short, kebab-case, action- or domain-oriented, unique across all skills (see hard rules). The display title is derived by title-casing the name.
 - Create `skills/<category>/<name>/`.
 

@@ -10,6 +10,7 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>` (`SKILL.md`, `AGENT.md
 - the README catalog, badges, and plugins table (between `<!-- ... -->` markers)
 - everything under `.claude-plugin/` (marketplace + per-plugin trees)
 - `site/data.json`, the one file the catalog site reads
+- `NOTICE.md`, the attributions collected from every manifest's `## Attribution` section
 
 **Never hand-edit generated files.** Edit the source manifest, run `pnpm gen`, and commit the regenerated output. `pnpm gen:check` fails CI when anything is stale.
 
@@ -34,7 +35,7 @@ some branches are platform-specific and unreachable on a given OS.
 
 `pnpm smoke` is the slower end-to-end check CI also runs, kept out of the line above because it drives the real Claude Code CLI: it installs every generated plugin into a throwaway config dir, diffs the installed tree against the generated one, and runs each bundled hook script from its installed path (including that the deny rules still block). Run it after touching `gen.ts`'s plugin logic or any hook script. It needs no auth or network beyond resolving the CLI, and leaves nothing behind.
 
-`pnpm validate` also enforces content rules: no `<TODO:` scaffold markers in manifests, and every description must carry a trigger clause ("Use when ..."). `pnpm format` fixes Biome formatting.
+`pnpm validate` also enforces content rules: no `<TODO:` scaffold markers in manifests, every description carries a trigger clause ("Use when ...") and no em dash, an `## Attribution` section (required on any item adapted from elsewhere) names a source URL and a permissive licence, and a cross-reference like "the `paper-reader` skill" or "the `/pr` command" must name an item that exists. `pnpm format` fixes Biome formatting.
 
 ## Adding an item
 
@@ -49,6 +50,8 @@ The scaffolder writes a stub manifest and regenerates. Fill in the stub (validat
 
 - Agents and commands are **file-layout**: their folder must contain only the manifest; `pnpm gen` rejects extras. Skills and hooks are **folder-layout**: companion files ride along.
 - Item names are globally unique across all four types and must match their folder name.
+- Hooks that take settings read `<project>/.claude/dotclaude.json` (one key per hook, documented in each `HOOK.md` and the README) and fall back to defaults when it is absent or unreadable.
+- A plugin may pull in a skill from another category with `extraSkills` in its `PLUGINS` entry (`humanize` ships in both `thesis` and `writing`). Each plugin carries a semver `version`; bump the minor when items are added, the patch when they change.
 - Hook scripts are standalone, zero-dependency `.mjs` files (Node stdlib, node >= 18 — deliberately below the repo's own `engines.node >= 20`, because hooks run in the *user's* environment, not this repo's toolchain) that fail open (exit 0 on any internal error, exit 2 to block). They are copied verbatim into plugin trees, so a shared runtime module is not possible — `command-guard` and `smart-approve` intentionally duplicate their deny rules, and the parity table in `scripts/__tests__/hooks.test.ts` is the drift guard: change the rules in both files and the table together.
 - Tests are black-box: hooks are spawned with the event JSON on stdin; gen/validate/new run against fixture repos in temp dirs. Follow those patterns.
 

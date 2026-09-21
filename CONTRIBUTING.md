@@ -23,7 +23,9 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>`. From that location pl
 
 **Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, `site/data.json`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
 
-**Plugin membership is category-driven.** The `PLUGINS` list in `scripts/gen.ts` maps category folders to marketplace plugins (for example, everything under `skills/version-control/` ships in the `git` plugin). Add an item to a selected category and it joins that plugin on the next `pnpm gen`; only a genuinely new bundle needs a `PLUGINS` edit. Hook plugins wire their scripts inline via `${CLAUDE_PLUGIN_ROOT}`, so they activate on install with no manual `settings.json` step.
+**Adapting from other projects.** Only MIT, Apache-2.0, CC0, CC-BY, BSD, or ISC sources. The manifest ends with an `## Attribution` section naming the source (as a link) and its licence; `pnpm gen` collects these into `NOTICE.md` and `pnpm validate` rejects a section without both. Rewrite in this repository's voice; attribution covers borrowed structure and substance, not pasted text.
+
+**Plugin membership is category-driven.** The `PLUGINS` list in `scripts/gen.ts` maps category folders to marketplace plugins (for example, everything under `skills/version-control/` ships in the `git` plugin). Add an item to a selected category and it joins that plugin on the next `pnpm gen`; only a genuinely new bundle needs a `PLUGINS` edit. Hook plugins wire their scripts inline via `${CLAUDE_PLUGIN_ROOT}`, so they activate on install with no manual `settings.json` step. A plugin can also list `extraSkills` (repo paths) to include a skill from another category, and carries a semver `version` to bump when its contents change.
 
 ## Add an item in one command
 
@@ -61,7 +63,7 @@ If you'd rather have Claude Code drive it, this repo ships authoring skills that
 
 **Naming.** Item `name` and `category` are kebab-case (`merge-conflict`, `version-control`). The `name` must equal the folder name and be **globally unique across all four types**, since skills, agents, and commands install to flat directories where a collision would clobber.
 
-**Categories.** Reuse an existing category folder unless a genuinely new family is justified. The category is just the folder an item lives in (there is no `category` field), so the current set is whatever `ls skills agents commands hooks` shows — at the time of writing: `engineering`, `productivity`, `research`, `security`, `testing`, `version-control`, and `observability`, in varying combinations per type. Recategorizing later is just a `git mv` plus `pnpm gen`.
+**Categories.** Reuse an existing category folder unless a genuinely new family is justified. The category is just the folder an item lives in (there is no `category` field), so the current set is whatever `ls skills agents commands hooks` shows — at the time of writing: `academic`, `automation`, `context`, `documentation`, `engineering`, `observability`, `productivity`, `research`, `review`, `security`, `testing`, `version-control`, `workflow`, and `writing`, in varying combinations per type. Recategorizing later is just a `git mv` plus `pnpm gen`.
 
 **Frontmatter.** `name` and `description` are always required. The `description` is load-bearing: it decides when a skill loads or an agent is delegated to. Write it third person, lead with the action, and end with an explicit **"Use when ..."** clause. Avoid a `: ` inside the value (it is YAML). Optional fields by type:
 

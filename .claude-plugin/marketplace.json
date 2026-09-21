@@ -8,6 +8,7 @@
   "plugins": [
     {
       "name": "engineering",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/engineering",
       "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring, error handling, observability, containers, CI pipelines, dependency upgrades, migration planning, incident postmortems, code review, completion verification, and performance work.",
       "author": {
@@ -27,6 +28,7 @@
     },
     {
       "name": "docs",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/docs",
       "description": "Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI.",
       "author": {
@@ -46,6 +48,7 @@
     },
     {
       "name": "pr-toolkit",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/pr-toolkit",
       "description": "Pull-request review as a set of specialists: a read-only code explorer, a behaviour-preserving simplifier, hunters for silent failures and test gaps, a type-design reviewer, and a /review-pr command that runs them in parallel and merges one ranked review.",
       "author": {
@@ -65,6 +68,7 @@
     },
     {
       "name": "security",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/security",
       "description": "Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.",
       "author": {
@@ -83,6 +87,7 @@
     },
     {
       "name": "security-hooks",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/security-hooks",
       "description": "Deterministic guardrails, active immediately after install: a compound-command deny list, sensitive-file protection, and prompt-injection screening.",
       "author": {
@@ -101,6 +106,7 @@
     },
     {
       "name": "git",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/git",
       "description": "Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup.",
       "author": {
@@ -120,6 +126,7 @@
     },
     {
       "name": "productivity",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/productivity",
       "description": "Session and personal productivity: collaborative brainstorming, plan stress-testing, session handoffs, meeting notes, a decision log, learning plans, a /prime command that loads project context, and a /weekly-review that assembles the week from evidence.",
       "author": {
@@ -138,6 +145,7 @@
     },
     {
       "name": "testing",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/testing",
       "description": "Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions.",
       "author": {
@@ -156,6 +164,7 @@
     },
     {
       "name": "research",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/research",
       "description": "Investigation toolkit: a deep-research subagent for multi-source work with citations, plus name-clearing skills for software projects (registries, app stores) and for businesses (social handles, storefronts, company registers).",
       "author": {
@@ -176,6 +185,7 @@
     },
     {
       "name": "thesis",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/thesis",
       "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, research design and design science, statistics planning and reporting, PRISMA systematic reviews, citation-graph expansion, reproducible experiments and benchmark reporting, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
       "author": {
@@ -196,6 +206,7 @@
     },
     {
       "name": "writing",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/writing",
       "description": "Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide.",
       "author": {
@@ -214,6 +225,7 @@
     },
     {
       "name": "workflow-hooks",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/workflow-hooks",
       "description": "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",
       "author": {
@@ -234,6 +246,7 @@
     },
     {
       "name": "format-on-edit",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/format-on-edit",
       "description": "Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted.",
       "author": {
@@ -252,6 +265,7 @@
     },
     {
       "name": "notify",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/notify",
       "description": "Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background.",
       "author": {
@@ -269,6 +283,7 @@
     },
     {
       "name": "precompact-saver",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/precompact-saver",
       "description": "Context-preservation hook that snapshots the full session transcript before every compaction, keeping the newest ten snapshots per project.",
       "author": {
@@ -286,6 +301,7 @@
     },
     {
       "name": "tool-call-logger",
+      "version": "1.0.0",
       "source": "./.claude-plugin/plugins/tool-call-logger",
       "description": "Observability hook that appends one sanitized JSON line per tool call to a local log, with secret redaction and payload truncation.",
       "author": {

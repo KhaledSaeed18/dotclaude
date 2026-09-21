@@ -41,6 +41,8 @@ My personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-c
 
 Items install into the **current project** under `.claude/`, so run the install command from your project root. (shadcn writes into the project you run it in; its `~` means "project root", not your home directory, so a skill lands in `<project>/.claude/skills/<name>/`.)
 
+Most items are for software work. The `thesis` plugin is the exception: a full research lifecycle for a master's thesis or paper (research question, literature search, paper notes, verified citations, synthesis, methodology, statistics, writing, LaTeX and Word toolchains, an examiner-style reviewer, and progress tracking), built for computer-science students and usable by anyone who writes with a bibliography.
+
 ## Skills, agents, commands, and hooks
 
 If you are new to Claude Code extensions, here is what each kind is and when you would reach for it. They differ mainly in **who or what sets them off**.
