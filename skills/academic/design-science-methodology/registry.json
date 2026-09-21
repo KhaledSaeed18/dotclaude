@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "design-science-methodology",
+      "type": "registry:item",
+      "title": "Design Science Methodology",
+      "description": "Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements, knowledge base, iterative build with design decisions recorded, and a rigorous evaluation strategy (technical benchmarks, controlled use, case study, expert review) that separates whether it works from whether it helps, following Hevner's guidelines and Peffers' process. Use when the thesis builds something, when a supervisor says a system alone is not a contribution, or when the evaluation chapter has no design.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "academic"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/design-science-methodology",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/design-science-methodology/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

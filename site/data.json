@@ -14,7 +14,7 @@
       "layout": "folder",
       "targetBase": ".claude/skills",
       "color": "#2563eb",
-      "count": 59
+      "count": 66
     },
     {
       "type": "agent",
@@ -238,7 +238,7 @@
     },
     {
       "name": "thesis",
-      "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
+      "description": "The research lifecycle for a master's thesis or paper: research question and proposal, multi-source literature search, structured paper notes, a verified BibTeX bibliography, citation verification with a hook that catches invented keys as they are written, argument-first literature synthesis, research design and design science, statistics planning and reporting, PRISMA systematic reviews, citation-graph expansion, reproducible experiments and benchmark reporting, section-by-section academic writing, LaTeX and Word toolchains, publication figures, an examiner-style reviewer and a paper critic, proofreading, supervisor updates, a research log, and progress tracking.",
       "category": "research",
       "keywords": [
         "thesis",
@@ -250,17 +250,24 @@
       ],
       "items": [
         "skill/academic-writing",
+        "skill/benchmark-reporting",
         "skill/bibtex-manager",
+        "skill/citation-graph",
         "skill/citation-verifier",
+        "skill/design-science-methodology",
         "skill/docx-thesis",
+        "skill/experiment-reproducibility",
         "skill/latex-toolkit",
         "skill/lit-review-synthesis",
         "skill/literature-search",
         "skill/paper-reader",
         "skill/proofread-academic",
         "skill/research-figures",
+        "skill/research-methodology",
         "skill/research-question",
+        "skill/statistics-advisor",
         "skill/supervisor-update",
+        "skill/systematic-review",
         "skill/thesis-proposal",
         "skill/humanize",
         "agent/paper-critic",
@@ -378,6 +385,22 @@
       ]
     },
     {
+      "key": "skill/benchmark-reporting",
+      "name": "benchmark-reporting",
+      "type": "skill",
+      "category": "academic",
+      "title": "Benchmark Reporting",
+      "description": "Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions, multiple seeds with variance, hardware and configuration disclosed, tables generated from result files with consistent precision and the best result marked by rule, ablations that isolate each component, and honest treatment of losses and failure cases. Use when writing the results chapter of a systems or ML thesis, when a comparison table needs to be built, or when a reviewer questions whether a comparison is fair.",
+      "path": "skills/academic/benchmark-reporting",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/benchmark-reporting",
+      "targets": [
+        ".claude/skills/benchmark-reporting/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "skill/bibtex-manager",
       "name": "bibtex-manager",
       "type": "skill",
@@ -389,6 +412,22 @@
       "targets": [
         ".claude/skills/bibtex-manager/SKILL.md",
         ".claude/skills/bibtex-manager/reference/fields.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/citation-graph",
+      "name": "citation-graph",
+      "type": "skill",
+      "category": "academic",
+      "title": "Citation Graph",
+      "description": "Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward (references), forward (citing works), and co-citation, scored by how many seeds connect to each candidate, so the papers a reviewer will expect are found even when keyword search misses them. Use after literature-search has found the first key papers, when a supervisor names one seminal paper, or when checking that a related-work chapter has not missed a line of work.",
+      "path": "skills/academic/citation-graph",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-graph",
+      "targets": [
+        ".claude/skills/citation-graph/SKILL.md"
       ],
       "plugins": [
         "thesis"
@@ -411,6 +450,22 @@
       ]
     },
     {
+      "key": "skill/design-science-methodology",
+      "name": "design-science-methodology",
+      "type": "skill",
+      "category": "academic",
+      "title": "Design Science Methodology",
+      "description": "Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements, knowledge base, iterative build with design decisions recorded, and a rigorous evaluation strategy (technical benchmarks, controlled use, case study, expert review) that separates whether it works from whether it helps, following Hevner's guidelines and Peffers' process. Use when the thesis builds something, when a supervisor says a system alone is not a contribution, or when the evaluation chapter has no design.",
+      "path": "skills/academic/design-science-methodology",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/design-science-methodology",
+      "targets": [
+        ".claude/skills/design-science-methodology/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "skill/docx-thesis",
       "name": "docx-thesis",
       "type": "skill",
@@ -421,6 +476,22 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/docx-thesis",
       "targets": [
         ".claude/skills/docx-thesis/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/experiment-reproducibility",
+      "name": "experiment-reproducibility",
+      "type": "skill",
+      "category": "academic",
+      "title": "Experiment Reproducibility",
+      "description": "Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a single config per run, a run manifest that records code version, data version, parameters, hardware, and timings, results written to versioned files that figures and tables are generated from, and a one-command rerun. Use when setting up experiments, before the first real run, or when a result cannot be regenerated.",
+      "path": "skills/academic/experiment-reproducibility",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/experiment-reproducibility",
+      "targets": [
+        ".claude/skills/experiment-reproducibility/SKILL.md"
       ],
       "plugins": [
         "thesis"
@@ -524,6 +595,22 @@
       ]
     },
     {
+      "key": "skill/research-methodology",
+      "name": "research-methodology",
+      "type": "skill",
+      "category": "academic",
+      "title": "Research Methodology",
+      "description": "Choose and justify a research design for each research question: controlled experiment, quasi-experiment, case study, survey, interview study, design science, action research, or mixed methods, with the data collection, sampling, analysis, ethics, and validity threats each entails, and write the method chapter's design section from the choice. Use when moving from research questions to a study plan, when a supervisor asks how the question will be answered, or when reviewers say the method cannot support the claims.",
+      "path": "skills/academic/research-methodology",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-methodology",
+      "targets": [
+        ".claude/skills/research-methodology/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "skill/research-question",
       "name": "research-question",
       "type": "skill",
@@ -540,6 +627,22 @@
       ]
     },
     {
+      "key": "skill/statistics-advisor",
+      "name": "statistics-advisor",
+      "type": "skill",
+      "category": "academic",
+      "title": "Statistics Advisor",
+      "description": "Plan and check the statistics for an empirical study: choose the test from the design and data type, check assumptions and pick the robust alternative, compute sample size from a target effect, report effect sizes and confidence intervals alongside p-values, handle multiple comparisons, and write the analysis paragraph in the form reviewers expect; with runnable Python (scipy, statsmodels, pingouin) or R snippets. Use before collecting data (the analysis plan), after collecting it (running and reporting), or when a result says significant and the reviewer asks how.",
+      "path": "skills/academic/statistics-advisor",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/statistics-advisor",
+      "targets": [
+        ".claude/skills/statistics-advisor/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
       "key": "skill/supervisor-update",
       "name": "supervisor-update",
       "type": "skill",
@@ -550,6 +653,22 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/supervisor-update",
       "targets": [
         ".claude/skills/supervisor-update/SKILL.md"
+      ],
+      "plugins": [
+        "thesis"
+      ]
+    },
+    {
+      "key": "skill/systematic-review",
+      "name": "systematic-review",
+      "type": "skill",
+      "category": "academic",
+      "title": "Systematic Review",
+      "description": "Run a systematic literature review or mapping study to the PRISMA 2020 standard: protocol with research questions and inclusion criteria written before searching, reproducible search strings per database, screening with recorded reasons for exclusion, a PRISMA flow diagram with counts, quality assessment, data extraction into a form, and synthesis, producing a method section a reviewer can audit. Use when the thesis or a chapter is a literature review, when a supervisor asks for a systematic rather than narrative review, or when a mapping study is the first contribution.",
+      "path": "skills/academic/systematic-review",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/systematic-review",
+      "targets": [
+        ".claude/skills/systematic-review/SKILL.md"
       ],
       "plugins": [
         "thesis"
