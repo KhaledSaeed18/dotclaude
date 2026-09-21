@@ -4,7 +4,7 @@
   "private": true,
   "description": "Personal Claude Code registry (skills, agents, commands, hooks) distributed via the shadcn GitHub registry.",
   "type": "module",
-  "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+  "homepage": "https://dotclaude.khaledsaeed.tech",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KhaledSaeed18/dotclaude.git"

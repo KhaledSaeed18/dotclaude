@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "dotclaude",
-  "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+  "homepage": "https://dotclaude.khaledsaeed.tech",
   "include": [
     "agents/engineering/architect-reviewer/registry.json",
     "agents/engineering/code-reviewer/registry.json",

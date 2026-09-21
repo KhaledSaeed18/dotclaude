@@ -13,7 +13,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=engineering",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "development",
@@ -32,7 +32,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=security",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "security",
@@ -50,7 +50,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=security-hooks",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "security",
@@ -68,7 +68,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=git",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "version-control",
@@ -87,7 +87,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=productivity",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "productivity",
@@ -105,7 +105,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=testing",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "testing",
@@ -123,7 +123,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=research",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "research",
@@ -143,7 +143,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=format-on-edit",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "automation",
@@ -161,7 +161,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=notify",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "automation",
@@ -178,7 +178,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=precompact-saver",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "context",
@@ -195,7 +195,7 @@
       "author": {
         "name": "Khaled Saeed"
       },
-      "homepage": "https://github.com/KhaledSaeed18/dotclaude",
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=tool-call-logger",
       "repository": "https://github.com/KhaledSaeed18/dotclaude",
       "license": "MIT",
       "category": "observability",

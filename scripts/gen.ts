@@ -737,7 +737,9 @@ function buildPluginArtifacts(): PluginBuild {
       source: `./${PLUGIN_TREES_DIR}/${def.name}`,
       description: def.description,
       author: { name: REGISTRY_AUTHOR },
-      homepage: REGISTRY_HOMEPAGE,
+      // The catalog site, filtered to this plugin's items; the repo stays
+      // under `repository`.
+      homepage: `${SITE_URL}/#/?plugin=${def.name}`,
       repository: REGISTRY_HOMEPAGE,
       license: "MIT",
       category: def.category,
@@ -1071,7 +1073,7 @@ function generate(): GeneratedFile[] {
     content: toJson({
       $schema: REGISTRY_SCHEMA,
       name: REGISTRY_NAME,
-      homepage: REGISTRY_HOMEPAGE,
+      homepage: SITE_URL,
       include: includePaths,
     }),
   });
