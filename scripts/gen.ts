@@ -213,7 +213,7 @@ const PLUGINS: readonly PluginDef[] = [
   {
     name: "engineering",
     description:
-      "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work.",
+      "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring, error handling, observability, containers, CI pipelines, dependency upgrades, migration planning, incident postmortems, code review, completion verification, and performance work.",
     category: "development",
     keywords: ["workflow", "tdd", "debugging", "code-review", "planning"],
     skills: {

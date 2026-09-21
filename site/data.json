@@ -14,7 +14,7 @@
       "layout": "folder",
       "targetBase": ".claude/skills",
       "color": "#2563eb",
-      "count": 66
+      "count": 72
     },
     {
       "type": "agent",
@@ -23,7 +23,7 @@
       "layout": "file",
       "targetBase": ".claude/agents",
       "color": "#7c3aed",
-      "count": 15
+      "count": 16
     },
     {
       "type": "command",
@@ -47,7 +47,7 @@
   "plugins": [
     {
       "name": "engineering",
-      "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work.",
+      "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring, error handling, observability, containers, CI pipelines, dependency upgrades, migration planning, incident postmortems, code review, completion verification, and performance work.",
       "category": "development",
       "keywords": [
         "workflow",
@@ -61,10 +61,16 @@
         "skill/api-design-review",
         "skill/code-review-response",
         "skill/db-migration-safety",
+        "skill/dependency-upgrade",
+        "skill/dockerfile-best-practices",
+        "skill/error-handling-patterns",
         "skill/executing-plans",
         "skill/explain-codebase",
         "skill/fix-ci",
+        "skill/github-actions-pipeline",
         "skill/grill-with-docs",
+        "skill/incident-postmortem",
+        "skill/logging-and-observability",
         "skill/parallel-agents",
         "skill/performance-optimization",
         "skill/refactoring-recipes",
@@ -78,6 +84,7 @@
         "agent/debugger",
         "agent/docs-writer",
         "agent/error-detective",
+        "agent/migration-planner",
         "agent/performance-engineer",
         "command/explain-code",
         "command/feature"
@@ -880,6 +887,54 @@
       ]
     },
     {
+      "key": "skill/dependency-upgrade",
+      "name": "dependency-upgrade",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Dependency Upgrade",
+      "description": "Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration guides for each major, upgrade in ordered small batches with the test suite and typecheck run after each, apply codemods where they exist, handle lockfile and peer-dependency conflicts, and leave a record of what changed and what was deferred. Use when a security advisory lands, when a runtime or framework reaches end of life, when a dependabot queue has piled up, or when an upgrade attempt broke the build.",
+      "path": "skills/engineering/dependency-upgrade",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/dependency-upgrade",
+      "targets": [
+        ".claude/skills/dependency-upgrade/SKILL.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "skill/dockerfile-best-practices",
+      "name": "dockerfile-best-practices",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Dockerfile Best Practices",
+      "description": "Write or review a Dockerfile and compose setup for a production service: multi-stage builds that ship only the runtime, pinned base images, layer order for cache hits, non-root user, minimal image size, correct signal handling and health checks, secrets kept out of layers, and language-specific patterns for Node, Python, Go, and Java. Use when containerising a service, when images are large or slow to build, when a container ignores SIGTERM, or when a security scan flags the image.",
+      "path": "skills/engineering/dockerfile-best-practices",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/dockerfile-best-practices",
+      "targets": [
+        ".claude/skills/dockerfile-best-practices/SKILL.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "skill/error-handling-patterns",
+      "name": "error-handling-patterns",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Error Handling Patterns",
+      "description": "Design and review error handling in a codebase: which errors are expected results versus bugs, typed error hierarchies or result types, where to catch (boundaries) and where never to, preserving cause chains, mapping errors to HTTP and CLI exit codes, retries with backoff for the transient, timeouts everywhere, and the logging that makes a failure diagnosable; with idioms for TypeScript, Python, Go, and Rust. Use when adding error handling to new code, when a codebase has inconsistent or swallowed errors, or when a failure in production was impossible to trace.",
+      "path": "skills/engineering/error-handling-patterns",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/error-handling-patterns",
+      "targets": [
+        ".claude/skills/error-handling-patterns/SKILL.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
       "key": "skill/executing-plans",
       "name": "executing-plans",
       "type": "skill",
@@ -928,6 +983,22 @@
       ]
     },
     {
+      "key": "skill/github-actions-pipeline",
+      "name": "github-actions-pipeline",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Github Actions Pipeline",
+      "description": "Design, write, or fix GitHub Actions workflows for a project: a CI pipeline with the right triggers, concurrency, caching, matrix, and least-privilege permissions; pinned actions; reusable workflows and composite actions; deploy workflows with environments and OIDC instead of long-lived secrets; and the debugging moves for slow, flaky, or failing runs. Use when adding CI to a repository, when a pipeline is slow or flaky, when a workflow needs deploy or release steps, or when a security review flags workflow permissions.",
+      "path": "skills/engineering/github-actions-pipeline",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/github-actions-pipeline",
+      "targets": [
+        ".claude/skills/github-actions-pipeline/SKILL.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
       "key": "skill/grill-with-docs",
       "name": "grill-with-docs",
       "type": "skill",
@@ -940,6 +1011,38 @@
         ".claude/skills/grill-with-docs/SKILL.md",
         ".claude/skills/grill-with-docs/docs/ADR-FORMAT.md",
         ".claude/skills/grill-with-docs/docs/CONTEXT-FORMAT.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "skill/incident-postmortem",
+      "name": "incident-postmortem",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Incident Postmortem",
+      "description": "Write a blameless incident postmortem from the timeline, logs, chat transcripts, and the fix: impact with numbers, a minute-by-minute timeline, root cause as a chain of contributing factors rather than a single culprit, what went well and what did not in detection and response, and action items with owners and dates that address the causes rather than the symptom. Use after an outage, a data incident, a security event, or a near miss, or when an existing postmortem reads as blame or as a fix list.",
+      "path": "skills/engineering/incident-postmortem",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/incident-postmortem",
+      "targets": [
+        ".claude/skills/incident-postmortem/SKILL.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "skill/logging-and-observability",
+      "name": "logging-and-observability",
+      "type": "skill",
+      "category": "engineering",
+      "title": "Logging And Observability",
+      "description": "Instrument a service so production problems are diagnosable: structured JSON logs with consistent fields and levels, correlation ids across requests and jobs, the RED and USE metrics, distributed tracing with OpenTelemetry, health and readiness endpoints, alerts on symptoms with runbooks, and dashboards per service; with the setup for Node, Python, and Go and the cost and privacy rules that keep it sustainable. Use when a service goes to production, when an incident could not be traced, when logs are noisy or expensive, or when alerts fire without meaning.",
+      "path": "skills/engineering/logging-and-observability",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/logging-and-observability",
+      "targets": [
+        ".claude/skills/logging-and-observability/SKILL.md"
       ],
       "plugins": [
         "engineering"
@@ -1535,6 +1638,22 @@
       "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/error-detective",
       "targets": [
         ".claude/agents/error-detective.md"
+      ],
+      "plugins": [
+        "engineering"
+      ]
+    },
+    {
+      "key": "agent/migration-planner",
+      "name": "migration-planner",
+      "type": "agent",
+      "category": "engineering",
+      "title": "Migration Planner",
+      "description": "Use this agent to plan a large, risky change as a sequence of small reversible steps: a framework or runtime major upgrade, a database or storage migration, a monolith split, an API version change, or replacing a core library. It maps the blast radius from the codebase, orders the steps by dependency and risk, defines the reversibility and verification of each, identifies the point of no return, and returns a plan the writing-plans skill can expand. Read-only. Use before starting any change that cannot be done in one pull request or cannot be undone with a revert.",
+      "path": "agents/engineering/migration-planner",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/migration-planner",
+      "targets": [
+        ".claude/agents/migration-planner.md"
       ],
       "plugins": [
         "engineering"

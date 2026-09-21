@@ -9,7 +9,7 @@
     {
       "name": "engineering",
       "source": "./.claude-plugin/plugins/engineering",
-      "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring recipes, code review, completion verification, and performance work.",
+      "description": "Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring, error handling, observability, containers, CI pipelines, dependency upgrades, migration planning, incident postmortems, code review, completion verification, and performance work.",
       "author": {
         "name": "Khaled Saeed"
       },
