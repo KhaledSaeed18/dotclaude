@@ -1,5 +1,6 @@
 ---
 name: db-migration-safety
+title: DB Migration Safety
 description: Review or write a database schema migration with production safety as the bar, checking lock behavior, table rewrites, backfill strategy, deploy-order compatibility (expand-contract), index creation, and rollback, for Postgres, MySQL, and common ORMs' migration tools. Use when adding or reviewing a migration, renaming or dropping columns, adding constraints or indexes to large tables, or planning a backfill.
 ---
 
