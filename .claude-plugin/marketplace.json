@@ -137,6 +137,26 @@
       ]
     },
     {
+      "name": "workflow-hooks",
+      "source": "./.claude-plugin/plugins/workflow-hooks",
+      "description": "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",
+      "author": {
+        "name": "Khaled Saeed"
+      },
+      "homepage": "https://dotclaude.khaledsaeed.tech/#/?plugin=workflow-hooks",
+      "repository": "https://github.com/KhaledSaeed18/dotclaude",
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "hooks",
+        "workflow",
+        "tests",
+        "typecheck",
+        "git",
+        "subagents"
+      ]
+    },
+    {
       "name": "format-on-edit",
       "source": "./.claude-plugin/plugins/format-on-edit",
       "description": "Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted.",

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "stop-gate",
+      "type": "registry:item",
+      "title": "Stop Gate",
+      "description": "A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output when tests fail. Detects the command from package.json, Makefile, Cargo.toml, go.mod, or pytest config, or takes one from .claude/dotclaude.json. Never loops (respects stop_hook_active) and never runs on a clean tree. Use to make \"done\" mean the tests pass, mechanically, without relying on the model remembering to run them.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "workflow"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/stop-gate",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/stop-gate/HOOK.md"
+        },
+        {
+          "path": "stop-gate.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/stop-gate/stop-gate.mjs"
+        }
+      ]
+    }
+  ]
+}

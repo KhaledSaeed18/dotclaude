@@ -193,12 +193,17 @@ interface PluginDef {
 }
 
 /** A hook-config entry running one bundled script via `${CLAUDE_PLUGIN_ROOT}`. */
-function hookCommand(scriptBasename: string): { type: "command"; command: string } {
+function hookCommand(
+  scriptBasename: string,
+  timeoutSeconds?: number,
+): { type: "command"; command: string; timeout?: number } {
   // The escaped \${...} reaches the JSON literally; Claude Code substitutes it
-  // with the plugin's cache directory at runtime.
+  // with the plugin's cache directory at runtime. `timeout` overrides Claude
+  // Code's default for hooks that legitimately run longer (test suites).
   return {
     type: "command",
     command: `node "\${CLAUDE_PLUGIN_ROOT}/scripts/${scriptBasename}"`,
+    ...(timeoutSeconds !== undefined ? { timeout: timeoutSeconds } : {}),
   };
 }
 
@@ -284,6 +289,33 @@ const PLUGINS: readonly PluginDef[] = [
     keywords: ["research", "citations", "web", "naming", "availability", "branding"],
     skills: { category: "research" },
     agents: { category: "research" },
+  },
+  {
+    name: "workflow-hooks",
+    description:
+      "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",
+    category: "development",
+    keywords: ["hooks", "workflow", "tests", "typecheck", "git", "subagents"],
+    hooks: {
+      scripts: [
+        "hooks/workflow/session-context/session-context.mjs",
+        "hooks/workflow/stop-gate/stop-gate.mjs",
+        "hooks/workflow/typecheck-on-edit/typecheck-on-edit.mjs",
+        "hooks/workflow/git-guard/git-guard.mjs",
+        "hooks/workflow/branch-protect/branch-protect.mjs",
+        "hooks/workflow/subagent-summary/subagent-summary.mjs",
+      ],
+      config: {
+        SessionStart: [{ hooks: [hookCommand("session-context.mjs")] }],
+        UserPromptSubmit: [{ hooks: [hookCommand("branch-protect.mjs")] }],
+        PreToolUse: [{ matcher: "Bash", hooks: [hookCommand("git-guard.mjs")] }],
+        PostToolUse: [
+          { matcher: "Edit|Write|MultiEdit", hooks: [hookCommand("typecheck-on-edit.mjs", 90)] },
+        ],
+        Stop: [{ hooks: [hookCommand("stop-gate.mjs", 180)] }],
+        SubagentStop: [{ hooks: [hookCommand("subagent-summary.mjs")] }],
+      },
+    },
   },
   {
     name: "format-on-edit",

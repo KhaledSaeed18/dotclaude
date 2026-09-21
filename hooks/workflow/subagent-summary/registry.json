@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "subagent-summary",
+      "type": "registry:item",
+      "title": "Subagent Summary",
+      "description": "A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its final report), giving delegated and parallel work an audit trail. Use when sessions fan work out to subagents and you want to see afterwards what each one did and reported.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "workflow"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/subagent-summary",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/subagent-summary/HOOK.md"
+        },
+        {
+          "path": "subagent-summary.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/subagent-summary/subagent-summary.mjs"
+        }
+      ]
+    }
+  ]
+}

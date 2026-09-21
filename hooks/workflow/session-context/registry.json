@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "session-context",
+      "type": "registry:item",
+      "title": "Session Context",
+      "description": "A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the last few commits, and any HANDOFF.md left by a previous session as context. Reads only; writes nothing. Use when sessions keep starting cold, re-discovering repo state, or missing a handoff document that was written for them.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "workflow"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/session-context",
+      "meta": {
+        "type": "hook"
+      },
+      "files": [
+        {
+          "path": "HOOK.md",
+          "type": "registry:file",
+          "target": ".claude/hooks/session-context/HOOK.md"
+        },
+        {
+          "path": "session-context.mjs",
+          "type": "registry:file",
+          "target": ".claude/hooks/session-context/session-context.mjs"
+        }
+      ]
+    }
+  ]
+}

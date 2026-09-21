@@ -41,7 +41,7 @@
       "layout": "folder",
       "targetBase": ".claude/hooks",
       "color": "#db2777",
-      "count": 8
+      "count": 14
     }
   ],
   "plugins": [
@@ -191,6 +191,27 @@
         "skill/business-name-check",
         "skill/project-name-check",
         "agent/deep-research"
+      ]
+    },
+    {
+      "name": "workflow-hooks",
+      "description": "Session workflow guardrails, active on install: a session-start situation report, a stop gate that runs the tests before Claude finishes, type errors fed back after each edit, git footgun protection, a branch-first nudge, and a subagent audit log.",
+      "category": "development",
+      "keywords": [
+        "hooks",
+        "workflow",
+        "tests",
+        "typecheck",
+        "git",
+        "subagents"
+      ],
+      "items": [
+        "hook/session-context",
+        "hook/stop-gate",
+        "hook/typecheck-on-edit",
+        "hook/git-guard",
+        "hook/branch-protect",
+        "hook/subagent-summary"
       ]
     },
     {
@@ -1245,6 +1266,108 @@
       ],
       "plugins": [
         "security-hooks"
+      ]
+    },
+    {
+      "key": "hook/branch-protect",
+      "name": "branch-protect",
+      "type": "hook",
+      "category": "workflow",
+      "title": "Branch Protect",
+      "description": "A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first.",
+      "path": "hooks/workflow/branch-protect",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect",
+      "targets": [
+        ".claude/hooks/branch-protect/HOOK.md",
+        ".claude/hooks/branch-protect/branch-protect.mjs"
+      ],
+      "plugins": [
+        "workflow-hooks"
+      ]
+    },
+    {
+      "key": "hook/git-guard",
+      "name": "git-guard",
+      "type": "hook",
+      "category": "workflow",
+      "title": "Git Guard",
+      "description": "A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and deletions of protected branches (main, master, develop, or a configured list with globs), commit --no-verify, git clean -f, stash drop and clear, and hard resets, checkouts, or restores that would discard uncommitted changes. Splits compound commands so nothing hides behind a prefix. Use when Claude has git access and a mistake would cost shared history or uncommitted work.",
+      "path": "hooks/workflow/git-guard",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/git-guard",
+      "targets": [
+        ".claude/hooks/git-guard/HOOK.md",
+        ".claude/hooks/git-guard/git-guard.mjs"
+      ],
+      "plugins": [
+        "workflow-hooks"
+      ]
+    },
+    {
+      "key": "hook/session-context",
+      "name": "session-context",
+      "type": "hook",
+      "category": "workflow",
+      "title": "Session Context",
+      "description": "A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the last few commits, and any HANDOFF.md left by a previous session as context. Reads only; writes nothing. Use when sessions keep starting cold, re-discovering repo state, or missing a handoff document that was written for them.",
+      "path": "hooks/workflow/session-context",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/session-context",
+      "targets": [
+        ".claude/hooks/session-context/HOOK.md",
+        ".claude/hooks/session-context/session-context.mjs"
+      ],
+      "plugins": [
+        "workflow-hooks"
+      ]
+    },
+    {
+      "key": "hook/stop-gate",
+      "name": "stop-gate",
+      "type": "hook",
+      "category": "workflow",
+      "title": "Stop Gate",
+      "description": "A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output when tests fail. Detects the command from package.json, Makefile, Cargo.toml, go.mod, or pytest config, or takes one from .claude/dotclaude.json. Never loops (respects stop_hook_active) and never runs on a clean tree. Use to make \"done\" mean the tests pass, mechanically, without relying on the model remembering to run them.",
+      "path": "hooks/workflow/stop-gate",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/stop-gate",
+      "targets": [
+        ".claude/hooks/stop-gate/HOOK.md",
+        ".claude/hooks/stop-gate/stop-gate.mjs"
+      ],
+      "plugins": [
+        "workflow-hooks"
+      ]
+    },
+    {
+      "key": "hook/subagent-summary",
+      "name": "subagent-summary",
+      "type": "hook",
+      "category": "workflow",
+      "title": "Subagent Summary",
+      "description": "A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its final report), giving delegated and parallel work an audit trail. Use when sessions fan work out to subagents and you want to see afterwards what each one did and reported.",
+      "path": "hooks/workflow/subagent-summary",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/subagent-summary",
+      "targets": [
+        ".claude/hooks/subagent-summary/HOOK.md",
+        ".claude/hooks/subagent-summary/subagent-summary.mjs"
+      ],
+      "plugins": [
+        "workflow-hooks"
+      ]
+    },
+    {
+      "key": "hook/typecheck-on-edit",
+      "name": "typecheck-on-edit",
+      "type": "hook",
+      "category": "workflow",
+      "title": "Typecheck On Edit",
+      "description": "A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing the edited file's errors first. Uses only the project's own tsc, pyright or mypy, or go vet, and stays silent when none applies. Use to catch type errors in the same step as the edit that caused them instead of at the end of the session.",
+      "path": "hooks/workflow/typecheck-on-edit",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/typecheck-on-edit",
+      "targets": [
+        ".claude/hooks/typecheck-on-edit/HOOK.md",
+        ".claude/hooks/typecheck-on-edit/typecheck-on-edit.mjs"
+      ],
+      "plugins": [
+        "workflow-hooks"
       ]
     }
   ]
