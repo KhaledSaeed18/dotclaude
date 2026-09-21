@@ -5,7 +5,7 @@
       "name": "finish-branch",
       "type": "registry:item",
       "title": "Finish Branch",
-      "description": "Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options and executing the chosen one safely — including correct worktree and branch cleanup. Use when implementation is done, tests should be green, and you need to integrate or put away the work.",
+      "description": "Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options and executing the chosen one safely, including correct worktree and branch cleanup. Use when implementation is done, tests should be green, and you need to integrate or put away the work.",
       "author": "Khaled Saeed",
       "categories": [
         "version-control"

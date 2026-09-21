@@ -1,6 +1,6 @@
 ---
 name: git-worktrees
-description: Set up an isolated workspace for feature work so the current branch and working tree stay untouched — detecting existing isolation first, preferring the platform's native worktree tooling, and falling back to git worktrees only when nothing native exists. Use before starting feature work that needs isolation, or before executing an implementation plan.
+description: Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the platform's native worktree tooling, and falling back to git worktrees only when nothing native exists. Use before starting feature work that needs isolation, or before executing an implementation plan.
 ---
 
 Make sure the work happens somewhere isolated, without fighting whatever isolation the environment already provides. The order matters: detect what you're already in, prefer native tooling, and only reach for raw `git worktree` as a last resort. Creating a worktree on top of an environment that already gave you one produces phantom state the harness can't see or clean up.

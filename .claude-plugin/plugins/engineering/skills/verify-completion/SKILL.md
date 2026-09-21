@@ -1,6 +1,6 @@
 ---
 name: verify-completion
-description: Gate every "it works / it's fixed / tests pass / done" claim behind fresh evidence — run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded.
+description: Gate every "it works / it's fixed / tests pass / done" claim behind fresh evidence. Run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded.
 ---
 
 Don't claim work is done, fixed, or passing unless you've just run the thing that proves it and read the output. Saying it's complete when you haven't checked isn't optimism — it's reporting something you don't know to be true, and it breaks trust the moment it turns out wrong.

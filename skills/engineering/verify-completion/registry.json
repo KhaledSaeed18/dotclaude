@@ -5,7 +5,7 @@
       "name": "verify-completion",
       "type": "registry:item",
       "title": "Verify Completion",
-      "description": "Gate every \"it works / it's fixed / tests pass / done\" claim behind fresh evidence — run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded.",
+      "description": "Gate every \"it works / it's fixed / tests pass / done\" claim behind fresh evidence. Run the actual verifying command, read its output, and only then state the result. Use before committing, opening a PR, marking a task complete, handing off to or trusting a subagent, or otherwise asserting that work succeeded.",
       "author": "Khaled Saeed",
       "categories": [
         "engineering"

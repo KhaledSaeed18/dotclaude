@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: Turn a rough idea into a fully formed, written design through collaborative dialogue — exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.
+description: Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.
 ---
 
 Help shape a vague idea into a concrete, agreed design before anything gets built. The work is collaborative and conversational: understand what the user actually wants, surface the decisions hidden inside the request, weigh approaches together, and write the result down. The goal is a design the user has explicitly approved — not code, and not a plan yet.

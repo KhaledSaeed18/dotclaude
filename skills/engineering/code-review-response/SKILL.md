@@ -1,6 +1,6 @@
 ---
 name: code-review-response
-description: Process code-review feedback with technical rigour — understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong.
+description: Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong.
 ---
 
 Code review is a technical exchange, not a social one. The job isn't to agree warmly and start changing things — it's to understand each point, verify it against the real code, and then implement it, push back on it, or ask about it on the merits. Blindly applying a suggestion that's wrong for this codebase is as much a failure as ignoring a good one.
