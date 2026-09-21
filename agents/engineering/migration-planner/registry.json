@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "migration-planner",
+      "type": "registry:item",
+      "title": "Migration Planner",
+      "description": "Use this agent to plan a large, risky change as a sequence of small reversible steps: a framework or runtime major upgrade, a database or storage migration, a monolith split, an API version change, or replacing a core library. It maps the blast radius from the codebase, orders the steps by dependency and risk, defines the reversibility and verification of each, identifies the point of no return, and returns a plan the writing-plans skill can expand. Read-only. Use before starting any change that cannot be done in one pull request or cannot be undone with a revert.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "engineering"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/engineering/migration-planner",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/migration-planner.md"
+        }
+      ]
+    }
+  ]
+}
