@@ -63,7 +63,7 @@ Write the report to a markdown file and give the user the path. Lead with the re
 ```
 # Name check: <candidate 1>, <candidate 2>, ...
 
-**Recommendation:** <candidate> — <one line on why, and the one real risk>
+**Recommendation:** <candidate>: <one line on why, and the one real risk>
 **Checked:** <date> · <what the project is>
 
 ## Verdict at a glance

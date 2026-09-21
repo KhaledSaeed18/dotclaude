@@ -66,7 +66,7 @@ Note PyPI normalization: `foo_bar`, `foo-bar`, and `Foo.Bar` are the same name.
 | ------- | ----- |
 | Homebrew formula/cask | `brew info <name>`, or `https://formulae.brew.sh/api/formula/<name>.json` |
 | Docker Hub | `https://hub.docker.com/v2/repositories/library/<name>` and `.../<user>/<name>` |
-| Shell command collision | `command -v <name>` locally, plus a search for `<name> command` — colliding with a coreutils or a popular binary is a hard no |
+| Shell command collision | `command -v <name>` locally, plus a search for `<name> command`, colliding with a coreutils or a popular binary is a hard no |
 | Debian/Ubuntu package | `https://packages.debian.org/search?keywords=<name>` |
 | AUR | `https://aur.archlinux.org/rpc/v2/info?arg[]=<name>` |
 

@@ -56,7 +56,7 @@ The table under [What installs where](#what-installs-where) shows where each one
 
 ## Install
 
-There are two ways to get these items: **plugins** (bundles, managed by Claude Code, hooks pre-wired) or the **shadcn CLI** (one item at a time, copied into your project).
+There are two ways to get these items: **plugins** (bundles, managed by Claude Code, hooks pre-wired), or the **shadcn CLI** (one item at a time, copied into your project).
 
 ### As Claude Code plugins (recommended)
 
@@ -67,15 +67,15 @@ Add the marketplace once, then install any bundle:
 /plugin install security@dotclaude
 ```
 
-A good starter set is **engineering + git + security-hooks** — the daily workflow skills, the branch lifecycle, and the deterministic guardrails. From a terminal you can install all three in one line (the CLI takes one plugin per call):
+A good starter set is **engineering + git + security-hooks**: the daily workflow skills, the branch lifecycle, and the deterministic guardrails. From a terminal you can install all three in one line (the CLI takes one plugin per call):
 
 ```bash
 for p in engineering git security-hooks; do claude plugin install "$p@dotclaude"; done
 ```
 
-Prefer browsing? After adding the marketplace, open `/plugin` and pick from the **Discover** tab — no typing needed.
+Prefer browsing? After adding the marketplace, open `/plugin` and pick from the **Discover** tab: no typing needed.
 
-Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace their commands (`/security:security-audit`), and — unlike the shadcn route — **hook plugins activate immediately**, with no manual `settings.json` editing.
+Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace their commands (`/security:security-audit`), and (unlike the shadcn route) **hook plugins activate immediately**, with no manual `settings.json` editing.
 
 <!-- plugins:start -->
 
@@ -129,7 +129,7 @@ Each item installs under `.claude/`, by type:
 
 **Hooks need one extra step.** shadcn copies the hook's script and its `HOOK.md`, but it can't edit your `settings.json`. After installing a hook, open its `HOOK.md` and add the documented block to `.claude/settings.json` to activate it.
 
-Want an item available globally (in every project)? Install it into a project as above and copy it into your home config — folders for skills and hooks, single files for agents and commands:
+Want an item available globally (in every project)? Install it into a project as above and copy it into your home config, folders for skills and hooks, single files for agents and commands:
 
 ```bash
 cp -R .claude/skills/handoff ~/.claude/skills/        # skills & hooks: folders
@@ -437,7 +437,7 @@ The catalog below lists every item in this repository, grouped by type and then 
 
 ## Contributing
 
-Contributions are welcome — new items, fixes to existing ones, or tooling improvements. Every item is scaffolded with `pnpm new` and validated in CI; see [CONTRIBUTING.md](CONTRIBUTING.md) for the layout, conventions, and dev workflow, and [SECURITY.md](SECURITY.md) for how to report a vulnerability privately.
+Contributions are welcome, new items, fixes to existing ones, or tooling improvements. Every item is scaffolded with `pnpm new` and validated in CI; see [CONTRIBUTING.md](CONTRIBUTING.md) for the layout, conventions, and dev workflow, and [SECURITY.md](SECURITY.md) for how to report a vulnerability privately.
 
 ## License
 

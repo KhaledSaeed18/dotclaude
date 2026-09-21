@@ -62,7 +62,7 @@ Pick by how the business actually sells.
 
 | Surface | Check |
 | ------- | ----- |
-| Shopify store subdomain | `https://<name>.myshopify.com` — `200` taken, `404` free, and **`402` also means taken**: the store exists but is frozen or unpaid |
+| Shopify store subdomain | `https://<name>.myshopify.com`: `200` taken, `404` free, and **`402` also means taken**: the store exists but is frozen or unpaid |
 | Etsy shop | `https://www.etsy.com/shop/<name>` |
 | Amazon | Search the storefront for the name; Brand Registry itself is not publicly searchable, so treat this as a competitor check |
 | eBay store | `https://www.ebay.com/str/<name>` |

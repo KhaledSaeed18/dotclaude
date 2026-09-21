@@ -524,17 +524,23 @@ describe("validate", () => {
     expect(result.output).not.toContain("with-trigger: description");
   });
 
-  it("rejects an em dash in a description", () => {
+  it("rejects an em dash anywhere in an item's markdown", () => {
     const dir = makeFixture({
-      "skills/util/s-one/SKILL.md": manifest({
-        name: "s-one",
-        description: "Does a thing \u2014 well. Use when needed.",
+      "skills/util/s-one/SKILL.md": manifest(
+        { name: "s-one", description: "Does a thing. Use when needed." },
+        "Fine line.\nBad line \u2014 here.\n",
+      ),
+      "skills/util/s-two/SKILL.md": manifest({
+        name: "s-two",
+        description: "Two. Use when needed.",
       }),
+      "skills/util/s-two/reference/notes.md": "Companion \u2014 also checked.\n",
     });
     runGen(dir);
     const res = runValidate(dir);
     expect(res.status).not.toBe(0);
-    expect(res.output).toContain("description contains an em dash");
+    expect(res.output).toContain("skills/util/s-one: SKILL.md:7 contains an em dash");
+    expect(res.output).toContain("skills/util/s-two: reference/notes.md:1 contains an em dash");
   });
 
   it("requires a source URL and a permissive licence in an Attribution section", () => {
