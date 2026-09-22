@@ -4,6 +4,7 @@
 
 <div align="center">
   <a href="https://docs.claude.com/en/docs/claude-code"><img src="https://shieldcn.dev/badge/Claude%20Code-extensions-D97757.svg?logo=claude&variant=branded&animate=shimmer" alt="Claude Code extensions" /></a>
+  <a href="https://dotclaude.khaledsaeed.tech/"><img src="https://shieldcn.dev/badge/Catalog-dotclaude.khaledsaeed.tech-2563eb.svg?logo=ri:RiGlobalFill&variant=branded&animate=shimmer" alt="Browse the catalog" /></a>
 </div>
 
 <div align="center">
