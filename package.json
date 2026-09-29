@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
-    "@types/node": "^26.6.2",
+    "@types/node": "^26.6.3",
     "gray-matter": "^4.0.3",
     "typescript": "7.0.2",
     "tsx": "^4.23.15",
