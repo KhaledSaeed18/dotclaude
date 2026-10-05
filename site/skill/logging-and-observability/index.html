@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>logging-and-observability: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Instrument a service so production problems are diagnosable: structured JSON logs with consistent fields and levels, correlation ids across requests and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/logging-and-observability/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/logging-and-observability/" />
+    <meta property="og:title" content="logging-and-observability: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Instrument a service so production problems are diagnosable: structured JSON logs with consistent fields and levels, correlation ids across requests and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="logging-and-observability: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Instrument a service so production problems are diagnosable: structured JSON logs with consistent fields and levels, correlation ids across requests and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/logging-and-observability/#code","url":"https://dotclaude.khaledsaeed.tech/skill/logging-and-observability/","name":"logging-and-observability","alternateName":"Logging And Observability","headline":"logging-and-observability: a Claude Code skill","description":"Instrument a service so production problems are diagnosable: structured JSON logs with consistent fields and levels, correlation ids across requests and jobs, the RED and USE metrics, distributed tracing with OpenTelemetry, health and readiness endpoints, alerts on symptoms with runbooks, and dashboards per service; with the setup for Node, Python, and Go and the cost and privacy rules that keep it sustainable. Use when a service goes to production, when an incident could not be traced, when logs are noisy or expensive, or when alerts fire without meaning.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/logging-and-observability","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"logging-and-observability","item":"https://dotclaude.khaledsaeed.tech/skill/logging-and-observability/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">logging-and-observability</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>logging-and-observability</code></h1>
+          
+          <p class="lede">Instrument a service so production problems are diagnosable: structured JSON logs with consistent fields and levels, correlation ids across requests and jobs, the RED and USE metrics, distributed tracing with OpenTelemetry, health and readiness endpoints, alerts on symptoms with runbooks, and dashboards per service; with the setup for Node, Python, and Go and the cost and privacy rules that keep it sustainable. Use when a service goes to production, when an incident could not be traced, when logs are noisy or expensive, or when alerts fire without meaning.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the service, the stack, and the observability backend</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/logging-and-observability</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/logging-and-observability/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Observability is the ability to ask a new question about the system&#39;s behaviour without shipping new code. Logs, metrics, and traces each answer different questions; a service needs all three, wired so that one request can be followed across them.</p>
+<h3 id="logs">Logs</h3>
+<ul>
+<li><strong>Structured</strong> (JSON, one object per line) to stdout; the platform ships them. Never format strings for humans in production logs; dashboards and queries need fields.</li>
+<li><strong>Standard fields on every line</strong>: <code>timestamp</code> (ISO 8601 UTC), <code>level</code>, <code>message</code>, <code>service</code>, <code>version</code>, <code>env</code>, <code>request_id</code> or <code>trace_id</code>, and the domain ids in play (<code>user_id</code>, <code>order_id</code>). A logger bound with context (<code>logger.child({ requestId })</code>) so handlers do not repeat them.</li>
+<li><strong>Levels</strong>: <code>error</code> for failures needing attention (paged or triaged), <code>warn</code> for degraded but handled, <code>info</code> for business events and request summaries (one line per request with method, path, status, duration), <code>debug</code> off in production. A log at <code>error</code> that nobody would act on is noise that hides the one that matters.</li>
+<li><strong>One request summary line</strong> at the boundary rather than a line per step; steps at <code>debug</code>.</li>
+<li><strong>Never log</strong>: secrets, tokens, passwords, full card numbers, full request bodies, personal data beyond the ids needed. Redaction in the logger config (pino <code>redact</code>, structlog processors), not by remembering.</li>
+<li><strong>Sampling</strong> for high-volume <code>info</code> and for <code>debug</code> in production when needed; errors are never sampled.</li>
+<li><strong>Retention and cost</strong>: logs cost by volume; a noisy dependency at <code>info</code> can be the largest line item. Budget per service and review monthly.</li>
+</ul>
+<p>Libraries: <code>pino</code> (Node), <code>structlog</code> or <code>logging</code> with a JSON formatter (Python), <code>slog</code> (Go), <code>tracing</code> (Rust).</p>
+<h3 id="correlation">Correlation</h3>
+<ul>
+<li>A <code>request_id</code> accepted from the inbound header (<code>X-Request-Id</code>, or the W3C <code>traceparent</code>) or generated at the edge, put on the logger context and the response header, and forwarded on every outbound call and every enqueued job. A job carries the id of the request that created it.</li>
+<li>With tracing enabled, the trace id serves as the correlation id; log it on every line.</li>
+</ul>
+<h3 id="metrics">Metrics</h3>
+<ul>
+<li><strong>RED per endpoint or operation</strong>: Rate (requests/s), Errors (by class), Duration (histogram; p50, p95, p99). This is the dashboard&#39;s first row.</li>
+<li><strong>USE per resource</strong>: Utilisation, Saturation, Errors for CPU, memory, connections, queues, thread pools.</li>
+<li><strong>Business metrics</strong>: orders created, payments failed, jobs processed, by outcome. These make the &quot;is it working&quot; question answerable from a graph.</li>
+<li>Histograms for durations (never averages alone); counters with a small, bounded set of labels (no user ids as labels; cardinality is cost and outages).</li>
+<li>Expose via OpenTelemetry metrics or Prometheus client (<code>/metrics</code>), scraped or pushed per platform.</li>
+</ul>
+<h3 id="traces">Traces</h3>
+<ul>
+<li>OpenTelemetry SDK with auto-instrumentation for the HTTP server, HTTP client, DB driver, queue client; manual spans around the domain operations that matter (<code>checkout.reserve_inventory</code>) with attributes (ids, sizes, outcomes).</li>
+<li>Propagate context (<code>traceparent</code>) across services and through queues (inject on publish, extract on consume).</li>
+<li>Sample: head-based at a fixed rate (1 to 10%) plus tail-based or always-on for errors and slow requests where the backend supports it.</li>
+<li>Record exceptions on spans; set span status on failure.</li>
+</ul>
+<h3 id="health">Health</h3>
+<ul>
+<li><code>/health/live</code>: process is up (no dependencies). Used for restarts.</li>
+<li><code>/health/ready</code>: the service can serve (DB reachable, migrations applied, caches warm). Used for routing traffic. Failing ready during shutdown drains connections cleanly.</li>
+<li>Both cheap, unauthenticated inside the network, and not logged at <code>info</code>.</li>
+</ul>
+<h3 id="alerts">Alerts</h3>
+<ul>
+<li>Alert on <strong>symptoms</strong> users feel (error rate above SLO burn, p95 latency, queue lag, job failures), not on causes (CPU 80%). Cause metrics belong on dashboards.</li>
+<li>Every alert has a <strong>runbook</strong> link: what it means, how to confirm, the first three things to check, how to mitigate, who to escalate to.</li>
+<li>Severity matches action: page for user-facing impact now; ticket for degradation that can wait until morning. An alert that fires and is ignored gets deleted or fixed that week.</li>
+<li>Multi-window burn-rate alerts for SLOs (fast burn pages, slow burn tickets).</li>
+</ul>
+<h3 id="dashboards">Dashboards</h3>
+<p>One per service, same layout everywhere: RED row, dependencies row (latency and errors per downstream), resources row (USE), business row, deploy markers overlaid. Link from the alert to the dashboard to the traces.</p>
+<h3 id="setup-sketches">Setup sketches</h3>
+<ul>
+<li><strong>Node</strong>: <code>pino</code> + <code>pino-http</code> for the request line; <code>@opentelemetry/sdk-node</code> with <code>auto-instrumentations-node</code>; <code>prom-client</code> or the OTel metrics exporter.</li>
+<li><strong>Python</strong>: <code>structlog</code> with JSON renderer and <code>contextvars</code> binding; <code>opentelemetry-instrumentation-fastapi</code>/<code>-django</code>, <code>-requests</code>, <code>-sqlalchemy</code>; <code>prometheus_client</code>.</li>
+<li><strong>Go</strong>: <code>log/slog</code> with a JSON handler and <code>context</code> propagation; <code>go.opentelemetry.io/otel</code> with <code>otelhttp</code>, <code>otelsql</code>; <code>prometheus/client_golang</code>.</li>
+</ul>
+<h3 id="review-checklist">Review checklist</h3>
+<p>JSON logs with the standard fields; one request line; secrets redacted in config; correlation id in, out, and forwarded; RED metrics per endpoint; histograms for latency; traces propagated through HTTP and queues; live and ready endpoints; alerts on symptoms with runbooks; dashboard exists; log volume budgeted.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/logging-and-observability" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

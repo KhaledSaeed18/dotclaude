@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>security-audit: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/security-audit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/security-audit/" />
+    <meta property="og:title" content="security-audit: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="security-audit: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/security-audit/#code","url":"https://dotclaude.khaledsaeed.tech/command/security-audit/","name":"security-audit","alternateName":"Security Audit","headline":"security-audit: a Claude Code command","description":"Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and supply-chain risk, producing a findings report ranked by severity. Broader than the secret-scan skill, which scans a single diff. Pass a path to limit the audit. Use when a full-codebase or module-level security review is needed.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/security/security-audit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","security","security"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"security-audit","item":"https://dotclaude.khaledsaeed.tech/command/security-audit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">security-audit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in security</span></p>
+          <h1><code>security-audit</code></h1>
+          
+          <p class="lede">Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and supply-chain risk, producing a findings report ranked by severity. Broader than the secret-scan skill, which scans a single diff. Pass a path to limit the audit. Use when a full-codebase or module-level security review is needed.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[scope-path]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Grep, Glob, Bash(npm:*), Bash(git:*), Bash(find:*), Bash(grep:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/security/">security</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install security@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/security-audit</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/security-audit.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Scope: <code>$ARGUMENTS</code> (defaults to the entire repository if blank)</p>
+<p><strong>Dependency manifest:</strong></p>
+<p>!<code>cat package.json 2&gt;/dev/null | head -60</code></p>
+<p><strong>Recent changes:</strong></p>
+<p>!<code>git log --oneline -10 2&gt;/dev/null</code></p>
+<h3 id="task">Task</h3>
+<p>Conduct a structured security audit of the codebase (or the path given in <code>$ARGUMENTS</code>). Report findings ranked by severity with concrete evidence and specific remediation steps.</p>
+<h4 id="step-1-establish-scope-and-entry-points">Step 1: Establish scope and entry points</h4>
+<pre><code class="language-bash"># Identify entry points: routes, controllers, handlers
+find ${ARGUMENTS:-.} -name &quot;*.ts&quot; -o -name &quot;*.js&quot; -o -name &quot;*.py&quot; \
+  | grep -v node_modules | grep -iE &quot;route|controller|handler|api|server|app&quot; | head -20
+</code></pre>
+<p>Read the top-level entry files first. Then trace inward through authentication middleware, input validation layers, and data access code.</p>
+<h4 id="step-2-check-dependencies">Step 2: Check dependencies</h4>
+<pre><code class="language-bash">npm audit --json 2&gt;/dev/null | head -200
+</code></pre>
+<p>Flag CVEs in direct dependencies, stale packages with no recent releases, and overly permissive version ranges (<code>*</code>, <code>&gt;=0</code>).</p>
+<h4 id="step-3-scan-for-hardcoded-secrets">Step 3: Scan for hardcoded secrets</h4>
+<pre><code class="language-bash">grep -rn --include=&quot;*.ts&quot; --include=&quot;*.js&quot; --include=&quot;*.json&quot; --include=&quot;*.yaml&quot; --include=&quot;*.env*&quot; \
+  -E &quot;(api_key|apikey|secret|password|passwd|token|private_key|access_key)\s*[:=]\s*[&#39;\&quot;][^&#39;\&quot;]{8,}&quot; \
+  ${ARGUMENTS:-.} | grep -v node_modules | grep -v &quot;.env.example&quot; | head -40
+</code></pre>
+<h4 id="step-4-audit-by-vulnerability-class">Step 4: Audit by vulnerability class</h4>
+<p>Work through each class. Skip classes that clearly do not apply.</p>
+<p><strong>Injection (OWASP A03)</strong></p>
+<ul>
+<li>Parameterized queries used everywhere, or string concatenation into SQL/NoSQL queries?</li>
+<li><code>exec</code> / <code>spawn</code> with user-controlled input?</li>
+<li><code>path.join</code> / file reads on user-supplied paths without canonicalization?</li>
+</ul>
+<p><strong>Broken Access Control (OWASP A01)</strong></p>
+<ul>
+<li>Ownership and permission checks on every resource endpoint?</li>
+<li>Horizontal escalation: can user A reach user B&#39;s data by changing an ID?</li>
+<li>Vertical escalation: can a regular user reach admin functionality?</li>
+<li>Any access control enforced only client-side?</li>
+</ul>
+<p><strong>Broken Authentication (OWASP A07)</strong></p>
+<ul>
+<li>Password hashing with bcrypt, argon2, or scrypt? Never MD5/SHA1/SHA256 for passwords.</li>
+<li>JWT <code>alg</code> field pinned? <code>alg: none</code> accepted?</li>
+<li>Session tokens cryptographically random, HttpOnly, Secure, SameSite?</li>
+<li>Rate limiting on login, password reset, and OTP endpoints?</li>
+</ul>
+<p><strong>Cryptographic Failures (OWASP A02)</strong></p>
+<ul>
+<li>Sensitive data (PII, passwords, tokens) in logs, error responses, or plaintext in the database?</li>
+<li>Weak algorithms: MD5, SHA1, DES, RC4, ECB mode, static IVs?</li>
+</ul>
+<p><strong>Security Misconfiguration (OWASP A05)</strong></p>
+<ul>
+<li><code>Access-Control-Allow-Origin: *</code> on authenticated endpoints?</li>
+<li>Verbose error messages or stack traces in production paths?</li>
+<li>Security headers present: CSP, HSTS, X-Frame-Options, X-Content-Type-Options?</li>
+<li>Debug mode flags reachable in production?</li>
+</ul>
+<p><strong>SSRF (OWASP A10)</strong></p>
+<ul>
+<li>Any HTTP request where the URL is user-controlled?</li>
+<li>Allowlist of permitted target hosts and schemes?</li>
+</ul>
+<p><strong>Software Integrity (OWASP A08)</strong></p>
+<ul>
+<li>Third-party CI actions pinned to a commit hash, not a mutable tag?</li>
+<li>Lockfile present and committed?</li>
+</ul>
+<h4 id="step-5-report">Step 5: Report</h4>
+<p>Lead with a one-sentence verdict and the scope reviewed, then list findings worst-first:</p>
+<pre><code>### Critical
+- `src/auth/session.ts:42` - &lt;attack path and what the adversary gains&gt;. Fix: &lt;specific change&gt;.
+
+### High
+### Medium
+### Low / Informational
+</code></pre>
+<p>For each finding: file and line, the concrete attack path, what an adversary gains, and the specific remediation (not &quot;validate input&quot; but &quot;use <code>zod.string().url()</code> and reject non-HTTPS schemes before calling <code>fetch</code>&quot;).</p>
+<p>Severity definitions:</p>
+<ul>
+<li><strong>Critical</strong> - direct exploitation, no preconditions required, or credential/data exposure.</li>
+<li><strong>High</strong> - exploitable with low-effort preconditions (authenticated session, known endpoint).</li>
+<li><strong>Medium</strong> - meaningful attacker precondition needed, or limited blast radius.</li>
+<li><strong>Low</strong> - defense-in-depth improvement, hardening, or noteworthy pattern.</li>
+</ul>
+<p>End with the single most important finding to address first and a one-sentence overall assessment.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/security/security-audit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in security</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-audit/"><code>dependency-audit</code></a> <span class="row-type">skill</span> Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem, including...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/owasp-security/"><code>owasp-security</code></a> <span class="row-type">skill</span> Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, in any language or stack, catching vulnerability...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/secret-scan/"><code>secret-scan</code></a> <span class="row-type">skill</span> Scan code or a diff for hardcoded secrets (API keys, tokens, passwords, private keys, and other exposed credentials) before they get committed or shipped....</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/security-auditor/"><code>security-auditor</code></a> <span class="row-type">agent</span> Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, auth logic...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/command-guard/"><code>command-guard</code></a> <span class="row-type">hook</span> A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/injection-guard/"><code>injection-guard</code></a> <span class="row-type">hook</span> A UserPromptSubmit hook that scans incoming prompts for prompt-injection and jailbreak patterns (instruction overrides, system-prompt extraction attempts...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/sensitive-file-guard/"><code>sensitive-file-guard</code></a> <span class="row-type">hook</span> A PreToolUse hook that blocks Read, Edit, Write, MultiEdit, and Bash operations that target sensitive files (.env, credentials, SSH private keys...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/smart-approve/"><code>smart-approve</code></a> <span class="row-type">hook</span> A PreToolUse hook that splits compound Bash commands (&amp;&amp;, ||, ;, |, $(), backticks, subshells) into their parts and checks each against the same deny list...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=security">All of security</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

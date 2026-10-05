@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>typecheck-on-edit: Hook for Claude Code | dotclaude</title>
+    <meta name="description" content="A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/" />
+    <meta property="og:title" content="typecheck-on-edit: Hook for Claude Code | dotclaude" />
+    <meta property="og:description" content="A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="typecheck-on-edit: Hook for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/#code","url":"https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/","name":"typecheck-on-edit","alternateName":"Typecheck On Edit","headline":"typecheck-on-edit: a Claude Code hook","description":"A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing the edited file's errors first. Uses only the project's own tsc, pyright or mypy, or go vet, and stays silent when none applies. Use to catch type errors in the same step as the edit that caused them instead of at the end of the session.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/typecheck-on-edit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","workflow","workflow-hooks"],"hasPart":[{"@type":"CreativeWork","name":"typecheck-on-edit.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"typecheck-on-edit","item":"https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">typecheck-on-edit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="hook">
+          <p class="detail-kind">Hook <span class="row-category">in workflow</span></p>
+          <h1><code>typecheck-on-edit</code></h1>
+          
+          <p class="lede">A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing the edited file's errors first. Uses only the project's own tsc, pyright or mypy, or go vet, and stays silent when none applies. Use to catch type errors in the same step as the edit that caused them instead of at the end of the session.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/workflow-hooks/">workflow-hooks</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install workflow-hooks@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/typecheck-on-edit</code></pre>
+<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/hooks/typecheck-on-edit/HOOK.md</code></li><li><code>.claude/hooks/typecheck-on-edit/typecheck-on-edit.mjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Hook contents">
+          <h2 id="contents">What it does</h2>
+<h2 id="typecheck-on-edit">typecheck-on-edit</h2>
+<p>A Claude Code hook that pairs with <code>format-on-edit</code>: after each edit it runs the type checker the project already has and, when errors exist, adds them to Claude&#39;s context so the next action is the fix.</p>
+<ul>
+<li><strong>TypeScript</strong>: finds the nearest <code>tsconfig.json</code> above the edited file and runs the project&#39;s own <code>node_modules/.bin/tsc --noEmit</code> against it. Never a network fetch.</li>
+<li><strong>Python</strong>: <code>pyright</code> from <code>node_modules/.bin</code> or on <code>PATH</code>, else <code>mypy</code>, on the edited file.</li>
+<li><strong>Go</strong>: <code>go vet</code> on the file&#39;s package.</li>
+<li><strong>Edited file first.</strong> Errors in the file Claude just touched lead the list; errors elsewhere (callers it broke) follow, up to 25 lines.</li>
+<li><strong>Context, not a block.</strong> The edit already happened; the hook informs rather than rejects.</li>
+<li><strong>Fails open.</strong> No checker, a crash, or a 60-second timeout means silence and exit <code>0</code>.</li>
+</ul>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>typecheck-on-edit.mjs</code></td>
+<td>The hook script.</td>
+</tr>
+<tr>
+<td><code>HOOK.md</code></td>
+<td>This file.</td>
+</tr>
+</tbody></table>
+<h3 id="activate-it-required-manual-step">Activate it (required manual step)</h3>
+<p>Add this to <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (global):</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Edit|Write|MultiEdit&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/typecheck-on-edit/typecheck-on-edit.mjs\&quot;&quot;,
+            &quot;timeout&quot;: 90
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Installing the <code>workflow-hooks</code> plugin from the dotclaude marketplace wires this automatically.</p>
+<h3 id="verify-it">Verify it</h3>
+<pre><code class="language-bash">printf &#39;export const n: number = &quot;x&quot;;\n&#39; &gt; src/bad.ts
+echo &#39;{&quot;tool_name&quot;:&quot;Edit&quot;,&quot;tool_input&quot;:{&quot;file_path&quot;:&quot;&#39;$PWD&#39;/src/bad.ts&quot;},&quot;cwd&quot;:&quot;&#39;$PWD&#39;&quot;}&#39; \
+  | node .claude/hooks/typecheck-on-edit/typecheck-on-edit.mjs
+</code></pre>
+<p>You should see a JSON object whose <code>additionalContext</code> lists the TS2322 error.</p>
+<h3 id="tune-it">Tune it</h3>
+<pre><code class="language-json">{
+  &quot;typecheckOnEdit&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;timeoutMs&quot;: 60000,
+    &quot;maxLines&quot;: 25
+  }
+}
+</code></pre>
+<p>On a large TypeScript project a full <code>tsc --noEmit</code> can take longer than the default cap; raise <code>timeoutMs</code> (and the settings.json <code>timeout</code>) or use project references so the nearest <code>tsconfig.json</code> is a small one.</p>
+<blockquote>
+<p>Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it.</p>
+</blockquote>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/typecheck-on-edit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
+          <h2 id="related">More in workflow</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/hook/branch-protect/"><code>branch-protect</code></a> <span class="row-type">hook</span> A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/git-guard/"><code>git-guard</code></a> <span class="row-type">hook</span> A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/session-context/"><code>session-context</code></a> <span class="row-type">hook</span> A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/stop-gate/"><code>stop-gate</code></a> <span class="row-type">hook</span> A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/subagent-summary/"><code>subagent-summary</code></a> <span class="row-type">hook</span> A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its...</li></ul>
+          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=workflow">All of workflow</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

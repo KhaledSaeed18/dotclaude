@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>email-draft: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Draft an email or message that gets the reply it needs: purpose in the first line, the ask made explicit with a date, context kept to what the reader..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/email-draft/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/email-draft/" />
+    <meta property="og:title" content="email-draft: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Draft an email or message that gets the reply it needs: purpose in the first line, the ask made explicit with a date, context kept to what the reader..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="email-draft: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Draft an email or message that gets the reply it needs: purpose in the first line, the ask made explicit with a date, context kept to what the reader..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/email-draft/#code","url":"https://dotclaude.khaledsaeed.tech/skill/email-draft/","name":"email-draft","alternateName":"Email Draft","headline":"email-draft: a Claude Code skill","description":"Draft an email or message that gets the reply it needs: purpose in the first line, the ask made explicit with a date, context kept to what the reader needs, one request per message, a subject line that says the content, and a register matched to the relationship (supervisor, colleague, maintainer, support, recruiter). Never sends. Use when writing to a supervisor, a maintainer, a reviewer, a vendor, or a team, when a message is not getting answered, or when a difficult message needs the right tone.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/writing/email-draft","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","writing","writing"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"email-draft","item":"https://dotclaude.khaledsaeed.tech/skill/email-draft/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">email-draft</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in writing</span></p>
+          <h1><code>email-draft</code></h1>
+          
+          <p class="lede">Draft an email or message that gets the reply it needs: purpose in the first line, the ask made explicit with a date, context kept to what the reader needs, one request per message, a subject line that says the content, and a register matched to the relationship (supervisor, colleague, maintainer, support, recruiter). Never sends. Use when writing to a supervisor, a maintainer, a reviewer, a vendor, or a team, when a message is not getting answered, or when a difficult message needs the right tone.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>who it is to, what you need from them, and the relevant facts; optionally a previous message to reply to</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/writing/">writing</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install writing@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/email-draft</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/email-draft/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>The reader decides in the first two lines whether to act now, later, or never. Put the purpose and the ask there, make the ask easy to say yes to, and stop when the reader has what they need.</p>
+<h3 id="before-drafting">Before drafting</h3>
+<ul>
+<li>Who is the reader, what do they already know, and what is their relationship to you (they owe you a reply, you are asking a favour, you are reporting up).</li>
+<li>What do you need: a decision, information, an action, an introduction, or nothing (an FYI). If more than one, split into separate messages or make one the ask and the rest optional.</li>
+<li>What would make the reply easy: a yes/no question, options with a recommendation, a date, a link to the thing.</li>
+</ul>
+<h3 id="structure">Structure</h3>
+<pre><code>Subject: &lt;the content, specific&gt;  e.g. &quot;Ethics form signature needed by Thu 25 Sep&quot;
+
+&lt;Greeting matching the relationship&gt;
+
+&lt;Line 1: why you are writing, in one sentence.&gt;
+&lt;Line 2: the ask, with the date or the options.&gt;
+
+&lt;Context: two to five sentences, only what the reader needs to decide. Numbers, links, attachments named.&gt;
+
+&lt;Close: what happens next, thanks that is specific.&gt;
+&lt;Sign-off and name&gt;
+</code></pre>
+<p>For an FYI, say so in the subject (&quot;FYI: ...&quot;) and keep it to three lines.</p>
+<h3 id="register">Register</h3>
+<ul>
+<li><strong>Supervisor or senior</strong>: respectful, direct, no hedging stacks; show you did the work before asking; offer options with your recommendation; propose a time rather than &quot;whenever suits&quot;.</li>
+<li><strong>Colleague or team</strong>: plain, short, first names; the ask in the first line.</li>
+<li><strong>Open-source maintainer</strong>: lead with the issue or PR link, what you tried, what you observed, what you are asking; respect their time; no pressure.</li>
+<li><strong>Support or vendor</strong>: account id, exact error, steps to reproduce, what you need; one issue per ticket.</li>
+<li><strong>Recruiter or external</strong>: formal, complete sentences, one clear next step.</li>
+<li><strong>Difficult messages</strong> (declining, disagreeing, chasing, correcting): state the position in the first line without apology or preamble, give the reason in one or two sentences, offer the alternative, keep the door open. Never argue the other person&#39;s motives.</li>
+<li><strong>Chasing</strong>: reply in the same thread, restate the ask and the date, offer a smaller ask if the original was large.</li>
+</ul>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>One ask per message; a second ask becomes a second message or an optional line at the end.</li>
+<li>Dates as dates (&quot;by Thursday 25 September&quot;), not &quot;soon&quot; or &quot;ASAP&quot;.</li>
+<li>No &quot;I hope this email finds you well&quot;, no &quot;just checking in&quot;, no &quot;as per my last email&quot;.</li>
+<li>Match the length to the relationship; a supervisor reads five lines, not fifty.</li>
+<li>Attachments and links named in the text (&quot;the form (attached)&quot;), and actually attached before sending.</li>
+<li>Never send. Return the draft; the user sends.</li>
+<li>Run <code>humanize</code>.</li>
+</ul>
+<h3 id="output">Output</h3>
+<p>The subject line and the body, then one line on why it is structured this way (so the user can adjust), and a note on anything that should be attached or checked before sending.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/writing/email-draft" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in writing</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/humanize/"><code>humanize</code></a> <span class="row-type">skill</span> Rewrite prose that reads as machine-generated so it reads as the writer, without changing what it says or adding any fact: removes not-X-but-Y contrasts...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/presentation-outline/"><code>presentation-outline</code></a> <span class="row-type">skill</span> Structure a talk, thesis defence, or project presentation as a slide-by-slide outline with one message per slide, an opening that states the point...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=writing">All of writing</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

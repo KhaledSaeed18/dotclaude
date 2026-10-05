@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>citation-graph: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/citation-graph/" />
+    <meta property="og:title" content="citation-graph: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="citation-graph: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/citation-graph/#code","url":"https://dotclaude.khaledsaeed.tech/skill/citation-graph/","name":"citation-graph","alternateName":"Citation Graph","headline":"citation-graph: a Claude Code skill","description":"Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward (references), forward (citing works), and co-citation, scored by how many seeds connect to each candidate, so the papers a reviewer will expect are found even when keyword search misses them. Use after literature-search has found the first key papers, when a supervisor names one seminal paper, or when checking that a related-work chapter has not missed a line of work.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-graph","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"citation-graph","item":"https://dotclaude.khaledsaeed.tech/skill/citation-graph/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">citation-graph</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>citation-graph</code></h1>
+          
+          <p class="lede">Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward (references), forward (citing works), and co-citation, scored by how many seeds connect to each candidate, so the papers a reviewer will expect are found even when keyword search misses them. Use after literature-search has found the first key papers, when a supervisor names one seminal paper, or when checking that a related-work chapter has not missed a line of work.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) seed DOIs, arXiv ids, or keys from the .bib; add --depth 1|2 and --min-links N</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/citation-graph</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/citation-graph/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Keyword search finds papers that use your words; the citation graph finds papers that share your problem. Starting from a few papers known to be central, the works they cite and the works that cite them, weighted by how many seeds agree, surface the field&#39;s structure and its recent edge.</p>
+<h3 id="inputs">Inputs</h3>
+<p>Seeds: DOIs, arXiv ids, Semantic Scholar ids, or <code>.bib</code> keys (resolved through <code>references.bib</code>). Three to eight seeds work best; one seed gives a star, not a graph. Options: <code>--depth</code> (1: neighbours of seeds; 2: neighbours of the strongest first-degree candidates; default 1), <code>--min-links</code> (minimum seed connections to keep a candidate; default 2), <code>--since YEAR</code> for the forward direction.</p>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li><strong>Resolve seeds</strong> to Semantic Scholar paper ids:
+<code>curl -s &quot;https://api.semanticscholar.org/graph/v1/paper/DOI:&lt;doi&gt;?fields=paperId,title,year,citationCount&quot;</code>.</li>
+<li><strong>Backward</strong>: for each seed, <code>/paper/&lt;id&gt;/references?fields=paperId,title,year,externalIds,citationCount,influentialCitationCount&amp;limit=500</code>. Tally each referenced paper&#39;s seed count.</li>
+<li><strong>Forward</strong>: for each seed, <code>/paper/&lt;id&gt;/citations?fields=...&amp;limit=1000</code> (page with <code>offset</code> when over 1000; apply <code>--since</code>). Tally.</li>
+<li><strong>Co-citation</strong> (optional, strong signal): for the top forward candidates, fetch their references and count how often two seeds appear together; candidates cited alongside the seeds by many papers belong to the same conversation.</li>
+<li><strong>Score</strong> each candidate: <code>links</code> (distinct seeds connected), <code>influential</code> (Semantic Scholar&#39;s influential-citation flag counts double), citations normalised by age, and recency for the forward set. Show the formula.</li>
+<li><strong>Depth 2</strong>: take the top ten candidates by score, treat them as seeds, repeat steps 2 and 3, and keep only candidates linked to at least two of the original seeds.</li>
+<li><strong>Cross-check</strong> each kept candidate with OpenAlex (<code>api.openalex.org/works/doi:&lt;doi&gt;</code>) for the DOI, venue, and open-access link; drop anything that does not resolve.</li>
+<li>Rate-limit: one request per second; on 429 wait and retry. Cache responses under <code>research/.graph-cache/</code> keyed by paper id.</li>
+</ol>
+<h3 id="output">Output</h3>
+<p><code>research/citation-graph.md</code>:</p>
+<pre><code># Citation graph from 5 seeds (2026-09-21, depth 1, min-links 2)
+
+Seeds: smith2023feedback, lee2022grading, ...
+
+## Backward (cited by the seeds)
+| links | year | citations | title | DOI |
+| 4 | 2015 | 1,203 | Foundations of ... | 10.x |
+...
+
+## Forward (cite the seeds), since 2022
+...
+
+## Co-cited with the seeds
+...
+
+## Reading recommendations
+- 10.x (links 4): cited by four of five seeds; a foundational paper the related-work chapter must position against.
+- ...
+
+## Lines of work the seeds share
+Two or three sentences per cluster visible in the table (same venue, same authors, same method).
+</code></pre>
+<p>Then hand the recommended papers to <code>bibtex-manager</code> (add) and <code>paper-reader</code> (notes).</p>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Never add a candidate to the reading list without a resolvable identifier.</li>
+<li>Report the counts (how many references and citations were walked) so the search log in the method chapter can state the coverage.</li>
+<li>Highly cited is not the same as relevant; the <code>links</code> column is the relevance signal, citations are the weight.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-graph" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/latex-toolkit/"><code>latex-toolkit</code></a> <span class="row-type">skill</span> Set up, build, and debug a LaTeX thesis: project layout with one file per chapter, latexmk builds, biblatex or natbib bibliography wiring, university...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

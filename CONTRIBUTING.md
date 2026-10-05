@@ -18,7 +18,8 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>`. From that location pl
 - each item's `registry.json`
 - the root `registry.json`
 - the README catalog, the count badges, and the plugins table
-- `site/data.json`, the single file the catalog site at [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) renders, plus the pre-rendered `rows` and `jsonld` regions in `site/index.html` and `site/llms.txt` for crawlers
+- `site/data.json`, the single file the catalog site at [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) renders, plus the pre-rendered `meta`, `rows` and `jsonld` regions in `site/index.html` and `site/llms.txt` for crawlers
+- one static page per item (`site/<type>/<name>/index.html` with an `index.md` twin) and per plugin (`site/plugins/<name>/`), `site/sitemap.xml` and `site/llms-full.txt`, so every item is indexable and citable on its own URL
 - `.claude-plugin/marketplace.json` (the Claude Code plugin marketplace) and one plugin tree per bundle under `.claude-plugin/plugins/<plugin>/` (item copies in the standard plugin layout)
 
 **Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, `site/data.json`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.

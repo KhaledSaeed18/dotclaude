@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>lit-review-synthesis: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/lit-review-synthesis/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/lit-review-synthesis/" />
+    <meta property="og:title" content="lit-review-synthesis: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="lit-review-synthesis: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/lit-review-synthesis/#code","url":"https://dotclaude.khaledsaeed.tech/skill/lit-review-synthesis/","name":"lit-review-synthesis","alternateName":"Lit Review Synthesis","headline":"lit-review-synthesis: a Claude Code skill","description":"Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological patterns, locate the gap the thesis fills, and draft the review chapter so that each paragraph advances a claim rather than summarising one paper. Every citation comes from the notes and the .bib. Use when the reading is done and the related-work or background chapter needs writing, or when a draft review reads like an annotated bibliography.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/lit-review-synthesis","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"lit-review-synthesis","item":"https://dotclaude.khaledsaeed.tech/skill/lit-review-synthesis/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">lit-review-synthesis</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>lit-review-synthesis</code></h1>
+          
+          <p class="lede">Build a literature review as an argument from paper-reader notes: cluster the notes into themes, surface agreements, tensions, and methodological patterns, locate the gap the thesis fills, and draft the review chapter so that each paragraph advances a claim rather than summarising one paper. Every citation comes from the notes and the .bib. Use when the reading is done and the related-work or background chapter needs writing, or when a draft review reads like an annotated bibliography.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the notes directory, the research question record, and a target length</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/lit-review-synthesis</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/lit-review-synthesis/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A literature review is an argument that ends in the gap. It is not a sequence of &quot;Smith (2023) did X. Jones (2024) did Y.&quot; Every paragraph makes a point about the field, and papers appear as evidence for that point. This skill works only from <code>paper-reader</code> notes so that every sentence about a paper is traceable.</p>
+<h3 id="inputs">Inputs</h3>
+<ol>
+<li><code>research/notes/*.md</code> (the notes; refuse to proceed with fewer than five, and say why).</li>
+<li><code>research/QUESTION.md</code> (the research question the review must lead to).</li>
+<li><code>references.bib</code> (keys must match note front matter).</li>
+<li>Target length and the department&#39;s expected structure, if any.</li>
+</ol>
+<h3 id="step-1-build-the-evidence-matrix">Step 1: build the evidence matrix</h3>
+<p>Read every note and tabulate, in <code>research/evidence-matrix.md</code>:</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>year</th>
+<th>type</th>
+<th>setting</th>
+<th>method</th>
+<th>main finding</th>
+<th>limitation</th>
+<th>relevance</th>
+<th>themes</th>
+</tr>
+</thead>
+</table>
+<p>The <code>themes</code> column is filled in Step 2. This table is a thesis artifact in its own right (appendix material) and lets the student see the field at a glance.</p>
+<h3 id="step-2-find-the-structure">Step 2: find the structure</h3>
+<p>Cluster notes into three to six themes. Good themes are claims about the field, not topic labels: &quot;Rule-based feedback scales but does not transfer across assignments&quot; rather than &quot;Rule-based approaches&quot;. Test each theme:</p>
+<ul>
+<li>It has at least two papers.</li>
+<li>Its papers can be compared on some dimension (method, setting, result).</li>
+<li>It moves the argument toward the gap.</li>
+</ul>
+<p>Then map the tensions: where do papers disagree, and is the disagreement explained by method, setting, or time? Disagreements are the most valuable paragraphs in a review.</p>
+<p>Note methodological patterns across the field (everyone uses dataset D; nobody reports variance; evaluations are all with novices). These become the &quot;limitations of prior work&quot; paragraph and often <em>are</em> the gap.</p>
+<h3 id="step-3-outline">Step 3: outline</h3>
+<p>Write the outline as claims, one line per paragraph:</p>
+<pre><code>1. Intro: scope of the review and how sources were found (from search-log.md).
+2. Theme A claim. Evidence: smith2023, lee2022. Tension: chen2021 finds the opposite, in setting S.
+3. ...
+N-1. Methodological limitations across the field.
+N. The gap, stated as the research question, and what this thesis does about it.
+</code></pre>
+<p>Get the student&#39;s agreement on the outline before drafting; restructuring a drafted chapter costs a week.</p>
+<h3 id="step-4-draft">Step 4: draft</h3>
+<ul>
+<li>Paragraph = claim, evidence, interpretation. The claim sentence has no citation; the evidence sentences do.</li>
+<li>Cite by key only (<code>\cite{smith2023feedback}</code> or <code>[@smith2023feedback]</code>); never write an author-year string by hand.</li>
+<li>Prefer synthesis sentences that cite several keys (&quot;Three studies in introductory courses report reductions of 20 to 30% \cite{a,b,c}&quot;) over one-paper sentences.</li>
+<li>Quote only from a note&#39;s <em>Quotable</em> section, with its location.</li>
+<li>Every number comes from a note&#39;s <em>Evidence</em> section, unrounded.</li>
+<li>Hedge to the strength of the evidence, once per claim: &quot;suggests&quot; for one small study, &quot;shows&quot; for replicated results.</li>
+<li>End with the gap paragraph that restates the research question in the field&#39;s terms.</li>
+</ul>
+<h3 id="step-5-check">Step 5: check</h3>
+<p>Run <code>citation-verifier</code> on the draft (Level 3 especially), then <code>humanize</code>. Report the ratio of synthesis sentences to single-paper sentences; below 1:2 the chapter is still an annotated bibliography.</p>
+<h3 id="output">Output</h3>
+<p><code>chapters/02-related-work.md</code> or <code>.tex</code> (the student&#39;s choice), the evidence matrix, and the agreed outline at the top of the file as a comment.</p>
+<h3 id="attribution">Attribution</h3>
+<p>The argument-first structure is adapted from <a href="https://github.com/bethww/lit-review" rel="noopener">lit-review</a> by bethww (MIT).</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/lit-review-synthesis" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

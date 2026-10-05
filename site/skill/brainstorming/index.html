@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>brainstorming: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/brainstorming/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/brainstorming/" />
+    <meta property="og:title" content="brainstorming: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="brainstorming: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/brainstorming/#code","url":"https://dotclaude.khaledsaeed.tech/skill/brainstorming/","name":"brainstorming","alternateName":"Brainstorming","headline":"brainstorming: a Claude Code skill","description":"Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/brainstorming","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","productivity","productivity"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"brainstorming","item":"https://dotclaude.khaledsaeed.tech/skill/brainstorming/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">brainstorming</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in productivity</span></p>
+          <h1><code>brainstorming</code></h1>
+          
+          <p class="lede">Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a time, then proposing approaches and capturing the agreed design in a spec before any code is written. Use at the start of any creative or feature work, when the idea isn't yet concrete enough to plan or build.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/productivity/">productivity</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install productivity@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/brainstorming</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/brainstorming/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Help shape a vague idea into a concrete, agreed design before anything gets built. The work is collaborative and conversational: understand what the user actually wants, surface the decisions hidden inside the request, weigh approaches together, and write the result down. The goal is a design the user has explicitly approved: not code, and not a plan yet.</p>
+<h3 id="dont-jump-to-implementation">Don&#39;t jump to implementation</h3>
+<p>Hold off on writing code, scaffolding a project, or invoking any build/plan skill until you&#39;ve presented a design and the user has approved it. This holds even when the task looks trivial. &quot;Too simple to need a design&quot; is exactly where unexamined assumptions cause the most wasted work: a to-do app, a one-function utility, a config change all carry decisions worth naming. The design can be short (a few sentences for a genuinely simple thing), but present it and get a yes before moving on.</p>
+<h3 id="step-1-understand-the-context">Step 1: Understand the context</h3>
+<p>Before asking anything, look at what already exists, relevant files, docs, recent commits, the surrounding code. Ground the conversation in the real project so your questions are about <em>this</em> idea in <em>this</em> context, not generic ones.</p>
+<h3 id="step-2-ask-questions-one-at-a-time">Step 2: Ask questions, one at a time</h3>
+<p>Refine the idea through dialogue, asking a single question at a time rather than a wall of them. You&#39;re after:</p>
+<ul>
+<li><strong>Purpose</strong>: what problem this solves, and for whom.</li>
+<li><strong>Constraints</strong>: technical limits, deadlines, things that must not change, existing patterns to fit.</li>
+<li><strong>Success criteria</strong>: how you&#39;ll both know it&#39;s right when it&#39;s done.</li>
+<li><strong>Scope edges</strong>: what&#39;s explicitly in, and what&#39;s explicitly out.</li>
+</ul>
+<p>Let each answer shape the next question. This is where unstated assumptions get surfaced and corrected cheaply.</p>
+<h3 id="step-3-propose-approaches-with-trade-offs">Step 3: Propose approaches with trade-offs</h3>
+<p>Once you understand the shape of the problem, put two or three viable approaches on the table. For each, give the trade-offs honestly, and say which one you&#39;d recommend and why. Don&#39;t present a single option as if it were the only one, and don&#39;t bury your recommendation: the user is deciding, and they decide better with a clear comparison.</p>
+<h3 id="step-4-present-the-design-and-get-approval">Step 4: Present the design and get approval</h3>
+<p>Lay out the design in sections, each scaled to its complexity: a hard part gets detail, a trivial part gets a sentence. Get the user&#39;s agreement as you go rather than presenting a finished monolith and asking for a single thumbs-up at the end. Adjust as they react.</p>
+<p>If the design has load-bearing decisions you&#39;re unsure about, pressure-test them before settling: the <code>grill-me</code> skill is built for stress-testing a design until the critical decisions are actually resolved.</p>
+<h3 id="step-5-write-it-down-and-self-review">Step 5: Write it down and self-review</h3>
+<p>Capture the agreed design in a spec document (a <code>docs/specs/YYYY-MM-DD-&lt;topic&gt;.md</code> location works well unless the project has its own convention). Then read it once with fresh eyes and check for:</p>
+<ul>
+<li><strong>Placeholders</strong>: anything left as &quot;TBD&quot; or hand-waved.</li>
+<li><strong>Contradictions</strong>: two parts of the design that can&#39;t both be true.</li>
+<li><strong>Ambiguity</strong>: wording that two engineers would read two different ways.</li>
+<li><strong>Scope creep</strong>: anything that drifted in beyond what was agreed.</li>
+</ul>
+<p>Fix what you find inline. If the spec covers several independent subsystems, note that it should probably be split into one spec per subsystem.</p>
+<h3 id="step-6-hand-off-to-planning">Step 6: Hand off to planning</h3>
+<p>Once the spec is written and the user has reviewed it, the natural next step is an implementation plan: use the <code>writing-plans</code> skill to turn the approved design into task-by-task work. Don&#39;t start coding directly from the brainstorm: the plan is where the design becomes executable.</p>
+<h3 id="attribution">Attribution</h3>
+<p>Adapted from the <code>brainstorming</code> entry of <a href="https://github.com/obra/superpowers" rel="noopener">superpowers</a> by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry&#39;s other items are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/brainstorming" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in productivity</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/decision-log/"><code>decision-log</code></a> <span class="row-type">skill</span> Keep a lightweight decision log for a project or a person: one dated line per decision with the choice, the reason, the alternatives, who decided, and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/grill-me/"><code>grill-me</code></a> <span class="row-type">skill</span> Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/handoff/"><code>handoff</code></a> <span class="row-type">skill</span> Compact the current conversation into a handoff document for another agent to pick up. Use when ending a session, switching agents, or preserving context...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/issue-writer/"><code>issue-writer</code></a> <span class="row-type">skill</span> Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/learning-plan/"><code>learning-plan</code></a> <span class="row-type">skill</span> Turn a topic to learn into a sequenced study plan with a goal test, prerequisites, ordered units with one primary resource each, spaced practice and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/meeting-notes/"><code>meeting-notes</code></a> <span class="row-type">skill</span> Turn a meeting transcript, recording summary, or rough notes into a record people act on: decisions with their reasons, action items with one owner and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/standup-summary/"><code>standup-summary</code></a> <span class="row-type">skill</span> Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/prime/"><code>prime</code></a> <span class="row-type">command</span> Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=productivity">All of productivity</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

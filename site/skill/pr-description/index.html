@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pr-description: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/pr-description/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/pr-description/" />
+    <meta property="og:title" content="pr-description: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="pr-description: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/pr-description/#code","url":"https://dotclaude.khaledsaeed.tech/skill/pr-description/","name":"pr-description","alternateName":"PR Description","headline":"pr-description: a Claude Code skill","description":"Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/pr-description","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"pr-description","item":"https://dotclaude.khaledsaeed.tech/skill/pr-description/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">pr-description</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>pr-description</code></h1>
+          
+          <p class="lede">Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull request or writing/improving a PR body.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) base branch, ticket, or PR focus</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/pr-description</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/pr-description/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Write a pull-request description from the actual changes on this branch. Base it on the diff, not on what you assume was intended.</p>
+<h3 id="gather-context">Gather context</h3>
+<ul>
+<li>Diff the branch against its base (default to the repo&#39;s main branch, or the base the user named): review the changed files, the commits, and their messages.</li>
+<li>Identify the linked issue/ticket if one is referenced in the branch name, commits, or arguments.</li>
+<li>Separate the substantive change from incidental churn (formatting, renames, generated files).</li>
+</ul>
+<h3 id="write-the-description">Write the description</h3>
+<p>Use this structure, omitting any section that genuinely doesn&#39;t apply:</p>
+<ul>
+<li><strong>Summary</strong>: one or two sentences on what this PR does.</li>
+<li><strong>What changed</strong>: the concrete changes, grouped logically, referencing key files.</li>
+<li><strong>Why</strong>: the motivation or problem being solved; link the issue.</li>
+<li><strong>Risk / impact</strong>: blast radius, backward compatibility, breaking changes, data migrations, config/env or infra changes, anything reviewers should scrutinise.</li>
+<li><strong>Testing</strong>: how it was verified, including tests added/updated, manual steps, and explicitly what was <em>not</em> covered.</li>
+<li><strong>Notes for reviewers</strong>: trade-offs, follow-ups, screenshots for UI changes.</li>
+</ul>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Be factual and specific; describe what the diff does, and don&#39;t speculate or oversell.</li>
+<li>Call out breaking changes and required migration steps prominently.</li>
+<li>Keep it scannable: short paragraphs and bullets over walls of text.</li>
+<li>If the repo has a PR template (<code>.github/PULL_REQUEST_TEMPLATE*</code>), match its structure.</li>
+<li>Never fabricate test results; if something wasn&#39;t tested, say so.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/pr-description" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

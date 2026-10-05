@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>git-guard: Hook for Claude Code | dotclaude</title>
+    <meta name="description" content="A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/hook/git-guard/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/git-guard/" />
+    <meta property="og:title" content="git-guard: Hook for Claude Code | dotclaude" />
+    <meta property="og:description" content="A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="git-guard: Hook for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/git-guard/#code","url":"https://dotclaude.khaledsaeed.tech/hook/git-guard/","name":"git-guard","alternateName":"Git Guard","headline":"git-guard: a Claude Code hook","description":"A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and deletions of protected branches (main, master, develop, or a configured list with globs), commit --no-verify, git clean -f, stash drop and clear, and hard resets, checkouts, or restores that would discard uncommitted changes. Splits compound commands so nothing hides behind a prefix. Use when Claude has git access and a mistake would cost shared history or uncommitted work.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/git-guard","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","workflow","workflow-hooks"],"hasPart":[{"@type":"CreativeWork","name":"git-guard.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"git-guard","item":"https://dotclaude.khaledsaeed.tech/hook/git-guard/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">git-guard</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="hook">
+          <p class="detail-kind">Hook <span class="row-category">in workflow</span></p>
+          <h1><code>git-guard</code></h1>
+          
+          <p class="lede">A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and deletions of protected branches (main, master, develop, or a configured list with globs), commit --no-verify, git clean -f, stash drop and clear, and hard resets, checkouts, or restores that would discard uncommitted changes. Splits compound commands so nothing hides behind a prefix. Use when Claude has git access and a mistake would cost shared history or uncommitted work.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/workflow-hooks/">workflow-hooks</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install workflow-hooks@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/git-guard</code></pre>
+<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/hooks/git-guard/HOOK.md</code></li><li><code>.claude/hooks/git-guard/git-guard.mjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Hook contents">
+          <h2 id="contents">What it does</h2>
+<h2 id="git-guard">git-guard</h2>
+<p>A Claude Code hook that guards the git footguns <code>command-guard</code> does not cover. It is not about catastrophic shell commands (that is <code>command-guard</code> and <code>smart-approve</code>); it is about the ordinary git operations that quietly lose work or route around the review process.</p>
+<h3 id="what-it-blocks">What it blocks</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Condition</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git push --force</code> / <code>-f</code> / <code>--force-with-lease</code> / <code>+refspec</code></td>
+<td>target (or current) branch is protected</td>
+<td>rewrites shared history</td>
+</tr>
+<tr>
+<td><code>git push --delete &lt;branch&gt;</code> / <code>git push origin :&lt;branch&gt;</code></td>
+<td>branch is protected</td>
+<td>deletes the branch remotely</td>
+</tr>
+<tr>
+<td><code>git branch -D</code> / <code>-d &lt;branch&gt;</code></td>
+<td>branch is protected</td>
+<td>deletes the branch locally</td>
+</tr>
+<tr>
+<td><code>git commit --no-verify</code> / <code>-n</code></td>
+<td>always (configurable)</td>
+<td>skips the project&#39;s own pre-commit hooks</td>
+</tr>
+<tr>
+<td><code>git reset --hard</code>, <code>git checkout .</code>, <code>git restore .</code></td>
+<td>working tree has uncommitted changes</td>
+<td>discards work irreversibly</td>
+</tr>
+<tr>
+<td><code>git clean -f</code></td>
+<td>always</td>
+<td>deletes untracked files</td>
+</tr>
+<tr>
+<td><code>git stash drop</code> / <code>clear</code></td>
+<td>always</td>
+<td>discards stashed work</td>
+</tr>
+</tbody></table>
+<p>Protected branches default to <code>main</code>, <code>master</code>, and <code>develop</code>. Patterns may contain <code>*</code> (<code>release/*</code>). Compound commands (<code>&amp;&amp;</code>, <code>||</code>, <code>;</code>, <code>|</code>) are split and each part is checked; quoted strings are respected, so <code>echo &quot;git push --force&quot;</code> passes.</p>
+<p>The block message names the operation and the safer alternative (feature branch and PR, stash first, <code>git clean -n</code>).</p>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git-guard.mjs</code></td>
+<td>The hook script.</td>
+</tr>
+<tr>
+<td><code>HOOK.md</code></td>
+<td>This file.</td>
+</tr>
+</tbody></table>
+<h3 id="activate-it-required-manual-step">Activate it (required manual step)</h3>
+<p>Add this to <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (global):</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PreToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Bash&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/git-guard/git-guard.mjs\&quot;&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Installing the <code>workflow-hooks</code> plugin from the dotclaude marketplace wires this automatically.</p>
+<h3 id="verify-it">Verify it</h3>
+<pre><code class="language-bash">echo &#39;{&quot;tool_name&quot;:&quot;Bash&quot;,&quot;tool_input&quot;:{&quot;command&quot;:&quot;git push --force origin main&quot;},&quot;cwd&quot;:&quot;&#39;$PWD&#39;&quot;}&#39; \
+  | node .claude/hooks/git-guard/git-guard.mjs; echo &quot;exit=$?&quot;
+</code></pre>
+<p>Exit <code>2</code> with <code>git-guard blocked:</code> on stderr means it is active.</p>
+<h3 id="tune-it">Tune it</h3>
+<pre><code class="language-json">{
+  &quot;gitGuard&quot;: {
+    &quot;protectedBranches&quot;: [&quot;main&quot;, &quot;master&quot;, &quot;develop&quot;, &quot;release/*&quot;],
+    &quot;allowNoVerify&quot;: false,
+    &quot;allowForcePush&quot;: false
+  }
+}
+</code></pre>
+<p><code>allowForcePush: true</code> disables the force-push rule only; deletions and the other rules still apply.</p>
+<blockquote>
+<p>Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it.</p>
+</blockquote>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/git-guard" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
+          <h2 id="related">More in workflow</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/hook/branch-protect/"><code>branch-protect</code></a> <span class="row-type">hook</span> A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/session-context/"><code>session-context</code></a> <span class="row-type">hook</span> A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/stop-gate/"><code>stop-gate</code></a> <span class="row-type">hook</span> A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/subagent-summary/"><code>subagent-summary</code></a> <span class="row-type">hook</span> A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/"><code>typecheck-on-edit</code></a> <span class="row-type">hook</span> A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing...</li></ul>
+          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=workflow">All of workflow</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

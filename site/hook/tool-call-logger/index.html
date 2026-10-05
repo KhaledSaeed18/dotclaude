@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>tool-call-logger: Hook for Claude Code | dotclaude</title>
+    <meta name="description" content="A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/hook/tool-call-logger/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/tool-call-logger/" />
+    <meta property="og:title" content="tool-call-logger: Hook for Claude Code | dotclaude" />
+    <meta property="og:description" content="A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="tool-call-logger: Hook for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/tool-call-logger/#code","url":"https://dotclaude.khaledsaeed.tech/hook/tool-call-logger/","name":"tool-call-logger","alternateName":"Tool Call Logger","headline":"tool-call-logger: a Claude Code hook","description":"A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and payload truncation. Use to audit, debug, or observe exactly what Claude Code did during a session.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/observability/tool-call-logger","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","observability","tool-call-logger"],"hasPart":[{"@type":"CreativeWork","name":"log-tool-calls.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"tool-call-logger","item":"https://dotclaude.khaledsaeed.tech/hook/tool-call-logger/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">tool-call-logger</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="hook">
+          <p class="detail-kind">Hook <span class="row-category">in observability</span></p>
+          <h1><code>tool-call-logger</code></h1>
+          
+          <p class="lede">A PreToolUse/PostToolUse hook that appends one JSON line per tool call (tool name, inputs, and response) to a local log file, with secret redaction and payload truncation. Use to audit, debug, or observe exactly what Claude Code did during a session.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/tool-call-logger/">tool-call-logger</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install tool-call-logger@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/tool-call-logger</code></pre>
+<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/hooks/tool-call-logger/HOOK.md</code></li><li><code>.claude/hooks/tool-call-logger/log-tool-calls.mjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Hook contents">
+          <h2 id="contents">What it does</h2>
+<h2 id="tool-call-logger">tool-call-logger</h2>
+<p>A Claude Code hook that records every tool call to a JSONL file so you can audit, debug, or analyse what happened in a session. It runs as a <code>command</code> hook: Claude Code pipes the tool event to the script on stdin, and the script appends one sanitized line per call.</p>
+<ul>
+<li><strong>Non-blocking:</strong> swallows every error and always exits <code>0</code>, so it can never interrupt or fail a tool call.</li>
+<li><strong>Zero dependencies:</strong> Node standard library only (<code>node &gt;= 18</code>).</li>
+<li><strong>Safe by default:</strong> redacts secret-looking keys (<code>token</code>, <code>password</code>, <code>apiKey</code>, <code>authorization</code>, …) and truncates oversized fields.</li>
+</ul>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>log-tool-calls.mjs</code></td>
+<td>The hook script. Reads the event from stdin, appends a record.</td>
+</tr>
+<tr>
+<td><code>HOOK.md</code></td>
+<td>This file.</td>
+</tr>
+</tbody></table>
+<p>After <code>npx shadcn@latest add KhaledSaeed18/dotclaude/tool-call-logger</code>, both land in <code>.claude/hooks/tool-call-logger/</code>.</p>
+<h3 id="activate-it-required-manual-step">Activate it (required manual step)</h3>
+<p>The installer copies the files but <strong>cannot</strong> edit your <code>settings.json</code>, hooks are configuration, not loadable files, so you wire it up once by hand. Add this to <code>.claude/settings.json</code> (project), or <code>~/.claude/settings.json</code> (global):</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;*&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/tool-call-logger/log-tool-calls.mjs\&quot;&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<ul>
+<li><code>matcher: &quot;*&quot;</code> logs every tool. Narrow it to specific tools with a regex, e.g. <code>&quot;Edit|Write|Bash&quot;</code>.</li>
+<li><code>$CLAUDE_PROJECT_DIR</code> is set by Claude Code to the project root, so the path resolves no matter the working directory. If you installed the script globally under <code>~/.claude/</code>, point the command there instead.</li>
+<li><strong><code>PostToolUse</code></strong> captures the tool input <strong>and</strong> its response. To log the <em>intent</em> before a tool runs (no response yet), add the same block under <strong><code>PreToolUse</code></strong>: the script handles both events. Wiring both gives you a before/after trail.</li>
+</ul>
+<p>Run <code>/hooks</code> in Claude Code (or restart the session) to load the change. For safety, Claude Code captures a snapshot of hooks at startup, so external edits aren&#39;t applied mid-session until you review them via <code>/hooks</code>.</p>
+<h3 id="output">Output</h3>
+<p>Records are appended as JSON Lines (one object per line) to:</p>
+<pre><code>$CLAUDE_PROJECT_DIR/.claude/logs/tool-calls.jsonl
+</code></pre>
+<p>Each line:</p>
+<pre><code class="language-json">{
+  &quot;ts&quot;: &quot;2026-06-08T12:34:56.789Z&quot;,
+  &quot;event&quot;: &quot;PostToolUse&quot;,
+  &quot;session_id&quot;: &quot;abc123&quot;,
+  &quot;cwd&quot;: &quot;/path/to/project&quot;,
+  &quot;tool_name&quot;: &quot;Bash&quot;,
+  &quot;tool_input&quot;: { &quot;command&quot;: &quot;git status&quot;, &quot;description&quot;: &quot;Show working tree status&quot; },
+  &quot;tool_response&quot;: { &quot;stdout&quot;: &quot;…&quot;, &quot;stderr&quot;: &quot;&quot;, &quot;interrupted&quot;: false }
+}
+</code></pre>
+<p>Read it back with standard tools, e.g. the last 20 Bash calls:</p>
+<pre><code class="language-bash">grep &#39;&quot;tool_name&quot;:&quot;Bash&quot;&#39; .claude/logs/tool-calls.jsonl | tail -20 | jq .
+</code></pre>
+<h3 id="configuration">Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Env var</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CLAUDE_TOOL_LOG</code></td>
+<td><code>$CLAUDE_PROJECT_DIR/.claude/logs/tool-calls.jsonl</code></td>
+<td>Override the log path (absolute, or relative to cwd).</td>
+</tr>
+<tr>
+<td><code>CLAUDE_TOOL_LOG_MAXLEN</code></td>
+<td><code>2000</code></td>
+<td>Max characters per string field before truncation.</td>
+</tr>
+</tbody></table>
+<p>Set them in the hook command if you want, e.g.:</p>
+<pre><code class="language-json">&quot;command&quot;: &quot;CLAUDE_TOOL_LOG=/tmp/claude-tools.jsonl node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/tool-call-logger/log-tool-calls.mjs\&quot;&quot;
+</code></pre>
+<h3 id="keep-logs-out-of-git">Keep logs out of Git</h3>
+<p>The log can grow quickly and may contain repo paths or snippets. Add it to <code>.gitignore</code>:</p>
+<pre><code>.claude/logs/
+</code></pre>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ul>
+<li><strong>No file appears.</strong> Confirm the hook is registered (<code>/hooks</code>), that <code>node</code> is on PATH, and that the <code>command</code> path is correct. The script fails silently by design, so test it directly:<pre><code class="language-bash">echo &#39;{&quot;hook_event_name&quot;:&quot;PostToolUse&quot;,&quot;tool_name&quot;:&quot;Bash&quot;,&quot;tool_input&quot;:{&quot;command&quot;:&quot;ls&quot;},&quot;tool_response&quot;:{&quot;stdout&quot;:&quot;ok&quot;}}&#39; \
+  | node .claude/hooks/tool-call-logger/log-tool-calls.mjs
+cat .claude/logs/tool-calls.jsonl
+</code></pre>
+</li>
+<li><strong>A value shows <code>[redacted]</code>.</strong> That key matched the secret pattern, expected. Adjust the <code>SECRET_KEY</code> regex in the script if it&#39;s over-eager for your data.</li>
+<li><strong>Lines are cut with <code>…(+N chars)</code>.</strong> Raise <code>CLAUDE_TOOL_LOG_MAXLEN</code>.</li>
+</ul>
+<blockquote>
+<p>Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it, and only register hooks you trust.</p>
+</blockquote>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/observability/tool-call-logger" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
+          
+          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=observability">All of observability</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

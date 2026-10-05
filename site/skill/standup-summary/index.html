@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>standup-summary: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/standup-summary/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/standup-summary/" />
+    <meta property="og:title" content="standup-summary: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="standup-summary: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/standup-summary/#code","url":"https://dotclaude.khaledsaeed.tech/skill/standup-summary/","name":"standup-summary","alternateName":"Standup Summary","headline":"standup-summary: a Claude Code skill","description":"Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into done / in progress / blocked / next, written in plain human sentences rather than commit-message-speak. Use when preparing a daily standup, a weekly review, a sprint update, or answering \"what did I work on this week\".","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/standup-summary","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","productivity","productivity"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"standup-summary","item":"https://dotclaude.khaledsaeed.tech/skill/standup-summary/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">standup-summary</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in productivity</span></p>
+          <h1><code>standup-summary</code></h1>
+          
+          <p class="lede">Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into done / in progress / blocked / next, written in plain human sentences rather than commit-message-speak. Use when preparing a daily standup, a weekly review, a sprint update, or answering &quot;what did I work on this week&quot;.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/productivity/">productivity</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install productivity@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/standup-summary</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/standup-summary/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Reconstruct the update from evidence, not memory. Git and the issue tracker already know what happened; the job is to translate that record into the three or four sentences a teammate actually wants to hear, at the altitude of outcomes (&quot;shipped the retry logic for webhooks&quot;) rather than mechanics (&quot;bumped a dependency, fixed a typo, refactored a helper&quot;).</p>
+<h3 id="step-1-establish-scope">Step 1: Establish scope</h3>
+<ul>
+<li><strong>Time window:</strong> since the last workday for a standup, the last 5-7 days for a weekly. Confirm if unstated and ambiguous.</li>
+<li><strong>Identity:</strong> the git author to filter by - <code>git config user.name</code> / <code>user.email</code> in the current repo, unless told otherwise.</li>
+<li><strong>Repositories:</strong> default to the current one; ask whether other repos should be included when the user&#39;s request implies more (&quot;what did I do this week&quot; often spans several).</li>
+</ul>
+<h3 id="step-2-collect-the-evidence">Step 2: Collect the evidence</h3>
+<p>Per repository:</p>
+<pre><code class="language-bash"># Commits by the author in the window, all branches
+git log --all --author=&quot;&lt;email-or-name&gt;&quot; --since=&quot;&lt;window&gt;&quot; \
+  --pretty=&quot;%h %ad %s&quot; --date=short
+
+# Branches touched recently
+git for-each-ref --sort=-committerdate refs/heads/ \
+  --format=&quot;%(committerdate:short) %(refname:short)&quot; | head -10
+</code></pre>
+<p>When <code>gh</code> is available and the repo has a GitHub remote, add the PR and review picture:</p>
+<pre><code class="language-bash">gh pr list --author &quot;@me&quot; --state all --limit 15 \
+  --json number,title,state,updatedAt,isDraft
+gh search prs --reviewed-by &quot;@me&quot; --updated &quot;&gt;$(date -v-7d +%Y-%m-%d)&quot; --limit 10 2&gt;/dev/null
+gh issue list --assignee &quot;@me&quot; --state all --limit 15 --json number,title,state,updatedAt
+</code></pre>
+<p>Uncommitted work counts too: <code>git status --short</code> plus the current branch name usually reveals what is in progress right now.</p>
+<h3 id="step-3-synthesize-at-outcome-altitude">Step 3: Synthesize at outcome altitude</h3>
+<p>Group raw items into narrative units - a feature, a fix, a review effort - not one bullet per commit. Fifteen commits on one branch are one line. Then sort into:</p>
+<ul>
+<li><strong>Done:</strong> merged, shipped, closed. Lead with the user-visible or team-visible effect.</li>
+<li><strong>In progress:</strong> open PRs (note if awaiting review - that is a nudge, not filler), the active branch, drafts.</li>
+<li><strong>Blocked / waiting:</strong> PRs awaiting someone else, issues waiting on answers, anything the log shows stalled for days. Only include real blockers; do not invent one for symmetry.</li>
+<li><strong>Next:</strong> only what the evidence supports (assigned issues, an obvious follow-up) or what the user tells you. Never fabricate plans.</li>
+</ul>
+<p>Translate mechanics to outcomes: &quot;fix flaky auth test, bump vitest, retry CI&quot; becomes &quot;stabilized the auth test suite; CI is green again&quot;. Keep PR/issue numbers as parenthetical references.</p>
+<h3 id="step-4-deliver-in-the-requested-shape">Step 4: Deliver in the requested shape</h3>
+<p>Default format, ready to paste into chat:</p>
+<pre><code>**Yesterday / this week**
+- Shipped X (#123): &lt;one-clause effect&gt;
+- Reviewed Y&#39;s Z PR (#125)
+
+**Today / next**
+- Finish A (PR #124, awaiting review)
+
+**Blocked**
+- B: waiting on &lt;who/what&gt; since &lt;when&gt;
+</code></pre>
+<p>Match the team&#39;s medium when told (Slack markdown, plain text, bullet-less prose). Keep the whole update under ten lines unless asked for the long form; the detail lives in the links. If some evidence source was unavailable (no <code>gh</code>, a repo you could not read), say so in one trailing line rather than silently narrowing the window.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/standup-summary" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in productivity</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/brainstorming/"><code>brainstorming</code></a> <span class="row-type">skill</span> Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/decision-log/"><code>decision-log</code></a> <span class="row-type">skill</span> Keep a lightweight decision log for a project or a person: one dated line per decision with the choice, the reason, the alternatives, who decided, and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/grill-me/"><code>grill-me</code></a> <span class="row-type">skill</span> Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/handoff/"><code>handoff</code></a> <span class="row-type">skill</span> Compact the current conversation into a handoff document for another agent to pick up. Use when ending a session, switching agents, or preserving context...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/issue-writer/"><code>issue-writer</code></a> <span class="row-type">skill</span> Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/learning-plan/"><code>learning-plan</code></a> <span class="row-type">skill</span> Turn a topic to learn into a sequenced study plan with a goal test, prerequisites, ordered units with one primary resource each, spaced practice and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/meeting-notes/"><code>meeting-notes</code></a> <span class="row-type">skill</span> Turn a meeting transcript, recording summary, or rough notes into a record people act on: decisions with their reasons, action items with one owner and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/prime/"><code>prime</code></a> <span class="row-type">command</span> Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=productivity">All of productivity</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

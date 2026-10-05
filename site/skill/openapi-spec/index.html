@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>openapi-spec: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/openapi-spec/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/openapi-spec/" />
+    <meta property="og:title" content="openapi-spec: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="openapi-spec: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/openapi-spec/#code","url":"https://dotclaude.khaledsaeed.tech/skill/openapi-spec/","name":"openapi-spec","alternateName":"Openapi Spec","headline":"openapi-spec: a Claude Code skill","description":"Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas, examples, errors, auth, pagination), and usable by tooling (validation, client generation, mock servers). Covers design-first and code-first workflows, linting with Spectral, and keeping the spec in sync in CI. Use when documenting an API, when a client generator or contract test needs a spec, or when the existing spec no longer matches the routes.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/openapi-spec","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","documentation","docs"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"openapi-spec","item":"https://dotclaude.khaledsaeed.tech/skill/openapi-spec/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">openapi-spec</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in documentation</span></p>
+          <h1><code>openapi-spec</code></h1>
+          
+          <p class="lede">Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas, examples, errors, auth, pagination), and usable by tooling (validation, client generation, mock servers). Covers design-first and code-first workflows, linting with Spectral, and keeping the spec in sync in CI. Use when documenting an API, when a client generator or contract test needs a spec, or when the existing spec no longer matches the routes.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the routes or handlers directory, the existing spec, or the framework</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/docs/">docs</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install docs@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/openapi-spec</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/openapi-spec/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>An OpenAPI document is a contract. It is worth having only if it is true, so the first question is always how it stays in sync with the code: generated from annotations or types (code-first), or validated against the implementation in CI (design-first). Pick one and make the check mechanical.</p>
+<h3 id="workflow">Workflow</h3>
+<p><strong>Code-first</strong> (existing API, typed framework): generate from the source of truth. NestJS (<code>@nestjs/swagger</code> decorators), FastAPI (automatic from Pydantic models), Spring (springdoc), Go (<code>swag</code>, or <code>huma</code>/<code>oapi-codegen</code> design-first), Express or Hono with zod (<code>zod-openapi</code>, <code>@asteasolutions/zod-to-openapi</code>). Commit the generated file and diff it in CI so an undocumented route change fails the build.</p>
+<p><strong>Design-first</strong> (new API, multiple implementers): write <code>openapi.yaml</code> by hand, generate server stubs and clients from it, and add a contract test (Prism mock or Dredd/Schemathesis against the running server) so the implementation cannot drift.</p>
+<p>Either way: <code>spectral lint openapi.yaml</code> in CI with the <code>spectral:oas</code> ruleset plus house rules.</p>
+<h3 id="what-a-complete-spec-has">What a complete spec has</h3>
+<ul>
+<li><code>info</code> with a real description, version (semver, bumped with breaking changes), contact.</li>
+<li><code>servers</code> for each environment, with variables for the base URL.</li>
+<li><code>securitySchemes</code> (bearer JWT, API key header, OAuth2 flows) and a top-level <code>security</code> default, overridden per operation where public.</li>
+<li>Every operation: <code>operationId</code> (unique, verbNoun, used as the client method name), <code>summary</code> (one line), <code>description</code> (when behaviour needs it), <code>tags</code> (one per resource), parameters with types, formats, constraints, and examples, request body with schema and example, every response the server can send (200/201/204, 400, 401, 403, 404, 409, 422, 429, 500) with a schema.</li>
+<li>One error schema used everywhere (RFC 9457 problem details: <code>type</code>, <code>title</code>, <code>status</code>, <code>detail</code>, <code>instance</code>, plus <code>errors[]</code> for validation).</li>
+<li>Pagination described once (cursor or page/limit) as reusable parameters and a response envelope schema.</li>
+<li>Schemas in <code>components/schemas</code> with <code>required</code>, <code>nullable</code> (3.1: <code>type: [string, &quot;null&quot;]</code>), <code>enum</code>, <code>format</code> (<code>date-time</code>, <code>uuid</code>, <code>email</code>, <code>uri</code>), <code>minimum</code>/<code>maxLength</code>, <code>readOnly</code> for server-set fields, <code>example</code> or <code>examples</code> on each.</li>
+<li><code>deprecated: true</code> with a <code>description</code> saying the replacement and the removal date.</li>
+</ul>
+<h3 id="design-rules-that-show-up-in-the-spec">Design rules that show up in the spec</h3>
+<ul>
+<li>Resource nouns, plural, kebab-case paths: <code>/api/v1/order-items/{orderItemId}</code>.</li>
+<li>Ids as opaque strings (<code>format: uuid</code> when true); never expose sequential integers unless they are the public key.</li>
+<li>Filtering, sorting, and field selection as query parameters with documented syntax.</li>
+<li>Idempotency: <code>PUT</code> and <code>DELETE</code> idempotent by definition; <code>POST</code> creates take an <code>Idempotency-Key</code> header when retries are expected.</li>
+<li>Versioning in the path or an <code>Accept</code> header, one scheme, stated in <code>info.description</code>.</li>
+<li>Timestamps ISO 8601 UTC; money as integer minor units plus a currency code, never floats.</li>
+</ul>
+<h3 id="reviewing-an-existing-spec">Reviewing an existing spec</h3>
+<ol>
+<li>List the routes the code actually serves (framework route table, <code>grep</code> for the router) and diff against <code>paths</code>. Undocumented and phantom routes are the first findings.</li>
+<li>For each operation, call it (or read the handler) and compare the real response shape and status codes with the spec.</li>
+<li>Run <code>spectral lint</code>; fix errors, evaluate warnings.</li>
+<li>Check examples validate against their schemas (<code>openapi-examples-validator</code> or Spectral&#39;s <code>oas3-valid-media-example</code>).</li>
+<li>Generate a client (<code>openapi-generator-cli</code>, <code>openapi-typescript</code>) and read the output; awkward names reveal missing <code>operationId</code>s and inline schemas that should be components.</li>
+</ol>
+<h3 id="minimal-skeleton">Minimal skeleton</h3>
+<pre><code class="language-yaml">openapi: 3.1.0
+info: { title: Orders API, version: 1.2.0, description: ... }
+servers: [{ url: https://api.example.com/v1 }]
+security: [{ bearerAuth: [] }]
+tags: [{ name: orders }]
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      summary: List orders
+      tags: [orders]
+      parameters: [{ $ref: &#39;#/components/parameters/Cursor&#39; }, { $ref: &#39;#/components/parameters/Limit&#39; }]
+      responses:
+        &#39;200&#39;: { description: A page of orders, content: { application/json: { schema: { $ref: &#39;#/components/schemas/OrderPage&#39; } } } }
+        &#39;401&#39;: { $ref: &#39;#/components/responses/Unauthorized&#39; }
+components:
+  securitySchemes: { bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT } }
+  parameters: ...
+  responses: ...
+  schemas: ...
+</code></pre>
+<p>Keep the file split with <code>$ref</code> to <code>components/</code> files once it passes a thousand lines, and bundle for publishing (<code>redocly bundle</code>).</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/openapi-spec" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in documentation</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adr-writing/"><code>adr-writing</code></a> <span class="row-type">skill</span> Write Architecture Decision Records that a future engineer can act on: a numbered, immutable record with the context that forced the decision, the options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/readme-writing/"><code>readme-writing</code></a> <span class="row-type">skill</span> Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/technical-writing/"><code>technical-writing</code></a> <span class="row-type">skill</span> Write and edit developer documentation, guides, design notes, and engineering blog posts with a working writer's discipline: audience and purpose first...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/adr/"><code>adr</code></a> <span class="row-type">command</span> Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=documentation">All of documentation</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

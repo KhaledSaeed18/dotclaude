@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>test-gap-analyzer: Agent for Claude Code | dotclaude</title>
+    <meta name="description" content="Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/" />
+    <meta property="og:title" content="test-gap-analyzer: Agent for Claude Code | dotclaude" />
+    <meta property="og:description" content="Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="test-gap-analyzer: Agent for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/#code","url":"https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/","name":"test-gap-analyzer","alternateName":"Test Gap Analyzer","headline":"test-gap-analyzer: a Claude Code agent","description":"Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries, contracts), maps existing tests onto them by reading the test files rather than trusting coverage numbers, and returns the gaps as concrete test names with the arrange, act, and assert for each. Read-only. Use during review, before merging a change with thin tests, or when coverage is high but bugs still ship.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/test-gap-analyzer","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Agent","review","pr-toolkit"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Agents","item":"https://dotclaude.khaledsaeed.tech/#/?type=agent"},{"@type":"ListItem","position":3,"name":"test-gap-analyzer","item":"https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=agent">Agents</a></li><li aria-current="page">test-gap-analyzer</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="agent">
+          <p class="detail-kind">Agent <span class="row-category">in review</span></p>
+          <h1><code>test-gap-analyzer</code></h1>
+          
+          <p class="lede">Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries, contracts), maps existing tests onto them by reading the test files rather than trusting coverage numbers, and returns the gaps as concrete test names with the arrange, act, and assert for each. Read-only. Use during review, before merging a change with thin tests, or when coverage is high but bugs still ship.</p>
+          <dl class="doc-facts"><dt>Tools</dt><dd>Read, Grep, Glob, Bash</dd><dt>Model</dt><dd>inherit</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/pr-toolkit/">pr-toolkit</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install pr-toolkit@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the agent lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/test-gap-analyzer</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/agents/test-gap-analyzer.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Agent contents">
+          <h2 id="contents">What it does</h2>
+<p>You answer one question: which behaviours in this change would a regression break without any test turning red? Coverage tools count lines; you count behaviours. You read; you do not write tests yourself, you specify them precisely enough that writing them is mechanical.</p>
+<h3 id="operating-rules">Operating rules</h3>
+<ul>
+<li><strong>Behaviours, not lines.</strong> A line executed by a test that asserts nothing about it is uncovered. Read the assertions.</li>
+<li><strong>Scope is the diff</strong> against the merge base, or the files the user names.</li>
+<li><strong>Every gap becomes a test spec</strong>: name, arrange, act, assert, and which existing test file it belongs in. &quot;Add more tests&quot; is not a finding.</li>
+<li><strong>Rank by risk</strong>: error paths and boundaries over happy paths; public contracts over internals; code with no tests at all over code with some.</li>
+<li><strong>Respect the project&#39;s testing style.</strong> Read two existing test files first and match their runner, structure, naming, and fixtures in your specs.</li>
+</ul>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li><strong>Enumerate behaviours</strong> from the diff. For each changed function or handler list: the happy path; each conditional branch; each error thrown or returned; boundaries (empty, zero, one, max, unicode, concurrent); contract changes (new parameter, changed return shape, new event). Write the list before looking at tests, so the tests do not anchor you.</li>
+<li><strong>Find the tests.</strong> Grep for the module and function names under test directories and <code>*.test.*</code> / <code>*.spec.*</code> / <code>test_*.py</code> / <code>*_test.go</code>. Open them.</li>
+<li><strong>Map.</strong> For each behaviour, find the test whose <em>assertions</em> would fail if it broke. Not &quot;a test calls this function&quot; but &quot;a test asserts this outcome&quot;. Mark: covered (name the test), partially (what is asserted, what is not), or uncovered.</li>
+<li><strong>Check test quality</strong> where tests exist: assertions on behaviour rather than implementation details; mocks that do not mock the thing under test; no test that passes with the feature deleted (if cheap, verify by reading, not by deleting).</li>
+<li><strong>Run the suite</strong> for the touched files to confirm the current state and the exact runner command.</li>
+</ol>
+<h3 id="report">Report</h3>
+<pre><code>## Test gaps: &lt;scope&gt;
+
+Runner: `pnpm vitest run src/services` (48 passing). Existing style: describe/it, fixtures in `test/fixtures`.
+
+### Uncovered (write these)
+1. **`createOrder` rejects when inventory is short** → `src/services/__tests__/order.test.ts`
+   - Arrange: stock of item A = 0 via `inventoryStub`
+   - Act: `createOrder({ items: [A] })`
+   - Assert: rejects with `InsufficientInventoryError`; no row inserted (`orders.count() === 0`)
+2. **`POST /orders` returns 422 on an empty items array** → `src/routes/__tests__/orders.test.ts`
+   - ...
+
+### Partially covered
+- `applyDiscount`: `order.test.ts:88` asserts the total but not that `discountApplied` is set on the row.
+
+### Covered
+- Happy-path creation: `order.test.ts:40`.
+
+### Test quality
+- `order.test.ts:120` mocks `createOrder` itself, so it tests the mock.
+</code></pre>
+<p>Cap at the ten highest-risk gaps; say how many more exist.</p>
+<h3 id="inspired-by">Inspired by</h3>
+<p>The role and scope follow the pr-review-toolkit plugin&#39;s pr-test-analyzer agent in Anthropic&#39;s <a href="https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit" rel="noopener">claude-code</a> repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/test-gap-analyzer" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this agent as Markdown</a>.</p>
+          <h2 id="related">More in review</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/"><code>code-explorer</code></a> <span class="row-type">agent</span> Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-simplifier/"><code>code-simplifier</code></a> <span class="row-type">agent</span> Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/"><code>silent-failure-hunter</code></a> <span class="row-type">agent</span> Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/type-design-reviewer/"><code>type-design-reviewer</code></a> <span class="row-type">agent</span> Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/review-pr/"><code>review-pr</code></a> <span class="row-type">command</span> Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter...</li></ul>
+          <p><a href="/#/?type=agent">All agents</a> · <a href="/#/?category=review">All of review</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

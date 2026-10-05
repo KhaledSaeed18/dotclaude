@@ -17,6 +17,9 @@
  *   - site/data.json                          (the catalog site's single data file)
  *   - site/index.html                         (pre-rendered rows + JSON-LD, between markers)
  *   - site/llms.txt                           (the catalog as markdown, for AI crawlers)
+ *   - site/<type>/<name>/index.html + index.md (one crawlable page per item, see site-pages.ts)
+ *   - site/plugins/<name>/index.html          (one page per plugin)
+ *   - site/sitemap.xml, site/llms-full.txt    (every page; every manifest in full)
  *   - NOTICE.md                               (every item adapted from another project)
  *
  * Run `pnpm gen` to write, `pnpm gen:check` to fail if anything is stale.
@@ -26,6 +29,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { dirname, join, relative, sep } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
+import { buildSitePages, OWNED_SITE_DIRS, type PageSource } from "./site-pages.js";
 
 const ROOT = process.cwd();
 
@@ -75,6 +79,9 @@ const SITE_ROWS_START = "<!-- rows:start -->";
 const SITE_ROWS_END = "<!-- rows:end -->";
 const SITE_JSONLD_START = "<!-- jsonld:start -->";
 const SITE_JSONLD_END = "<!-- jsonld:end -->";
+const SITE_META_START = "<!-- meta:start -->";
+const SITE_META_END = "<!-- meta:end -->";
+const SITE_DIR = join(ROOT, "site");
 
 /**
  * Content-type seam. Each entry is one installable family. `layout` decides how
@@ -987,7 +994,7 @@ function escapeHtml(text: string): string {
 function buildSiteRows(model: SiteModel): string {
   const rows = model.items.map((item) =>
     [
-      `<li class="row"><a class="row-link" href="#/${item.key}" data-type="${item.type}">`,
+      `<li class="row"><a class="row-link" href="/${item.key}/" data-key="${item.key}" data-type="${item.type}">`,
       `<span class="row-rail" aria-hidden="true"></span><span class="row-main">`,
       `<span class="row-head"><code class="row-name">${escapeHtml(item.name)}</code>`,
       `<span class="row-type">${item.type}</span>`,
@@ -1041,7 +1048,7 @@ function buildSiteJsonLd(model: SiteModel): string {
       itemListElement: model.items.map((item, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        url: `${registry.site}/#/${item.key}`,
+        url: `${registry.site}/${item.key}/`,
         name: item.name,
         description: item.description,
       })),
@@ -1059,6 +1066,22 @@ function buildSiteJsonLd(model: SiteModel): string {
   ].join("\n");
 }
 
+/** The home page's description meta, with the live item count. */
+function buildSiteMeta(model: SiteModel): string {
+  const counts = model.types
+    .filter((type) => type.count > 0)
+    .map((type) => `${type.count} ${type.label.toLowerCase()}`)
+    .join(", ");
+  const content =
+    `Browse and install ${model.items.length} Claude Code extensions from the ${model.registry.name} registry ` +
+    `(${counts}), as ${model.plugins.length} plugins or single items via the shadcn CLI.`;
+  return [
+    SITE_META_START,
+    `<meta name="description" content="${escapeHtml(content)}" />`,
+    SITE_META_END,
+  ].join("\n");
+}
+
 /** llms.txt: the catalog as markdown, for AI crawlers and assistants. */
 function buildLlmsTxt(model: SiteModel): string {
   const { registry } = model;
@@ -1070,6 +1093,7 @@ function buildLlmsTxt(model: SiteModel): string {
     "",
     `Site: ${registry.site}/`,
     `Source: ${registry.homepage}`,
+    `Every item in full: ${registry.site}/llms-full.txt`,
     "",
     "Install a plugin (a bundle of related items; hook plugins activate on install):",
     "",
@@ -1097,7 +1121,7 @@ function buildLlmsTxt(model: SiteModel): string {
     for (const item of items) {
       const plugins = item.plugins.length > 0 ? ` Plugins: ${item.plugins.join(", ")}.` : "";
       lines.push(
-        `- [${item.name}](${item.docs}) (${item.category}): ${item.description}${plugins}`,
+        `- [${item.name}](${registry.site}/${item.key}/) (${item.category}): ${item.description}${plugins} Source: ${item.docs}`,
       );
     }
     lines.push("");
@@ -1106,7 +1130,7 @@ function buildLlmsTxt(model: SiteModel): string {
     lines.push("## Plugins", "");
     for (const plugin of model.plugins) {
       lines.push(
-        `- ${plugin.name}: ${plugin.description} Contains: ${plugin.items.map((k) => k.split("/")[1]).join(", ")}.`,
+        `- [${plugin.name}](${registry.site}/plugins/${plugin.name}/): ${plugin.description} Contains: ${plugin.items.map((k) => k.split("/")[1]).join(", ")}.`,
       );
     }
     lines.push("");
@@ -1194,6 +1218,7 @@ function generate(): GeneratedFile[] {
   const counts = new Map<string, number>();
   const siteItems: SiteItem[] = [];
   const attributions: Attribution[] = [];
+  const pageSources = new Map<string, PageSource>();
 
   for (const ct of CONTENT_TYPES) {
     const rows: CatalogRow[] = [];
@@ -1226,6 +1251,26 @@ function generate(): GeneratedFile[] {
         folder: `${toPosix(itemDir)}/`,
         description: registryItem.description,
         category: item.category,
+      });
+      const parsed = parseManifest(manifestPath);
+      const facts: Array<[string, string]> = [];
+      for (const [field, label] of [
+        ["argument-hint", "Arguments"],
+        ["tools", "Tools"],
+        ["model", "Model"],
+        ["allowed-tools", "Allowed tools"],
+      ] as const) {
+        const value = parsed.data[field];
+        if (typeof value === "string" && value.trim() !== "") facts.push([label, value.trim()]);
+      }
+      pageSources.set(`${registryItem.meta.type}/${item.name}`, {
+        body: parsed.content,
+        raw: manifestText,
+        files: [
+          ct.manifest,
+          ...registryItem.files.map((f) => f.path).filter((f) => f !== ct.manifest),
+        ],
+        facts,
       });
       siteItems.push({
         key: `${registryItem.meta.type}/${item.name}`,
@@ -1280,7 +1325,17 @@ function generate(): GeneratedFile[] {
       buildSiteJsonLd(site),
       "site/index.html",
     );
+    if (html.includes(SITE_META_START)) {
+      html = replaceRegion(
+        html,
+        SITE_META_START,
+        SITE_META_END,
+        buildSiteMeta(site),
+        "site/index.html",
+      );
+    }
     outputs.push({ path: SITE_INDEX_PATH, content: html });
+    outputs.push(...buildSitePages(site, pageSources, SITE_DIR));
   }
 
   let readme = readFileSync(README_PATH, "utf8");
@@ -1303,13 +1358,17 @@ function generate(): GeneratedFile[] {
  * item counts as stale just like an outdated file does.
  */
 function orphanPluginFiles(outputs: GeneratedFile[]): string[] {
-  const base = join(ROOT, PLUGIN_META_DIR);
-  if (!existsSync(base)) return [];
   const expected = new Set(outputs.map((out) => out.path));
-  return listFiles(base)
-    .map((rel) => join(base, rel))
-    .filter((full) => !expected.has(full))
-    .map((full) => toPosix(relative(ROOT, full)));
+  const bases = [
+    join(ROOT, PLUGIN_META_DIR),
+    ...OWNED_SITE_DIRS.map((dir) => join(SITE_DIR, dir)),
+  ].filter((base) => existsSync(base));
+  return bases.flatMap((base) =>
+    listFiles(base)
+      .map((rel) => join(base, rel))
+      .filter((full) => !expected.has(full))
+      .map((full) => toPosix(relative(ROOT, full))),
+  );
 }
 
 function main(): void {
@@ -1334,6 +1393,8 @@ function main(): void {
   // The plugin trees are derived wholesale; clear them so renames and removals
   // do not leave orphaned copies behind.
   rmSync(join(ROOT, PLUGIN_META_DIR), { recursive: true, force: true });
+  for (const dir of OWNED_SITE_DIRS as readonly string[])
+    rmSync(join(SITE_DIR, dir), { recursive: true, force: true });
 
   for (const out of outputs) {
     mkdirSync(dirname(out.path), { recursive: true });

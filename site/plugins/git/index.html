@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>git plugin for Claude Code | dotclaude</title>
+    <meta name="description" content="Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/plugins/git/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/plugins/git/" />
+    <meta property="og:title" content="git plugin for Claude Code | dotclaude" />
+    <meta property="og:description" content="Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="git plugin for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/plugins/git/#code","url":"https://dotclaude.khaledsaeed.tech/plugins/git/","name":"git","headline":"git: a Claude Code plugin","description":"Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/git","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","plugin","version-control","git","commits","worktrees","releases","pull-requests"],"hasPart":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/changelog/#code","name":"changelog","url":"https://dotclaude.khaledsaeed.tech/skill/changelog/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/finish-branch/#code","name":"finish-branch","url":"https://dotclaude.khaledsaeed.tech/skill/finish-branch/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/git-commit/#code","name":"git-commit","url":"https://dotclaude.khaledsaeed.tech/skill/git-commit/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/git-undo/#code","name":"git-undo","url":"https://dotclaude.khaledsaeed.tech/skill/git-undo/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/git-worktrees/#code","name":"git-worktrees","url":"https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/gitignore/#code","name":"gitignore","url":"https://dotclaude.khaledsaeed.tech/skill/gitignore/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/merge-conflict/#code","name":"merge-conflict","url":"https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/pr-description/#code","name":"pr-description","url":"https://dotclaude.khaledsaeed.tech/skill/pr-description/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/release-tag/#code","name":"release-tag","url":"https://dotclaude.khaledsaeed.tech/skill/release-tag/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/clean-branches/#code","name":"clean-branches","url":"https://dotclaude.khaledsaeed.tech/command/clean-branches/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/commit/#code","name":"commit","url":"https://dotclaude.khaledsaeed.tech/command/commit/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/pr/#code","name":"pr","url":"https://dotclaude.khaledsaeed.tech/command/pr/"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Plugins","item":"https://dotclaude.khaledsaeed.tech/#/plugins"},{"@type":"ListItem","position":3,"name":"git","item":"https://dotclaude.khaledsaeed.tech/plugins/git/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/plugins">Plugins</a></li><li aria-current="page">git</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="plugin">
+          <p class="detail-kind">Plugin <span class="row-category">version-control</span></p>
+          <h1><code>git</code></h1>
+          <p class="lede">Version-control skills for the whole branch lifecycle: committing, worktrees, merge conflicts, undo/recovery, PR descriptions, changelogs, releases, and branch cleanup.</p>
+          <p class="doc-keywords"><span class="chip">git</span> <span class="chip">commits</span> <span class="chip">worktrees</span> <span class="chip">releases</span> <span class="chip">pull-requests</span></p>
+        </header>
+        <section class="doc-install">
+<h2 id="install">Install</h2>
+<p>Add the marketplace once, then install the bundle. It updates with <code>/plugin marketplace update dotclaude</code>.</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+        </section>
+        <section class="doc-body">
+          <h2 id="contents">What you get</h2>
+<h3 id="skills">Skills (9)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+<h3 id="commands">Commands (3)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/clean-branches/"><code>clean-branches</code></a> <span class="row-type">command</span> List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/commit/"><code>commit</code></a> <span class="row-type">command</span> Create one well-formed commit from the current changes using the git-commit skill's rules: inspect the diff, honour the repo's commitlint and hooks, stage...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/pr/"><code>pr</code></a> <span class="row-type">command</span> Take the current branch from uncommitted work to an open pull request: commit outstanding changes with the git-commit rules if asked, push with upstream...</li></ul>
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/git" rel="noopener">View the plugin tree on GitHub</a> · <a href="/#/plugins">All plugins</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

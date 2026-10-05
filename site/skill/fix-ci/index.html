@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>fix-ci: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/fix-ci/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/fix-ci/" />
+    <meta property="og:title" content="fix-ci: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="fix-ci: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/fix-ci/#code","url":"https://dotclaude.khaledsaeed.tech/skill/fix-ci/","name":"fix-ci","alternateName":"Fix CI","headline":"fix-ci: a Claude Code skill","description":"Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause rather than the symptom, and verifying green before and after pushing. Use when a GitHub Actions run is red, a PR check is failing, or CI passes locally but fails remotely.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/fix-ci","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"fix-ci","item":"https://dotclaude.khaledsaeed.tech/skill/fix-ci/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">fix-ci</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>fix-ci</code></h1>
+          
+          <p class="lede">Diagnose and fix a failing CI run by pulling the actual failure logs (gh run view --log-failed), reproducing the failure locally, fixing the root cause rather than the symptom, and verifying green before and after pushing. Use when a GitHub Actions run is red, a PR check is failing, or CI passes locally but fails remotely.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/fix-ci</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/fix-ci/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Fix the failure CI actually reported, not the one you assume it hit. The log line that failed the job is evidence; everything else is guessing. Pull it first, reproduce it locally second, and only then change code.</p>
+<h3 id="step-1-get-the-real-failure">Step 1: Get the real failure</h3>
+<pre><code class="language-bash"># What failed, and on which commit
+gh run list --limit 10
+gh run view &lt;run-id&gt; --log-failed 2&gt;&amp;1 | tail -80
+</code></pre>
+<p>Read the failed step&#39;s output completely. Identify: the failing step name, the exact error, and whether the failure is in <em>your change</em> or in the pipeline itself (setup step, cache, runner image, flaky network). If several jobs failed, find the first failure in dependency order; downstream jobs often fail as a consequence.</p>
+<p>If the run belongs to a PR, also check which check is required and whether the failure is new to this branch:</p>
+<pre><code class="language-bash">gh pr checks &lt;pr-number&gt;
+git log --oneline origin/main..HEAD
+</code></pre>
+<h3 id="step-2-reproduce-locally">Step 2: Reproduce locally</h3>
+<p>Run the failing step&#39;s actual command from the workflow file, not your usual local equivalent:</p>
+<pre><code class="language-bash"># Read the workflow to get the exact command and environment
+cat .github/workflows/&lt;workflow&gt;.yml
+</code></pre>
+<ul>
+<li><strong>Reproduces locally:</strong> it is a code problem. Debug it normally (the <code>systematic-debugging</code> skill applies) and fix the root cause.</li>
+<li><strong>Passes locally, fails in CI:</strong> the difference is environmental. Compare in this order: dependency install mode (<code>--frozen-lockfile</code> vs a loose local install), Node/tool versions (CI pins one; check yours), OS differences (case-sensitive paths, line endings), missing env vars or secrets, and cache staleness. State which difference explains the failure before changing anything.</li>
+<li><strong>Not reproducible and clearly infrastructure</strong> (runner network blip, rate limit, timeout on a step that touches nothing you changed): rerun once with <code>gh run rerun &lt;run-id&gt; --failed</code>. If it fails the same way twice, it is not flake; go back to evidence.</li>
+</ul>
+<h3 id="step-3-fix-the-cause-not-the-check">Step 3: Fix the cause, not the check</h3>
+<p>Make the smallest change that addresses the named root cause. Things that are not fixes:</p>
+<ul>
+<li>Deleting or skipping the failing test to make CI green.</li>
+<li>Loosening an assertion until it passes.</li>
+<li>Adding <code>continue-on-error</code> or removing the step.</li>
+<li>Bumping a timeout without knowing why the step got slower.</li>
+</ul>
+<p>Any of these may be <em>proposed</em> to the user with justification, but never applied silently as &quot;the fix&quot;.</p>
+<h3 id="step-4-verify-green-twice">Step 4: Verify green, twice</h3>
+<ol>
+<li><strong>Locally:</strong> run the exact failing command again and confirm it passes, plus the project&#39;s full check suite so the fix didn&#39;t break a sibling.</li>
+<li><strong>Remotely:</strong> push, then watch the run to completion rather than assuming:</li>
+</ol>
+<pre><code class="language-bash">gh run watch &lt;new-run-id&gt; --exit-status
+</code></pre>
+<p>Report the root cause, the fix, and the green run link. If the failure was flake, say so explicitly and note the rerun that confirmed it.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/fix-ci" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

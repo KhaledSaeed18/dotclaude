@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>deploy-reviewer: Agent for Claude Code | dotclaude</title>
+    <meta name="description" content="Use this agent to review a repository&#39;s deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/" />
+    <meta property="og:title" content="deploy-reviewer: Agent for Claude Code | dotclaude" />
+    <meta property="og:description" content="Use this agent to review a repository&#39;s deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="deploy-reviewer: Agent for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Use this agent to review a repository&#39;s deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/#code","url":"https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/","name":"deploy-reviewer","alternateName":"Deploy Reviewer","headline":"deploy-reviewer: a Claude Code agent","description":"Use this agent to review a repository's deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second pair of eyes before it ships.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/deployment/deploy-reviewer","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Agent","deployment","deploy"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Agents","item":"https://dotclaude.khaledsaeed.tech/#/?type=agent"},{"@type":"ListItem","position":3,"name":"deploy-reviewer","item":"https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=agent">Agents</a></li><li aria-current="page">deploy-reviewer</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="agent">
+          <p class="detail-kind">Agent <span class="row-category">in deployment</span></p>
+          <h1><code>deploy-reviewer</code></h1>
+          
+          <p class="lede">Use this agent to review a repository's deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second pair of eyes before it ships.</p>
+          <dl class="doc-facts"><dt>Tools</dt><dd>Read, Grep, Glob, Bash</dd><dt>Model</dt><dd>inherit</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the agent lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/deploy-reviewer</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/agents/deploy-reviewer.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Agent contents">
+          <h2 id="contents">What it does</h2>
+<p>You review how a repository is packaged, shipped and run, and you return findings ranked by what would break production first. You read files and run read-only commands; you do not edit, build, push or deploy.</p>
+<h3 id="operating-rules">Operating rules</h3>
+<ul>
+<li><strong>Evidence per finding.</strong> Every finding names the file and line, quotes the offending content, and states the failure it causes in production. No finding without a reproduction path or a concrete consequence.</li>
+<li><strong>Rank by blast radius.</strong> A rolling update that drops requests, a secret baked into an image, a deploy that can run twice concurrently, or a probe that passes while the database is unreachable outranks style.</li>
+<li><strong>Check the contract, not the taste.</strong> The checklist below is the bar; patterns outside it are observations, listed last and short.</li>
+<li><strong>Read-only.</strong> <code>docker build</code>, <code>pnpm build</code> and any push or API call that changes state are out of scope. <code>actionlint</code>, <code>shellcheck</code>, <code>jq</code> over manifests and <code>git log</code> are fine.</li>
+</ul>
+<h3 id="checklist">Checklist</h3>
+<p><strong>Image</strong></p>
+<ul>
+<li>Runtime-only: no package manager install inside the Dockerfile; build output copied from the context; an allowlist <code>.dockerignore</code>.</li>
+<li>Pinned base image major, <code>USER</code> non-root, <code>EXPOSE</code> matches the app port, <code>HEALTHCHECK</code> runs a shell-free probe shipped in the image, no <code>latest</code> tags.</li>
+<li>Shutdown: the process exits within the stop grace period (an explicit SIGTERM handler for servers with long-lived streams; an entrypoint that <code>exec</code>s the server).</li>
+<li>Build-time values (<code>NEXT_PUBLIC_*</code>, rewrite destinations) are set in the workflow and verified in the build output; runtime secrets are not in the image or the repository.</li>
+</ul>
+<p><strong>Probe</strong></p>
+<ul>
+<li>A health route outside any proxied or localised path, excluded from auth and locale matchers, <code>Cache-Control: no-store</code>.</li>
+<li>For an API with a database, readiness runs a query; liveness does not.</li>
+</ul>
+<p><strong>Pipeline</strong></p>
+<ul>
+<li>Triggers: <code>pull_request</code>, <code>push</code> to the default branch, <code>workflow_dispatch</code>. Pull requests never push or deploy.</li>
+<li>Concurrency: cancel on pull requests only; a dedicated non-cancelling group on the deploy job.</li>
+<li>Change classification with a usable fallback when the base is missing.</li>
+<li>Quality gates preserved from the previous workflow; a migration immutability guard and a schema check for Prisma repositories.</li>
+<li>Image job: smoke test covering health, user, both locales or a real database, headers, timed stop; <code>bash</code> with pipefail; no <code>curl | grep -q</code>.</li>
+<li>Deploy job: fail-fast on missing configuration, immutable <code>sha-</code> tag, poll to a terminal status, public probe, registry pruning; <code>packages: write</code> only where needed; no secret echoed.</li>
+<li>Pinned action majors; Node and package manager versions read from repository files.</li>
+</ul>
+<p><strong>Coolify and server</strong></p>
+<ul>
+<li>One domain, no host port mappings, a container-command health check, a memory limit, runtime variables only.</li>
+<li>Ops layer present: health check with alerts on change, verified backups when there is a database, a pre-deploy backup in the pipeline for database apps.</li>
+</ul>
+<p><strong>Documentation</strong></p>
+<ul>
+<li>A deployment doc that states where it runs, the inputs, the probe, rollback and the verification commands; the agent instructions file points at it.</li>
+</ul>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li>Inventory: <code>ls</code> the deployment files, read the Dockerfile, ignore file, probe, entrypoint or shutdown script, the workflow, <code>next.config</code> or the server entry, and the deployment doc.</li>
+<li>Run <code>actionlint</code> (via Docker when installed) and <code>shellcheck -x</code> on scripts; include their output as findings.</li>
+<li>Walk the checklist; for each miss, write the finding with file, line, quote, consequence and the fix in one sentence (naming the <code>nextjs-coolify-image</code>, <code>express-prisma-coolify-image</code>, <code>ghcr-coolify-pipeline</code>, <code>coolify-image-app</code> or <code>vps-ops-toolkit</code> skill when one applies).</li>
+<li>Order the findings by consequence.</li>
+</ol>
+<h3 id="report">Report</h3>
+<pre><code>## Deployment review: &lt;repo&gt;
+
+Verdict: &lt;ships | ships after the blockers | do not ship&gt;
+
+### Blockers
+1. &lt;file:line&gt; &lt;quote&gt; -&gt; &lt;consequence&gt;. Fix: &lt;one sentence&gt;.
+
+### Should fix before the next release
+...
+
+### Observations
+...
+
+Checked: &lt;list of files read, tools run&gt;
+</code></pre>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/deployment/deploy-reviewer" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this agent as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li></ul>
+          <p><a href="/#/?type=agent">All agents</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>coolify-image-app: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/" />
+    <meta property="og:title" content="coolify-image-app: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="coolify-image-app: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/#code","url":"https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/","name":"coolify-image-app","alternateName":"Coolify Image App","headline":"coolify-image-app: a Claude Code skill","description":"Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check, domains, limits or environment, or wiring its API token for a pipeline.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/coolify-image-app","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"reference/coolify-api.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"coolify-image-app","item":"https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">coolify-image-app</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>coolify-image-app</code></h1>
+          
+          <p class="lede">Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check, domains, limits or environment, or wiring its API token for a pipeline.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the app name, image, port and domain</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/coolify-image-app</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/coolify-image-app/SKILL.md</code></li><li><code>.claude/skills/coolify-image-app/reference/coolify-api.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A Coolify application of type Docker Image is the contract between the pipeline and the server: the pipeline moves one field (the image tag) and asks for a deploy; Coolify does the rolling update behind one domain with the container&#39;s own probe as the gate. Configure it once, exactly, and let every later deploy be an API call.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Creating or saving a Coolify resource is a production action.</strong> Confirm with the owner before creating, deploying, changing domains or deleting anything, unless they already authorised it for this task.</li>
+<li><strong>Never publish host ports and never set a custom container name.</strong> Port mapping bypasses the firewall; a fixed name breaks rolling updates.</li>
+<li><strong>The image must exist before the first deploy.</strong> Push <code>:main</code> from the pipeline (or a manual run) first; Coolify cannot build a Docker Image app.</li>
+<li><strong>Never type or print a token or secret.</strong> The owner creates API tokens and pastes secrets; you prefill forms and give click-by-click steps.</li>
+<li><strong>Verify every save by reloading.</strong> Coolify&#39;s forms sometimes accept input without persisting it; reload the page and read the value back before moving on.</li>
+</ul>
+<h3 id="step-1-gather-the-facts">Step 1: Gather the facts</h3>
+<p>From the repo and the <code>coolify-vps-baseline</code> record: project and environment names, the image reference (<code>ghcr.io/&lt;owner&gt;/&lt;repo&gt;</code>), the container port, the exact domain, the health probe command the image ships (<code>node healthcheck.js</code> or similar), the memory budget, and which environment variables are runtime (build-time ones are baked into the image and must not be set here).</p>
+<h3 id="step-2-create-the-application">Step 2: Create the application</h3>
+<p>Coolify UI, the project&#39;s environment, <strong>New resource</strong>, <strong>Docker Image</strong>: image name without a tag, tag <code>main</code>, <strong>Create application</strong>. Note the application UUID from the URL; the pipeline needs it.</p>
+<h3 id="step-3-configure-tab-by-tab">Step 3: Configure, tab by tab</h3>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Set</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>General</td>
+<td>Name <code>&lt;app&gt;</code>; Domains <code>https://&lt;domain&gt;</code> only, delete the <code>sslip.io</code> one; Port <code>&lt;port&gt;</code>; no port mappings; no custom name</td>
+<td>one router, one domain, no host ports</td>
+</tr>
+<tr>
+<td>Healthcheck</td>
+<td>Type <strong>Container command</strong>; command <code>node healthcheck.js</code>; interval 30, timeout 5, retries 3, start period 15; then <strong>Enable</strong> and confirm the modal</td>
+<td>the container, not the proxy, decides readiness</td>
+</tr>
+<tr>
+<td>Resource Limits</td>
+<td>Memory <code>512m</code> (or the budget); leave CPU</td>
+<td>one runaway app cannot take the host</td>
+</tr>
+<tr>
+<td>Environment Variables</td>
+<td>runtime variables only; mark secrets as such</td>
+<td>build-time values are already in the image</td>
+</tr>
+<tr>
+<td>Rollback</td>
+<td>nothing to set; this is where an earlier tag is redeployed</td>
+<td>the rollback path</td>
+</tr>
+</tbody></table>
+<p>Coolify rejects shell operators (<code>&amp;&amp;</code>, <code>|</code>, <code>;</code>) in the health command, and the runtime image has no curl: the probe must be a plain binary call. Number inputs sometimes do not take a typed value; press Enter inside the field to submit, then reload and read it back. Full field notes and the API that moves the tag are in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/coolify-image-app/reference/coolify-api.md" rel="noopener">reference/coolify-api.md</a>.</p>
+<h3 id="step-4-deploy-once-by-hand">Step 4: Deploy once by hand</h3>
+<p>Actions, <strong>Deploy</strong>. Watch the deployment log until <code>Rolling update completed</code>, then from the server:</p>
+<pre><code class="language-bash">C=$(sudo docker ps --filter label=coolify.resourceName=&lt;app&gt; --format &#39;{{.Names}}&#39; | head -1)
+sudo docker inspect &quot;$C&quot; --format &#39;health={{.State.Health.Status}} mem={{.HostConfig.Memory}} ports={{.HostConfig.PortBindings}} user={{.Config.User}}&#39;
+</code></pre>
+<p>Expect <code>healthy</code>, the byte value of the limit, <code>map[]</code>, and the non-root user. Then hand over to the <code>deploy-verification</code> skill for the certificate, routing and header checks.</p>
+<h3 id="step-5-wire-the-pipeline">Step 5: Wire the pipeline</h3>
+<p>The owner creates an API token at Keys &amp; Tokens, API Tokens, with <strong>Deploy, Read and Write</strong> permissions (write to patch the tag, deploy to trigger, read to poll) and stores it as the GitHub secret <code>COOLIFY_TOKEN</code>. Set the repository variables <code>COOLIFY_URL</code> and <code>COOLIFY_APP_UUID</code> yourself with <code>gh variable set</code>. The workflow that uses them is the <code>ghcr-coolify-pipeline</code> skill.</p>
+<p>Report the application UUID, every setting as read back after reload, the deployment outcome, and the owner actions still open.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/coolify-image-app" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

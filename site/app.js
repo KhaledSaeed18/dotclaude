@@ -276,7 +276,12 @@ function renderRows() {
       el("li", { class: "row" }, [
         el(
           "a",
-          { class: "row-link", href: buildHash({ item: item.key }), "data-type": item.type },
+          {
+            class: "row-link",
+            href: `/${item.key}/`,
+            "data-key": item.key,
+            "data-type": item.type,
+          },
           [
             el("span", { class: "row-rail", "aria-hidden": "true" }),
             el("span", { class: "row-main" }, [
@@ -310,7 +315,9 @@ function renderPlugins() {
         .join(", ");
       return el("li", { class: "plugin", id: `plugin-${p.name}` }, [
         el("div", { class: "plugin-head" }, [
-          el("code", { class: "plugin-name", text: p.name }),
+          el("a", { class: "plugin-name-link", href: `/plugins/${p.name}/` }, [
+            el("code", { class: "plugin-name", text: p.name }),
+          ]),
           el("span", { class: "plugin-summary", text: counts }),
         ]),
         el("p", { class: "plugin-desc", text: p.description }),
@@ -402,6 +409,7 @@ function renderDetail() {
       item.targets.map((t) => el("li", { text: t })),
     ),
     el("div", { class: "detail-links" }, [
+      el("a", { href: `/${item.key}/`, text: "Open its page" }),
       el("a", { href: item.docs, rel: "noopener", text: "View source on GitHub" }),
       el("a", {
         href: buildHash({
@@ -509,6 +517,14 @@ function bindEvents() {
 
   els.backdrop.addEventListener("click", closeDetail);
   document.addEventListener("click", (e) => {
+    // Row links point at each item's own page for crawlers and new tabs; a
+    // plain click opens the panel here instead and keeps the hash deep link.
+    const rowLink = e.target.closest(".row-link[data-key]");
+    if (rowLink && !e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+      e.preventDefault();
+      navigate({ view: "items", item: rowLink.dataset.key });
+      return;
+    }
     if (e.target.closest(".close")) closeDetail();
     const copyButton = e.target.closest(".copy");
     if (copyButton) copy(copyButton.parentElement.dataset.copy, copyButton);

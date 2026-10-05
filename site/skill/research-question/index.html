@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>research-question: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/research-question/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/research-question/" />
+    <meta property="og:title" content="research-question: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="research-question: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/research-question/#code","url":"https://dotclaude.khaledsaeed.tech/skill/research-question/","name":"research-question","alternateName":"Research Question","headline":"research-question: a Claude Code skill","description":"Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing the unit of analysis, and testing the question for answerability, novelty, and fit to a master's timeline. Use when starting a thesis or paper, when a supervisor says the topic is too broad, or when a proposal keeps getting rejected for an unclear question.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-question","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"research-question","item":"https://dotclaude.khaledsaeed.tech/skill/research-question/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">research-question</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>research-question</code></h1>
+          
+          <p class="lede">Turn a rough thesis topic into a defensible research question by interviewing the student one question at a time: narrowing scope, naming the gap, fixing the unit of analysis, and testing the question for answerability, novelty, and fit to a master's timeline. Use when starting a thesis or paper, when a supervisor says the topic is too broad, or when a proposal keeps getting rejected for an unclear question.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the topic, area, or draft question to refine</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/research-question</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/research-question/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Interview the student until the topic has become one primary research question with two to four sub-questions that a master&#39;s thesis can answer in the time available. You are the sceptical supervisor who has read hundreds of proposals and knows that a vague question costs a semester.</p>
+<p>If arguments were passed, treat them as the starting topic. Otherwise ask for it first. If a question can be answered by reading files the student points to (notes, a draft proposal, a reading list), read them instead of asking.</p>
+<p><strong>Never</strong> use the AskUserQuestion tool; ask in plain text.</p>
+<h3 id="hard-rule-one-question-per-turn">Hard rule: one question per turn</h3>
+<p>One question, then stop and wait. No bundled sub-questions. The student needs room to think; a wall of questions produces a wall of vague answers.</p>
+<p>Index questions <strong>Q1, Q2, ...</strong> For each: say in one line why it matters, ask, and offer labeled options (<strong>A, B, C</strong>) covering the realistic answers, with <code>← recommended</code> on one. The student may answer with a letter.</p>
+<h3 id="the-path-down-the-tree">The path down the tree</h3>
+<p>Walk these in order, skipping any the student has already settled:</p>
+<ol>
+<li><strong>Domain and phenomenon.</strong> What is being studied, in one noun phrase? (Not &quot;AI in education&quot; but &quot;automated feedback on programming assignments in introductory courses&quot;.)</li>
+<li><strong>The gap.</strong> What do we not know, and how does the student know we do not know it? Push for a named source: a survey paper&#39;s future-work section, a contradiction between two studies, a method never applied to this setting. &quot;Nobody has done X&quot; is a claim to verify with <code>literature-search</code>, not an assumption.</li>
+<li><strong>Question type.</strong> Descriptive (what is), explanatory (why), evaluative (how well), design (how can we build), or comparative (which is better). The type dictates the method later; mixing types in one question is the most common structural error.</li>
+<li><strong>Unit of analysis and population.</strong> Systems, users, repositories, students, sessions? Which ones, and how many can the student realistically reach?</li>
+<li><strong>Variables or constructs.</strong> For empirical work: what is measured, what is manipulated, what is controlled. For design work: what artifact, what requirements, what evaluation.</li>
+<li><strong>Scope boundaries.</strong> What is explicitly out. A question with no exclusions will grow until it cannot be finished.</li>
+<li><strong>Feasibility.</strong> Data access, ethics approval, compute, and calendar. A master&#39;s thesis has roughly six to nine months of actual work. Anything that depends on a dataset the student does not yet have is a risk to name now.</li>
+<li><strong>Contribution.</strong> In one sentence, what will a reader know after the thesis that they did not before? If the answer is &quot;a system&quot;, ask what is learned from building it.</li>
+</ol>
+<h3 id="tests-every-candidate-question-must-pass">Tests every candidate question must pass</h3>
+<p>Apply these aloud and revise the wording until all pass:</p>
+<ul>
+<li><strong>Answerable</strong>: a specific study could answer it with a yes, a number, a ranking, or a design.</li>
+<li><strong>Not already answered</strong>: the gap claim has at least one source behind it.</li>
+<li><strong>Bounded</strong>: it names the population, setting, and time frame.</li>
+<li><strong>Falsifiable where empirical</strong>: a result that would count as &quot;no&quot; is imaginable.</li>
+<li><strong>Single</strong>: it asks one thing. Compound questions become sub-questions.</li>
+<li><strong>Sized</strong>: a supervisor would believe one student can do this in two semesters.</li>
+</ul>
+<h3 id="final-output">Final output</h3>
+<p>When every step is resolved, produce a <strong>Research question record</strong>:</p>
+<ol>
+<li><strong>Primary research question</strong>: one sentence.</li>
+<li><strong>Sub-questions</strong>: two to four, each answerable by a distinct part of the study, each mapped to the primary question.</li>
+<li><strong>Question type and implied method</strong>: one line.</li>
+<li><strong>Scope</strong>: in and out, as two short lists.</li>
+<li><strong>Gap statement</strong>: two sentences plus the sources that establish the gap (or &quot;to verify with literature-search&quot; if none yet).</li>
+<li><strong>Contribution</strong>: one sentence.</li>
+<li><strong>Risks</strong>: the top three feasibility risks and a mitigation for each.</li>
+<li><strong>Next step</strong>: usually <code>literature-search</code> to confirm the gap, then <code>thesis-proposal</code>.</li>
+</ol>
+<p>Write the record to the file the student names (default <code>research/QUESTION.md</code>) if they ask; otherwise return it in the reply.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-question" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>create-skill: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/create-skill/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/create-skill/" />
+    <meta property="og:title" content="create-skill: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="create-skill: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/create-skill/#code","url":"https://dotclaude.khaledsaeed.tech/skill/create-skill/","name":"create-skill","alternateName":"Create Skill","headline":"create-skill: a Claude Code skill","description":"Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting reference material into companion files, then regenerating the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/create-skill","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering"],"hasPart":[{"@type":"CreativeWork","name":"reference/frontmatter.md"},{"@type":"CreativeWork","name":"reference/voice-and-structure.md"},{"@type":"CreativeWork","name":"templates/SKILL.template.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"create-skill","item":"https://dotclaude.khaledsaeed.tech/skill/create-skill/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">create-skill</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>create-skill</code></h1>
+          
+          <p class="lede">Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting reference material into companion files, then regenerating the registry and README catalog. Use when creating, scaffolding, restructuring, or reviewing a skill in this repo.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the skill's purpose, proposed name, or category</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Not part of any plugin; install it with the shadcn CLI below.</p>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/create-skill</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/create-skill/SKILL.md</code></li><li><code>.claude/skills/create-skill/reference/frontmatter.md</code></li><li><code>.claude/skills/create-skill/reference/voice-and-structure.md</code></li><li><code>.claude/skills/create-skill/templates/SKILL.template.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Create a new skill that fits this repository&#39;s conventions and earns its place: one clear job, a description that triggers reliably, a lean <code>SKILL.md</code>, and any heavy detail pushed into companion files. Then regenerate the derived files and validate.</p>
+<p>This repo&#39;s source layout is <code>skills/&lt;category&gt;/&lt;name&gt;/SKILL.md</code>. The <strong>category is the folder</strong>, so there is no category field. Everything else (per-skill <code>registry.json</code>, the root <code>registry.json</code>, the README catalog) is <em>generated</em> by <code>pnpm gen</code> from the folder location plus the frontmatter. Never hand-edit generated files.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>One skill, one job.</strong> If it needs &quot;and&quot; to describe it, it&#39;s probably two skills. Split rather than bloat.</li>
+<li><strong>Earn the skill.</strong> Don&#39;t create one for a single command or something a plain instruction covers. A skill is worth it when there&#39;s a reusable, multi-step procedure with judgment and rules.</li>
+<li><strong>Never hand-write <code>registry.json</code></strong> (per-skill or root) or the README catalog. They are derived; run <code>pnpm gen</code>. Editing them by hand guarantees drift.</li>
+<li><strong>The <code>SKILL.md</code> body is always loaded when the skill triggers</strong>, so keep it lean. Push reference material, long tables, examples, and templates into companion files the agent reads on demand (progressive disclosure).</li>
+<li><strong><code>name</code> must be globally unique and equal the folder name</strong>, kebab-case. Skills install to a flat <code>.claude/skills/&lt;name&gt;/</code>, so two skills can&#39;t share a name even across categories.</li>
+<li><strong>Don&#39;t invent a category.</strong> Reuse an existing folder unless a genuinely new family is justified (and then it&#39;s a deliberate decision, not a default).</li>
+<li><strong>Match the house voice</strong>: see <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-skill/reference/voice-and-structure.md" rel="noopener">reference/voice-and-structure.md</a>. No AI/co-author mentions anywhere.</li>
+</ul>
+<h3 id="step-1-define-the-skill">Step 1: Define the skill</h3>
+<p>Pin down before writing a line:</p>
+<ul>
+<li><strong>The one job</strong> it does, in a sentence.</li>
+<li><strong>The trigger</strong>: what a user says or does that should load it. This drives the description.</li>
+<li><strong>Why a skill</strong>: the reusable procedure/judgment it encodes (vs. a one-off instruction).</li>
+<li><strong>Whether it already exists</strong>: search <code>skills/</code> so you extend rather than duplicate.</li>
+</ul>
+<p>If the purpose is fuzzy or sounds like two things, sharpen or split it now.</p>
+<h3 id="step-2-name-and-place-it">Step 2: Name and place it</h3>
+<ul>
+<li><strong>Category</strong>: pick the folder it belongs in. Current categories: <code>academic</code>, <code>deployment</code>, <code>documentation</code>, <code>engineering</code>, <code>productivity</code>, <code>research</code>, <code>security</code>, <code>testing</code>, <code>version-control</code>, <code>writing</code> (run <code>ls skills</code> for the live list). Recategorising later is just a <code>git mv</code>.</li>
+<li><strong>Name</strong>: short, kebab-case, action- or domain-oriented, unique across all skills (see hard rules). The display title is derived by title-casing the name.</li>
+<li>Create <code>skills/&lt;category&gt;/&lt;name&gt;/</code>.</li>
+</ul>
+<h3 id="step-3-write-the-frontmatter">Step 3: Write the frontmatter</h3>
+<p>Frontmatter is what Claude reads to decide <em>whether</em> to load the skill, so it&#39;s load-bearing. Required: <code>name</code>, <code>description</code>. Optional: <code>title</code> (defaults to title-cased name), <code>argument-hint</code>.</p>
+<ul>
+<li><strong><code>description</code></strong> is the trigger: write it third-person, lead with what the skill does, and end with an explicit <strong>&quot;Use when …&quot;</strong> clause covering the phrasings that should fire it. Be specific; vague descriptions misfire.</li>
+</ul>
+<p>Full field reference and good/bad examples: <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-skill/reference/frontmatter.md" rel="noopener">reference/frontmatter.md</a>.</p>
+<h3 id="step-4-write-the-skillmd-body">Step 4: Write the SKILL.md body</h3>
+<p>Start from <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-skill/templates/SKILL.template.md" rel="noopener">templates/SKILL.template.md</a> and adapt. The established shape across this repo:</p>
+<ol>
+<li>A one- or two-sentence framing of the job.</li>
+<li>A <strong>Hard rules</strong> section: the non-negotiables and safety gates, stated imperatively.</li>
+<li>Numbered <strong>Steps</strong>: the procedure, each step scannable, with the actual commands/decisions.</li>
+<li>A closing line on what to report/produce.</li>
+</ol>
+<p>Write in the second person to the agent, imperative and direct. Voice details, do/don&#39;t, and structural patterns: <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-skill/reference/voice-and-structure.md" rel="noopener">reference/voice-and-structure.md</a>.</p>
+<h3 id="step-5-split-out-companion-files-when-warranted">Step 5: Split out companion files (when warranted)</h3>
+<p>Keep <code>SKILL.md</code> as the orchestrator. Move into companion files anything that is long, optional, or only needed mid-task: reference tables, format specs, fill-in templates, worked examples. Reference them with relative links so the agent loads them on demand:</p>
+<pre><code>skills/&lt;category&gt;/&lt;name&gt;/
+├── SKILL.md
+├── reference/&lt;topic&gt;.md
+└── templates/&lt;thing&gt;.template.md
+</code></pre>
+<p><code>pnpm gen</code> bundles <strong>every</strong> file in the folder automatically (except <code>registry.json</code>) and installs it under <code>.claude/skills/&lt;name&gt;/&lt;relpath&gt;</code>. Link from <code>SKILL.md</code> like <code>[label](./reference/topic.md)</code>. When to split vs. inline: <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-skill/reference/voice-and-structure.md" rel="noopener">reference/voice-and-structure.md</a>.</p>
+<h3 id="step-6-regenerate-and-validate">Step 6: Regenerate and validate</h3>
+<p>From the repo root:</p>
+<pre><code>pnpm gen        # writes per-skill registry.json, root registry.json, README catalog
+pnpm validate   # checks frontmatter + layout, then shadcn registry validate
+</code></pre>
+<p><code>pnpm gen</code> is the only thing that should ever touch the generated files. If <code>pnpm validate</code> fails, fix the frontmatter/layout it points at and rerun; don&#39;t patch the generated output.</p>
+<h3 id="step-7-review-against-the-bar">Step 7: Review against the bar</h3>
+<p>Before calling it done:</p>
+<ul>
+<li>The description would actually trigger on the intended phrasings (and wouldn&#39;t over-trigger).</li>
+<li><code>SKILL.md</code> is lean; depth lives in companion files.</li>
+<li>Hard rules and steps are concrete and safe, with confirmations on anything irreversible or outward-facing.</li>
+<li>It reads like the existing skills in voice and structure.</li>
+<li><code>pnpm validate</code> passes and the README catalog shows the new row under the right category.</li>
+</ul>
+<p>Report the skill&#39;s path, category, what it does, any companion files created, and the validation result. Leave committing to the user.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/create-skill" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"><code>dependency-upgrade</code></a> <span class="row-type">skill</span> Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

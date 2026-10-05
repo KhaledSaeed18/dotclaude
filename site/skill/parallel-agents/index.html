@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>parallel-agents: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/parallel-agents/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/parallel-agents/" />
+    <meta property="og:title" content="parallel-agents: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="parallel-agents: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/parallel-agents/#code","url":"https://dotclaude.khaledsaeed.tech/skill/parallel-agents/","name":"parallel-agents","alternateName":"Parallel Agents","headline":"parallel-agents: a Claude Code skill","description":"Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks (separate failing test files, unrelated bugs, distinct subsystems) that share no state and don't depend on each other's order.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/parallel-agents","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"parallel-agents","item":"https://dotclaude.khaledsaeed.tech/skill/parallel-agents/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">parallel-agents</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>parallel-agents</code></h1>
+          
+          <p class="lede">Fan independent work out to multiple subagents that run concurrently, each with a focused scope and self-contained instructions, then review and integrate their results. Use when you face two or more genuinely independent tasks (separate failing test files, unrelated bugs, distinct subsystems) that share no state and don't depend on each other's order.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/parallel-agents</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/parallel-agents/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>When you have several independent problems, investigating them one after another wastes time that could be spent in parallel. Hand each one to its own subagent with precisely the context it needs, let them work at once, then pull the results together. Each subagent should get exactly what you construct for it (never your whole session history), so it stays focused, and so your own context stays free for coordination.</p>
+<h3 id="when-this-applies-and-when-it-doesnt">When this applies: and when it doesn&#39;t</h3>
+<p>Dispatch in parallel when the problems are genuinely independent: different test files failing for different reasons, separate subsystems broken on their own, distinct bugs that can each be understood without the others. The test is whether fixing one could change another. If it can&#39;t, and they touch different code, they can run concurrently.</p>
+<p>Don&#39;t reach for this when:</p>
+<ul>
+<li>The failures look related, fixing one might fix the rest. Investigate together first.</li>
+<li>You&#39;d need the full system in view to understand any of it.</li>
+<li>You don&#39;t yet know what&#39;s broken (exploratory debugging, find the shape of the problem before fanning out).</li>
+<li>The tasks share state or would edit the same files; concurrent agents there collide.</li>
+</ul>
+<h3 id="the-pattern">The pattern</h3>
+<p><strong>1. Split into independent domains.</strong> Group the work by what&#39;s actually broken (&quot;tool approval flow&quot;, &quot;batch completion&quot;, &quot;abort handling&quot;) such that each group can be fixed without reference to the others.</p>
+<p><strong>2. Write a focused task per domain.</strong> Each subagent prompt needs three things:</p>
+<ul>
+<li><em>Scope</em>: one file or subsystem, named exactly. &quot;Fix <code>agent-tool-abort.test.ts</code>&quot;, not &quot;fix the tests.&quot;</li>
+<li><em>Context</em>: the concrete failures: paste the error messages and failing test names, not a vague &quot;the race condition.&quot;</li>
+<li><em>Constraints and expected output</em>: what it may and may not change (&quot;fix the tests only, don&#39;t touch production code&quot;), and what to return (&quot;a summary of the root cause and the changes you made&quot;).</li>
+</ul>
+<p><strong>3. Dispatch them concurrently.</strong> Launch all the subagents in one batch so they run at the same time rather than in sequence.</p>
+<p><strong>4. Review and integrate.</strong> When they return, read each summary, check that their changes don&#39;t conflict (did two agents touch the same file?), run the full test suite against the combined result, and spot-check the work, subagents can make systematic mistakes. Don&#39;t trust a &quot;success&quot; report without looking at the actual diff.</p>
+<h3 id="what-a-good-subagent-prompt-looks-like">What a good subagent prompt looks like</h3>
+<p>Focused, self-contained, and explicit about output. For example:</p>
+<blockquote>
+<p>Three tests are failing in <code>src/agents/agent-tool-abort.test.ts</code>:</p>
+<ol>
+<li>&quot;aborts a tool but still captures partial output&quot;, expects &quot;interrupted at&quot; in the message</li>
+<li>&quot;handles mixed completed and aborted tools&quot;: the fast tool is being aborted instead of completing</li>
+<li>&quot;tracks the pending tool count&quot;, expects 3 results, gets 0</li>
+</ol>
+<p>These look like timing / race-condition issues. Read the test file, work out the real root cause (a genuine bug, or arbitrary timeouts that should be event-based waits), and fix it. Do not just raise the timeouts, and do not change unrelated production code. Return a summary of what you found and what you changed.</p>
+</blockquote>
+<p>Contrast the failure modes: &quot;fix all the tests&quot; is too broad and the agent gets lost; &quot;fix the race condition&quot; gives no location; with no constraints the agent may refactor half the codebase; with no output spec you won&#39;t know what changed.</p>
+<h3 id="why-it-pays-off">Why it pays off</h3>
+<p>Each subagent has a narrow scope and little to track, so it stays accurate. The investigations happen at once instead of back to back. And because the domains are independent by construction, the fixes integrate cleanly. The cost is yours to manage: you own the split, the context you hand each agent, and the integration check at the end.</p>
+<h3 id="attribution">Attribution</h3>
+<p>Adapted from the <code>dispatching-parallel-agents</code> entry of <a href="https://github.com/obra/superpowers" rel="noopener">superpowers</a> by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry&#39;s other items are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/parallel-agents" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

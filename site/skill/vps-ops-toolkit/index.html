@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>vps-ops-toolkit: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/" />
+    <meta property="og:title" content="vps-ops-toolkit: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="vps-ops-toolkit: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/#code","url":"https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/","name":"vps-ops-toolkit","alternateName":"Vps Ops Toolkit","headline":"vps-ops-toolkit: a Claude Code skill","description":"Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when a server has no monitoring or backups, or when adding a resource to them.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/vps-ops-toolkit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"templates/ops/backup/backup.cron"},{"@type":"CreativeWork","name":"templates/ops/backup/backup.env.example"},{"@type":"CreativeWork","name":"templates/ops/backup/backup.sh"},{"@type":"CreativeWork","name":"templates/ops/backup/fingerprint.sql"},{"@type":"CreativeWork","name":"templates/ops/backup/snapshot.sql"},{"@type":"CreativeWork","name":"templates/ops/health/health-check.cron"},{"@type":"CreativeWork","name":"templates/ops/health/health-check.sh"},{"@type":"CreativeWork","name":"templates/ops/health/health.env.example"},{"@type":"CreativeWork","name":"templates/ops/health/ops.logrotate"},{"@type":"CreativeWork","name":"templates/ops/install.sh"},{"@type":"CreativeWork","name":"templates/ops/lib/alert.sh"},{"@type":"CreativeWork","name":"templates/ops/ship.sh"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"vps-ops-toolkit","item":"https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">vps-ops-toolkit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>vps-ops-toolkit</code></h1>
+          
+          <p class="lede">Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when a server has no monitoring or backups, or when adding a resource to them.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the SSH alias, the database resource name, and the domains to watch</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/vps-ops-toolkit</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/vps-ops-toolkit/SKILL.md</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/backup/backup.cron</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/backup/backup.env.example</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/backup/backup.sh</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/backup/fingerprint.sql</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/backup/snapshot.sql</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/health/health-check.cron</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/health/health-check.sh</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/health/health.env.example</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/health/ops.logrotate</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/install.sh</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/lib/alert.sh</code></li><li><code>.claude/skills/vps-ops-toolkit/templates/ops/ship.sh</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A server is operated when something other than a person notices a problem and when the database can be rebuilt from a copy that was proven to restore. The toolkit lives in the API repository under <code>ops/</code>, is installed by one command, and reports through a webhook only when the set of problems changes.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Installing or changing cron, logrotate or anything under <code>/etc</code> is a production action.</strong> The owner authorises <code>ship.sh</code>; you prepare and review it.</li>
+<li><strong>A backup that was not restored is not a backup.</strong> Keep only archives whose restore fingerprint matched the source snapshot. Nothing is kept from a failed run.</li>
+<li><strong>The server holds only the public encryption key.</strong> The private key stays with the owner, offline; a compromised server cannot read old backups.</li>
+<li><strong>Alerts only on change.</strong> Every run logs; the webhook fires when a problem appears, persists with a change, or resolves. No heartbeat spam.</li>
+<li><strong>Never store webhook URLs or keys in the repository.</strong> They live in <code>/etc/&lt;prefix&gt;-*.env</code>, mode 600, created once from the examples and never overwritten by the installer.</li>
+</ul>
+<h3 id="step-1-fit-the-templates-to-the-project">Step 1: Fit the templates to the project</h3>
+<p>Copy <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/vps-ops-toolkit/templates/ops/" rel="noopener">templates/ops/</a> into the repository as <code>ops/</code> and rename the <code>app</code> prefix (<code>app-ops</code>, <code>app-health</code>, <code>app-backup</code>) to the project&#39;s name in <code>install.sh</code>, the cron files, the logrotate file and the env examples. The files:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lib/alert.sh</code></td>
+<td>one Discord embed per alert, colour by severity, fields, length limits</td>
+</tr>
+<tr>
+<td><code>health/health-check.sh</code></td>
+<td>services, Coolify resources by label, capacity, backup age, certificate verification per domain, readiness, pending reboot; state in <code>/var/lib</code>, alert on change</td>
+</tr>
+<tr>
+<td><code>backup/backup.sh</code> with <code>snapshot.sql</code> and <code>fingerprint.sql</code></td>
+<td>one-snapshot <code>pg_dump</code> plus roles, restore into a throwaway Postgres with no network, fingerprint diff, <code>age</code> encryption, local and optional git offsite retention</td>
+</tr>
+<tr>
+<td><code>install.sh</code></td>
+<td>idempotent root installer: scripts, schedules, logrotate, env files created only when missing, a pre-deploy backup profile, one health run</td>
+</tr>
+<tr>
+<td><code>ship.sh</code></td>
+<td>tar the folder over SSH and run the installer with sudo</td>
+</tr>
+</tbody></table>
+<p>Add <code>&quot;ops:install&quot;: &quot;bash ops/ship.sh&quot;</code> to <code>package.json</code> and <code>shellcheck -x</code> of <code>ops/**/*.sh</code> to the pipeline&#39;s ops job (the <code>ghcr-coolify-pipeline</code> skill has the step).</p>
+<h3 id="step-2-set-the-defaults-for-this-server">Step 2: Set the defaults for this server</h3>
+<p>In <code>health.env.example</code>: <code>RESOURCES</code> (every Coolify resource name that must run), <code>DOMAINS</code> (every certificate the proxy must serve, including Coolify&#39;s own), <code>READINESS_URL</code>. In <code>backup.env.example</code>: the database resource name, role, database, the exact <code>postgres</code> image version for verification, retention. The owner generates the age key pair (<code>age-keygen</code>) and pastes only the public key into <code>/etc/&lt;prefix&gt;-backup.env</code> on the server.</p>
+<h3 id="step-3-review-then-ship-with-the-owners-go">Step 3: Review, then ship with the owner&#39;s go</h3>
+<pre><code class="language-bash">shellcheck -x ops/**/*.sh ops/*.sh
+pnpm ops:install       # tar over SSH, install as root, one health run; prints the last RESULT line
+</code></pre>
+<p>Then from the server: <code>tail -20 /var/log/&lt;prefix&gt;-health.log</code> should list every check with <code>OK</code> and end in <code>RESULT 0 problem(s)</code>. Run the backup once by hand (<code>sudo /usr/local/lib/&lt;prefix&gt;-ops/backup/backup.sh</code>) and read the <code>restore verified: N tables, N rows identical</code> line before trusting the schedule.</p>
+<h3 id="step-4-keep-it-current">Step 4: Keep it current</h3>
+<p>Every new Coolify resource goes into <code>RESOURCES</code>, every new domain into <code>DOMAINS</code>, in the example file and on the server, followed by <code>pnpm ops:install</code>. The pipeline&#39;s pre-deploy backup uses the <code>predeploy</code> profile the installer creates, so deploy backups never crowd out nightly ones. The restore procedure (decrypt with the private key, roles then data into an empty Postgres, fingerprint diff) belongs in the repository&#39;s ops README; the <code>incident-postmortem</code> skill is for when it was needed.</p>
+<p>Report what was installed, the first health result, the first verified backup line, and the env values the owner still has to set.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/vps-ops-toolkit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

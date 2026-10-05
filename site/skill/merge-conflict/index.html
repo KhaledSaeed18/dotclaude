@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>merge-conflict: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/" />
+    <meta property="og:title" content="merge-conflict: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="merge-conflict: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/merge-conflict/#code","url":"https://dotclaude.khaledsaeed.tech/skill/merge-conflict/","name":"merge-conflict","alternateName":"Merge Conflict","headline":"merge-conflict: a Claude Code skill","description":"Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating, then verifying the result builds and passes tests. Use when a merge/rebase/cherry-pick stops with conflicts or \"needs merge\".","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/merge-conflict","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"merge-conflict","item":"https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">merge-conflict</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>merge-conflict</code></h1>
+          
+          <p class="lede">Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating, then verifying the result builds and passes tests. Use when a merge/rebase/cherry-pick stops with conflicts or &quot;needs merge&quot;.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) files to focus on, or 'abort'</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/merge-conflict</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/merge-conflict/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Resolve conflicts by integrating the <em>intent</em> of both sides, never by blindly picking one or deleting code you don&#39;t understand. Work from the actual conflict, the operation that produced it, and the history behind each side.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Understand before you resolve.</strong> Read what each side was trying to do (the commits, the surrounding code) before editing a single marker. A &quot;resolved&quot; conflict that drops one side&#39;s intent is a silent bug, not a fix.</li>
+<li><strong>Never reflexively accept <code>--ours</code> or <code>--theirs</code>.</strong> Whole-file side-picking is almost always wrong and discards real work. Resolve hunk by hunk.</li>
+<li><strong>Know which side is which.</strong> It flips by operation. In a <code>merge</code>, <em>ours</em> = the branch you&#39;re on, <em>theirs</em> = the branch being merged. In a <code>rebase</code>, it&#39;s <strong>reversed</strong>: <em>ours</em> = the branch you&#39;re replaying onto (upstream), <em>theirs</em> = your commits being replayed. Confirm before using either.</li>
+<li><strong>Verify after resolving.</strong> The merge succeeding means the markers are gone, not that the code is correct. Build, lint, and run tests before you consider it done.</li>
+<li><strong>Don&#39;t commit a half-resolved or unverified state</strong>, and confirm before finalizing (<code>commit</code> / <code>--continue</code>) or aborting.</li>
+<li><strong>When in doubt, it&#39;s safe to bail.</strong> Conflicts are recoverable: <code>git merge --abort</code> / <code>git rebase --abort</code> / <code>git cherry-pick --abort</code> returns you to where you started. Prefer that over guessing.</li>
+</ul>
+<h3 id="step-1-identify-the-operation-in-progress">Step 1: Identify the operation in progress</h3>
+<p>The right &quot;continue&quot; and &quot;abort&quot; commands depend on what&#39;s running. Check first:</p>
+<ul>
+<li><code>git status</code>: it names the operation (&quot;You have unmerged paths&quot;, &quot;interactive rebase in progress&quot;, &quot;cherry-pick in progress&quot;, etc.) and lists conflicted files.</li>
+<li>Operation → continue / abort:<ul>
+<li><strong>merge</strong> → <code>git merge --continue</code> / <code>git merge --abort</code></li>
+<li><strong>rebase</strong> → <code>git rebase --continue</code> / <code>git rebase --abort</code> (or <code>--skip</code> to drop the current commit)</li>
+<li><strong>cherry-pick</strong> → <code>git cherry-pick --continue</code> / <code>--abort</code></li>
+<li><strong>revert</strong> → <code>git revert --continue</code> / <code>--abort</code></li>
+<li><strong>stash pop</strong> → resolve, then the stash stays in the list until you <code>git stash drop</code></li>
+</ul>
+</li>
+</ul>
+<p>If the user just wants out, abort with the matching command and stop.</p>
+<h3 id="step-2-gather-context-on-both-sides">Step 2: Gather context on both sides</h3>
+<ul>
+<li>List only the conflicted files: <code>git diff --name-only --diff-filter=U</code>.</li>
+<li>Understand each branch&#39;s intent: <code>git log --oneline --left-right --merge</code> shows the diverging commits touching conflicted files; <code>git log -p --merge -- &lt;file&gt;</code> shows their changes.</li>
+<li>See the common ancestor to judge what each side actually changed: enable 3-way view with <code>git config merge.conflictstyle zdiff3</code> (or inspect <code>git show :1:&lt;file&gt;</code> = base, <code>:2:</code> = ours, <code>:3:</code> = theirs).</li>
+<li>For a big or risky resolution, snapshot first: <code>git branch backup/pre-merge</code> or <code>git stash</code> the unrelated work.</li>
+</ul>
+<h3 id="step-3-read-each-conflict">Step 3: Read each conflict</h3>
+<p>Conflict markers:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; ours            ← your side (per Step 1&#39;s mapping)
+...
+||||||| base            ← common ancestor (only in diff3/zdiff3 style)
+...
+=======
+...
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs          ← incoming side
+</code></pre>
+<p>For each hunk, ask: what did <em>base → ours</em> change, and what did <em>base → theirs</em> change? The correct resolution usually keeps <strong>both</strong> intents. Side-picking is only right when the two changes are genuinely the same edit or one truly supersedes the other.</p>
+<h3 id="step-4-resolve">Step 4: Resolve</h3>
+<ul>
+<li>Edit the file to the correct integrated result and remove all markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>|||||||</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>).</li>
+<li>Watch for <strong>semantic conflicts</strong>: code that merges cleanly with no markers but is logically broken (a function renamed on one side and newly called on the other, duplicated imports, two sides adding the same key). These won&#39;t show as conflicts; you have to reason about them.</li>
+<li>For pure add/delete or generated-file conflicts where one side is authoritative, targeted <code>git checkout --ours/--theirs -- &lt;file&gt;</code> is acceptable, but only when you&#39;ve confirmed the other side has nothing to contribute.</li>
+<li>Heavy conflicts: <code>git mergetool</code> opens your configured visual tool. Consider enabling <code>git rerere</code> so Git remembers resolutions and replays them on repeated rebases.</li>
+</ul>
+<h3 id="step-5-verify">Step 5: Verify</h3>
+<p>Before marking anything resolved:</p>
+<ul>
+<li>Re-read each resolved file top to bottom, not just the conflict regions.</li>
+<li>Build / compile, run the linter and formatter, and run the relevant tests. A clean merge that fails the suite is not resolved.</li>
+</ul>
+<h3 id="step-6-finalize-with-confirmation">Step 6: Finalize (with confirmation)</h3>
+<ol>
+<li>Stage each resolved file explicitly: <code>git add &lt;file&gt;</code> (this is what marks it resolved).</li>
+<li>Confirm there are no remaining unmerged paths: <code>git status</code>.</li>
+<li>With the user&#39;s go-ahead, finalize using the operation&#39;s continue command from Step 1 (or <code>git commit</code> for a plain merge; keep the default merge message, and never add AI/co-author trailers).</li>
+<li>Report what was resolved per file and how each notable conflict was decided, so the resolution is reviewable.</li>
+</ol>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/merge-conflict" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

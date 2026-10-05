@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>weekly-review: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/weekly-review/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/weekly-review/" />
+    <meta property="og:title" content="weekly-review: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="weekly-review: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/weekly-review/#code","url":"https://dotclaude.khaledsaeed.tech/command/weekly-review/","name":"weekly-review","alternateName":"Weekly Review","headline":"weekly-review: a Claude Code command","description":"Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened, decisions logged, research log entries, action items done and overdue, and what stalled, then a short plan for next week; written to a dated file so reviews accumulate. Use at the end of a working week, before a one-on-one or a status update, or when the week felt busy and it is unclear what got done.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/productivity/weekly-review","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","productivity","productivity"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"weekly-review","item":"https://dotclaude.khaledsaeed.tech/command/weekly-review/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">weekly-review</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in productivity</span></p>
+          <h1><code>weekly-review</code></h1>
+          
+          <p class="lede">Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened, decisions logged, research log entries, action items done and overdue, and what stalled, then a short plan for next week; written to a dated file so reviews accumulate. Use at the end of a working week, before a one-on-one or a status update, or when the week felt busy and it is unclear what got done.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[--since YYYY-MM-DD] [--author NAME]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Write, Glob, Grep, Bash(git:*), Bash(gh:*), Bash(date:*), Bash(ls:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/productivity/">productivity</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install productivity@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/weekly-review</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/weekly-review.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Options: <code>$ARGUMENTS</code></p>
+<p>Today: !<code>date +%Y-%m-%d</code>  |  Week start: !<code>date -v-7d +%Y-%m-%d 2&gt;/dev/null || date -d &#39;7 days ago&#39; +%Y-%m-%d</code></p>
+<p><strong>Commits this week (all branches):</strong></p>
+<p>!<code>git log --all --since=&#39;7 days ago&#39; --format=&#39;  %ad %h %s (%an)&#39; --date=short 2&gt;/dev/null | head -40</code></p>
+<p><strong>Pull requests touched this week:</strong></p>
+<p>!<code>gh pr list --state all --search &quot;updated:&gt;=$(date -v-7d +%Y-%m-%d 2&gt;/dev/null || date -d &#39;7 days ago&#39; +%Y-%m-%d)&quot; --json number,title,state,mergedAt,author --jq &#39;.[] | &quot;  #\(.number) [\(.state)] \(.title)&quot;&#39; 2&gt;/dev/null | head -20</code></p>
+<p><strong>Issues closed this week:</strong></p>
+<p>!<code>gh issue list --state closed --search &quot;closed:&gt;=$(date -v-7d +%Y-%m-%d 2&gt;/dev/null || date -d &#39;7 days ago&#39; +%Y-%m-%d)&quot; --json number,title --jq &#39;.[] | &quot;  #\(.number) \(.title)&quot;&#39; 2&gt;/dev/null | head -20</code></p>
+<p><strong>Decision log and research log entries this week:</strong></p>
+<p>!<code>grep -h &quot;^- $(date +%Y-%m)&quot; DECISIONS.md docs/DECISIONS.md 2&gt;/dev/null | tail -10; grep -c &quot;^## $(date +%Y-%m)&quot; RESEARCH_LOG.md 2&gt;/dev/null | xargs -I{} echo &quot;{} research log entries this month&quot;</code></p>
+<p><strong>Previous review&#39;s plan:</strong></p>
+<p>!<code>f=$(ls reviews/*.md docs/reviews/*.md 2&gt;/dev/null | sort | tail -1); [ -n &quot;$f&quot; ] &amp;&amp; awk &#39;/^## Next week/{f=1;next} /^## /{f=0} f&#39; &quot;$f&quot; | head -15 || echo &quot;(no previous review)&quot;</code></p>
+<h3 id="task">Task</h3>
+<p>Write <code>reviews/&lt;week-end-date&gt;.md</code> (or the existing reviews directory). Use <code>--since</code> to change the window and <code>--author</code> to filter commits to one person in a shared repo.</p>
+<h4 id="structure">Structure</h4>
+<pre><code class="language-markdown"># Week ending 2026-09-21
+
+## Done
+- Shipped: PR #45 workflow-hooks (merged Tue). Evidence: link.
+- ...
+Grouped by theme, each with its evidence (commit, PR, issue, file). Nothing without evidence.
+
+## Against last week&#39;s plan
+| Planned | Outcome |
+| Finish thesis chapter 2 outline | done (research/OUTLINE.md) |
+| Run n=30 sweep | not started; blocked on GPU quota |
+
+## Decisions
+- From DECISIONS.md and meeting notes this week, one line each.
+
+## Stalled or overdue
+- Action items past due (from meeting notes, the research log&#39;s Open section, open PRs with no activity for 5+ days).
+
+## Numbers
+Commits, PRs merged, issues closed, notes written, words added to chapters (if a thesis is present, from git diff --shortstat on chapters/).
+
+## Next week
+- Three to five outcomes, each with a definition of done and, where useful, a day.
+</code></pre>
+<h4 id="rules">Rules</h4>
+<ul>
+<li>Evidence for everything; the review is a record, not a feeling. If the week has little evidence, say so; that is also information.</li>
+<li>Carry over unfinished plan items explicitly with their age.</li>
+<li>Keep it under a page. Detail links out.</li>
+<li>End the reply with the three headline items and the file path. Offer <code>supervisor-update</code> or <code>email-draft</code> if the review feeds a status message.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/productivity/weekly-review" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in productivity</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/prime/"><code>prime</code></a> <span class="row-type">command</span> Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/todo-triage/"><code>todo-triage</code></a> <span class="row-type">command</span> Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/brainstorming/"><code>brainstorming</code></a> <span class="row-type">skill</span> Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/decision-log/"><code>decision-log</code></a> <span class="row-type">skill</span> Keep a lightweight decision log for a project or a person: one dated line per decision with the choice, the reason, the alternatives, who decided, and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/grill-me/"><code>grill-me</code></a> <span class="row-type">skill</span> Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/handoff/"><code>handoff</code></a> <span class="row-type">skill</span> Compact the current conversation into a handoff document for another agent to pick up. Use when ending a session, switching agents, or preserving context...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/issue-writer/"><code>issue-writer</code></a> <span class="row-type">skill</span> Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/learning-plan/"><code>learning-plan</code></a> <span class="row-type">skill</span> Turn a topic to learn into a sequenced study plan with a goal test, prerequisites, ordered units with one primary resource each, spaced practice and...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=productivity">All of productivity</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

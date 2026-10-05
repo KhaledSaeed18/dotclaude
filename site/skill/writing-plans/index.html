@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>writing-plans: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Turn a spec or set of requirements into a detailed, task-by-task implementation plan an engineer (or a subagent) can execute without further context...." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/writing-plans/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/writing-plans/" />
+    <meta property="og:title" content="writing-plans: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Turn a spec or set of requirements into a detailed, task-by-task implementation plan an engineer (or a subagent) can execute without further context...." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="writing-plans: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Turn a spec or set of requirements into a detailed, task-by-task implementation plan an engineer (or a subagent) can execute without further context...." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/writing-plans/#code","url":"https://dotclaude.khaledsaeed.tech/skill/writing-plans/","name":"writing-plans","alternateName":"Writing Plans","headline":"writing-plans: a Claude Code skill","description":"Turn a spec or set of requirements into a detailed, task-by-task implementation plan an engineer (or a subagent) can execute without further context. Breaks work into bite-sized steps with exact file paths, real code, and verification commands. Use before starting a multi-step build, once you know what you're building.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/writing-plans","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"writing-plans","item":"https://dotclaude.khaledsaeed.tech/skill/writing-plans/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">writing-plans</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>writing-plans</code></h1>
+          
+          <p class="lede">Turn a spec or set of requirements into a detailed, task-by-task implementation plan an engineer (or a subagent) can execute without further context. Breaks work into bite-sized steps with exact file paths, real code, and verification commands. Use before starting a multi-step build, once you know what you're building.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/writing-plans</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/writing-plans/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Write the implementation plan as if the engineer executing it has strong general skills but zero knowledge of this codebase, this domain, or your intentions. Everything they need to act has to be on the page: which files to touch, the actual code, how to test it, what &quot;done&quot; looks like for each step. Vagueness in a plan becomes wasted work or wrong work at execution time.</p>
+<p>A good plan is a sequence of small, verifiable tasks: each one producing a self-contained change that makes sense on its own and leaves the project working.</p>
+<h3 id="step-1-orient-before-planning">Step 1: Orient before planning</h3>
+<p>Read the spec or requirements fully, then look at the codebase the plan will touch, existing patterns, conventions, the files involved. Plan <em>with</em> the grain of the code that&#39;s there, not against an idealised version of it. If the spec spans several independent subsystems, say so and propose splitting it into one plan per subsystem; each plan should produce working, testable software on its own.</p>
+<h3 id="step-2-map-the-files-first">Step 2: Map the files first</h3>
+<p>Before writing any task, list the files the work will create or modify and the single responsibility of each. This is where the decomposition gets decided.</p>
+<ul>
+<li>Give each file one clear job. Prefer smaller, focused files over large ones that do several things; they&#39;re easier to reason about and edit reliably.</li>
+<li>Keep things that change together in the same place; split by responsibility, not by technical layer.</li>
+<li>In an existing codebase, follow the established structure. Don&#39;t unilaterally restructure, but if a file you&#39;re already modifying has grown unwieldy, a scoped split can be part of the plan.</li>
+</ul>
+<h3 id="step-3-write-bite-sized-tasks">Step 3: Write bite-sized tasks</h3>
+<p>Each task is a coherent unit of work; each <em>step</em> inside it is one action of two to five minutes. Following test-driven development, a typical task reads:</p>
+<ul>
+<li>Write the failing test (show the test code).</li>
+<li>Run it, confirm it fails (give the command and the expected failure).</li>
+<li>Write the minimal implementation (show the code).</li>
+<li>Run the test, confirm it passes (give the command and expected result).</li>
+<li>Commit (give the exact <code>git add</code> paths and message).</li>
+</ul>
+<p>Give every task an explicit <strong>Files</strong> block: what to create, what to modify (with line ranges where it helps), what the test file is. Use checkbox (<code>- [ ]</code>) syntax for steps so progress is trackable during execution.</p>
+<h3 id="step-4-no-placeholders-ever">Step 4: No placeholders: ever</h3>
+<p>A plan with gaps is a plan that fails at execution. None of these belong in a finished plan:</p>
+<ul>
+<li>&quot;TBD&quot;, &quot;TODO&quot;, &quot;implement later&quot;, &quot;fill in the details.&quot;</li>
+<li>&quot;Add appropriate error handling / validation / edge cases&quot; without saying which and how.</li>
+<li>&quot;Write tests for the above&quot; with no actual test code.</li>
+<li>&quot;Similar to Task N&quot;, repeat the code; the executor may read tasks out of order.</li>
+<li>A step that says <em>what</em> to do but not <em>how</em>, where code is involved (show the code).</li>
+<li>References to a type, function, or method that no task defines.</li>
+</ul>
+<p>Every step that changes code shows the code. Every command comes with its expected output. File paths are exact.</p>
+<h3 id="step-5-self-review-against-the-spec">Step 5: Self-review against the spec</h3>
+<p>When the plan is complete, read it once more against the spec with fresh eyes; this is a checklist you run yourself, not a subagent dispatch:</p>
+<ol>
+<li><strong>Coverage.</strong> Walk each requirement in the spec. Can you point to the task that implements it? List any gaps and add tasks for them.</li>
+<li><strong>Placeholder scan.</strong> Search the plan for the red flags above and fix any you find.</li>
+<li><strong>Consistency.</strong> Do the type names, signatures, and property names used in later tasks match what earlier tasks defined? A method called <code>clearLayers()</code> in one task and <code>clearFullLayers()</code> in another is a latent bug.</li>
+</ol>
+<p>Fix issues inline and move on.</p>
+<h3 id="step-6-save-and-hand-off">Step 6: Save and hand off</h3>
+<p>Save the plan as a markdown file (a <code>docs/plans/YYYY-MM-DD-&lt;feature&gt;.md</code> location works well unless the project has its own convention). Then offer the user how to execute it:</p>
+<ul>
+<li><strong>Inline</strong>: run the tasks in this session with review checkpoints, using the <code>executing-plans</code> skill.</li>
+<li><strong>Subagent-driven</strong>: a fresh subagent per task with review between, when the platform supports subagents and the tasks are largely independent.</li>
+</ul>
+<p>If the work should be isolated from the current branch, note that an isolated workspace should be set up at execution time via the <code>git-worktrees</code> skill, and that the branch gets wrapped up afterward with the <code>finish-branch</code> skill.</p>
+<h3 id="attribution">Attribution</h3>
+<p>Adapted from the <code>writing-plans</code> entry of <a href="https://github.com/obra/superpowers" rel="noopener">superpowers</a> by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry&#39;s other items are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/writing-plans" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

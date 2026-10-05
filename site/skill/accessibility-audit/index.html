@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>accessibility-audit: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/" />
+    <meta property="og:title" content="accessibility-audit: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="accessibility-audit: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/#code","url":"https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/","name":"accessibility-audit","alternateName":"Accessibility Audit","headline":"accessibility-audit: a Claude Code skill","description":"Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core in a real browser when available and code review when not, with findings ranked by user impact. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/testing/accessibility-audit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","testing","testing"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"accessibility-audit","item":"https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">accessibility-audit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in testing</span></p>
+          <h1><code>accessibility-audit</code></h1>
+          
+          <p class="lede">Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core in a real browser when available and code review when not, with findings ranked by user impact. Use when building or reviewing UI components, before shipping user-facing pages, or when accessibility compliance is required.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/testing/">testing</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install testing@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/accessibility-audit</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/accessibility-audit/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Audit for the users who hit the wall, not for the checklist: someone on a keyboard who cannot reach the button, a screen-reader user who hears &quot;button button&quot;, a low-vision user who cannot read grey-on-white hints. Automated checks catch at most a third of real barriers; the rest come from reading the code and walking the flows. Prefer fixing semantics over adding ARIA; the first rule of ARIA is not to use it when native HTML already does the job.</p>
+<h3 id="step-1-scope-and-method">Step 1: Scope and method</h3>
+<p>Identify what is being audited (components in a diff, a page, a whole flow) and pick the method:</p>
+<ul>
+<li><strong>Running app available:</strong> audit in the browser. Use the <code>webapp-testing</code> skill&#39;s Playwright setup and inject axe-core for the automated pass, then do the manual keyboard walk below.</li>
+<li><strong>Code only:</strong> review the markup and interaction logic directly. State that contrast and reading-order findings are provisional until seen rendered.</li>
+</ul>
+<p>For the automated pass with Playwright:</p>
+<pre><code class="language-js">await page.goto(url);
+await page.addScriptTag({ url: &quot;https://cdn.jsdelivr.net/npm/axe-core@4/axe.min.js&quot; });
+const results = await page.evaluate(() =&gt; axe.run());
+// results.violations: id, impact, nodes[].html, nodes[].target
+</code></pre>
+<p>Treat axe output as a floor, not the audit.</p>
+<h3 id="step-2-the-manual-pass">Step 2: The manual pass</h3>
+<p>Work through these in order of user impact:</p>
+<p><strong>Keyboard</strong></p>
+<ul>
+<li>Every interactive element reachable with Tab, operable with Enter/Space, in an order that follows the visual flow. No focus traps except intentional ones (modals) that also release on Escape.</li>
+<li>Focus visible at every stop (WCAG 2.2 requires it not be fully obscured). No <code>outline: none</code> without a replacement.</li>
+<li>After actions that move context (opening a modal, deleting a list item, route change in a SPA): focus is placed deliberately, not dropped to <code>&lt;body&gt;</code>.</li>
+</ul>
+<p><strong>Semantics and names</strong></p>
+<ul>
+<li>Native elements for native jobs: <code>&lt;button&gt;</code> not <code>&lt;div onClick&gt;</code>, <code>&lt;a href&gt;</code> for navigation, <code>&lt;label for&gt;</code> on every form control. A clickable div needs role, tabindex, and key handlers to equal a button; flag it and recommend the element instead.</li>
+<li>Every control has an accessible name that matches its visible label; icon-only buttons have <code>aria-label</code>. Images: informative ones have real <code>alt</code>, decorative ones have <code>alt=&quot;&quot;</code>.</li>
+<li>Headings form an outline (one <code>h1</code>, no skipped levels used for styling). Landmarks (<code>main</code>, <code>nav</code>) present once each.</li>
+</ul>
+<p><strong>ARIA misuse</strong> (the most common class of introduced bugs)</p>
+<ul>
+<li>No redundant roles (<code>role=&quot;button&quot;</code> on <code>&lt;button&gt;</code>), no invalid parent/child combos (<code>role=&quot;tab&quot;</code> outside a tablist), no <code>aria-hidden=&quot;true&quot;</code> on focusable content.</li>
+<li>State conveyed both visually and programmatically: <code>aria-expanded</code> on disclosure triggers, <code>aria-current</code> on active nav, <code>aria-invalid</code> plus an error message linked with <code>aria-describedby</code> on failed fields.</li>
+<li>Live updates that matter (async errors, toasts, cart counts) announced via a live region; silent visual-only feedback flagged.</li>
+</ul>
+<p><strong>Visual</strong></p>
+<ul>
+<li>Text contrast 4.5:1 (3:1 for large text), interactive component boundaries 3:1. Check the greys: placeholder text, disabled-looking-but-enabled buttons, hint text are the usual failures.</li>
+<li>Nothing conveyed by color alone (error = red border only). Content reflows at 320px width / 200% zoom without loss.</li>
+<li>WCAG 2.2 additions: pointer targets at least 24x24 CSS px (or spaced equivalently); no interaction requires dragging without a click alternative.</li>
+</ul>
+<p><strong>Motion and time</strong></p>
+<ul>
+<li>Animations respect <code>prefers-reduced-motion</code>. Auto-advancing carousels/toasts are pausable or long enough to read. No content flashes more than three times per second.</li>
+</ul>
+<h3 id="step-3-report">Step 3: Report</h3>
+<p>Rank findings by user impact: blockers (cannot complete the task at all: unreachable control, trap, unlabeled form) first, then serious (task completable with difficulty), then moderate/polish. For each: the element (selector or file:line), who it fails and how, the WCAG criterion, and the exact fix as code, not advice. Separate &quot;verified in browser&quot; from &quot;found by review, verify rendered&quot;. End with the two or three highest-leverage systemic fixes (e.g. &quot;the shared Button component takes an icon without requiring a label prop&quot;) rather than only the instance list.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/testing/accessibility-audit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in testing</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/webapp-testing/"><code>webapp-testing</code></a> <span class="row-type">skill</span> Verify a web application works in a real browser with Playwright, covering navigation, form submission, interactions, console errors, screenshots, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/write-tests/"><code>write-tests</code></a> <span class="row-type">command</span> Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. Use when a source file...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=testing">All of testing</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

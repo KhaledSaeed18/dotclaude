@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>security plugin for Claude Code | dotclaude</title>
+    <meta name="description" content="Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/plugins/security/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/plugins/security/" />
+    <meta property="og:title" content="security plugin for Claude Code | dotclaude" />
+    <meta property="og:description" content="Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="security plugin for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/plugins/security/#code","url":"https://dotclaude.khaledsaeed.tech/plugins/security/","name":"security","headline":"security: a Claude Code plugin","description":"Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/security","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","plugin","security","owasp","audit","secrets","dependencies"],"hasPart":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/dependency-audit/#code","name":"dependency-audit","url":"https://dotclaude.khaledsaeed.tech/skill/dependency-audit/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/owasp-security/#code","name":"owasp-security","url":"https://dotclaude.khaledsaeed.tech/skill/owasp-security/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/secret-scan/#code","name":"secret-scan","url":"https://dotclaude.khaledsaeed.tech/skill/secret-scan/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/security-auditor/#code","name":"security-auditor","url":"https://dotclaude.khaledsaeed.tech/agent/security-auditor/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/security-audit/#code","name":"security-audit","url":"https://dotclaude.khaledsaeed.tech/command/security-audit/"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Plugins","item":"https://dotclaude.khaledsaeed.tech/#/plugins"},{"@type":"ListItem","position":3,"name":"security","item":"https://dotclaude.khaledsaeed.tech/plugins/security/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/plugins">Plugins</a></li><li aria-current="page">security</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="plugin">
+          <p class="detail-kind">Plugin <span class="row-category">security</span></p>
+          <h1><code>security</code></h1>
+          <p class="lede">Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command.</p>
+          <p class="doc-keywords"><span class="chip">owasp</span> <span class="chip">audit</span> <span class="chip">secrets</span> <span class="chip">dependencies</span></p>
+        </header>
+        <section class="doc-install">
+<h2 id="install">Install</h2>
+<p>Add the marketplace once, then install the bundle. It updates with <code>/plugin marketplace update dotclaude</code>.</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install security@dotclaude</code></pre>
+        </section>
+        <section class="doc-body">
+          <h2 id="contents">What you get</h2>
+<h3 id="skills">Skills (3)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-audit/"><code>dependency-audit</code></a> <span class="row-type">skill</span> Audit a project's dependencies for outdated and vulnerable packages and surface breaking-change notes for upgrades. Works with any ecosystem, including...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/owasp-security/"><code>owasp-security</code></a> <span class="row-type">skill</span> Review code being written or modified against the OWASP Top 10:2025 and ASVS secure-coding requirements, in any language or stack, catching vulnerability...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/secret-scan/"><code>secret-scan</code></a> <span class="row-type">skill</span> Scan code or a diff for hardcoded secrets (API keys, tokens, passwords, private keys, and other exposed credentials) before they get committed or shipped....</li></ul>
+<h3 id="agents">Agents (1)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/security-auditor/"><code>security-auditor</code></a> <span class="row-type">agent</span> Use this agent when you need a comprehensive security audit of a codebase, module, API surface, or pull request. Covers OWASP Top 10:2025, auth logic...</li></ul>
+<h3 id="commands">Commands (1)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/security-audit/"><code>security-audit</code></a> <span class="row-type">command</span> Run a full-codebase security audit covering OWASP Top 10:2025 vulnerability classes, auth logic, secret handling, input validation, dependency CVEs, and...</li></ul>
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/security" rel="noopener">View the plugin tree on GitHub</a> · <a href="/#/plugins">All plugins</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

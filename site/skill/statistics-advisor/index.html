@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>statistics-advisor: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Plan and check the statistics for an empirical study: choose the test from the design and data type, check assumptions and pick the robust alternative..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/statistics-advisor/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/statistics-advisor/" />
+    <meta property="og:title" content="statistics-advisor: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Plan and check the statistics for an empirical study: choose the test from the design and data type, check assumptions and pick the robust alternative..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="statistics-advisor: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Plan and check the statistics for an empirical study: choose the test from the design and data type, check assumptions and pick the robust alternative..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/statistics-advisor/#code","url":"https://dotclaude.khaledsaeed.tech/skill/statistics-advisor/","name":"statistics-advisor","alternateName":"Statistics Advisor","headline":"statistics-advisor: a Claude Code skill","description":"Plan and check the statistics for an empirical study: choose the test from the design and data type, check assumptions and pick the robust alternative, compute sample size from a target effect, report effect sizes and confidence intervals alongside p-values, handle multiple comparisons, and write the analysis paragraph in the form reviewers expect; with runnable Python (scipy, statsmodels, pingouin) or R snippets. Use before collecting data (the analysis plan), after collecting it (running and reporting), or when a result says significant and the reviewer asks how.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/statistics-advisor","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"statistics-advisor","item":"https://dotclaude.khaledsaeed.tech/skill/statistics-advisor/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">statistics-advisor</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>statistics-advisor</code></h1>
+          
+          <p class="lede">Plan and check the statistics for an empirical study: choose the test from the design and data type, check assumptions and pick the robust alternative, compute sample size from a target effect, report effect sizes and confidence intervals alongside p-values, handle multiple comparisons, and write the analysis paragraph in the form reviewers expect; with runnable Python (scipy, statsmodels, pingouin) or R snippets. Use before collecting data (the analysis plan), after collecting it (running and reporting), or when a result says significant and the reviewer asks how.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the design, the variables, the data file, or the result to check</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/statistics-advisor</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/statistics-advisor/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Statistics answer one question: how much of what was observed could be chance, and how big is the effect if it is real. Everything here serves reporting both parts honestly. Decide the analysis before seeing the data, and report deviations from that plan.</p>
+<h3 id="step-1-describe-the-data-before-testing-it">Step 1: describe the data before testing it</h3>
+<p>Always: n per group, mean and SD (or median and IQR for skewed data), min and max, missing values and why. Plot it (<code>research-figures</code>): a box plot with points or an ECDF per group shows more than any test. Check the shape (histogram, Q-Q plot) and the outliers, and decide how outliers are handled <em>by rule</em> (pre-specified), not by looking at which removal helps.</p>
+<h3 id="step-2-choose-the-test">Step 2: choose the test</h3>
+<table>
+<thead>
+<tr>
+<th>Comparison</th>
+<th>Data</th>
+<th>Parametric</th>
+<th>Non-parametric / robust</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>two independent groups</td>
+<td>continuous</td>
+<td>Welch&#39;s t-test (default over Student&#39;s)</td>
+<td>Mann-Whitney U; bootstrap CI of the difference</td>
+</tr>
+<tr>
+<td>two paired measurements</td>
+<td>continuous</td>
+<td>paired t-test</td>
+<td>Wilcoxon signed-rank</td>
+</tr>
+<tr>
+<td>three or more groups</td>
+<td>continuous</td>
+<td>one-way ANOVA (Welch) then Games-Howell post hoc</td>
+<td>Kruskal-Wallis then Dunn with Holm</td>
+</tr>
+<tr>
+<td>repeated measures over conditions</td>
+<td>continuous</td>
+<td>repeated-measures ANOVA or mixed model</td>
+<td>Friedman; mixed model with robust SE</td>
+</tr>
+<tr>
+<td>two categorical variables</td>
+<td>counts</td>
+<td>chi-square (expected counts ≥ 5)</td>
+<td>Fisher&#39;s exact</td>
+</tr>
+<tr>
+<td>relationship between two continuous</td>
+<td>continuous</td>
+<td>Pearson r</td>
+<td>Spearman rho; Kendall tau for small n</td>
+</tr>
+<tr>
+<td>outcome from several predictors</td>
+<td>continuous</td>
+<td>multiple regression</td>
+<td>robust regression; quantile regression</td>
+</tr>
+<tr>
+<td>binary outcome from predictors</td>
+<td>binary</td>
+<td>logistic regression</td>
+<td>penalised logistic (small n)</td>
+</tr>
+<tr>
+<td>Likert items</td>
+<td>ordinal</td>
+<td>treat a validated scale total as interval</td>
+<td>ordinal regression per item; never a t-test on one item</td>
+</tr>
+<tr>
+<td>time to event</td>
+<td>durations with censoring</td>
+<td>Cox regression</td>
+<td>Kaplan-Meier with log-rank</td>
+</tr>
+<tr>
+<td>agreement between raters</td>
+<td>categorical</td>
+<td>Cohen&#39;s kappa (2 raters), Fleiss (more)</td>
+<td>Krippendorff&#39;s alpha</td>
+</tr>
+</tbody></table>
+<p>Prefer estimation over testing when the question is &quot;how much&quot;: report the difference with a 95% CI (bootstrap when in doubt) and let the p-value be secondary.</p>
+<h3 id="step-3-check-assumptions-then-decide">Step 3: check assumptions, then decide</h3>
+<ul>
+<li>Normality of <em>residuals</em> (not raw data) for t-tests and ANOVA; with n ≥ 30 per group the t-test is robust to moderate skew. Shapiro-Wilk is informative for small n only; look at the Q-Q plot.</li>
+<li>Equal variances: use Welch by default and stop testing for it.</li>
+<li>Independence: the assumption most often violated in CS (multiple measurements per participant, per repository, per run). Nested data needs a mixed model with a random intercept per cluster, or aggregation to one value per cluster.</li>
+<li>Outliers: report with and without, if a pre-specified rule removed any.</li>
+</ul>
+<h3 id="step-4-sample-size-and-power">Step 4: sample size and power</h3>
+<p>Before collecting: with the smallest effect worth detecting (from the literature or a pilot), alpha 0.05, power 0.8:</p>
+<pre><code class="language-python">from statsmodels.stats.power import TTestIndPower
+TTestIndPower().solve_power(effect_size=0.5, alpha=0.05, power=0.8)   # ≈ 64 per group for d = 0.5
+</code></pre>
+<p>After collecting, do not compute &quot;post hoc power&quot; from the observed effect (it is a function of the p-value); report the CI instead.</p>
+<h3 id="step-5-effect-sizes">Step 5: effect sizes</h3>
+<p>Always alongside p: Cohen&#39;s d (or Hedges&#39; g for small n) for mean differences; Cliff&#39;s delta or rank-biserial for non-parametric; eta-squared or omega-squared for ANOVA; odds ratio or risk ratio for binary; r itself for correlations. Interpret with field norms, not only Cohen&#39;s small/medium/large.</p>
+<h3 id="step-6-multiple-comparisons">Step 6: multiple comparisons</h3>
+<p>State the family: all tests answering one research question. Control with Holm (default; more powerful than Bonferroni) or Benjamini-Hochberg FDR for exploratory sets. Report adjusted p or say &quot;Holm-adjusted&quot;. Do not run twenty tests and report the three that passed.</p>
+<h3 id="step-7-report">Step 7: report</h3>
+<p>The paragraph reviewers expect, per test:</p>
+<blockquote>
+<p>Fix time was lower with LLM feedback (median 142 s, IQR 98 to 210, n = 20) than with rule-based feedback (median 233 s, IQR 160 to 305, n = 20). Because the distributions were right-skewed, we compared log-transformed times with Welch&#39;s t-test, t(36.2) = 3.41, p = .002, Hedges&#39; g = 1.05, 95% CI [0.39, 1.71]; a Mann-Whitney U test agreed (U = 88, p = .003, Cliff&#39;s delta = 0.56). Two participants were excluded by the pre-registered rule (task not attempted).</p>
+</blockquote>
+<p>Elements: descriptives with n, the test and why, the statistic with df, exact p (not &quot;p &lt; .05&quot; unless below .001), effect size with CI, robustness check, exclusions.</p>
+<p>Words to avoid: &quot;significant&quot; without a test; &quot;marginally significant&quot;; &quot;proves&quot;; &quot;trend towards&quot; for p between .05 and .10 (say not significant).</p>
+<h3 id="runnable-snippets">Runnable snippets</h3>
+<pre><code class="language-python">import pingouin as pg, pandas as pd
+df = pd.read_csv(&quot;results.csv&quot;)
+pg.ttest(df[df.cond==&quot;llm&quot;].log_time, df[df.cond==&quot;rule&quot;].log_time, correction=True)   # Welch, with CI and Hedges g
+pg.mwu(df[df.cond==&quot;llm&quot;].time, df[df.cond==&quot;rule&quot;].time)                                 # Mann-Whitney with CLES
+pg.anova(dv=&quot;score&quot;, between=&quot;cond&quot;, data=df, effsize=&quot;np2&quot;)
+pg.pairwise_tests(dv=&quot;score&quot;, between=&quot;cond&quot;, data=df, padjust=&quot;holm&quot;, effsize=&quot;hedges&quot;)
+pg.mixed_anova(dv=&quot;score&quot;, within=&quot;task&quot;, between=&quot;cond&quot;, subject=&quot;pid&quot;, data=df)
+</code></pre>
+<p>R equivalents: <code>t.test(..., var.equal = FALSE)</code>, <code>wilcox.test</code>, <code>effectsize::hedges_g</code>, <code>lme4::lmer(score ~ cond + (1|pid))</code>, <code>p.adjust(method = &quot;holm&quot;)</code>.</p>
+<h3 id="qualitative-data">Qualitative data</h3>
+<p>For interviews and open responses: thematic analysis (Braun and Clarke&#39;s six phases), with a codebook, two coders on a sample and an agreement statistic, and quotes tied to participant ids. Count themes to describe prevalence, not to test hypotheses.</p>
+<h3 id="attribution">Attribution</h3>
+<p>Test selection table extended from <a href="https://github.com/terryfyl/claude-statistical-analysis-skill" rel="noopener">claude-statistical-analysis-skill</a> by terryfyl (MIT); the reporting template and the pingouin snippets are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/statistics-advisor" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>create-hook: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/create-hook/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/create-hook/" />
+    <meta property="og:title" content="create-hook: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="create-hook: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/create-hook/#code","url":"https://dotclaude.khaledsaeed.tech/skill/create-hook/","name":"create-hook","alternateName":"Create Hook","headline":"create-hook: a Claude Code skill","description":"Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring, documenting activation in HOOK.md, then regenerating the registry. Use when creating, scaffolding, or reviewing a hook in this repo.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/create-hook","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering"],"hasPart":[{"@type":"CreativeWork","name":"reference/events.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"create-hook","item":"https://dotclaude.khaledsaeed.tech/skill/create-hook/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">create-hook</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>create-hook</code></h1>
+          
+          <p class="lede">Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring, documenting activation in HOOK.md, then regenerating the registry. Use when creating, scaffolding, or reviewing a hook in this repo.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the hook's purpose, the event it targets, or category</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Not part of any plugin; install it with the shadcn CLI below.</p>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/create-hook</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/create-hook/SKILL.md</code></li><li><code>.claude/skills/create-hook/reference/events.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Create a hook: a script Claude Code runs on a lifecycle event (before a tool, after a prompt, on stop, and so on). Make it do one deterministic thing, fail safe, and ship with documentation a user can paste into <code>settings.json</code>. Then regenerate the derived files and validate.</p>
+<p>Source layout is <code>hooks/&lt;category&gt;/&lt;name&gt;/HOOK.md</code> plus the script. Hooks are <strong>folder-layout</strong>: the whole folder installs to <code>.claude/hooks/&lt;name&gt;/</code>, so the script and any helpers ride along. The <strong>category is the folder</strong>; <code>registry.json</code> and the README catalog are <em>generated</em> by <code>pnpm gen</code>. Never hand-edit generated files.</p>
+<p>Hooks differ from skills, agents, and commands in one critical way: <strong>they are configuration, not a loadable file.</strong> The shadcn installer copies the script and <code>HOOK.md</code> but cannot edit a user&#39;s <code>settings.json</code>. So <code>HOOK.md</code> must document the exact settings block to add, and the hook is inert until the user adds it.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Fail safe and non-blocking by default.</strong> Unless the hook&#39;s job is to block, swallow its own errors and exit <code>0</code> so it can never interrupt or break a tool call or session. Exit <code>2</code> <em>only</em> when blocking is the intended behavior for that event.</li>
+<li><strong><code>HOOK.md</code> must document activation.</strong> Include the precise <code>settings.json</code> block, the event, the matcher, and the command line. Without it the hook does nothing after install.</li>
+<li><strong>Be safe with data.</strong> Hooks see tool inputs and outputs. Redact secret-looking fields and truncate large payloads before logging or sending anything.</li>
+<li><strong>Zero or pinned dependencies.</strong> Prefer the language&#39;s standard library so the script runs anywhere it lands. State the runtime requirement.</li>
+<li><strong><code>name</code> is globally unique and equals the folder name</strong>, kebab-case.</li>
+<li><strong>Never hand-write <code>registry.json</code> or the README catalog.</strong> Run <code>pnpm gen</code>.</li>
+<li><strong>No AI/co-author mentions</strong> anywhere in the hook or its output.</li>
+</ul>
+<h3 id="step-1-define-the-hook">Step 1: Define the hook</h3>
+<ul>
+<li><strong>The one thing it does</strong>, in a sentence.</li>
+<li><strong>The event</strong> it fires on and whether it needs a <strong>matcher</strong> (for example <code>PreToolUse</code> matched to <code>Bash</code>). Event list, matcher support, and the input/exit-code contract: <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-hook/reference/events.md" rel="noopener">reference/events.md</a>.</li>
+<li><strong>Blocking or observing.</strong> Does it just record/notify (exit <code>0</code>), or veto an action (exit <code>2</code> on the right event)?</li>
+</ul>
+<h3 id="step-2-scaffold-it">Step 2: Scaffold it</h3>
+<p>From the repo root:</p>
+<pre><code>pnpm new --type hook --category &lt;category&gt; --name &lt;name&gt; --description &quot;&lt;what it does&gt;&quot;
+</code></pre>
+<p>Current hook categories: <code>academic</code>, <code>automation</code>, <code>context</code>, <code>observability</code>, <code>security</code>, <code>workflow</code> (run <code>ls hooks</code> for the live list). Reuse one or add a new folder if justified. The scaffolder creates the folder and a <code>HOOK.md</code> stub and regenerates the registry; you then add the script.</p>
+<h3 id="step-3-write-the-hook-script">Step 3: Write the hook script</h3>
+<p>Add the script alongside <code>HOOK.md</code> (for example <code>&lt;name&gt;.mjs</code> or <code>&lt;name&gt;.sh</code>). Contract, in brief (full detail in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-hook/reference/events.md" rel="noopener">reference/events.md</a>):</p>
+<ul>
+<li>The event payload arrives as <strong>JSON on stdin</strong> (<code>hook_event_name</code>, <code>tool_name</code>, <code>tool_input</code>, <code>cwd</code>, and event-specific fields).</li>
+<li><strong>Exit <code>0</code></strong> = success. For most events stdout is logged; for <code>UserPromptSubmit</code> / <code>SessionStart</code> stdout is injected as context.</li>
+<li><strong>Exit <code>2</code></strong> = blocking error: stderr is fed back and the action is prevented (where the event supports it).</li>
+<li>For finer control, exit <code>0</code> and print a <strong>JSON object</strong> to stdout (<code>continue</code>, <code>decision</code>, <code>hookSpecificOutput</code>, <code>systemMessage</code>).</li>
+<li>Reference the script path with <strong><code>${CLAUDE_PROJECT_DIR}</code></strong> so it resolves regardless of working directory.</li>
+</ul>
+<h3 id="step-4-write-hookmd">Step 4: Write HOOK.md</h3>
+<p><code>HOOK.md</code> is the manifest and the documentation. Cover:</p>
+<ol>
+<li>Frontmatter <code>name</code> + <code>description</code> (the description is the catalog/registry text).</li>
+<li>What the hook does, its safety properties (non-blocking, redaction), and its runtime requirement.</li>
+<li>A <strong>Files</strong> table (script + <code>HOOK.md</code>).</li>
+<li>An <strong>Activate it</strong> section with the exact <code>settings.json</code> block to paste, calling out that the installer cannot do this step. Use <code>${CLAUDE_PROJECT_DIR}</code> in the command path. See the existing <code>tool-call-logger</code> hook for the established shape.</li>
+</ol>
+<h3 id="step-5-regenerate-and-validate">Step 5: Regenerate and validate</h3>
+<pre><code>pnpm gen
+pnpm validate
+</code></pre>
+<p>Fix the source files if validation complains; never patch generated output.</p>
+<h3 id="step-6-review-against-the-bar">Step 6: Review against the bar</h3>
+<ul>
+<li>The hook does its one job and, unless it&#39;s meant to block, can never break a tool call (errors swallowed, exits <code>0</code>).</li>
+<li><code>HOOK.md</code> documents the exact <code>settings.json</code> block, event, and matcher.</li>
+<li>Secret-looking data is redacted; large payloads truncated.</li>
+<li><code>pnpm validate</code> passes and the README catalog shows the new row.</li>
+</ul>
+<p>Report the hook&#39;s path, category, the event it targets, and the validation result. Leave committing to the user.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/create-hook" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"><code>dependency-upgrade</code></a> <span class="row-type">skill</span> Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

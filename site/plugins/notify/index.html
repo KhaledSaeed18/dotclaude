@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>notify plugin for Claude Code | dotclaude</title>
+    <meta name="description" content="Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/plugins/notify/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/plugins/notify/" />
+    <meta property="og:title" content="notify plugin for Claude Code | dotclaude" />
+    <meta property="og:description" content="Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="notify plugin for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/plugins/notify/#code","url":"https://dotclaude.khaledsaeed.tech/plugins/notify/","name":"notify","headline":"notify: a Claude Code plugin","description":"Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/notify","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","plugin","automation","notifications","desktop","background"],"hasPart":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/notify/#code","name":"notify","url":"https://dotclaude.khaledsaeed.tech/hook/notify/"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Plugins","item":"https://dotclaude.khaledsaeed.tech/#/plugins"},{"@type":"ListItem","position":3,"name":"notify","item":"https://dotclaude.khaledsaeed.tech/plugins/notify/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/plugins">Plugins</a></li><li aria-current="page">notify</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="plugin">
+          <p class="detail-kind">Plugin <span class="row-category">automation</span></p>
+          <h1><code>notify</code></h1>
+          <p class="lede">Desktop notifications for Claude Code: surfaces permission requests and attention prompts as native macOS/Linux notifications so long sessions can run in the background.</p>
+          <p class="doc-keywords"><span class="chip">notifications</span> <span class="chip">desktop</span> <span class="chip">background</span></p>
+        </header>
+        <section class="doc-install">
+<h2 id="install">Install</h2>
+<p>Add the marketplace once, then install the bundle. It updates with <code>/plugin marketplace update dotclaude</code>.</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install notify@dotclaude</code></pre>
+        </section>
+        <section class="doc-body">
+          <h2 id="contents">What you get</h2>
+<h3 id="hooks">Hooks (1)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/hook/notify/"><code>notify</code></a> <span class="row-type">hook</span> A Notification hook that turns Claude Code notifications into native desktop notifications (macOS osascript, Linux notify-send), so long-running sessions...</li></ul>
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/notify" rel="noopener">View the plugin tree on GitHub</a> · <a href="/#/plugins">All plugins</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

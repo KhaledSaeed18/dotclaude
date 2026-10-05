@@ -336,7 +336,9 @@ describe("gen", () => {
 
     const html = read(dir, "site/index.html");
     // Rows are escaped and use the same markup app.js renders.
-    expect(html).toContain('<a class="row-link" href="#/skill/s-one" data-type="skill">');
+    expect(html).toContain(
+      '<a class="row-link" href="/skill/s-one/" data-key="skill/s-one" data-type="skill">',
+    );
     expect(html).toContain('<span class="row-desc">Skill &lt;one&gt; &amp; more.</span>');
     // JSON-LD lists every item and never contains a raw "<".
     const jsonld = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1] ?? "";
@@ -344,14 +346,36 @@ describe("gen", () => {
     const graph = JSON.parse(jsonld)["@graph"];
     const list = graph.find((n: { "@type": string }) => n["@type"] === "ItemList");
     expect(list.numberOfItems).toBe(1);
-    expect(list.itemListElement[0].url).toBe("https://dotclaude.khaledsaeed.tech/#/skill/s-one");
+    expect(list.itemListElement[0].url).toBe("https://dotclaude.khaledsaeed.tech/skill/s-one/");
 
     const llms = read(dir, "site/llms.txt");
     expect(llms).toContain("# dotclaude");
     expect(llms).toContain("## Skills");
     expect(llms).toContain(
-      "- [s-one](https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/util/s-one) (util): Skill <one> & more.",
+      "- [s-one](https://dotclaude.khaledsaeed.tech/skill/s-one/) (util): Skill <one> & more. Source: https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/util/s-one",
     );
+
+    // One crawlable page per item, its markdown twin, a sitemap and the full text.
+    const page = read(dir, "site/skill/s-one/index.html");
+    expect(page).toContain("<title>s-one: Skill for Claude Code | dotclaude</title>");
+    expect(page).toContain(
+      '<link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/s-one/" />',
+    );
+    expect(page).toContain('<meta name="description" content="Skill &lt;one&gt; &amp; more." />');
+    expect(page).toContain("npx shadcn@latest add KhaledSaeed18/dotclaude/s-one");
+    const pageLd = page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1] ?? "";
+    expect(pageLd).not.toContain("<");
+    const pageGraph = JSON.parse(pageLd)["@graph"];
+    expect(pageGraph.map((n: { "@type": string }) => n["@type"])).toEqual([
+      "SoftwareSourceCode",
+      "BreadcrumbList",
+      "WebSite",
+    ]);
+    expect(read(dir, "site/skill/s-one/index.md")).toContain("name: s-one");
+    expect(read(dir, "site/sitemap.xml")).toContain(
+      "<url><loc>https://dotclaude.khaledsaeed.tech/skill/s-one/</loc></url>",
+    );
+    expect(read(dir, "site/llms-full.txt")).toContain("## s-one");
 
     // A fixture without a site still generates (data.json and llms.txt only).
     const bare = makeFixture({
@@ -360,6 +384,38 @@ describe("gen", () => {
     expect(runGen(bare).status).toBe(0);
     expect(existsSync(join(bare, "site/index.html"))).toBe(false);
     expect(existsSync(join(bare, "site/llms.txt"))).toBe(true);
+    expect(existsSync(join(bare, "site/sitemap.xml"))).toBe(false);
+  });
+
+  it("renders the manifest body on the item page and removes stale item pages", () => {
+    const dir = makeFixture({
+      "skills/util/s-one/SKILL.md": manifest(
+        { name: "s-one", description: "One." },
+        "## Step 1\n\nRead [the notes](./reference/notes.md) and `run`.\n\n| a | b |\n| - | - |\n| 1 | 2 |",
+      ),
+      "skills/util/s-one/reference/notes.md": "notes",
+      "site/index.html":
+        "<!-- jsonld:start --><!-- jsonld:end --><!-- rows:start --><!-- rows:end -->",
+      "site/skill/gone/index.html": "stale",
+    });
+
+    expect(runGen(dir).status).toBe(0);
+    const page = read(dir, "site/skill/s-one/index.html");
+    // Headings shift one level under the page's h1; relative links go to GitHub.
+    expect(page).toContain('<h3 id="step-1">Step 1</h3>');
+    expect(page).toContain(
+      'href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/util/s-one/reference/notes.md"',
+    );
+    expect(page).toContain("<table>");
+    expect(page).toContain("reference/notes.md");
+    expect(existsSync(join(dir, "site/skill/gone/index.html"))).toBe(false);
+
+    // --check flags a page gen did not produce.
+    mkdirSync(join(dir, "site/skill/gone"), { recursive: true });
+    writeFileSync(join(dir, "site/skill/gone/index.html"), "stale");
+    const check = runGen(dir, ["--check"]);
+    expect(check.status).toBe(1);
+    expect(check.output).toContain("site/skill/gone/index.html (orphaned)");
   });
 
   it("--check fails when a generated file is stale", () => {

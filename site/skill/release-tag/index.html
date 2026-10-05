@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>release-tag: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/release-tag/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/release-tag/" />
+    <meta property="og:title" content="release-tag: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="release-tag: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/release-tag/#code","url":"https://dotclaude.khaledsaeed.tech/skill/release-tag/","name":"release-tag","alternateName":"Release Tag","headline":"release-tag: a Claude Code skill","description":"Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated (optionally signed) Git tag, and pushing the release safely after pre-flight checks. Use when tagging a version, bumping the version, or preparing a release.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/release-tag","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"release-tag","item":"https://dotclaude.khaledsaeed.tech/skill/release-tag/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">release-tag</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>release-tag</code></h1>
+          
+          <p class="lede">Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated (optionally signed) Git tag, and pushing the release safely after pre-flight checks. Use when tagging a version, bumping the version, or preparing a release.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) explicit version (e.g. 1.4.0) or bump level (major|minor|patch)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/release-tag</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/release-tag/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Take the repo from &quot;ready&quot; to a clean, tagged, pushed release. Releases are outward-facing and effectively irreversible once published, so every step is gated by pre-flight checks and explicit confirmation.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Never release a dirty or unverified tree.</strong> Working tree clean, on the correct branch, up to date with the remote, and tests/CI green; all true before tagging.</li>
+<li><strong>Tags are immutable once published.</strong> Never move or overwrite a pushed tag; if a release is wrong, cut a new patch version. Force-retagging breaks everyone who already pulled.</li>
+<li><strong>Follow SemVer honestly.</strong> The bump must reflect what actually changed (see Step 2), not a convenient number.</li>
+<li><strong>Confirm before the commit, the tag, and the push.</strong> These are the irreversible, outward-facing actions.</li>
+<li><strong>No AI/co-author trailers</strong> in the release commit or tag message.</li>
+<li><strong>Publishing is downstream.</strong> Tagging ≠ publishing to a registry. Don&#39;t run <code>npm publish</code> / <code>cargo publish</code> / etc. unless explicitly asked; most pipelines publish from CI on tag.</li>
+</ul>
+<h3 id="step-1-pre-flight">Step 1: Pre-flight</h3>
+<ul>
+<li><code>git status</code> → clean tree (or stash/commit deliberate changes first).</li>
+<li>On the release branch (usually <code>main</code>/<code>master</code> or a <code>release/*</code> branch) and synced: <code>git fetch &amp;&amp; git status</code> shows up to date.</li>
+<li>Latest tag and history since it: <code>git describe --tags --abbrev=0</code>.</li>
+<li>Tests, linters, and build pass locally; CI on the release commit is green.</li>
+</ul>
+<h3 id="step-2-determine-the-version">Step 2: Determine the version</h3>
+<p>Derive the SemVer bump from the commits since the last tag:</p>
+<ul>
+<li><strong>MAJOR</strong>: any breaking change (<code>!</code> marker, <code>BREAKING CHANGE:</code> footer, removed/incompatible API).</li>
+<li><strong>MINOR</strong>: new backward-compatible features (<code>feat</code>).</li>
+<li><strong>PATCH</strong>: backward-compatible fixes only (<code>fix</code>, <code>perf</code>).</li>
+<li>Pre-1.0: minor/patch carry the instability caveat; respect the project&#39;s stated policy.</li>
+<li>Honor pre-release / build identifiers if used (<code>1.4.0-rc.1</code>, <code>+build.5</code>) and any explicit version the user gives.</li>
+</ul>
+<h3 id="step-3-bump-the-version-files-stack-aware">Step 3: Bump the version files (stack-aware)</h3>
+<p>Update wherever the canonical version lives; detect by the manifests present:</p>
+<table>
+<thead>
+<tr>
+<th>Stack</th>
+<th>Where / how</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node / npm</td>
+<td><code>package.json</code> (+ workspace pkgs); <code>npm version &lt;v&gt; --no-git-tag-version</code>.</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td><code>Cargo.toml</code> <code>[package] version</code> (+ <code>Cargo.lock</code>)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>pyproject.toml</code>, <code>setup.py</code>/<code>setup.cfg</code>, or <code>__version__</code>/<code>_version.py</code></td>
+</tr>
+<tr>
+<td>Go</td>
+<td>usually tag-driven (no file); else a <code>version</code> const / <code>VERSION</code></td>
+</tr>
+<tr>
+<td>Java</td>
+<td><code>pom.xml</code> <code>&lt;version&gt;</code>, or <code>gradle.properties</code>/<code>build.gradle</code></td>
+</tr>
+<tr>
+<td>.NET</td>
+<td><code>*.csproj</code> <code>&lt;Version&gt;</code>, <code>Directory.Build.props</code></td>
+</tr>
+<tr>
+<td>PHP</td>
+<td><code>composer.json</code> <code>version</code> (often omitted in favor of tags)</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td><code>*.gemspec</code> / <code>lib/&lt;gem&gt;/version.rb</code></td>
+</tr>
+<tr>
+<td>Generic</td>
+<td>a top-level <code>VERSION</code> file</td>
+</tr>
+</tbody></table>
+<p>Keep lockfiles consistent. <strong>Monorepos:</strong> prefer the configured tool (changesets, Lerna, Nx release, Turborepo) and per-package versioning over hand edits. Use the native bump command when one exists, but suppress its auto-tag/commit so the steps below stay explicit and controlled.</p>
+<h3 id="step-4-update-the-changelog">Step 4: Update the changelog</h3>
+<p>Refresh <code>CHANGELOG.md</code>/release notes for this version (delegate to the <strong>changelog</strong> skill if available): move <code>[Unreleased]</code> items under the new <code>## [X.Y.Z] - &lt;date&gt;</code> heading, call out breaking changes and migration steps.</p>
+<h3 id="step-5-commit-then-tag-with-confirmation">Step 5: Commit, then tag (with confirmation)</h3>
+<ol>
+<li>Stage only the version + changelog files (explicit paths, never <code>git add -A</code>), and confirm.</li>
+<li>Release commit: <code>chore(release): vX.Y.Z</code> (or the repo&#39;s convention).</li>
+<li>Annotated, optionally signed tag, never lightweight:<ul>
+<li><code>git tag -a vX.Y.Z -m &quot;Release vX.Y.Z&quot;</code> (add <code>-s</code> to sign if the project signs releases).</li>
+<li>Match the existing tag prefix style (<code>v1.4.0</code> vs <code>1.4.0</code>; check <code>git tag</code>).</li>
+</ul>
+</li>
+<li>Sanity-check: <code>git show vX.Y.Z</code> points at the release commit and the message is right.</li>
+</ol>
+<h3 id="step-6-push-with-confirmation">Step 6: Push (with confirmation)</h3>
+<ol>
+<li>Confirm branch + tag + remote.</li>
+<li>Push the commit and the tag: <code>git push origin &lt;branch&gt;</code> then <code>git push origin vX.Y.Z</code> (or <code>--follow-tags</code>). Avoid <code>git push --tags</code> (it pushes <em>all</em> tags).</li>
+<li>If CI builds/publishes/creates the release from the tag, say so and let it run; don&#39;t duplicate the publish manually.</li>
+</ol>
+<p>Report the released version, the tag, the commit it points to, and what (if anything) downstream automation will now do.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/release-tag" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

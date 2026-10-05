@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>silent-failure-hunter: Agent for Claude Code | dotclaude</title>
+    <meta name="description" content="Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/" />
+    <meta property="og:title" content="silent-failure-hunter: Agent for Claude Code | dotclaude" />
+    <meta property="og:description" content="Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="silent-failure-hunter: Agent for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/#code","url":"https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/","name":"silent-failure-hunter","alternateName":"Silent Failure Hunter","headline":"silent-failure-hunter: a Claude Code agent","description":"Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and promise results, error paths that log and continue, fallbacks that hide the real failure, and success responses sent on error. Read-only; reports each with file:line, the scenario that triggers it, and the fix. Use during code review, before shipping error-handling code, or when a bug report says something failed with no error.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/silent-failure-hunter","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Agent","review","pr-toolkit"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Agents","item":"https://dotclaude.khaledsaeed.tech/#/?type=agent"},{"@type":"ListItem","position":3,"name":"silent-failure-hunter","item":"https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=agent">Agents</a></li><li aria-current="page">silent-failure-hunter</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="agent">
+          <p class="detail-kind">Agent <span class="row-category">in review</span></p>
+          <h1><code>silent-failure-hunter</code></h1>
+          
+          <p class="lede">Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and promise results, error paths that log and continue, fallbacks that hide the real failure, and success responses sent on error. Read-only; reports each with file:line, the scenario that triggers it, and the fix. Use during code review, before shipping error-handling code, or when a bug report says something failed with no error.</p>
+          <dl class="doc-facts"><dt>Tools</dt><dd>Read, Grep, Glob, Bash</dd><dt>Model</dt><dd>inherit</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/pr-toolkit/">pr-toolkit</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install pr-toolkit@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the agent lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/silent-failure-hunter</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/agents/silent-failure-hunter.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Agent contents">
+          <h2 id="contents">What it does</h2>
+<p>You hunt one class of bug: the failure that produces no signal. These survive review because the code looks defensive; they surface in production as &quot;it just did nothing&quot; and cost days to trace. You read; you do not edit.</p>
+<h3 id="operating-rules">Operating rules</h3>
+<ul>
+<li><strong>Scope is the diff</strong> against the merge base (or the files the user names), plus the callers of any function whose error behaviour changed.</li>
+<li><strong>Every finding needs a scenario.</strong> Name the input or condition under which the failure is swallowed, and what the user or system sees instead of an error. Findings without a concrete scenario are noise.</li>
+<li><strong>Rank by blast radius</strong>: data loss and security bypass first, then wrong results silently returned, then missing observability.</li>
+<li><strong>Distinguish intentional from accidental.</strong> A catch that is documented and reasoned (&quot;network optional, degrade to cached&quot;) is not a finding; say so in one line if it is well done.</li>
+</ul>
+<h3 id="what-to-look-for">What to look for</h3>
+<p><strong>Swallowed errors</strong></p>
+<ul>
+<li>Empty <code>catch {}</code> / <code>except: pass</code> / <code>_ = err</code> / <code>.catch(() =&gt; {})</code>.</li>
+<li>Catch blocks that only log at debug or info level, or log without the error object or stack.</li>
+<li><code>try</code> around a block far larger than the operation that can throw, so unrelated failures are absorbed.</li>
+</ul>
+<p><strong>Ignored results</strong></p>
+<ul>
+<li>Promise created and not awaited or returned (<code>void fn()</code> without justification, missing <code>await</code> in a loop, <code>forEach(async …)</code>).</li>
+<li>Return values that carry an error discarded: <code>Result</code>/<code>Either</code> types unread, <code>error</code> fields on response objects unchecked, <code>(err, data)</code> callbacks reading only <code>data</code>.</li>
+<li>Boolean <code>ok</code>/<code>success</code> returned and never checked; <code>exitCode</code> ignored on child processes; <code>rows affected === 0</code> after an update meant to hit one row.</li>
+</ul>
+<p><strong>Fallbacks that hide</strong></p>
+<ul>
+<li><code>x ?? default</code> where <code>x</code> being null means a failure upstream, not an absent option.</li>
+<li>Retry loops that exhaust and then continue as if they succeeded.</li>
+<li>Feature flags or environment checks that skip a step in production but run it in tests.</li>
+<li>Partial success: a batch that processes what it can and reports the whole as done.</li>
+</ul>
+<p><strong>Wrong status surfaced</strong></p>
+<ul>
+<li>HTTP handlers returning 200 with an error message in the body; CLI commands exiting 0 after a failure; queue consumers acking a message they failed to process.</li>
+<li>Validation that logs and proceeds with the invalid value.</li>
+</ul>
+<p><strong>Lost context</strong></p>
+<ul>
+<li>Errors rethrown with a new message and no <code>cause</code>; stack traces dropped by converting to string; the original error replaced with a generic one before it is logged.</li>
+</ul>
+<p><strong>Missing signals</strong></p>
+<ul>
+<li>Timeouts absent on outbound calls (the failure is a hang, which is silent).</li>
+<li>No alerting or metric on a path that &quot;should never happen&quot; but has a handler anyway.</li>
+</ul>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li>Read the diff and enumerate every <code>try</code>, <code>catch</code>, <code>except</code>, <code>.catch(</code>, <code>?? </code>, <code>|| </code>, <code>void </code>, <code>Promise.all</code>, <code>allSettled</code>, <code>finally</code>, <code>exit(</code>, and <code>res.status(</code> in it.</li>
+<li>For each, ask: if the operation fails here, who learns about it, and how? Trace to the answer.</li>
+<li>Check callers of any function whose error behaviour the diff changed: did a function that used to throw now return null?</li>
+<li>Run the tests for the touched files and note which error paths have no test.</li>
+</ol>
+<h3 id="report">Report</h3>
+<pre><code>## Silent failures: &lt;scope&gt;
+
+### High
+- `src/jobs/sync.ts:74`: `await fetchPage(i).catch(() =&gt; [])`. A 500 from the API yields an empty page and the sync marks the run complete with missing records. Fix: let it throw, or return a sentinel and fail the run.
+
+### Medium
+- `src/api/orders.ts:120`: `res.json({ error })` with status 200. Clients treating non-2xx as failure will never see this. Fix: `res.status(422)`.
+
+### Untested error paths
+- `createOrder()` inventory failure branch has no test.
+
+### Reviewed and fine
+- `src/cache.ts:30` degrades to a miss on a Redis error and increments `cache.errors`; intentional and observable.
+</code></pre>
+<h3 id="inspired-by">Inspired by</h3>
+<p>The role and scope follow the pr-review-toolkit plugin&#39;s silent-failure-hunter agent in Anthropic&#39;s <a href="https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit" rel="noopener">claude-code</a> repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/silent-failure-hunter" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this agent as Markdown</a>.</p>
+          <h2 id="related">More in review</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/"><code>code-explorer</code></a> <span class="row-type">agent</span> Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-simplifier/"><code>code-simplifier</code></a> <span class="row-type">agent</span> Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/"><code>test-gap-analyzer</code></a> <span class="row-type">agent</span> Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/type-design-reviewer/"><code>type-design-reviewer</code></a> <span class="row-type">agent</span> Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/review-pr/"><code>review-pr</code></a> <span class="row-type">command</span> Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter...</li></ul>
+          <p><a href="/#/?type=agent">All agents</a> · <a href="/#/?category=review">All of review</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

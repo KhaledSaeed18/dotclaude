@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>citation-guard: Hook for Claude Code | dotclaude</title>
+    <meta name="description" content="A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project&#39;s .bib and reports the ones that do not exist..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/hook/citation-guard/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/citation-guard/" />
+    <meta property="og:title" content="citation-guard: Hook for Claude Code | dotclaude" />
+    <meta property="og:description" content="A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project&#39;s .bib and reports the ones that do not exist..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="citation-guard: Hook for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project&#39;s .bib and reports the ones that do not exist..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/citation-guard/#code","url":"https://dotclaude.khaledsaeed.tech/hook/citation-guard/","name":"citation-guard","alternateName":"Citation Guard","headline":"citation-guard: a Claude Code hook","description":"A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project's .bib and reports the ones that do not exist, and after a .bib edit reports duplicate keys and entries with no DOI, arXiv id, or URL. Catches an invented citation in the same step it was written. Use when drafting a thesis, paper, or proposal with AI assistance, where a fabricated reference is the one unrecoverable error.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/academic/citation-guard","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","academic","thesis"],"hasPart":[{"@type":"CreativeWork","name":"citation-guard.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"citation-guard","item":"https://dotclaude.khaledsaeed.tech/hook/citation-guard/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">citation-guard</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="hook">
+          <p class="detail-kind">Hook <span class="row-category">in academic</span></p>
+          <h1><code>citation-guard</code></h1>
+          
+          <p class="lede">A PostToolUse hook that checks every cite key in a .tex or .md file Claude just edited against the project's .bib and reports the ones that do not exist, and after a .bib edit reports duplicate keys and entries with no DOI, arXiv id, or URL. Catches an invented citation in the same step it was written. Use when drafting a thesis, paper, or proposal with AI assistance, where a fabricated reference is the one unrecoverable error.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/citation-guard</code></pre>
+<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/hooks/citation-guard/HOOK.md</code></li><li><code>.claude/hooks/citation-guard/citation-guard.mjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Hook contents">
+          <h2 id="contents">What it does</h2>
+<h2 id="citation-guard">citation-guard</h2>
+<p>A Claude Code hook that makes the first level of <code>citation-verifier</code> continuous. Every time a chapter file is edited, the cite keys in it are checked against the bibliography; a key with no entry is reported immediately as context, with the instruction to add it from a real identifier via <code>bibtex-manager</code> rather than to invent one.</p>
+<ul>
+<li><strong>Recognises</strong> LaTeX (<code>\cite</code>, <code>\citep</code>, <code>\citet</code>, <code>\parencite</code>, <code>\textcite</code>, <code>\autocite</code>, <code>\footcite</code>, <code>\citeauthor</code>, <code>\citeyear</code>, with optional arguments and stars) and Pandoc Markdown (<code>[@key]</code>, <code>[@a; @b, p. 3]</code>, in-text <code>@key</code>). Code blocks and emails are ignored.</li>
+<li><strong>Finds the .bib</strong> from <code>citationGuard.bibFile</code> in config, else the nearest <code>.bib</code> walking up from the edited file, else any <code>.bib</code> in the project (four levels deep). No <code>.bib</code> means silence.</li>
+<li><strong>On a .bib edit</strong>, reports duplicate keys and entries with no <code>doi</code>, <code>eprint</code>, <code>url</code>, or <code>howpublished</code>, which <code>citation-verifier</code> will not be able to check.</li>
+<li><strong>Context, not a block.</strong> The edit already happened; Claude sees the problem and fixes it next.</li>
+<li><strong>Fails open</strong>, zero dependencies (<code>node &gt;= 18</code>).</li>
+</ul>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>citation-guard.mjs</code></td>
+<td>The hook script.</td>
+</tr>
+<tr>
+<td><code>HOOK.md</code></td>
+<td>This file.</td>
+</tr>
+</tbody></table>
+<h3 id="activate-it-required-manual-step">Activate it (required manual step)</h3>
+<p>Add this to <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (global):</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Edit|Write|MultiEdit&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/citation-guard/citation-guard.mjs\&quot;&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Installing the <code>thesis</code> plugin from the dotclaude marketplace wires this automatically.</p>
+<h3 id="verify-it">Verify it</h3>
+<pre><code class="language-bash">printf &#39;See \\cite{ghost2099}.\n&#39; &gt; chapters/test.tex
+echo &#39;{&quot;tool_name&quot;:&quot;Edit&quot;,&quot;tool_input&quot;:{&quot;file_path&quot;:&quot;&#39;$PWD&#39;/chapters/test.tex&quot;},&quot;cwd&quot;:&quot;&#39;$PWD&#39;&quot;}&#39; \
+  | node .claude/hooks/citation-guard/citation-guard.mjs
+</code></pre>
+<p>You should see a JSON object whose <code>additionalContext</code> names <code>ghost2099</code> as undefined.</p>
+<h3 id="tune-it">Tune it</h3>
+<pre><code class="language-json">{
+  &quot;citationGuard&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;bibFile&quot;: &quot;references.bib&quot;
+  }
+}
+</code></pre>
+<p>Set <code>bibFile</code> when the project has several <code>.bib</code> files and only one is the thesis bibliography.</p>
+<blockquote>
+<p>Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it.</p>
+</blockquote>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/academic/citation-guard" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

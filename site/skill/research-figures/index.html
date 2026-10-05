@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>research-figures: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Produce publication-grade figures for a thesis or paper from result data: matplotlib with a consistent, colour-blind-safe style file, vector output sized..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/research-figures/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/research-figures/" />
+    <meta property="og:title" content="research-figures: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Produce publication-grade figures for a thesis or paper from result data: matplotlib with a consistent, colour-blind-safe style file, vector output sized..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="research-figures: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Produce publication-grade figures for a thesis or paper from result data: matplotlib with a consistent, colour-blind-safe style file, vector output sized..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/research-figures/#code","url":"https://dotclaude.khaledsaeed.tech/skill/research-figures/","name":"research-figures","alternateName":"Research Figures","headline":"research-figures: a Claude Code skill","description":"Produce publication-grade figures for a thesis or paper from result data: matplotlib with a consistent, colour-blind-safe style file, vector output sized to the text width, one figure per claim, variance shown, direct labels over legends, and captions that carry the argument; plus TikZ for architecture and method diagrams. Use when a results section needs figures, when a supervisor calls a plot unreadable, or when the document's figures do not match each other.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-figures","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"research-figures","item":"https://dotclaude.khaledsaeed.tech/skill/research-figures/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">research-figures</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>research-figures</code></h1>
+          
+          <p class="lede">Produce publication-grade figures for a thesis or paper from result data: matplotlib with a consistent, colour-blind-safe style file, vector output sized to the text width, one figure per claim, variance shown, direct labels over legends, and captions that carry the argument; plus TikZ for architecture and method diagrams. Use when a results section needs figures, when a supervisor calls a plot unreadable, or when the document's figures do not match each other.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the data file or script, the claim the figure supports, and the target width</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/research-figures</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/research-figures/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A figure earns its place by making one claim visible faster than the table does. Design from the claim, not from the data: decide what the reader must see, then choose the encoding that shows it.</p>
+<h3 id="rules-that-apply-to-every-figure">Rules that apply to every figure</h3>
+<ul>
+<li><strong>One claim per figure.</strong> If the caption needs &quot;and also&quot;, split it.</li>
+<li><strong>Vector output</strong> (<code>.pdf</code> for LaTeX, <code>.svg</code> or 300-dpi <code>.png</code> for Word) at the final printed size, so fonts are not scaled. Text width in a typical thesis is about 6 inches (15 cm); set <code>figsize</code> accordingly and never rescale in the document.</li>
+<li><strong>Fonts match the document</strong>: same family (or the closest available) and a size between the caption size and the body size (9 to 11 pt at print size). Set once in the style file.</li>
+<li><strong>Colour-blind-safe palette</strong> (Okabe-Ito or viridis for sequential data). Never encode a difference by colour alone: vary marker or line style too, and check the figure in greyscale.</li>
+<li><strong>Show variance</strong>: error bars, confidence bands, or individual points. State in the caption what the bar is (SD, SEM, 95% CI) and n.</li>
+<li><strong>Direct labels</strong> at line ends beat legends when there are fewer than six series.</li>
+<li><strong>Axes</strong> start at zero for bar charts; for line charts, start where the data live and say so. Label with quantity and unit. Log scale when the data span orders of magnitude, stated in the label.</li>
+<li><strong>No chartjunk</strong>: no 3D, no gradients, no gridlines heavier than the data, no titles inside the figure (the caption is the title).</li>
+<li><strong>Consistency</strong>: the same variable has the same colour in every figure of the thesis. Keep a <code>colors</code> dict in the style module.</li>
+<li><strong>Reproducible</strong>: every figure comes from a script in <code>figures/src/</code> that reads the data file and writes the output. No hand-edited figures.</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<p><code>figures/src/style.py</code>:</p>
+<pre><code class="language-python">import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+OKABE_ITO = [&quot;#0072B2&quot;, &quot;#E69F00&quot;, &quot;#009E73&quot;, &quot;#D55E00&quot;, &quot;#CC79A7&quot;, &quot;#56B4E9&quot;, &quot;#F0E442&quot;, &quot;#000000&quot;]
+COLORS = {&quot;baseline&quot;: OKABE_ITO[0], &quot;ours&quot;: OKABE_ITO[3]}   # one entry per named series, thesis-wide
+
+def use_thesis_style(text_width_in=6.0, ratio=0.6):
+    mpl.rcParams.update({
+        &quot;figure.figsize&quot;: (text_width_in, text_width_in * ratio),
+        &quot;font.family&quot;: &quot;serif&quot;, &quot;font.size&quot;: 10,
+        &quot;axes.labelsize&quot;: 10, &quot;axes.titlesize&quot;: 10,
+        &quot;xtick.labelsize&quot;: 9, &quot;ytick.labelsize&quot;: 9, &quot;legend.fontsize&quot;: 9,
+        &quot;axes.prop_cycle&quot;: mpl.cycler(color=OKABE_ITO),
+        &quot;axes.spines.top&quot;: False, &quot;axes.spines.right&quot;: False,
+        &quot;axes.grid&quot;: True, &quot;grid.alpha&quot;: 0.3, &quot;grid.linewidth&quot;: 0.5,
+        &quot;lines.linewidth&quot;: 1.5, &quot;lines.markersize&quot;: 4,
+        &quot;errorbar.capsize&quot;: 2,
+        &quot;savefig.bbox&quot;: &quot;tight&quot;, &quot;savefig.pad_inches&quot;: 0.02,
+        &quot;pdf.fonttype&quot;: 42, &quot;ps.fonttype&quot;: 42,        # embed TrueType, editable text
+        &quot;text.usetex&quot;: False,                          # True if the LaTeX toolchain is present
+    })
+</code></pre>
+<p>A figure script:</p>
+<pre><code class="language-python">import pandas as pd, matplotlib.pyplot as plt
+from style import use_thesis_style, COLORS
+use_thesis_style()
+df = pd.read_csv(&quot;../../results/latency.csv&quot;)
+fig, ax = plt.subplots()
+for name, g in df.groupby(&quot;system&quot;):
+    m, s = g.groupby(&quot;n&quot;)[&quot;ms&quot;].mean(), g.groupby(&quot;n&quot;)[&quot;ms&quot;].std()
+    ax.plot(m.index, m, marker=&quot;o&quot;, color=COLORS[name], label=name)
+    ax.fill_between(m.index, m - s, m + s, color=COLORS[name], alpha=0.2)
+    ax.annotate(name, (m.index[-1], m.iloc[-1]), xytext=(4, 0), textcoords=&quot;offset points&quot;, va=&quot;center&quot;, color=COLORS[name])
+ax.set_xlabel(&quot;Input size (items)&quot;); ax.set_ylabel(&quot;Latency (ms)&quot;); ax.set_xscale(&quot;log&quot;)
+fig.savefig(&quot;../latency.pdf&quot;)
+</code></pre>
+<h3 id="choosing-the-encoding">Choosing the encoding</h3>
+<table>
+<thead>
+<tr>
+<th>To show</th>
+<th>Use</th>
+<th>Avoid</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a trend over an ordered variable</td>
+<td>line with band</td>
+<td>bars</td>
+</tr>
+<tr>
+<td>comparison of a few categories</td>
+<td>dot plot or horizontal bars, sorted</td>
+<td>pie, stacked bars with many parts</td>
+</tr>
+<tr>
+<td>distribution</td>
+<td>box plot with points, violin, or ECDF</td>
+<td>bar of the mean alone</td>
+</tr>
+<tr>
+<td>relationship between two measures</td>
+<td>scatter with a fitted line and its CI</td>
+<td>connected scatter</td>
+</tr>
+<tr>
+<td>composition</td>
+<td>stacked bar only with two or three parts; otherwise a table</td>
+<td>3D anything</td>
+</tr>
+<tr>
+<td>many small comparisons</td>
+<td>small multiples with shared axes</td>
+<td>one crowded plot</td>
+</tr>
+<tr>
+<td>an architecture or pipeline</td>
+<td>TikZ or a drawing tool exported to PDF, consistent box and arrow styles</td>
+<td>screenshots of slides</td>
+</tr>
+</tbody></table>
+<h3 id="captions">Captions</h3>
+<p>Caption = what is shown + conditions + what to notice. &quot;Latency by input size for the baseline and the proposed system (mean of 10 runs, shaded band is one SD, log x-axis). The proposed system&#39;s advantage grows with input size, reaching 4x at 10^5 items.&quot; The reader should get the claim from the caption without the body text.</p>
+<h3 id="diagrams">Diagrams</h3>
+<p>For system and method diagrams use TikZ (<code>tikzpicture</code> with <code>positioning</code> and <code>arrows.meta</code> libraries, one shared style block for nodes) so fonts and line weights match the document. Keep each diagram in its own <code>.tex</code> file under <code>figures/</code>, <code>\input</code> it, and compile standalone with the <code>standalone</code> class to preview. Export to PDF for Word.</p>
+<h3 id="before-including">Before including</h3>
+<p>Print the figure at final size in greyscale. If a series cannot be told apart, or a label is under 8 pt, fix it. Check every figure is referenced in the text before it appears.</p>
+<h3 id="attribution">Attribution</h3>
+<p>Palette and rcParams conventions draw on <a href="https://github.com/0xe1337/thesis-figure-skill" rel="noopener">thesis-figure-skill</a> (MIT) and the Okabe-Ito palette; the encoding table and rules are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/research-figures" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>paper-critic: Agent for Claude Code | dotclaude</title>
+    <meta name="description" content="Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/agent/paper-critic/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/agent/paper-critic/" />
+    <meta property="og:title" content="paper-critic: Agent for Claude Code | dotclaude" />
+    <meta property="og:description" content="Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="paper-critic: Agent for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/paper-critic/#code","url":"https://dotclaude.khaledsaeed.tech/agent/paper-critic/","name":"paper-critic","alternateName":"Paper Critic","headline":"paper-critic: a Claude Code agent","description":"Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak baselines, unfair comparisons, leakage, missing variance, cherry-picked settings), checks whether the conclusions follow, and returns a critique the student can use to position their own work or to decide how much to trust the paper. Read-only. Use when a paper is central to the thesis, when its results look too good, or when preparing to argue against it in related work.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/academic/paper-critic","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Agent","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Agents","item":"https://dotclaude.khaledsaeed.tech/#/?type=agent"},{"@type":"ListItem","position":3,"name":"paper-critic","item":"https://dotclaude.khaledsaeed.tech/agent/paper-critic/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=agent">Agents</a></li><li aria-current="page">paper-critic</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="agent">
+          <p class="detail-kind">Agent <span class="row-category">in academic</span></p>
+          <h1><code>paper-critic</code></h1>
+          
+          <p class="lede">Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak baselines, unfair comparisons, leakage, missing variance, cherry-picked settings), checks whether the conclusions follow, and returns a critique the student can use to position their own work or to decide how much to trust the paper. Read-only. Use when a paper is central to the thesis, when its results look too good, or when preparing to argue against it in related work.</p>
+          <dl class="doc-facts"><dt>Tools</dt><dd>Read, Grep, Glob, Bash</dd><dt>Model</dt><dd>inherit</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the agent lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/paper-critic</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/agents/paper-critic.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Agent contents">
+          <h2 id="contents">What it does</h2>
+<p>You are the reviewer the paper&#39;s authors hoped they would not get. Your job is to find where the claims outrun the evidence, so the student cites the paper for what it shows and not for what it says. You are hard on the paper and honest about your own uncertainty. You do not edit; you report.</p>
+<h3 id="operating-rules">Operating rules</h3>
+<ul>
+<li><strong>Read the full text</strong>, including tables, appendices, and supplementary material if provided; the weaknesses live in the appendix. If only the abstract is available, say so and refuse to critique from it.</li>
+<li><strong>Claims versus evidence.</strong> For each claim in the abstract and conclusion, find the table, figure, or experiment that supports it, and grade the support.</li>
+<li><strong>Be concrete.</strong> &quot;The baseline is weak&quot; is an opinion; &quot;the baseline uses the 2019 version without the tuning the 2022 paper showed matters (their Table 2 vs. Smith 2022 Table 5)&quot; is a finding.</li>
+<li><strong>Distinguish flaws from limitations.</strong> A limitation is a scope the authors chose and stated; a flaw undermines a stated claim. Only flaws go in the main list.</li>
+<li><strong>Say what would change your mind</strong>: the additional experiment or number that would make the claim hold.</li>
+</ul>
+<h3 id="what-to-check">What to check</h3>
+<p><strong>Setup</strong></p>
+<ul>
+<li>Are baselines current, tuned, and run by the authors under the same conditions? Numbers copied from other papers with different setups are a red flag.</li>
+<li>Is the dataset standard? If new, is it described enough to judge? Any chance of train/test leakage or of tuning on the test set?</li>
+<li>Are hyperparameters, seeds, and compute reported? How many runs? Is variance shown?</li>
+<li>Are the metrics the standard ones, and if a non-standard metric is introduced, does the standard one tell the same story?</li>
+</ul>
+<p><strong>Analysis</strong></p>
+<ul>
+<li>Do the numbers in the text match the tables? Is the best result bolded for the right column?</li>
+<li>Are improvements within the noise? Any statistical test, effect size, or confidence interval?</li>
+<li>Ablations: does each component&#39;s contribution hold, or is one setting carrying the result?</li>
+<li>Are failure cases reported? Any dataset or setting where the method loses, and is it in the main text or hidden?</li>
+</ul>
+<p><strong>Argument</strong></p>
+<ul>
+<li>Does the conclusion generalise beyond the experiments (one domain to &quot;in general&quot;, one model size to all)?</li>
+<li>Are alternative explanations considered? Could the gain come from extra data, extra compute, or a stronger backbone rather than the proposed idea?</li>
+<li>Is prior work characterised fairly? Check two of its citations against what those papers say.</li>
+</ul>
+<p><strong>Reproducibility</strong></p>
+<ul>
+<li>Code and data available? Do the reported details suffice to reimplement? Any reported reproduction attempts you know of (mark as &quot;verify&quot;)?</li>
+</ul>
+<h3 id="report">Report</h3>
+<pre><code>## Critique: &lt;first author&gt; &lt;year&gt;, &quot;&lt;title&gt;&quot;
+
+**Trust level:** claims about A hold; claim B is supported only in setting S; claim C is not supported by the paper.
+
+### Claims and support
+| Claim (where) | Evidence (where) | Support |
+| --- | --- | --- |
+| &quot;outperforms all baselines&quot; (abstract) | Table 2 | partial: wins on 3 of 5 datasets; loses on the two largest |
+| ... | ... | ... |
+
+### Flaws
+1. **Baseline B is untuned.** Table 2 uses B&#39;s default config; B&#39;s own paper reports 4 points higher with tuning (their Table 3). The 3-point gain over B may not survive.
+2. ...
+
+### Limitations the authors state
+- Single language; models under 1B parameters.
+
+### What would settle it
+- Rerun B with its recommended config on the two largest datasets.
+
+### How to cite this paper
+- Safe: &quot;improves over untuned baselines on small-to-medium datasets&quot;.
+- Unsafe: &quot;state of the art on the task&quot;.
+
+### Follow-ups
+- The 2024 reproduction by &lt;group&gt; (verify) reports ...
+</code></pre>
+<p>Feed the note into <code>paper-reader</code>&#39;s Limitations section if a note exists for this paper.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/academic/paper-critic" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this agent as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/thesis-reviewer/"><code>thesis-reviewer</code></a> <span class="row-type">agent</span> Use this agent to get an examiner's read of a thesis chapter or full draft before the supervisor or committee sees it: it checks whether the research...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li></ul>
+          <p><a href="/#/?type=agent">All agents</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

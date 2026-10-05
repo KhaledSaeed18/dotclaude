@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>coolify-vps-baseline: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/" />
+    <meta property="og:title" content="coolify-vps-baseline: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="coolify-vps-baseline: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/#code","url":"https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/","name":"coolify-vps-baseline","alternateName":"Coolify Vps Baseline","headline":"coolify-vps-baseline: a Claude Code skill","description":"Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry, firewall, proxy and monitoring before the first deploy.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/coolify-vps-baseline","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"reference/server-checklist.md"},{"@type":"CreativeWork","name":"reference/traefik-notes.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"coolify-vps-baseline","item":"https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">coolify-vps-baseline</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>coolify-vps-baseline</code></h1>
+          
+          <p class="lede">Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry, firewall, proxy and monitoring before the first deploy.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the SSH alias or host, and what already runs there</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/coolify-vps-baseline</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/coolify-vps-baseline/SKILL.md</code></li><li><code>.claude/skills/coolify-vps-baseline/reference/server-checklist.md</code></li><li><code>.claude/skills/coolify-vps-baseline/reference/traefik-notes.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A production VPS exposes two ports to the world, runs every workload as a Coolify resource behind one proxy, builds nothing itself, and is observed. Establish those facts before any application is deployed, and verify them read-only before changing anything on a server that already serves traffic.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>The server never builds.</strong> Images are built in CI and pulled from a registry. A build on the host competes with production for CPU and memory and hangs on registry installs.</li>
+<li><strong>Never publish container ports on the host.</strong> Only the proxy listens on 80 and 443; everything else is reached through the Docker network. A <code>-p</code> or Coolify port mapping on an app is a firewall bypass.</li>
+<li><strong>Do not touch the firewall, fail2ban, sshd or the proxy config without the owner&#39;s explicit go.</strong> A wrong rule locks everyone out; the owner runs those commands, you give them exact lines.</li>
+<li><strong>One SSH session, reused.</strong> Port 22 is usually rate limited; open a ControlMaster connection once and multiplex every command through it (see Step 1).</li>
+<li><strong>Read before you write.</strong> Capacity, running containers, firewall state and registry login are facts to read first; report them before proposing changes.</li>
+</ul>
+<h3 id="step-1-connect-once-and-read-the-server">Step 1: Connect once and read the server</h3>
+<pre><code class="language-bash"># ~/.ssh/config: Host &lt;alias&gt;, HostName &lt;ip&gt;, User &lt;user&gt;, IdentityFile ...
+S=~/.ssh/&lt;alias&gt;.sock   # a short path; long socket paths fail silently
+ssh -o ControlMaster=auto -o ControlPath=$S -o ControlPersist=30m &lt;alias&gt; true
+ssh -o ControlPath=$S &lt;alias&gt; &#39;free -h; df -h /; nproc; sudo docker stats --no-stream --format &quot;{{.Name}}\t{{.MemUsage}}&quot;&#39;
+ssh -o ControlPath=$S &lt;alias&gt; &#39;sudo ufw status verbose; sudo docker ps --format &quot;{{.Names}}\t{{.Ports}}\t{{.Status}}&quot;&#39;
+</code></pre>
+<p>Record: RAM and disk headroom, what already runs, which containers publish host ports (ideally only the proxy), and the OS version. The checklist in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/coolify-vps-baseline/reference/server-checklist.md" rel="noopener">reference/server-checklist.md</a> lists every item to confirm on a fresh or inherited server, with the command for each.</p>
+<h3 id="step-2-confirm-the-coolify-layer">Step 2: Confirm the Coolify layer</h3>
+<p>Coolify owns Docker on the host. Confirm, read-only:</p>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coolify version and its own containers healthy</td>
+<td><code>sudo docker ps --filter name=coolify</code></td>
+</tr>
+<tr>
+<td>Proxy is Traefik with Let&#39;s Encrypt</td>
+<td><code>sudo docker inspect coolify-proxy --format &#39;{{json .Args}}&#39;</code>; look for <code>--entrypoints.https</code> and the ACME resolver</td>
+</tr>
+<tr>
+<td>Proxy trusts no forwarded headers from clients</td>
+<td>no <code>forwardedHeaders.trustedIPs</code> or <code>insecure</code> in the args (see <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/coolify-vps-baseline/reference/traefik-notes.md" rel="noopener">reference/traefik-notes.md</a>)</td>
+</tr>
+<tr>
+<td>A project and environment exist for the app</td>
+<td>Coolify UI, Projects</td>
+</tr>
+<tr>
+<td>The host can pull private images</td>
+<td><code>sudo docker pull ghcr.io/&lt;owner&gt;/&lt;repo&gt;:main</code> after the owner logs Docker in with a read-only package token</td>
+</tr>
+</tbody></table>
+<p>Registry login is <code>sudo docker login ghcr.io</code> run by the owner with a personal access token scoped to <code>read:packages</code>; the credential lands in root&#39;s Docker config, which is what Coolify&#39;s pulls use.</p>
+<h3 id="step-3-decide-the-per-app-guard-rails">Step 3: Decide the per-app guard rails</h3>
+<p>Before the first application is created, fix these defaults and write them into the project&#39;s deployment doc:</p>
+<ul>
+<li><strong>Memory limit per app</strong> sized from Step 1 (a Next.js server is comfortable at 512 MB; a Node API with a browser or heavy workers needs more). Leave headroom for the database and Coolify itself.</li>
+<li><strong>Health check as a container command</strong>, not an HTTP check from the proxy, so a container never takes traffic until its own probe passes.</li>
+<li><strong>One domain per app</strong>, the real one; remove the <code>sslip.io</code> placeholder Coolify adds.</li>
+<li><strong>Rolling updates</strong> stay on (the default) so the old container serves until the new one is healthy.</li>
+</ul>
+<h3 id="step-4-monitoring-and-backups">Step 4: Monitoring and backups</h3>
+<p>The server needs a watcher that is not Coolify: a cron health check with alerts on change, and verified database backups. Install them with the <code>vps-ops-toolkit</code> skill and add every new resource and domain to its defaults. Coolify&#39;s optional Beszel (or any agent) gives resource history; it does not replace the check.</p>
+<h3 id="step-5-report">Step 5: Report</h3>
+<p>Produce a short server record for the project&#39;s docs: host, OS, public address, SSH alias, capacity, the Coolify project and environment names, the proxy facts, the registry login state, the memory budget, and the open items the owner must do (firewall rules, registry login, alert webhook). Everything you changed and everything you only read, separately.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/coolify-vps-baseline" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

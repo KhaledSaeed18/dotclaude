@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>testing plugin for Claude Code | dotclaude</title>
+    <meta name="description" content="Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/plugins/testing/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/plugins/testing/" />
+    <meta property="og:title" content="testing plugin for Claude Code | dotclaude" />
+    <meta property="og:description" content="Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="testing plugin for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/plugins/testing/#code","url":"https://dotclaude.khaledsaeed.tech/plugins/testing/","name":"testing","headline":"testing: a Claude Code plugin","description":"Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/testing","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","plugin","testing","testing","playwright","e2e","unit-tests"],"hasPart":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/#code","name":"accessibility-audit","url":"https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/webapp-testing/#code","name":"webapp-testing","url":"https://dotclaude.khaledsaeed.tech/skill/webapp-testing/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/write-tests/#code","name":"write-tests","url":"https://dotclaude.khaledsaeed.tech/command/write-tests/"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Plugins","item":"https://dotclaude.khaledsaeed.tech/#/plugins"},{"@type":"ListItem","position":3,"name":"testing","item":"https://dotclaude.khaledsaeed.tech/plugins/testing/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/plugins">Plugins</a></li><li aria-current="page">testing</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="plugin">
+          <p class="detail-kind">Plugin <span class="row-category">testing</span></p>
+          <h1><code>testing</code></h1>
+          <p class="lede">Testing toolkit: browser-based end-to-end verification with Playwright and a /write-tests command that generates a suite matching project conventions.</p>
+          <p class="doc-keywords"><span class="chip">testing</span> <span class="chip">playwright</span> <span class="chip">e2e</span> <span class="chip">unit-tests</span></p>
+        </header>
+        <section class="doc-install">
+<h2 id="install">Install</h2>
+<p>Add the marketplace once, then install the bundle. It updates with <code>/plugin marketplace update dotclaude</code>.</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install testing@dotclaude</code></pre>
+        </section>
+        <section class="doc-body">
+          <h2 id="contents">What you get</h2>
+<h3 id="skills">Skills (2)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/"><code>accessibility-audit</code></a> <span class="row-type">skill</span> Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/webapp-testing/"><code>webapp-testing</code></a> <span class="row-type">skill</span> Verify a web application works in a real browser with Playwright, covering navigation, form submission, interactions, console errors, screenshots, and...</li></ul>
+<h3 id="commands">Commands (1)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/write-tests/"><code>write-tests</code></a> <span class="row-type">command</span> Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. Use when a source file...</li></ul>
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/testing" rel="noopener">View the plugin tree on GitHub</a> · <a href="/#/plugins">All plugins</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>live-domain-cutover: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/" />
+    <meta property="og:title" content="live-domain-cutover: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="live-domain-cutover: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/#code","url":"https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/","name":"live-domain-cutover","alternateName":"Live Domain Cutover","headline":"live-domain-cutover: a Claude Code skill","description":"Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use when migrating a production app between hosting platforms.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/live-domain-cutover","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"live-domain-cutover","item":"https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">live-domain-cutover</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>live-domain-cutover</code></h1>
+          
+          <p class="lede">Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use when migrating a production app between hosting platforms.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the domain, the old host, the new host, and the DNS provider</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/live-domain-cutover</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/live-domain-cutover/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Move the name last. Everything about the new host is proven on a rehearsal name first; the cutover is then one DNS edit with a recorded rollback value, and the old host keeps serving stale caches until they expire. Sessions survive because cookies bind to the domain, not to the machine behind it.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>DNS edits are the owner&#39;s.</strong> Give exact records (type, host, value, TTL); the owner saves them and tells you. You verify from the authoritative servers and public resolvers.</li>
+<li><strong>Record the rollback value before anything changes.</strong> The current record (a CNAME target or an address) goes into the deployment doc first. Rollback is restoring it, nothing else.</li>
+<li><strong>Lower the TTL hours ahead.</strong> A 1 minute TTL on the record being replaced is what makes the switch and the rollback fast.</li>
+<li><strong>The old host stays alive until the soak ends.</strong> Visitors with a cached answer keep reaching it; it must keep working.</li>
+<li><strong>A certificate needs DNS first.</strong> HTTP-01 issuance fails while the name does not resolve; plan the redeploy that re-registers the router after the record exists.</li>
+</ul>
+<h3 id="step-1-record-the-starting-point">Step 1: Record the starting point</h3>
+<pre><code class="language-bash">dig +noall +answer &lt;domain&gt;                   # the rollback value and current TTL
+dig +short NS &lt;zone&gt;                          # authoritative servers to query later
+</code></pre>
+<p>Write both into the deployment doc together with the new host&#39;s address. Ask the owner to lower the TTL of that record to 1 min now; continue only after <code>dig +noall +answer &lt;domain&gt; @&lt;ns&gt;</code> shows the lower TTL.</p>
+<h3 id="step-2-rehearse-on-a-sibling-name">Step 2: Rehearse on a sibling name</h3>
+<p>Owner adds an A record <code>&lt;name&gt;-next</code> to the new host (TTL 1 min). Deploy the application with only <code>https://&lt;name&gt;-next.&lt;zone&gt;</code> as its domain. Run the whole <code>deploy-verification</code> skill there: certificate, container contract, rolling update, client address, signed-in pages in every locale. Compare response headers with the old host and add anything missing (a platform edge often adds <code>Strict-Transport-Security</code>). Fix and redeploy until every line passes. Nothing on the real domain has changed yet.</p>
+<h3 id="step-3-cut-over">Step 3: Cut over</h3>
+<p>At a quiet time agreed with the owner, they replace the record: delete the old <code>&lt;name&gt;</code> record, add A <code>&lt;name&gt;</code> to the new host, TTL 1 min. Then, in this order:</p>
+<ol>
+<li>Poll the authoritative server until it answers the new address (<code>dig +short &lt;domain&gt; @&lt;ns&gt;</code>), then 1.1.1.1 and 8.8.8.8.</li>
+<li>Set <code>https://&lt;domain&gt;</code> as the application&#39;s only domain in Coolify (drop <code>&lt;name&gt;-next</code>), redeploy so the router re-registers, and watch the certificate: <code>openssl s_client ... -verify_return_error</code> until <code>Verify return code: 0</code>.</li>
+<li>Switch the pipeline&#39;s probe variable (<code>SITE_URL</code> or <code>READINESS_URL</code>) to the real domain.</li>
+<li>Run <code>deploy-verification</code> again on the real domain. The owner reloads their already signed-in tab: the session must survive.</li>
+</ol>
+<p>Expected window: at most a couple of minutes during which some visitors still reach the old host, which still works. If anything fails, the owner restores the recorded value and the new host is debugged without pressure.</p>
+<h3 id="step-4-soak-then-remove-the-old-host">Step 4: Soak, then remove the old host</h3>
+<p>Soak for as long as the owner wants (a few days of normal use, or less when the data lives elsewhere and the app is stateless). Then, owner actions with exact steps:</p>
+<ul>
+<li>DNS: delete <code>&lt;name&gt;-next</code>; set the <code>&lt;name&gt;</code> TTL back to Automatic.</li>
+<li>Old host: remove the domain from the project, disconnect the repository, delete the project (and with it its environment variables).</li>
+<li>GitHub: remove the old host&#39;s app access to the repository, delete deployment environments it created, remove any webhook or deploy-hook secret that called it (in every repository, including a backend pipeline that triggered the front-end).</li>
+<li>Docs: the deployment doc records the cutover and drops the migration section; references to the old host remain only as history.</li>
+</ul>
+<p>Verify each: <code>dig</code> for the records, <code>gh api repos/&lt;owner&gt;/&lt;repo&gt;/environments</code>, <code>gh secret list</code> in each repository, a last <code>deploy-verification</code> pass.</p>
+<p>Report the timeline with timestamps, the rollback value kept until removal, every verification result, and the follow-ups left in other repositories.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/live-domain-cutover" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

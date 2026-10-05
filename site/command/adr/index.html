@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>adr: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/adr/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/adr/" />
+    <meta property="og:title" content="adr: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="adr: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/adr/#code","url":"https://dotclaude.khaledsaeed.tech/command/adr/","name":"adr","alternateName":"Adr","headline":"adr: a Claude Code command","description":"Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the options considered with their trade-offs, the decision, and its consequences, in the adr-writing skill's format and the repo's existing ADR style if one exists. Use when a design choice has just been made in conversation, when a reviewer asks why something was done this way, or when a decision needs to outlive the people who made it.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/documentation/adr","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","documentation","docs"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"adr","item":"https://dotclaude.khaledsaeed.tech/command/adr/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">adr</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in documentation</span></p>
+          <h1><code>adr</code></h1>
+          
+          <p class="lede">Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the options considered with their trade-offs, the decision, and its consequences, in the adr-writing skill's format and the repo's existing ADR style if one exists. Use when a design choice has just been made in conversation, when a reviewer asks why something was done this way, or when a decision needs to outlive the people who made it.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>&lt;decision title&gt; [--supersedes N] [--status proposed|accepted]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Write, Glob, Grep, Bash(git:*), Bash(ls:*), Bash(date:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/docs/">docs</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install docs@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/adr</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/adr.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Title and options: <code>$ARGUMENTS</code></p>
+<p>Today: !<code>date +%Y-%m-%d</code></p>
+<p><strong>Existing ADRs:</strong></p>
+<p>!<code>ls docs/adr docs/decisions doc/adr adr 2&gt;/dev/null | tail -15 || echo &quot;(none; docs/adr/ will be created)&quot;</code></p>
+<p><strong>Last ADR (for format):</strong></p>
+<p>!<code>for d in docs/adr docs/decisions doc/adr adr; do f=$(ls $d/*.md 2&gt;/dev/null | sort | tail -1); [ -n &quot;$f&quot; ] &amp;&amp; sed -n 1,40p &quot;$f&quot; &amp;&amp; break; done 2&gt;/dev/null || echo &quot;(no template to match; using the adr-writing format)&quot;</code></p>
+<h3 id="task">Task</h3>
+<p>Write one ADR by applying the <code>adr-writing</code> skill.</p>
+<ol>
+<li><strong>Locate the directory and the next number.</strong> Use the existing ADR directory if any; otherwise <code>docs/adr/</code>. Number is the highest existing plus one, four digits (<code>0007</code>). File name <code>NNNN-&lt;kebab-title&gt;.md</code>.</li>
+<li><strong>Match the existing format</strong> if ADRs exist (headings, status vocabulary, metadata line). Otherwise use the skill&#39;s template.</li>
+<li><strong>Fill it from the conversation.</strong> The context, options, and reasoning were usually just discussed; capture them faithfully, including the options that were rejected and why. Where the discussion did not cover something the template needs (consequences, migration), write what follows from the decision and mark speculation as such.</li>
+<li><strong>Status</strong> from <code>--status</code> (default <code>accepted</code> if the decision was made, <code>proposed</code> if it is still open). With <code>--supersedes N</code>, set this ADR&#39;s &quot;Supersedes&quot; line and append &quot;Superseded by NNNN&quot; to the old one&#39;s status.</li>
+<li><strong>Show the ADR</strong> before writing and ask for a yes. Then write it, and if the repository keeps an index (<code>docs/adr/README.md</code> or similar), add the row.</li>
+</ol>
+<p>Report the path and a one-line summary. Do not commit; that is <code>/commit</code>.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/documentation/adr" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in documentation</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adr-writing/"><code>adr-writing</code></a> <span class="row-type">skill</span> Write Architecture Decision Records that a future engineer can act on: a numbered, immutable record with the context that forced the decision, the options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/openapi-spec/"><code>openapi-spec</code></a> <span class="row-type">skill</span> Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/readme-writing/"><code>readme-writing</code></a> <span class="row-type">skill</span> Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/technical-writing/"><code>technical-writing</code></a> <span class="row-type">skill</span> Write and edit developer documentation, guides, design notes, and engineering blog posts with a working writer's discipline: audience and purpose first...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=documentation">All of documentation</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

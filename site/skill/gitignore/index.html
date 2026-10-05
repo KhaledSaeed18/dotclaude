@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gitignore: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Generate or repair a .gitignore tailored to the project&#39;s actual stacks, frameworks, OS, and editors, and untrack files that are already committed but..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/gitignore/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/gitignore/" />
+    <meta property="og:title" content="gitignore: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Generate or repair a .gitignore tailored to the project&#39;s actual stacks, frameworks, OS, and editors, and untrack files that are already committed but..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="gitignore: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Generate or repair a .gitignore tailored to the project&#39;s actual stacks, frameworks, OS, and editors, and untrack files that are already committed but..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/gitignore/#code","url":"https://dotclaude.khaledsaeed.tech/skill/gitignore/","name":"gitignore","alternateName":"Gitignore","headline":"gitignore: a Claude Code skill","description":"Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but should be ignored. Flags secrets/build/dependency files that slipped into the repo. Use when creating, fixing, or auditing .gitignore.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/gitignore","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"gitignore","item":"https://dotclaude.khaledsaeed.tech/skill/gitignore/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">gitignore</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>gitignore</code></h1>
+          
+          <p class="lede">Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but should be ignored. Flags secrets/build/dependency files that slipped into the repo. Use when creating, fixing, or auditing .gitignore.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) stack/framework to target, or 'audit'</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/gitignore</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/gitignore/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Produce a <code>.gitignore</code> that fits <em>this</em> repo (driven by the stacks actually present, not a generic blob) and fix the common failure where a pattern is added but the file is already tracked, so Git keeps it anyway.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Never ignore source.</strong> Ignore dependencies, build output, caches, logs, secrets, and local cruft, never the code or config the project needs to build.</li>
+<li><strong>Adding a pattern does not untrack a tracked file.</strong> <code>.gitignore</code> only affects <em>untracked</em> files. Already-committed files need <code>git rm --cached</code> (Step 5) to stop being tracked.</li>
+<li><strong>Preserve existing intent.</strong> Don&#39;t wipe a hand-tuned <code>.gitignore</code>; merge, dedupe, and organize. Keep custom and negation (<code>!</code>) rules unless they&#39;re clearly wrong.</li>
+<li><strong>Treat tracked secrets as an incident.</strong> A committed <code>.env</code>, key, or credential is already in history; adding it to <code>.gitignore</code> and <code>rm --cached</code> stops <em>future</em> tracking but does <strong>not</strong> remove it from past commits. Flag it loudly and point to history-rewrite tooling (<code>git filter-repo</code>, BFG) and secret rotation.</li>
+<li><strong>Confirm before <code>git rm --cached</code>.</strong> It changes what&#39;s tracked and lands in the next commit.</li>
+</ul>
+<h3 id="step-1-detect-the-stacks">Step 1: Detect the stacks</h3>
+<p>Scan the repo for what&#39;s actually in use rather than guessing:</p>
+<ul>
+<li><strong>Manifests → ecosystem:</strong> <code>package.json</code> (Node), <code>Cargo.toml</code> (Rust), <code>pyproject.toml</code>/<code>requirements.txt</code>/<code>Pipfile</code> (Python), <code>go.mod</code> (Go), <code>pom.xml</code>/<code>build.gradle</code> (Java/Kotlin), <code>Gemfile</code> (Ruby), <code>composer.json</code> (PHP), <code>*.csproj</code>/<code>*.sln</code> (.NET), <code>pubspec.yaml</code> (Dart/Flutter), <code>mix.exs</code> (Elixir).</li>
+<li><strong>Frameworks</strong> (they add their own build/cache dirs): Next.js (<code>.next/</code>), Nuxt (<code>.nuxt/</code>), Astro, SvelteKit, Vite (<code>dist/</code>), Angular, Django (<code>*.sqlite3</code>, <code>staticfiles/</code>), Rails, Terraform (<code>.terraform/</code>), etc.</li>
+<li><strong>OS files:</strong> macOS (<code>.DS_Store</code>), Windows (<code>Thumbs.db</code>, <code>Desktop.ini</code>), Linux (<code>*~</code>).</li>
+<li><strong>Editors/IDEs:</strong> <code>.vscode/</code>, <code>.idea/</code>, <code>*.swp</code>, <code>.fleet/</code>; these typically belong in a <em>global</em> gitignore, but include locally if the team standardizes there.</li>
+<li><strong>Tooling:</strong> test coverage (<code>coverage/</code>, <code>.nyc_output/</code>), env files (<code>.env*</code>), local caches (<code>.cache/</code>, <code>.turbo/</code>, <code>__pycache__/</code>).</li>
+</ul>
+<h3 id="step-2-audit-whats-already-tracked">Step 2: Audit what&#39;s already tracked</h3>
+<ul>
+<li>Read the current <code>.gitignore</code>(s); there may be nested ones in subdirectories.</li>
+<li>Find files that are tracked but shouldn&#39;t be: compare <code>git ls-files</code> against the patterns you intend (look especially for <code>node_modules/</code>, <code>dist/</code>/<code>build/</code>, <code>target/</code>, <code>__pycache__/</code>, <code>*.log</code>, <code>.env*</code>, key material <code>*.pem</code>/<code>*.key</code>/<code>id_rsa</code>).</li>
+<li><code>git status --ignored</code> shows what&#39;s currently ignored vs. not.</li>
+<li>Anything sensitive already tracked → escalate per the hard rules.</li>
+</ul>
+<h3 id="step-3-build-the-patterns">Step 3: Build the patterns</h3>
+<p>Compose sections per detected stack. Cover, for each:</p>
+<ul>
+<li><strong>Dependencies</strong>: <code>node_modules/</code>, <code>vendor/</code>, <code>target/</code>, <code>.venv/</code>, <code>Pods/</code>.</li>
+<li><strong>Build output</strong>: <code>dist/</code>, <code>build/</code>, <code>out/</code>, <code>*.pyc</code>/<code>__pycache__/</code>, <code>*.class</code>, <code>bin/</code>, <code>obj/</code>.</li>
+<li><strong>Env &amp; secrets</strong>: <code>.env</code>, <code>.env.*</code> (but <strong>keep</strong> <code>!.env.example</code>), <code>*.pem</code>, <code>*.key</code>, <code>*.p12</code>, <code>credentials.json</code>.</li>
+<li><strong>Logs &amp; caches</strong>: <code>*.log</code>, <code>.cache/</code>, <code>.turbo/</code>, <code>.gradle/</code>, <code>.pytest_cache/</code>.</li>
+<li><strong>Coverage</strong>: <code>coverage/</code>, <code>.nyc_output/</code>, <code>htmlcov/</code>.</li>
+<li><strong>OS / editor</strong>: per Step 1.</li>
+</ul>
+<p>Use the canonical templates as reference (GitHub&#39;s <code>github/gitignore</code>, gitignore.io / Toptal generator) but tailor; don&#39;t dump every language. Prefer anchored, specific patterns (<code>/dist/</code> for a root-only dir) over broad ones that may catch wanted files.</p>
+<h3 id="step-4-write-repair-the-file">Step 4: Write / repair the file</h3>
+<ul>
+<li>Group with section comments (<code># Dependencies</code>, <code># Build output</code>, <code># Env &amp; secrets</code>, …) for maintainability.</li>
+<li>Deduplicate and remove contradictions; keep legitimate custom and <code>!</code> negation rules.</li>
+<li>Don&#39;t over-ignore: if a glob would swallow a needed file (e.g. a committed <code>config/*.json</code>), add a negation (<code>!config/required.json</code>) or tighten the pattern.</li>
+<li>Layer correctly: root <code>.gitignore</code> for repo-wide rules; nested <code>.gitignore</code> only where a subtree needs its own; suggest a personal <strong>global</strong> gitignore (<code>core.excludesFile</code>) for editor/OS noise rather than imposing it on the repo.</li>
+</ul>
+<h3 id="step-5-untrack-already-committed-files-with-confirmation">Step 5: Untrack already-committed files (with confirmation)</h3>
+<p>Editing <code>.gitignore</code> won&#39;t stop tracking files Git already knows about. For each such file/dir, after confirming:</p>
+<pre><code>git rm -r --cached path/to/thing      # removes from tracking, keeps it on disk
+</code></pre>
+<p>Then it stays on disk but drops out of the repo on the next commit. For tracked secrets, also flag history rewrite + credential rotation; <code>rm --cached</code> alone leaves them in every past commit.</p>
+<h3 id="step-6-verify">Step 6: Verify</h3>
+<ul>
+<li><code>git status --ignored</code>: intended files now show as ignored; nothing wanted is being ignored.</li>
+<li><code>git check-ignore -v &lt;path&gt;</code>: explains which rule matches a given path (great for debugging surprises).</li>
+<li>Confirm source and required config still appear in <code>git status</code>/<code>git ls-files</code>.</li>
+</ul>
+<p>Report the stacks detected, what got newly ignored or untracked, and any secrets/artifacts that need follow-up beyond <code>.gitignore</code>.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/gitignore" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

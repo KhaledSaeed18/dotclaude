@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dependency-upgrade: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/" />
+    <meta property="og:title" content="dependency-upgrade: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="dependency-upgrade: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/#code","url":"https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/","name":"dependency-upgrade","alternateName":"Dependency Upgrade","headline":"dependency-upgrade: a Claude Code skill","description":"Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration guides for each major, upgrade in ordered small batches with the test suite and typecheck run after each, apply codemods where they exist, handle lockfile and peer-dependency conflicts, and leave a record of what changed and what was deferred. Use when a security advisory lands, when a runtime or framework reaches end of life, when a dependabot queue has piled up, or when an upgrade attempt broke the build.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/dependency-upgrade","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"dependency-upgrade","item":"https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">dependency-upgrade</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>dependency-upgrade</code></h1>
+          
+          <p class="lede">Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration guides for each major, upgrade in ordered small batches with the test suite and typecheck run after each, apply codemods where they exist, handle lockfile and peer-dependency conflicts, and leave a record of what changed and what was deferred. Use when a security advisory lands, when a runtime or framework reaches end of life, when a dependabot queue has piled up, or when an upgrade attempt broke the build.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the package(s) or the goal: security, a major version, everything)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/dependency-upgrade</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/dependency-upgrade/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Upgrades fail when they are done all at once and diagnosed all at once. The discipline is: know what changed, change one thing, run the tests, commit, repeat. A day of small green steps beats a week of bisecting a red branch.</p>
+<h3 id="step-1-inventory">Step 1: inventory</h3>
+<ul>
+<li><code>npm outdated</code> / <code>pnpm outdated</code> / <code>pip list --outdated</code> / <code>cargo outdated</code> / <code>go list -m -u all</code>, plus the audit: <code>npm audit</code>, <code>pip-audit</code>, <code>cargo audit</code>, <code>govulncheck</code>.</li>
+<li>For each candidate: current, latest, is it a major bump, does an advisory apply, is the current version EOL, does it block another upgrade (e.g. the test runner must move before the framework can).</li>
+<li>Classify: <strong>security</strong> (do first, minimal version that fixes), <strong>blocking</strong> (needed for another upgrade), <strong>major</strong> (needs reading), <strong>minor/patch</strong> (batchable).</li>
+</ul>
+<p>Write the plan as a table before touching anything; get agreement if the list is long or a major touches the framework.</p>
+<h3 id="step-2-prepare">Step 2: prepare</h3>
+<ul>
+<li>Green baseline: full test suite, typecheck, lint, and build pass on the current commit; record timings.</li>
+<li>A branch per major upgrade; one branch for the minor/patch batch.</li>
+<li>Read, for each major: the release notes for every skipped major, the migration guide, the codemods offered, and the peer dependency changes. Note breaking changes that touch this codebase (grep for the removed APIs).</li>
+</ul>
+<h3 id="step-3-minor-and-patch-batch">Step 3: minor and patch batch</h3>
+<p>Update them together (<code>pnpm update</code> within ranges, <code>pip install -U</code> for the batch), run the gate, commit as one change. If it goes red, bisect the batch by halving.</p>
+<h3 id="step-4-majors-one-at-a-time">Step 4: majors, one at a time</h3>
+<p>For each, in dependency order (tooling first: TypeScript, test runner, bundler; then libraries; then the framework):</p>
+<ol>
+<li>Bump the one package (and its peers that must move with it).</li>
+<li>Run codemods if the project offers them (<code>npx @next/codemod</code>, <code>npx react-codemod</code>, <code>django-upgrade</code>, <code>pyupgrade</code>, <code>cargo fix --edition</code>).</li>
+<li>Typecheck first: it lists the removed and changed APIs faster than tests do.</li>
+<li>Fix compile errors by following the migration guide, not by casting or suppressing.</li>
+<li>Run the tests; fix behaviour changes the guide predicted; investigate any it did not.</li>
+<li>Run the app or the smoke path once by hand where tests are thin.</li>
+<li>Commit with the version range and the changes made in the body.</li>
+</ol>
+<p>Lockfile conflicts: regenerate from the manifest (<code>pnpm install --no-frozen-lockfile</code> on the branch, then commit) rather than hand-merging. Peer warnings: satisfy them or pin with a documented override (<code>pnpm.overrides</code>, <code>resolutions</code>), with a comment naming the reason and the removal condition.</p>
+<h3 id="step-5-runtime-and-language-upgrades">Step 5: runtime and language upgrades</h3>
+<p>Node, Python, Java, Go versions: update the engine field, <code>.nvmrc</code>/<code>.tool-versions</code>/<code>pyproject</code> requires-python, the Dockerfile base, and CI matrices together; run the full suite on the new version; check native modules and C extensions rebuild. Keep the old version in the CI matrix for one release when consumers may lag.</p>
+<h3 id="step-6-record">Step 6: record</h3>
+<p>In the PR body or <code>docs/upgrades/&lt;date&gt;.md</code>: the table from step 1 with the outcome per row (upgraded to X, deferred because Y, blocked by Z), the codemods run, the behaviour changes noticed, and the overrides added with their removal condition. Deferred items become issues.</p>
+<h3 id="automation-afterwards">Automation afterwards</h3>
+<p>Dependabot or Renovate with grouped minor/patch updates weekly, majors as separate PRs, security updates immediately, and the lockfile maintained. A queue that is merged weekly never becomes a migration project.</p>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Never upgrade and refactor in the same commit.</li>
+<li>Never silence a type error or a deprecation warning to make an upgrade pass; the warning is the migration guide pointing at the line.</li>
+<li>A failed major upgrade is reverted cleanly (<code>git revert</code> or drop the branch), the blocker written down, and the rest of the plan continues.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/dependency-upgrade" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

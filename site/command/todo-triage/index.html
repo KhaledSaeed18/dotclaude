@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>todo-triage: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/todo-triage/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/todo-triage/" />
+    <meta property="og:title" content="todo-triage: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="todo-triage: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/todo-triage/#code","url":"https://dotclaude.khaledsaeed.tech/command/todo-triage/","name":"todo-triage","alternateName":"Todo Triage","headline":"todo-triage: a Claude Code command","description":"Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan. Use when technical-debt comments have accumulated and nobody knows which ones still matter.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/productivity/todo-triage","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","productivity","productivity"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"todo-triage","item":"https://dotclaude.khaledsaeed.tech/command/todo-triage/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">todo-triage</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in productivity</span></p>
+          <h1><code>todo-triage</code></h1>
+          
+          <p class="lede">Inventory every TODO, FIXME, HACK, and XXX comment, enrich each with age and author from git blame, classify them (bug risk, missing feature, cleanup, obsolete), and produce a prioritized triage table with recommended dispositions. Pass a path to limit the scan. Use when technical-debt comments have accumulated and nobody knows which ones still matter.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[path]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Grep, Glob, Bash(git:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/productivity/">productivity</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install productivity@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/todo-triage</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/todo-triage.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Scope (optional, defaults to the whole repository): <code>$ARGUMENTS</code></p>
+<p><strong>Marker counts:</strong></p>
+<p>!<code>grep -rInE &quot;(TODO|FIXME|HACK|XXX)[:( ]&quot; --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=dist --exclude-dir=build . 2&gt;/dev/null | wc -l</code></p>
+<h3 id="task">Task</h3>
+<p>Turn stale debt comments into decisions. Every marker gets exactly one disposition: fix now, ticket it, keep with a better comment, or delete.</p>
+<h4 id="step-1-collect">Step 1: Collect</h4>
+<pre><code class="language-bash">grep -rInE &quot;(TODO|FIXME|HACK|XXX)[:( ]&quot; --exclude-dir=node_modules --exclude-dir=.git \
+  --exclude-dir=dist --exclude-dir=build .
+</code></pre>
+<p>Replace the trailing <code>.</code> with the scope path when <code>$ARGUMENTS</code> names one. For each hit, capture file, line, marker type, and the comment text. If there are more than ~60, group obviously identical/boilerplate ones and triage the groups.</p>
+<h4 id="step-2-enrich-with-history">Step 2: Enrich with history</h4>
+<p>For each marker (or group representative), get age and author:</p>
+<pre><code class="language-bash">git blame -L &lt;line&gt;,&lt;line&gt; --porcelain -- &lt;file&gt; | head -3
+</code></pre>
+<p>Age matters: a three-year-old TODO next to code that has since been rewritten is usually obsolete; a two-week-old FIXME by the current author is usually real. Read enough surrounding code to judge whether the comment still describes reality.</p>
+<h4 id="step-3-classify">Step 3: Classify</h4>
+<p>Sort every marker into exactly one bucket:</p>
+<ul>
+<li><strong>Bug risk</strong> - the comment describes incorrect or unsafe behavior that is still present (FIXME on a race, HACK around validation). These are latent defects wearing a comment as a disguise.</li>
+<li><strong>Missing feature / follow-up</strong> - real work someone deferred; still relevant.</li>
+<li><strong>Cleanup</strong> - refactors, naming, dead-code notes; valid but low urgency.</li>
+<li><strong>Obsolete</strong> - the surrounding code changed, the feature shipped, the dependency was replaced; the comment is noise now.</li>
+</ul>
+<h4 id="step-4-report">Step 4: Report</h4>
+<p>Produce one table, ordered bug risk first, then by age within each bucket:</p>
+<pre><code>| # | Marker | Location | Age | Author | Comment (condensed) | Bucket | Recommendation |
+</code></pre>
+<p>Recommendations are specific: &quot;fix now (5-line change, suggest doing it in this session)&quot;, &quot;file an issue titled ...&quot;, &quot;delete the comment, superseded by &lt;commit/feature&gt;&quot;, &quot;rewrite the comment to say what is actually blocked on&quot;. Close with the totals per bucket and offer the two follow-ups you can do immediately: fix the quick bug-risk items, and delete the obsolete comments in one commit.</p>
+<p>Do not change any code during triage; the deliverable is the table and the offer.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/productivity/todo-triage" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in productivity</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/prime/"><code>prime</code></a> <span class="row-type">command</span> Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/weekly-review/"><code>weekly-review</code></a> <span class="row-type">command</span> Produce a weekly review from the evidence in the repository and the workspace: commits and pull requests merged or open, issues closed and opened...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/brainstorming/"><code>brainstorming</code></a> <span class="row-type">skill</span> Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/decision-log/"><code>decision-log</code></a> <span class="row-type">skill</span> Keep a lightweight decision log for a project or a person: one dated line per decision with the choice, the reason, the alternatives, who decided, and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/grill-me/"><code>grill-me</code></a> <span class="row-type">skill</span> Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/handoff/"><code>handoff</code></a> <span class="row-type">skill</span> Compact the current conversation into a handoff document for another agent to pick up. Use when ending a session, switching agents, or preserving context...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/issue-writer/"><code>issue-writer</code></a> <span class="row-type">skill</span> Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/learning-plan/"><code>learning-plan</code></a> <span class="row-type">skill</span> Turn a topic to learn into a sequenced study plan with a goal test, prerequisites, ordered units with one primary resource each, spaced practice and...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=productivity">All of productivity</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>
