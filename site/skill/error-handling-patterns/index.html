@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>error-handling-patterns: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Design and review error handling in a codebase: which errors are expected results versus bugs, typed error hierarchies or result types, where to catch..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/error-handling-patterns/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/error-handling-patterns/" />
+    <meta property="og:title" content="error-handling-patterns: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Design and review error handling in a codebase: which errors are expected results versus bugs, typed error hierarchies or result types, where to catch..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="error-handling-patterns: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Design and review error handling in a codebase: which errors are expected results versus bugs, typed error hierarchies or result types, where to catch..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/error-handling-patterns/#code","url":"https://dotclaude.khaledsaeed.tech/skill/error-handling-patterns/","name":"error-handling-patterns","alternateName":"Error Handling Patterns","headline":"error-handling-patterns: a Claude Code skill","description":"Design and review error handling in a codebase: which errors are expected results versus bugs, typed error hierarchies or result types, where to catch (boundaries) and where never to, preserving cause chains, mapping errors to HTTP and CLI exit codes, retries with backoff for the transient, timeouts everywhere, and the logging that makes a failure diagnosable; with idioms for TypeScript, Python, Go, and Rust. Use when adding error handling to new code, when a codebase has inconsistent or swallowed errors, or when a failure in production was impossible to trace.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/error-handling-patterns","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"error-handling-patterns","item":"https://dotclaude.khaledsaeed.tech/skill/error-handling-patterns/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">error-handling-patterns</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>error-handling-patterns</code></h1>
+          
+          <p class="lede">Design and review error handling in a codebase: which errors are expected results versus bugs, typed error hierarchies or result types, where to catch (boundaries) and where never to, preserving cause chains, mapping errors to HTTP and CLI exit codes, retries with backoff for the transient, timeouts everywhere, and the logging that makes a failure diagnosable; with idioms for TypeScript, Python, Go, and Rust. Use when adding error handling to new code, when a codebase has inconsistent or swallowed errors, or when a failure in production was impossible to trace.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the module or the failure to design for</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/error-handling-patterns</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/error-handling-patterns/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Error handling has one purpose: when something goes wrong, the right party finds out, with enough context to act, and the system stays in a known state. Every pattern below is judged by that.</p>
+<h3 id="first-decision-expected-outcome-or-bug">First decision: expected outcome or bug?</h3>
+<ul>
+<li><strong>Expected outcomes</strong> (not found, validation failed, permission denied, rate limited, conflict) are part of the function&#39;s contract. Represent them in the type: a result type, a discriminated union, a documented typed error. Callers handle them.</li>
+<li><strong>Bugs and infrastructure failures</strong> (null where impossible, invariant broken, database down, out of memory) are exceptions. They propagate to a boundary that logs them and fails the operation; code in between does not catch them.</li>
+</ul>
+<p>Mixing the two (throwing for &quot;not found&quot;, or returning null for &quot;database down&quot;) produces both noisy logs and silent failures.</p>
+<h3 id="represent-errors-with-types">Represent errors with types</h3>
+<ul>
+<li>Base error class per domain (<code>AppError</code> with <code>code</code>, <code>httpStatus</code>, <code>isOperational</code>), subclasses for categories (<code>NotFoundError</code>, <code>ValidationError</code>, <code>ConflictError</code>, <code>UpstreamError</code>). One place maps code to status and to user message.</li>
+<li>Or a result type (<code>Result&lt;T, E&gt;</code> / <code>Either</code>) for expected outcomes in functional codebases; then errors are values, exhaustively matched, and never forgotten. Do not use both styles in one module.</li>
+<li>Errors carry structured context: the ids involved, the operation, the upstream status. Not the user&#39;s secrets, not whole request bodies.</li>
+</ul>
+<h3 id="where-to-catch">Where to catch</h3>
+<p>Catch at <strong>boundaries</strong>: the HTTP handler, the CLI entry, the job runner, the message consumer, the top of a background task. There, translate to the boundary&#39;s vocabulary (status code, exit code, ack/nack), log once with full context, and stop.</p>
+<p>In between, catch only to <strong>add context and rethrow</strong> (<code>throw new UpstreamError(&quot;payments: charge failed&quot;, { cause: err, orderId })</code>) or to <strong>handle an expected outcome</strong> you can actually resolve (retry, fallback with a documented consequence, default that is semantically correct).</p>
+<p>Never: empty catch, catch-and-log-and-continue in the middle of a flow, catch of a broad type when a narrow one was meant, catch to return a sentinel that callers do not check.</p>
+<h3 id="preserve-the-chain">Preserve the chain</h3>
+<ul>
+<li><code>new Error(msg, { cause })</code> in JS; <code>raise ... from err</code> in Python; <code>fmt.Errorf(&quot;...: %w&quot;, err)</code> in Go; <code>#[source]</code>/<code>thiserror</code> in Rust. The boundary logs the whole chain.</li>
+<li>Never convert an error to a string before it reaches the logger; never replace it with a generic one.</li>
+</ul>
+<h3 id="boundaries">Boundaries</h3>
+<p><strong>HTTP</strong>: 400 validation, 401 unauthenticated, 403 forbidden, 404 not found, 409 conflict, 422 semantic, 429 rate limit, 500 unexpected (never leak the message), 502/503/504 upstream. One error response shape (RFC 9457 problem details). A 200 with <code>{ error }</code> in the body is a bug.</p>
+<p><strong>CLI</strong>: exit 0 success, 1 general failure, 2 usage error, others per convention; message to stderr, machine output to stdout; <code>--verbose</code> for the chain.</p>
+<p><strong>Jobs and consumers</strong>: distinguish retryable (nack with delay, bounded attempts, then dead-letter with the error attached) from poison (dead-letter immediately). Idempotent handlers so retries are safe.</p>
+<p><strong>Background tasks and event handlers</strong>: an unhandled rejection in a fire-and-forget task must still reach the logger and the process&#39;s error metric; wrap the entry in a handler.</p>
+<h3 id="transient-failures">Transient failures</h3>
+<ul>
+<li>Timeouts on every outbound call (HTTP, DB, queue), shorter than the caller&#39;s own timeout. A missing timeout is an error that presents as a hang.</li>
+<li>Retry only idempotent operations and only for transient classes (connection reset, 503, 429 with <code>Retry-After</code>), with exponential backoff and jitter, a small maximum (3), and a total budget. Log each retry at debug, the final failure at error.</li>
+<li>Circuit breaker when a dependency is failing at volume, so the system degrades instead of piling up timeouts.</li>
+<li>Fallbacks must be documented consequences: &quot;serve cached price, flag stale&quot; is a fallback; &quot;return 0&quot; is a silent failure.</li>
+</ul>
+<h3 id="logging">Logging</h3>
+<p>Log once, at the boundary, at error level, with: the error class and message, the chain, the operation, the ids, the correlation/request id, and duration. Log expected outcomes (404, validation) at info or not at all; they are not incidents. Never log secrets, tokens, or full bodies. Count errors by class in a metric so a spike is visible.</p>
+<h3 id="language-idioms">Language idioms</h3>
+<ul>
+<li><strong>TypeScript</strong>: <code>catch (err: unknown)</code> then narrow (<code>err instanceof AppError</code>); <code>Promise.allSettled</code> when partial failure is acceptable, <code>Promise.all</code> when one failure should fail all; no floating promises (<code>await</code> or <code>void</code> with a handler); <code>AbortSignal.timeout(ms)</code> for fetch.</li>
+<li><strong>Python</strong>: catch specific exceptions, never bare <code>except:</code>; <code>raise ... from</code>; <code>contextlib</code> for cleanup; <code>asyncio.timeout()</code>; <code>logging.exception()</code> at the boundary.</li>
+<li><strong>Go</strong>: return errors, wrap with <code>%w</code>, check with <code>errors.Is</code>/<code>errors.As</code>; sentinel errors for expected outcomes; <code>context.WithTimeout</code> on every call; never ignore a returned error (<code>_ =</code> needs a comment).</li>
+<li><strong>Rust</strong>: <code>Result</code> everywhere, <code>?</code> to propagate, <code>thiserror</code> for library errors, <code>anyhow</code> at binaries; <code>expect</code> only for invariants with a message that says why it cannot fail.</li>
+</ul>
+<h3 id="review-checklist">Review checklist</h3>
+<p>Every catch either rethrows with context, handles an expected outcome, or is at a boundary. No error is stringified early. Every outbound call has a timeout. Retries are bounded and idempotent. Boundaries return the right status. Logs at the boundary carry the chain and the ids. Tests cover each expected outcome and at least one unexpected failure path (<code>test-gap-analyzer</code> will check).</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/error-handling-patterns" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>git-commit: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Commit work the right way by gathering full repo state, respecting the project&#39;s commitlint/pre-commit/branch rules, staging only understood files, and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/git-commit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/git-commit/" />
+    <meta property="og:title" content="git-commit: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Commit work the right way by gathering full repo state, respecting the project&#39;s commitlint/pre-commit/branch rules, staging only understood files, and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="git-commit: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Commit work the right way by gathering full repo state, respecting the project&#39;s commitlint/pre-commit/branch rules, staging only understood files, and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/git-commit/#code","url":"https://dotclaude.khaledsaeed.tech/skill/git-commit/","name":"git-commit","alternateName":"Git Commit","headline":"git-commit: a Claude Code skill","description":"Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and writing a conventional-commit message whose body explains why. Use when committing, branching, or pushing changes.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-commit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"git-commit","item":"https://dotclaude.khaledsaeed.tech/skill/git-commit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">git-commit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>git-commit</code></h1>
+          
+          <p class="lede">Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and writing a conventional-commit message whose body explains why. Use when committing, branching, or pushing changes.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) ticket/issue ref, scope, or what to commit</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/git-commit</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/git-commit/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Turn a set of changes into a clean, conventional commit (and push, if asked). Work from the actual repo state and the project&#39;s own rules, never from assumptions about what the change &quot;probably&quot; is.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>No co-authors, ever.</strong> Never add a <code>Co-Authored-By:</code> trailer. Never mention Claude, Claude Code, or any AI in a commit message, body, or branch name. The message must read as if a human engineer wrote it.</li>
+<li><strong>Commit only when asked.</strong> Do not commit mid-task, opportunistically, or &quot;to be safe.&quot; Wait for an explicit instruction to commit. One commit per request unless the user asks for more.</li>
+<li><strong>Confirm before <code>git commit</code> and <code>git push</code>.</strong> State exactly what you&#39;re about to commit (files + message) or push (branch + remote) and get a yes first. These are not reversible-for-free; treat them as outward-facing.</li>
+<li><strong>Never <code>git add -A</code> or <code>git add .</code>.</strong> Stage files explicitly by path, and only files you&#39;ve inspected and understood.</li>
+<li><strong>Never commit ignored or generated content.</strong> No <code>node_modules</code>, build output, <code>.env</code>/secrets/keys, lockfile churn you didn&#39;t intend, or generated artifacts (plans, reports, analyses, summaries, scratch notes). Source-code changes only; anything else needs an explicit ask.</li>
+</ul>
+<h3 id="step-1-gather-full-context">Step 1: Gather full context</h3>
+<p>Build a complete picture before touching anything. Run these (read-only) and actually read the output:</p>
+<ul>
+<li><code>git status</code>: what&#39;s modified, staged, untracked.</li>
+<li><code>git diff</code> (unstaged) and <code>git diff --staged</code> (staged): the actual changes, line by line.</li>
+<li><code>git branch --show-current</code> and <code>git branch -a</code>: where you are and what exists.</li>
+<li><code>git log --oneline -15</code>: the repo&#39;s established message and scope style; match it.</li>
+<li><code>git status --ignored</code>: confirm nothing sensitive or generated is sneaking in, and that <code>.gitignore</code> already covers <code>node_modules</code>, build dirs, env files, etc.</li>
+</ul>
+<p>If something is untracked that <em>should</em> be ignored (secrets, env, build output, dependencies), flag it and suggest a <code>.gitignore</code> entry rather than committing it.</p>
+<h3 id="step-2-discover-and-honor-the-projects-rules">Step 2: Discover and honor the project&#39;s rules</h3>
+<p>Repos enforce their own conventions; find and obey them before writing anything:</p>
+<ul>
+<li><strong>Commit-message linting</strong>: look for <code>commitlint.config.{js,cjs,mjs,ts}</code>, <code>.commitlintrc*</code>, a <code>commitlint</code> key in <code>package.json</code>, or equivalents in other ecosystems. Read the allowed types/scopes and subject limits and conform exactly.</li>
+<li><strong>Pre-commit / hooks</strong>: check <code>.pre-commit-config.yaml</code>, <code>.husky/</code>, <code>.git/hooks/</code>, <code>lefthook.yml</code>, or framework equivalents. The commit must pass these. Don&#39;t bypass with <code>--no-verify</code>; if a hook fails, fix the cause (formatting, lint, tests) and report it.</li>
+<li><strong>Branch-name rules</strong>: some repos lint branch names too (in commitlint config, hooks, or CONTRIBUTING). Conform.</li>
+<li><strong>Contributor docs</strong>: skim <code>CONTRIBUTING*</code> and any PR/commit template for additional expectations.</li>
+</ul>
+<p>When the repo&#39;s rules conflict with the defaults below, the repo wins.</p>
+<h3 id="step-3-stage-logically">Step 3: Stage logically</h3>
+<ul>
+<li>Group <strong>related</strong> changes into one commit; split <strong>unrelated</strong> changes into separate commits. A commit should be one coherent idea.</li>
+<li>Stage by explicit path (<code>git add path/to/file</code>), reviewing each. Use <code>git add -p</code> to split mixed files into logical hunks.</li>
+<li>Leave out incidental churn, debug leftovers, and anything from the &quot;never commit&quot; list.</li>
+</ul>
+<h3 id="step-4-branch-when-needed">Step 4: Branch (when needed)</h3>
+<p>If the work doesn&#39;t belong on the current branch (e.g. you&#39;re on <code>main</code>/<code>master</code> or a release branch), create one off the up-to-date main branch. Naming convention:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>feat/</code></td>
+<td>New feature</td>
+</tr>
+<tr>
+<td><code>fix/</code></td>
+<td>Bug fix</td>
+</tr>
+<tr>
+<td><code>chore/</code></td>
+<td>Maintenance, dependencies, config</td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>Documentation only</td>
+</tr>
+<tr>
+<td><code>refactor/</code></td>
+<td>Code change that isn&#39;t a fix or feature</td>
+</tr>
+<tr>
+<td><code>test/</code></td>
+<td>Adding or updating tests</td>
+</tr>
+</tbody></table>
+<p>Use short, kebab-case descriptions: <code>feat/task-dependency-api</code>, <code>fix/refresh-token-expiry</code>, <code>docs/update-contributing</code>, <code>chore/upgrade-prisma</code>. Honor any stricter rule found in Step 2.</p>
+<h3 id="step-5-write-the-commit-message">Step 5: Write the commit message</h3>
+<p><strong>Subject line</strong>: <code>type(scope): summary</code></p>
+<ul>
+<li>Use a Conventional Commits type: <code>feat</code>, <code>fix</code>, <code>docs</code>, <code>style</code>, <code>refactor</code>, <code>perf</code>, <code>test</code>, <code>build</code>, <code>ci</code>, <code>chore</code>, <code>revert</code> (or whatever the repo&#39;s commitlint permits).</li>
+<li>Scope is optional but helps: <code>feat(auth): …</code>.</li>
+<li>Imperative mood, lowercase after the colon, no trailing period. Keep it <strong>≤ 72 characters</strong> (aim for ~50).</li>
+<li>Mark breaking changes with <code>!</code>: <code>feat(api)!: drop v1 token endpoint</code>.</li>
+</ul>
+<p><strong>Body: explain <em>why</em>, not <em>what</em>.</strong> The diff already shows what changed; the body exists for future code archaeology. Wrap at ~72 columns. Cover, in prose:</p>
+<ul>
+<li><strong>Why this change was needed</strong>: the motivation, the trigger, the constraint.</li>
+<li><strong>The problem it solves</strong>: the business or technical pain being addressed.</li>
+<li>Include a terse <em>what</em> only when the change is non-obvious from the diff.</li>
+</ul>
+<p><strong>Footer</strong></p>
+<ul>
+<li>Reference tickets/issues exactly as the project does. Inline in the subject when natural (<code>fix(auth): handle token expiry (#42)</code>) and/or as footers: <code>Closes #42</code>, <code>Refs JIRA-1234</code>, <code>ClickUp: CU-abc</code>.</li>
+<li>If the user mentions any Jira/issue/ClickUp/tracker ID, it <strong>must</strong> appear in the commit.</li>
+<li>Breaking changes get a <code>BREAKING CHANGE: &lt;description&gt;</code> footer.</li>
+</ul>
+<p>Template (adapt, don&#39;t pad with empty sections):</p>
+<pre><code>type(scope): concise imperative subject (#123)
+
+Why: the motivation or constraint that prompted this change, and the
+problem it solves, written for someone reading `git blame` in a year.
+
+[Only if non-obvious] What: the key technical move that makes it work.
+
+Closes #123
+</code></pre>
+<h3 id="step-6-commit-and-push-with-confirmation">Step 6: Commit and push (with confirmation)</h3>
+<ol>
+<li>Show the user the staged files and the exact message, and confirm.</li>
+<li>On approval, commit. Pass multiline messages with repeated <code>-m</code> flags or a heredoc; <strong>never</strong> embed an AI/co-author trailer.</li>
+<li>Let pre-commit hooks run. If they reformat or fail, surface it, fix the cause, and re-stage; don&#39;t <code>--no-verify</code>.</li>
+<li>Push only when explicitly asked, and confirm the branch and remote first. If the branch is new, set upstream (<code>git push -u origin &lt;branch&gt;</code>).</li>
+</ol>
+<p>Report what landed: the commit hash/subject and, if pushed, where.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-commit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

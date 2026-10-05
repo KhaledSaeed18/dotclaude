@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>issue-writer: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/issue-writer/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/issue-writer/" />
+    <meta property="og:title" content="issue-writer: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="issue-writer: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/issue-writer/#code","url":"https://dotclaude.khaledsaeed.tech/skill/issue-writer/","name":"issue-writer","alternateName":"Issue Writer","headline":"issue-writer: a Claude Code skill","description":"Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria, then filing it with gh or emitting paste-ready markdown. Use when asked to file or write up an issue, or when a bug mentioned in passing should be tracked.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/issue-writer","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","productivity","productivity"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"issue-writer","item":"https://dotclaude.khaledsaeed.tech/skill/issue-writer/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">issue-writer</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in productivity</span></p>
+          <h1><code>issue-writer</code></h1>
+          
+          <p class="lede">Turn a rough bug report, idea, or complaint into an actionable issue by investigating the codebase first for reproduction steps, expected vs actual behaviour, suspected location, and acceptance criteria, then filing it with gh or emitting paste-ready markdown. Use when asked to file or write up an issue, or when a bug mentioned in passing should be tracked.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/productivity/">productivity</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install productivity@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/issue-writer</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/issue-writer/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>An issue is a work order for someone with none of this conversation&#39;s context. Write it so that a developer who picks it up cold can reproduce the problem, knows when they are done, and starts in the right file - and do the investigating now, while the context exists, rather than leaving it to them. A two-minute look at the code turns &quot;the export is broken&quot; into an issue with a suspected cause and a pointer.</p>
+<h3 id="step-1-extract-and-classify">Step 1: Extract and classify</h3>
+<p>From the user&#39;s description (and the current conversation - the bug being discussed right now is usually the subject), pin down:</p>
+<ul>
+<li><strong>Type:</strong> bug, feature request, or task/chore. This decides the template below.</li>
+<li><strong>The one-sentence problem.</strong> If you cannot state it in one sentence, you do not understand it yet; ask the one or two questions that resolve it. Do not interrogate - two questions maximum, then write with what you have and mark the gaps.</li>
+<li><strong>Severity signals</strong> for bugs: data loss, wrong results, crash, cosmetic? Who hits it and how often?</li>
+</ul>
+<h3 id="step-2-investigate-before-writing">Step 2: Investigate before writing</h3>
+<p>Spend a short, bounded pass in the repo making the issue concrete:</p>
+<ul>
+<li><strong>Bugs:</strong> find the code path involved (<code>grep</code> the error message, the feature name, the route). Note the suspected file/function. If reproduction is cheap - a failing command, a curl, a unit test - actually run it and record the real output. Check <code>git log</code> on the suspect file for a recent change that correlates.</li>
+<li><strong>Features:</strong> find where the change would land, what patterns exist to follow, and any related prior art (an existing similar feature, an old TODO, a closed issue).</li>
+<li><strong>Duplicates:</strong> when <code>gh</code> is available, search first - <code>gh issue list --search &quot;&lt;keywords&gt;&quot; --state all --limit 10</code>. A duplicate found now saves a triage round-trip; link it instead of filing twice.</li>
+</ul>
+<p>Everything found goes in the issue as fact (&quot;reproduced on <code>main</code> at <code>abc1234</code>, output below&quot;), everything guessed goes in clearly marked as hypothesis (&quot;possibly introduced by #118 - unverified&quot;).</p>
+<h3 id="step-3-write-it">Step 3: Write it</h3>
+<p><strong>Title:</strong> specific and searchable - symptom plus context, under ~70 chars. &quot;CSV export drops rows with embedded newlines&quot;, not &quot;Export broken&quot;.</p>
+<p><strong>Bug body:</strong></p>
+<pre><code class="language-markdown">## Summary
+&lt;one sentence: who hits what, under which conditions&gt;
+
+## Reproduction
+1. &lt;exact steps, commands, or failing test - copy-pasteable&gt;
+
+**Expected:** &lt;what should happen&gt;
+**Actual:** &lt;what happens - real output/stack trace in a collapsed block if long&gt;
+
+## Environment
+&lt;version/commit, OS/browser/runtime - only the ones that matter&gt;
+
+## Notes
+&lt;suspected location (file:line), correlated change, workaround if any - hypotheses labelled as such&gt;
+</code></pre>
+<p><strong>Feature body:</strong> Problem (the need, not the solution), Proposed solution (concrete but open to alternatives), Acceptance criteria (checkboxes a reviewer can verify), Out of scope (the line that stops creep).</p>
+<p>Respect the repository&#39;s own conventions: if <code>.github/ISSUE_TEMPLATE/</code> exists, fit its structure and answer its fields; reuse the labels the repo actually has (<code>gh label list</code>) instead of inventing new ones.</p>
+<h3 id="step-4-file-or-hand-over">Step 4: File or hand over</h3>
+<p>With <code>gh</code> and a confirmed target repo: show the final title and body, then file with <code>gh issue create --title ... --body ...</code> plus appropriate labels, and report the URL. Filing is outward-facing - show before sending unless the user already said to file directly.</p>
+<p>Without <code>gh</code> or when the tracker is elsewhere (Jira, Linear): emit the finished markdown in a code block, ready to paste, with the labels/priority suggestion noted at the top.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/productivity/issue-writer" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in productivity</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/brainstorming/"><code>brainstorming</code></a> <span class="row-type">skill</span> Turn a rough idea into a fully formed, written design through collaborative dialogue, exploring intent, requirements, and trade-offs one question at a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/decision-log/"><code>decision-log</code></a> <span class="row-type">skill</span> Keep a lightweight decision log for a project or a person: one dated line per decision with the choice, the reason, the alternatives, who decided, and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/grill-me/"><code>grill-me</code></a> <span class="row-type">skill</span> Relentlessly stress-test a plan, design, architecture, idea, or strategy until all critical decisions are resolved. Use when a plan, design, or decision...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/handoff/"><code>handoff</code></a> <span class="row-type">skill</span> Compact the current conversation into a handoff document for another agent to pick up. Use when ending a session, switching agents, or preserving context...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/learning-plan/"><code>learning-plan</code></a> <span class="row-type">skill</span> Turn a topic to learn into a sequenced study plan with a goal test, prerequisites, ordered units with one primary resource each, spaced practice and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/meeting-notes/"><code>meeting-notes</code></a> <span class="row-type">skill</span> Turn a meeting transcript, recording summary, or rough notes into a record people act on: decisions with their reasons, action items with one owner and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/standup-summary/"><code>standup-summary</code></a> <span class="row-type">skill</span> Generate a standup or weekly-review update from actual work evidence - commits, branches, PRs, and issues across one or more repositories - grouped into...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/prime/"><code>prime</code></a> <span class="row-type">command</span> Load project context into the session by reading key files and recent history. Primes the model with package metadata, architecture notes, recent commits...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=productivity">All of productivity</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

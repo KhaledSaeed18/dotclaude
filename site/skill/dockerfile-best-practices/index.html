@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dockerfile-best-practices: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Write or review a Dockerfile and compose setup for a production service: multi-stage builds that ship only the runtime, pinned base images, layer order..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/dockerfile-best-practices/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/dockerfile-best-practices/" />
+    <meta property="og:title" content="dockerfile-best-practices: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write or review a Dockerfile and compose setup for a production service: multi-stage builds that ship only the runtime, pinned base images, layer order..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="dockerfile-best-practices: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write or review a Dockerfile and compose setup for a production service: multi-stage builds that ship only the runtime, pinned base images, layer order..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/dockerfile-best-practices/#code","url":"https://dotclaude.khaledsaeed.tech/skill/dockerfile-best-practices/","name":"dockerfile-best-practices","alternateName":"Dockerfile Best Practices","headline":"dockerfile-best-practices: a Claude Code skill","description":"Write or review a Dockerfile and compose setup for a production service: multi-stage builds that ship only the runtime, pinned base images, layer order for cache hits, non-root user, minimal image size, correct signal handling and health checks, secrets kept out of layers, and language-specific patterns for Node, Python, Go, and Java. Use when containerising a service, when images are large or slow to build, when a container ignores SIGTERM, or when a security scan flags the image.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/dockerfile-best-practices","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"dockerfile-best-practices","item":"https://dotclaude.khaledsaeed.tech/skill/dockerfile-best-practices/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">dockerfile-best-practices</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>dockerfile-best-practices</code></h1>
+          
+          <p class="lede">Write or review a Dockerfile and compose setup for a production service: multi-stage builds that ship only the runtime, pinned base images, layer order for cache hits, non-root user, minimal image size, correct signal handling and health checks, secrets kept out of layers, and language-specific patterns for Node, Python, Go, and Java. Use when containerising a service, when images are large or slow to build, when a container ignores SIGTERM, or when a security scan flags the image.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the Dockerfile or the language and framework to containerise</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/dockerfile-best-practices</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/dockerfile-best-practices/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A production image contains exactly what the process needs to run, built reproducibly, running as a non-root user, and stopping cleanly when asked. Everything below follows from those four properties.</p>
+<h3 id="structure-multi-stage">Structure: multi-stage</h3>
+<pre><code class="language-dockerfile"># syntax=docker/dockerfile:1.7
+FROM node:22.11-bookworm-slim AS deps
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable &amp;&amp; pnpm install --frozen-lockfile --prod=false
+
+FROM deps AS build
+COPY . .
+RUN pnpm build &amp;&amp; pnpm prune --prod
+
+FROM node:22.11-bookworm-slim AS runtime
+ENV NODE_ENV=production
+WORKDIR /app
+RUN groupadd -r app &amp;&amp; useradd -r -g app -d /app app
+COPY --from=build --chown=app:app /app/node_modules ./node_modules
+COPY --from=build --chown=app:app /app/dist ./dist
+COPY --chown=app:app package.json ./
+USER app
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s CMD node dist/healthcheck.js
+ENTRYPOINT [&quot;node&quot;, &quot;dist/server.js&quot;]
+</code></pre>
+<p>Build stages hold compilers and dev dependencies; the runtime stage copies artifacts only.</p>
+<h3 id="rules">Rules</h3>
+<p><strong>Base images</strong></p>
+<ul>
+<li>Pin to a specific version tag (<code>22.11-bookworm-slim</code>), and for reproducible builds pin the digest (<code>@sha256:...</code>) with a tool (Renovate, Dependabot) to bump it.</li>
+<li>Prefer <code>-slim</code> or distroless over <code>alpine</code> for glibc-dependent runtimes (Node native modules, Python wheels); alpine for Go static binaries is fine.</li>
+<li>One process per container; no supervisord.</li>
+</ul>
+<p><strong>Layers and cache</strong></p>
+<ul>
+<li>Order from least to most frequently changed: base, system packages, dependency manifests, dependency install, source, build. Copy lockfiles before source so dependency layers cache.</li>
+<li><code>RUN</code> steps combined with <code>&amp;&amp;</code> and cleanup in the same step (<code>apt-get install ... &amp;&amp; rm -rf /var/lib/apt/lists/*</code>); a later <code>rm</code> does not shrink an earlier layer.</li>
+<li><code>.dockerignore</code> with <code>.git</code>, <code>node_modules</code>, build output, <code>.env*</code>, tests, docs; without it the build context and the cache invalidation are both wrong.</li>
+<li>BuildKit cache mounts for package managers: <code>RUN --mount=type=cache,target=/root/.npm npm ci</code>.</li>
+</ul>
+<p><strong>Security</strong></p>
+<ul>
+<li><code>USER</code> non-root before <code>ENTRYPOINT</code>; files copied with <code>--chown</code>. Bind to a port above 1024.</li>
+<li>No secrets in <code>ENV</code>, <code>ARG</code>, or copied files; they persist in layers and history. Use <code>RUN --mount=type=secret,id=npmrc</code> for build-time secrets and runtime injection (env at run, mounted files, a secrets manager) for the rest.</li>
+<li>Read-only root filesystem where possible (<code>--read-only</code> with <code>tmpfs</code> for <code>/tmp</code>); drop capabilities; no <code>--privileged</code>.</li>
+<li>Scan (<code>docker scout</code>, <code>trivy image</code>) in CI; fail on critical CVEs with a fix available.</li>
+</ul>
+<p><strong>Runtime behaviour</strong></p>
+<ul>
+<li><code>ENTRYPOINT</code> in exec form (JSON array) so the process is PID 1 and receives signals; <code>CMD</code> for default arguments only. Shell form wraps in <code>sh -c</code> and swallows SIGTERM.</li>
+<li>The application handles SIGTERM: stop accepting, drain in-flight requests, close connections, exit within the orchestrator&#39;s grace period (default 30 s). If the runtime cannot (some shell scripts), use <code>tini</code> as the init (<code>ENTRYPOINT [&quot;tini&quot;, &quot;--&quot;, ...]</code>).</li>
+<li><code>HEALTHCHECK</code> (or the orchestrator&#39;s probe) hits a cheap endpoint that checks dependencies the process needs; readiness separate from liveness in Kubernetes.</li>
+<li>Logs to stdout/stderr, unbuffered (<code>PYTHONUNBUFFERED=1</code>); no log files in the container.</li>
+<li><code>EXPOSE</code> documents the port; it does not publish it.</li>
+</ul>
+<p><strong>Size</strong></p>
+<ul>
+<li>Check with <code>docker image ls</code> and <code>dive</code>. Typical targets: Go static under 20 MB (distroless/static), Node under 200 MB, Python under 250 MB.</li>
+<li>Do not install dev dependencies, docs, or test files in the runtime stage.</li>
+</ul>
+<h3 id="language-notes">Language notes</h3>
+<ul>
+<li><strong>Node</strong>: <code>npm ci</code> / <code>pnpm install --frozen-lockfile</code>; <code>NODE_ENV=production</code>; <code>node</code> directly, not <code>npm start</code> (npm does not forward signals); set <code>--max-old-space-size</code> from the container limit or use a version that respects cgroups.</li>
+<li><strong>Python</strong>: <code>python:3.12-slim</code>; <code>pip install --no-cache-dir -r requirements.txt</code> (or <code>uv sync --frozen</code>) in a build stage into a venv copied to runtime; <code>PYTHONDONTWRITEBYTECODE=1</code>; run with <code>gunicorn</code>/<code>uvicorn</code> directly; <code>--workers</code> from CPU limit.</li>
+<li><strong>Go</strong>: build stage <code>golang:1.23</code>, <code>CGO_ENABLED=0 go build -ldflags=&quot;-s -w&quot;</code>, runtime <code>gcr.io/distroless/static-debian12:nonroot</code>, copy the binary and CA certs.</li>
+<li><strong>Java</strong>: build with the JDK, run on a JRE (<code>eclipse-temurin:21-jre</code>), layered jar (<code>spring-boot:build-image</code> or <code>jarmode=layertools</code>), <code>-XX:MaxRAMPercentage=75</code>.</li>
+</ul>
+<h3 id="compose-for-local-development">Compose for local development</h3>
+<p><code>compose.yaml</code> with the service built from the Dockerfile&#39;s build stage (<code>target: build</code>), source bind-mounted for hot reload, dependencies (db, cache) with named volumes and health checks, <code>depends_on</code> with <code>condition: service_healthy</code>, env from <code>.env</code> (git-ignored) with an <code>.env.example</code> committed.</p>
+<h3 id="review-checklist">Review checklist</h3>
+<p>Pinned base; multi-stage; lockfile copied before source; <code>.dockerignore</code>; non-root; exec-form <code>ENTRYPOINT</code>; signals handled; health check; no secrets in layers (<code>docker history</code> shows none); scan clean; size within target; builds reproducibly twice with the same digest.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/dockerfile-best-practices" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

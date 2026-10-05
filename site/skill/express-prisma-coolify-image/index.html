@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>express-prisma-coolify-image: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/" />
+    <meta property="og:title" content="express-prisma-coolify-image: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="express-prisma-coolify-image: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/#code","url":"https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/","name":"express-prisma-coolify-image","alternateName":"Express Prisma Coolify Image","headline":"express-prisma-coolify-image: a Claude Code skill","description":"Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a database, or when migrations, readiness or shutdown misbehave in production.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/express-prisma-coolify-image","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"templates/Dockerfile"},{"@type":"CreativeWork","name":"templates/docker-entrypoint.sh"},{"@type":"CreativeWork","name":"templates/dockerignore"},{"@type":"CreativeWork","name":"templates/healthcheck.ts"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"express-prisma-coolify-image","item":"https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">express-prisma-coolify-image</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>express-prisma-coolify-image</code></h1>
+          
+          <p class="lede">Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a database, or when migrations, readiness or shutdown misbehave in production.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the API directory, its port and route prefix</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/express-prisma-coolify-image</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/express-prisma-coolify-image/SKILL.md</code></li><li><code>.claude/skills/express-prisma-coolify-image/templates/Dockerfile</code></li><li><code>.claude/skills/express-prisma-coolify-image/templates/docker-entrypoint.sh</code></li><li><code>.claude/skills/express-prisma-coolify-image/templates/dockerignore</code></li><li><code>.claude/skills/express-prisma-coolify-image/templates/healthcheck.ts</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>The image carries compiled code, production dependencies and the migrations, applies pending migrations before it listens, and reports ready only when it can reach its database. Because a rolling update runs the new container beside the old one, every migration must be compatible with the previous release: expand, migrate, contract.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Build natively on the runner, copy artifacts into the image.</strong> No <code>pnpm install</code> inside Docker, no build on the server.</li>
+<li><strong>Migrations run in the entrypoint, with <code>prisma migrate deploy</code>, never <code>migrate dev</code>, <code>db push</code> or <code>migrate reset</code>.</strong> The entrypoint applies them and then execs the server, so a failed migration stops the container before it takes traffic.</li>
+<li><strong>Applied migrations are immutable.</strong> CI rejects any edit, rename or deletion under <code>prisma/migrations</code>; a mistake gets a new migration.</li>
+<li><strong>Every release starts from a restore-verified backup.</strong> The deploy job takes one before touching the tag (the <code>vps-ops-toolkit</code> skill provides it).</li>
+<li><strong>Readiness means the database answers.</strong> The probe calls the readiness route that runs a trivial query, so a container that cannot reach Postgres never takes traffic.</li>
+<li><strong>Non-root user, no host ports, a stop that finishes within 10 s.</strong></li>
+</ul>
+<h3 id="step-1-audit-the-api">Step 1: Audit the API</h3>
+<pre><code class="language-bash">cat package.json | jq &#39;{scripts, engines, packageManager}&#39;
+ls prisma prisma/migrations | head; cat prisma.config.ts 2&gt;/dev/null
+grep -rn &quot;process.env&quot; src/config | head -40
+grep -rn &quot;health&quot; src/routes src/modules 2&gt;/dev/null | head
+</code></pre>
+<p>List the runtime variables the app validates at boot (database URL, secrets, allowed origins, feature switches) and which have safe values for a smoke test. Note native or downloaded dependencies (a headless browser, image libraries): they must be fetched on the runner and copied in, with their shared libraries installed in the image.</p>
+<h3 id="step-2-add-the-runtime-files">Step 2: Add the runtime files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/express-prisma-coolify-image/templates/Dockerfile" rel="noopener">Dockerfile</a></td>
+<td><code>node:&lt;major&gt;-slim</code>, copies <code>node_modules</code>, <code>dist</code>, <code>prisma</code>, config and entrypoint; <code>USER node</code>; <code>HEALTHCHECK</code> on the probe</td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/express-prisma-coolify-image/templates/docker-entrypoint.sh" rel="noopener">docker-entrypoint.sh</a></td>
+<td><code>prisma migrate deploy</code> when migrations exist, then <code>exec node dist/server.js</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/express-prisma-coolify-image/templates/healthcheck.ts" rel="noopener">healthcheck.ts</a></td>
+<td>compiled with the app; fetches the readiness route with a 4 s timeout</td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/express-prisma-coolify-image/templates/dockerignore" rel="noopener">.dockerignore</a></td>
+<td>keeps sources, tests, docs and env files out; <code>node_modules</code> and <code>dist</code> deliberately stay in</td>
+</tr>
+</tbody></table>
+<p>Readiness route: <code>GET &lt;prefix&gt;/health/ready</code> runs <code>SELECT 1</code> through Prisma and answers <code>{status: &quot;ok&quot;, checks: {database: &quot;up&quot;}}</code> with 200, or 503. Liveness <code>GET &lt;prefix&gt;/health</code> answers without touching the database.</p>
+<h3 id="step-3-build-the-context-on-the-runner">Step 3: Build the context on the runner</h3>
+<p>In this order, because an in-place <code>--prod</code> install leaves dev tooling in pnpm&#39;s store:</p>
+<pre><code class="language-bash">pnpm install --frozen-lockfile --ignore-scripts
+pnpm run build                         # tsc -p tsconfig.build.json, prisma generate
+rm -rf node_modules &amp;&amp; pnpm install --prod --frozen-lockfile --ignore-scripts
+ls node_modules/.pnpm/@prisma+engines@*/node_modules/@prisma/engines/schema-engine-*   # the migrate engine must be present
+</code></pre>
+<p>The schema engine is downloaded by the Prisma CLI on first use; the container cannot download it at start as an unprivileged user over root-owned files, so prove it exists before <code>docker build</code>.</p>
+<h3 id="step-4-smoke-test-against-a-throwaway-postgres">Step 4: Smoke-test against a throwaway Postgres</h3>
+<p>In CI, a <code>postgres</code> service on a non-default port; locally, <code>docker run -d -p 5433:5432 -e POSTGRES_PASSWORD=... postgres:17-alpine</code>. Start the image with <code>--network host</code>, a <code>DATABASE_URL</code> pointing at it, and safe values for every required variable. Loop <code>docker exec &lt;c&gt; node dist/healthcheck.js</code> until it exits 0 (migrations applied, database reachable), check <code>id -un</code> is <code>node</code>, then <code>docker stop -t 30</code> must return within 10 s with exit code 0. The full script is the image job in the <code>ghcr-coolify-pipeline</code> skill; the migration guard and the <code>migrate diff --exit-code</code> schema check belong in its quality job.</p>
+<h3 id="step-5-hand-over">Step 5: Hand over</h3>
+<p>Report the image size, the migration state the smoke test reached, the list of runtime variables Coolify must carry (names only), and any compatibility note for the next release (a column added now, removed later). Migration safety itself is the <code>db-migration-safety</code> skill.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/express-prisma-coolify-image" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

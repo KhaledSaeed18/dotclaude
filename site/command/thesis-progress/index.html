@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>thesis-progress: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/thesis-progress/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/thesis-progress/" />
+    <meta property="og:title" content="thesis-progress: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="thesis-progress: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/thesis-progress/#code","url":"https://dotclaude.khaledsaeed.tech/command/thesis-progress/","name":"thesis-progress","alternateName":"Thesis Progress","headline":"thesis-progress: a Claude Code command","description":"Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health (cited keys, undefined keys, unverifiable entries), notes read versus reading list, open items in the research log, and days to the next deadline. Use at the start of a working session, before a supervisor meeting, or whenever the answer to how far along am I is a guess.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/thesis-progress","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"thesis-progress","item":"https://dotclaude.khaledsaeed.tech/command/thesis-progress/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">thesis-progress</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in academic</span></p>
+          <h1><code>thesis-progress</code></h1>
+          
+          <p class="lede">Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health (cited keys, undefined keys, unverifiable entries), notes read versus reading list, open items in the research log, and days to the next deadline. Use at the start of a working session, before a supervisor meeting, or whenever the answer to how far along am I is a guess.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[--deadline YYYY-MM-DD] [--target-words N]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Glob, Grep, Bash(git:*), Bash(ls:*), Bash(find:*), Bash(wc:*), Bash(grep:*), Bash(date:*), Bash(texcount:*), Bash(pandoc:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-progress</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/thesis-progress.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Options: <code>$ARGUMENTS</code></p>
+<p>Today: !<code>date +%Y-%m-%d</code></p>
+<p><strong>Chapter files:</strong></p>
+<p>!<code>ls chapters/*.tex chapters/*.md 2&gt;/dev/null || echo &quot;(no chapters directory)&quot;</code></p>
+<p><strong>Raw word counts (markup included; refine below):</strong></p>
+<p>!<code>wc -w chapters/*.tex chapters/*.md 2&gt;/dev/null | tail -20</code></p>
+<p><strong>Placeholders:</strong></p>
+<p>!<code>grep -rn --include=&#39;*.tex&#39; --include=&#39;*.md&#39; -E &#39;\[\[(FILL|CITE|FIG|TODO)[^]]*\]\]&#39; chapters 2&gt;/dev/null | wc -l | xargs -I{} echo &quot;{} placeholders&quot;</code></p>
+<p><strong>Reading:</strong></p>
+<p>!<code>echo &quot;notes: $(ls research/notes 2&gt;/dev/null | wc -l | tr -d &#39; &#39;), reading list entries: $(grep -c &#39;^## &#39; research/reading-list.md 2&gt;/dev/null || echo 0)&quot;</code></p>
+<p><strong>Research log:</strong></p>
+<p>!<code>grep -c &#39;^## &#39; RESEARCH_LOG.md 2&gt;/dev/null | xargs -I{} echo &quot;{} entries&quot;; awk &#39;/^### Open/{f=1;next} /^###|^## /{f=0} f&#39; RESEARCH_LOG.md 2&gt;/dev/null | head -10</code></p>
+<p><strong>Recent activity:</strong></p>
+<p>!<code>git log --since=&#39;14 days ago&#39; --format=&#39;  %ad %s&#39; --date=short 2&gt;/dev/null | head -15</code></p>
+<h3 id="task">Task</h3>
+<p>Produce a one-screen status report. Numbers, not adjectives.</p>
+<h4 id="word-counts">Word counts</h4>
+<p>Use <code>texcount -inc -total -brief</code> for LaTeX or <code>pandoc file -t plain | wc -w</code> for Markdown so markup is excluded. Compare each chapter against its target from the chapter plan (proposal, <code>research/OUTLINE.md</code>, or <code>--target-words</code> split evenly). Show a table: chapter, words, target, percent, placeholders.</p>
+<h4 id="citation-health">Citation health</h4>
+<p>Count unique cite keys across chapters, keys not in the <code>.bib</code>, and <code>.bib</code> entries with no <code>doi</code>/<code>eprint</code>/<code>url</code>. If <code>research/citation-report.md</code> exists, show its date and totals; if it is older than the newest chapter edit, say a rerun of <code>citation-verifier</code> is due.</p>
+<h4 id="reading">Reading</h4>
+<p>Notes written versus reading-list entries; list entries with no note as the reading backlog (cap at 10).</p>
+<h4 id="open-items">Open items</h4>
+<p>The &quot;Open&quot; bullets from the last three log entries, with the age of each (from the entry date). Anything older than 14 days is flagged for the supervisor.</p>
+<h4 id="time">Time</h4>
+<p>Days to <code>--deadline</code> (or a deadline found in the proposal or <code>research/QUESTION.md</code>). Words remaining divided by days remaining gives the required daily rate; state it, and compare with the actual rate from git history over the last 14 days (words added per day, from <code>git diff --shortstat</code>).</p>
+<h4 id="output">Output</h4>
+<pre><code># Thesis progress, 2026-09-21
+
+| Chapter | Words | Target | % | Placeholders |
+| --- | --- | --- | --- | --- |
+| 01 Introduction | 2,140 | 3,000 | 71 | 2 |
+...
+| Total | 14,230 | 30,000 | 47 | 11 |
+
+Citations: 84 keys cited, 2 undefined (ghost2024, lee2022b), 3 unverifiable. Last verifier run: 2026-09-14 (rerun due).
+Reading: 31 notes / 44 on the list; backlog: ...
+Open items: 3, oldest 19 days (dataset licence) → raise with supervisor.
+Deadline 2026-12-15: 85 days. Need 185 words/day; last 14 days averaged 310/day.
+
+Next: ...
+</code></pre>
+<p>End with the two or three actions the numbers point to.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/academic/thesis-progress" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/research-log/"><code>research-log</code></a> <span class="row-type">command</span> Append a dated entry to the thesis research log (RESEARCH_LOG.md) recording what was read, done, decided, and what comes next, pulling the day's evidence...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/thesis-chapter/"><code>thesis-chapter</code></a> <span class="row-type">command</span> Draft or revise one thesis chapter from the outline, the research question record, the reading notes, and the results, applying the academic-writing skill...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

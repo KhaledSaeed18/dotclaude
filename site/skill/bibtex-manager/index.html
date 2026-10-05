@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bibtex-manager: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/" />
+    <meta property="og:title" content="bibtex-manager: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="bibtex-manager: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/#code","url":"https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/","name":"bibtex-manager","alternateName":"Bibtex Manager","headline":"bibtex-manager: a Claude Code skill","description":"Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation keys (firstauthorYEARkeyword), deduplicate entries, fix fields BibTeX and biblatex care about, and export to Zotero-friendly form when the writing happens in Word. Use when adding references, cleaning a messy bibliography, resolving duplicate keys, or converting a reading list into a .bib.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/bibtex-manager","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"],"hasPart":[{"@type":"CreativeWork","name":"reference/fields.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"bibtex-manager","item":"https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">bibtex-manager</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>bibtex-manager</code></h1>
+          
+          <p class="lede">Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation keys (firstauthorYEARkeyword), deduplicate entries, fix fields BibTeX and biblatex care about, and export to Zotero-friendly form when the writing happens in Word. Use when adding references, cleaning a messy bibliography, resolving duplicate keys, or converting a reading list into a .bib.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) a DOI, arXiv id, title, or path to a .bib or reading-list.md</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/bibtex-manager</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/bibtex-manager/SKILL.md</code></li><li><code>.claude/skills/bibtex-manager/reference/fields.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>The <code>.bib</code> file is the one place a reference is allowed to exist. Every <code>\cite{}</code> in LaTeX, every <code>[@key]</code> in Markdown, and every Zotero item in Word traces back to an entry here that was fetched from an authority, never typed from memory.</p>
+<h3 id="add-an-entry">Add an entry</h3>
+<ol>
+<li><strong>Resolve the identifier to metadata from an authority.</strong> Never write an entry by hand from a memory of the paper.<ul>
+<li>DOI: <code>curl -sL -H &quot;Accept: application/x-bibtex&quot; &quot;https://doi.org/&lt;doi&gt;&quot;</code> gives publisher BibTeX. Cross-check title and year against <code>https://api.crossref.org/works/&lt;doi&gt;</code>.</li>
+<li>arXiv id: <code>curl -s &quot;http://export.arxiv.org/api/query?id_list=&lt;id&gt;&quot;</code> and build a <code>@misc</code> (or <code>@article</code> with <code>journal = {arXiv preprint arXiv:&lt;id&gt;}</code>) with <code>eprint</code>, <code>archivePrefix = {arXiv}</code>, <code>primaryClass</code>. If the paper was later published, prefer the published DOI and keep the arXiv id in <code>eprint</code>.</li>
+<li>Title only: <code>https://api.crossref.org/works?query.bibliographic=&lt;title&gt;&amp;rows=3</code>, confirm the top hit&#39;s title matches before taking its DOI; if it does not, tell the student rather than guessing.</li>
+</ul>
+</li>
+<li><strong>Normalise the key</strong> to <code>&lt;firstauthorsurname&gt;&lt;year&gt;&lt;firstsignificanttitleword&gt;</code>, lowercase ASCII (<code>smith2023feedback</code>). Collisions get a letter suffix (<code>smith2023feedbacka</code>). Keep the student&#39;s existing key convention if the file already has one.</li>
+<li><strong>Clean the fields.</strong> Read <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/academic/bibtex-manager/reference/fields.md" rel="noopener">reference/fields.md</a>. In short: protect capitals in titles with braces (<code>{LLM}</code>, <code>{Python}</code>), use <code>and</code> between authors, ISO-free <code>year</code>/<code>month</code>, <code>doi</code> without the <code>https://doi.org/</code> prefix, <code>url</code> only when there is no DOI, no <code>abstract</code> or <code>keywords</code> noise unless the student wants them, page ranges with <code>--</code>.</li>
+<li><strong>Choose the entry type</strong> from the source, not the venue name: <code>@inproceedings</code> for conference papers (with <code>booktitle</code>), <code>@article</code> for journals (<code>journal</code>, <code>volume</code>, <code>number</code>, <code>pages</code>), <code>@book</code>, <code>@incollection</code>, <code>@phdthesis</code>, <code>@techreport</code>, <code>@misc</code> for preprints and web pages (<code>howpublished</code>, <code>note = {Accessed YYYY-MM-DD}</code>).</li>
+<li><strong>Append</strong> to the <code>.bib</code> (default <code>references.bib</code> or the path in the thesis config), keeping the file sorted by key if it already is.</li>
+</ol>
+<h3 id="clean-an-existing-file">Clean an existing file</h3>
+<p>Run these checks and report before changing anything:</p>
+<ul>
+<li>Duplicate DOIs or near-duplicate titles (normalised, first 60 chars): merge, keep the richest entry, note which key was removed so the text can be updated.</li>
+<li>Keys that do not match the convention: propose renames; apply only with <code>--rename</code>, and then update every <code>\cite</code>/<code>[@…]</code> in the source files the student names.</li>
+<li>Missing required fields per type (see the reference): list them; fetch from CrossRef when a DOI is present.</li>
+<li>Unprotected capitals in titles, <code>&amp;</code> unescaped in <code>booktitle</code>, <code>pages</code> with a single hyphen, <code>month</code> as a number in quotes.</li>
+<li>Entries with no DOI, arXiv id, or URL: flag as unverifiable so <code>citation-verifier</code> can chase them.</li>
+</ul>
+<h3 id="from-a-reading-list">From a reading list</h3>
+<p>Given <code>reading-list.md</code> from <code>literature-search</code>, add every entry via step 1 using its DOI or arXiv id, and write a mapping <code>key -&gt; title</code> at the end of the reply so <code>paper-reader</code> notes can use the same keys.</p>
+<h3 id="zotero-and-word">Zotero and Word</h3>
+<p>When the thesis is written in Word with Zotero:</p>
+<ul>
+<li>Import the <code>.bib</code> into Zotero (File → Import) or install Better BibTeX and set the <code>.bib</code> as an auto-export of the thesis collection, so the file remains the source of truth and Zotero is the view.</li>
+<li>Match Better BibTeX&#39;s key pattern to the convention above (<code>auth.lower + year + shorttitle(1,1).lower</code>) so keys are identical in both worlds.</li>
+<li>Never edit an entry only in Zotero; fix the <code>.bib</code> and re-import.</li>
+</ul>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>No entry without an identifier that resolved today. If the student insists on an unresolvable source (a lecture, an internal report), it goes in as <code>@misc</code> with a <code>note</code> explaining the provenance, and is listed in the reply as unverified.</li>
+<li>Never delete an entry without saying which citations in the text will break.</li>
+<li>Preserve the student&#39;s manual field additions (<code>annote</code>, <code>file</code>) when rewriting an entry.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/bibtex-manager" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/latex-toolkit/"><code>latex-toolkit</code></a> <span class="row-type">skill</span> Set up, build, and debug a LaTeX thesis: project layout with one file per chapter, latexmk builds, biblatex or natbib bibliography wiring, university...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

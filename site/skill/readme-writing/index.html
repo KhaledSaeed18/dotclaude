@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>readme-writing: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/readme-writing/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/readme-writing/" />
+    <meta property="og:title" content="readme-writing: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="readme-writing: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/readme-writing/#code","url":"https://dotclaude.khaledsaeed.tech/skill/readme-writing/","name":"readme-writing","alternateName":"Readme Writing","headline":"readme-writing: a Claude Code skill","description":"Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the actual code, then usage, configuration, and contribution pointers in the order a new user needs them, with nothing the code contradicts. Reads the repository first and never documents behaviour it has not confirmed. Use when a project has no README, when the README has drifted from the code, or before publishing a package or repository.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/readme-writing","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","documentation","docs"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"readme-writing","item":"https://dotclaude.khaledsaeed.tech/skill/readme-writing/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">readme-writing</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in documentation</span></p>
+          <h1><code>readme-writing</code></h1>
+          
+          <p class="lede">Write or restructure a README that gets a reader from landing to first success in minutes: a one-line purpose, a working quick start verified against the actual code, then usage, configuration, and contribution pointers in the order a new user needs them, with nothing the code contradicts. Reads the repository first and never documents behaviour it has not confirmed. Use when a project has no README, when the README has drifted from the code, or before publishing a package or repository.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the audience (users, contributors, both) and anything the README must cover</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/docs/">docs</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install docs@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/readme-writing</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/readme-writing/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A README is the front door. Its first screen must answer three questions: what is this, is it for me, how do I try it. Everything after that is in order of how soon a new user needs it. The README is verified against the code, not written from memory of the code.</p>
+<h3 id="read-before-writing">Read before writing</h3>
+<ol>
+<li>The manifest (<code>package.json</code>, <code>pyproject.toml</code>, <code>Cargo.toml</code>, <code>go.mod</code>): name, version, entry points, scripts, dependencies, engines.</li>
+<li>The entry point and the public surface: CLI flags (<code>--help</code> output if it runs), exported functions, routes, config schema.</li>
+<li>Existing docs, <code>CONTRIBUTING</code>, <code>LICENSE</code>, CI config, examples directory, tests (they show real usage).</li>
+<li>Run the quick start you intend to document. If it does not work, the README says what actually works.</li>
+</ol>
+<h3 id="structure">Structure</h3>
+<pre><code class="language-markdown"># name
+
+One sentence: what it does and for whom. (Badges on the next line, at most four: CI, version, license, one more.)
+
+Two or three sentences: the problem it solves and the one thing that distinguishes it. Optional: a screenshot or a 10-line example that shows the payoff.
+
+## Quick start
+
+Prerequisites in one line (runtime version, accounts, keys).
+The minimal commands, copy-pasteable, that produce a visible result. Nothing optional here.
+What the user should see when it worked.
+
+## Usage
+
+The three to five most common tasks, each: one sentence, one code block, one sentence on the result. Link to full reference docs for the rest.
+
+## Configuration
+
+Table: option, env var or flag, default, what it does. Only options a user will actually set.
+
+## How it works (optional)
+
+Three to six sentences or a diagram, for the reader deciding whether to trust or extend it.
+
+## Development
+
+Clone, install, test, lint, in four commands. Link to CONTRIBUTING for the rest.
+
+## License
+</code></pre>
+<p>Omit a section rather than fill it with filler. A library README leads with the API example; a CLI README leads with the command; a service README leads with the deploy or run command.</p>
+<h3 id="rules">Rules</h3>
+<ul>
+<li><strong>Verify every command</strong> by running it (or by reading the script it invokes when running is not possible) and say the runtime version it was verified with.</li>
+<li><strong>Match the manifest</strong>: the install command uses the real package name and manager; scripts named in the README exist in the manifest.</li>
+<li><strong>No aspirational features.</strong> If it is planned, it goes in a roadmap section or an issue, not in Usage.</li>
+<li><strong>Sentence case headings</strong>, short paragraphs, no em dashes, no &quot;simply&quot;, no &quot;just&quot;.</li>
+<li><strong>Keep the top stable</strong>: the first screen changes rarely; volatile detail (options, versions) lives lower or in generated sections between markers so a script can update it.</li>
+<li><strong>Badges are signals, not decoration</strong>: a red CI badge on the README is honest; ten badges are noise.</li>
+<li><strong>Link, do not duplicate</strong>: the changelog, the API reference, and the contribution guide each live in one place.</li>
+<li>Run <code>humanize</code> on the prose before returning.</li>
+</ul>
+<h3 id="restructuring-an-existing-readme">Restructuring an existing README</h3>
+<ol>
+<li>Inventory: list every section and what question it answers.</li>
+<li>Check each claim against the code; mark stale ones.</li>
+<li>Reorder by the new user&#39;s timeline; move contributor material below user material.</li>
+<li>Cut what the code no longer does; move history to the changelog.</li>
+<li>Keep the URL anchors people may have linked (<code>#install</code>, <code>#usage</code>) even when renaming headings, via a short redirect line if needed.</li>
+</ol>
+<p>Report what was removed and why, separately from the new text.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/documentation/readme-writing" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in documentation</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adr-writing/"><code>adr-writing</code></a> <span class="row-type">skill</span> Write Architecture Decision Records that a future engineer can act on: a numbered, immutable record with the context that forced the decision, the options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/openapi-spec/"><code>openapi-spec</code></a> <span class="row-type">skill</span> Write, generate, or review an OpenAPI 3.1 specification for an HTTP API so that it is accurate to the implementation, complete for consumers (schemas...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/technical-writing/"><code>technical-writing</code></a> <span class="row-type">skill</span> Write and edit developer documentation, guides, design notes, and engineering blog posts with a working writer's discipline: audience and purpose first...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/adr/"><code>adr</code></a> <span class="row-type">command</span> Write an Architecture Decision Record from the current discussion or a stated decision: numbers it in sequence under docs/adr/, captures context, the...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=documentation">All of documentation</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

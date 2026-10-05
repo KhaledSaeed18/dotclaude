@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>incident-postmortem: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Write a blameless incident postmortem from the timeline, logs, chat transcripts, and the fix: impact with numbers, a minute-by-minute timeline, root cause..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/incident-postmortem/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/incident-postmortem/" />
+    <meta property="og:title" content="incident-postmortem: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write a blameless incident postmortem from the timeline, logs, chat transcripts, and the fix: impact with numbers, a minute-by-minute timeline, root cause..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="incident-postmortem: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write a blameless incident postmortem from the timeline, logs, chat transcripts, and the fix: impact with numbers, a minute-by-minute timeline, root cause..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/incident-postmortem/#code","url":"https://dotclaude.khaledsaeed.tech/skill/incident-postmortem/","name":"incident-postmortem","alternateName":"Incident Postmortem","headline":"incident-postmortem: a Claude Code skill","description":"Write a blameless incident postmortem from the timeline, logs, chat transcripts, and the fix: impact with numbers, a minute-by-minute timeline, root cause as a chain of contributing factors rather than a single culprit, what went well and what did not in detection and response, and action items with owners and dates that address the causes rather than the symptom. Use after an outage, a data incident, a security event, or a near miss, or when an existing postmortem reads as blame or as a fix list.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/incident-postmortem","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"incident-postmortem","item":"https://dotclaude.khaledsaeed.tech/skill/incident-postmortem/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">incident-postmortem</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>incident-postmortem</code></h1>
+          
+          <p class="lede">Write a blameless incident postmortem from the timeline, logs, chat transcripts, and the fix: impact with numbers, a minute-by-minute timeline, root cause as a chain of contributing factors rather than a single culprit, what went well and what did not in detection and response, and action items with owners and dates that address the causes rather than the symptom. Use after an outage, a data incident, a security event, or a near miss, or when an existing postmortem reads as blame or as a fix list.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) incident id or title, and where the timeline, logs, and chat exports are</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/incident-postmortem</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/incident-postmortem/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A postmortem exists so the same failure cannot happen the same way again. It is blameless because the person who typed the command is never the root cause; the system that let that command do damage is. Write it within a week, while the timeline is still recoverable.</p>
+<h3 id="gather">Gather</h3>
+<ul>
+<li>The timeline sources: alerts (first fired), chat channel export, deploy log, commits, dashboards (screenshots with timestamps), customer reports, the incident ticket.</li>
+<li>The fix: the PR or command that resolved it, and when the symptom cleared.</li>
+<li>Metrics for impact: requests failed, users affected, duration, data affected, revenue or SLO budget consumed.</li>
+</ul>
+<p>Convert every timestamp to one timezone (UTC) with the local offset stated once.</p>
+<h3 id="structure">Structure</h3>
+<pre><code class="language-markdown"># Postmortem: &lt;short title&gt; (INC-1234)
+
+Date of incident: 2026-09-18  |  Duration: 47 min (14:03 to 14:50 UTC)  |  Severity: SEV2
+Authors: ...  |  Reviewed: ...  |  Status: action items open (3 of 5)
+
+## Summary
+Three sentences: what broke, who it affected and how much, what fixed it.
+
+## Impact
+Numbers: error rate, affected users or tenants, failed jobs, data written or lost, SLO budget burned, support tickets. What was NOT affected, if that matters.
+
+## Timeline (UTC)
+| Time | Event | Source |
+| 13:58 | Deploy of api v2.41.0 starts (rollout 10%) | deploy log |
+| 14:03 | Error rate on /orders rises to 12% | alert ORDERS-5XX |
+| 14:07 | On-call acknowledges; suspects deploy | #incident |
+| ... | ... | ... |
+| 14:50 | Error rate back to baseline | dashboard |
+
+## Root cause and contributing factors
+The causal chain, from the trigger back through every condition that had to hold:
+1. Trigger: v2.41.0 changed the order-status enum; the consumer in billing was not updated.
+2. The contract between api and billing has no schema check in CI.
+3. Canary at 10% did not include billing traffic, so the canary metrics stayed green.
+4. The alert fired on 5xx rate but billing failures surfaced as 200s with an error body.
+Each factor is a system property, not a person.
+
+## Detection
+How we found out (alert, customer, luck), how long it took, and what would have found it sooner.
+
+## Response
+What went well (name it: the rollback took 4 minutes). What was slow or confusing, and why (no runbook for X; two people rolled back different things).
+
+## What we got lucky about
+Anything that would have made it worse and did not happen.
+
+## Action items
+| # | Action | Addresses factor | Owner | Due | Status |
+| 1 | Contract test between api and billing in CI | 2 | ... | 2026-10-02 | open |
+| 2 | Canary routing includes billing traffic | 3 | ... | ... | ... |
+| 3 | Billing errors return 5xx, alert on them | 4 | ... | ... | ... |
+
+## Lessons
+Two or three sentences a reader from another team can apply.
+</code></pre>
+<h3 id="rules">Rules</h3>
+<ul>
+<li><strong>Blameless in language and substance.</strong> Write &quot;the deploy proceeded&quot; not &quot;X deployed without checking&quot;. If a human decision is in the chain, the factor is the missing guard that made the decision consequential.</li>
+<li><strong>Root cause is plural.</strong> A single root cause means the analysis stopped early. Ask &quot;why did that matter?&quot; until the answer is a design property.</li>
+<li><strong>Action items fix factors, not the symptom.</strong> &quot;Fix the enum&quot; is the incident fix, already done. Each action names the factor it removes; a factor with no action is a documented risk, stated as such.</li>
+<li><strong>Owners and dates are people and days</strong>, not teams and quarters. Track them; a postmortem whose actions are never done is a ritual.</li>
+<li><strong>Numbers over adjectives</strong> in impact; if a number is unknown, say unknown and what would have made it knowable (an action item).</li>
+<li><strong>Reviewed by someone not in the response</strong>, and shared beyond the team.</li>
+</ul>
+<p>Run <code>humanize</code>; postmortems attract inflated language.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/incident-postmortem" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

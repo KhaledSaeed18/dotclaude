@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>review-pr: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/review-pr/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/review-pr/" />
+    <meta property="og:title" content="review-pr: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="review-pr: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/review-pr/#code","url":"https://dotclaude.khaledsaeed.tech/command/review-pr/","name":"review-pr","alternateName":"Review Pr","headline":"review-pr: a Claude Code command","description":"Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter, test-gap-analyzer, type-design-reviewer), then merge their findings into one severity-ranked review with file:line anchors and no duplicates, optionally posted to the PR with gh. Use when a PR is ready for review, before requesting human review, or when a branch needs a thorough second opinion in one pass.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/review/review-pr","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","review","pr-toolkit"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"review-pr","item":"https://dotclaude.khaledsaeed.tech/command/review-pr/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">review-pr</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in review</span></p>
+          <h1><code>review-pr</code></h1>
+          
+          <p class="lede">Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter, test-gap-analyzer, type-design-reviewer), then merge their findings into one severity-ranked review with file:line anchors and no duplicates, optionally posted to the PR with gh. Use when a PR is ready for review, before requesting human review, or when a branch needs a thorough second opinion in one pass.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[PR number or branch] [--post]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Grep, Glob, Bash(git:*), Bash(gh:*), Agent</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/pr-toolkit/">pr-toolkit</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install pr-toolkit@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/review-pr</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/review-pr.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Target: <code>$ARGUMENTS</code> (a PR number, a branch, or empty for the current branch; <code>--post</code> posts the result as a PR comment)</p>
+<p><strong>Current branch and merge base:</strong></p>
+<p>!<code>git branch --show-current 2&gt;/dev/null; git merge-base HEAD origin/main 2&gt;/dev/null || git merge-base HEAD main 2&gt;/dev/null</code></p>
+<p><strong>Change summary:</strong></p>
+<p>!<code>git diff --stat $(git merge-base HEAD origin/main 2&gt;/dev/null || git merge-base HEAD main 2&gt;/dev/null)...HEAD 2&gt;/dev/null | tail -20</code></p>
+<h3 id="task">Task</h3>
+<h4 id="step-1-resolve-the-target">Step 1: Resolve the target</h4>
+<ul>
+<li>A number: <code>gh pr view &lt;n&gt; --json headRefName,baseRefName,title,body,url</code> then <code>gh pr checkout &lt;n&gt;</code> if not already on it. The diff is <code>base...head</code>.</li>
+<li>A branch name: check it out (or use a worktree if the tree is dirty) and diff against its merge base with the default branch.</li>
+<li>Nothing: the current branch against its merge base.</li>
+</ul>
+<p>Read the PR description or the last commits for intent. If the diff is empty, say so and stop.</p>
+<h4 id="step-2-fan-out">Step 2: Fan out</h4>
+<p>Launch these four agents <strong>in parallel</strong>, each with the same scope (the diff range and the intent), and let each work in its own context:</p>
+<ol>
+<li><code>code-reviewer</code>: correctness, security, maintainability, stack-specific issues.</li>
+<li><code>silent-failure-hunter</code>: swallowed errors, ignored results, wrong statuses.</li>
+<li><code>test-gap-analyzer</code>: behaviours with no asserting test, as test specs.</li>
+<li><code>type-design-reviewer</code>: types that permit invalid states, boundary casts.</li>
+</ol>
+<p>Give each the explicit diff command (<code>git diff &lt;base&gt;...HEAD</code>) and the PR title and body, and tell each to return its standard report.</p>
+<h4 id="step-3-merge">Step 3: Merge</h4>
+<p>Combine the four reports into one review:</p>
+<ul>
+<li><strong>Deduplicate.</strong> The same <code>file:line</code> reported by two agents becomes one finding that credits the stronger analysis.</li>
+<li><strong>Rank</strong> Critical, High, Medium, Low across all sources. Silent failures with data-loss scenarios and security findings are Critical or High regardless of which agent found them.</li>
+<li><strong>Keep the evidence.</strong> Every finding keeps its <code>file:line</code>, scenario, and fix.</li>
+<li><strong>Cap the noise.</strong> At most 15 findings in the body; summarise the rest in one line each under &quot;Also noted&quot;.</li>
+<li><strong>Verdict</strong> in the first line: approve, approve with nits, request changes; and one sentence why.</li>
+</ul>
+<h4 id="step-4-deliver">Step 4: Deliver</h4>
+<p>Print the merged review. With <code>--post</code>, also post it as a single PR comment:</p>
+<pre><code class="language-bash">gh pr comment &lt;n&gt; --body-file &lt;(cat &lt;&lt;&#39;REVIEW&#39;
+...
+REVIEW
+)
+</code></pre>
+<p>Never approve or request changes through the GitHub review API; the human reviewer owns that decision. Never edit code as part of this command.</p>
+<h4 id="format">Format</h4>
+<pre><code>## Review: &lt;PR title&gt; (&lt;n&gt; files, +a/-b)
+
+**Verdict:** request changes. One silent data-loss path and no tests for the new error branch.
+
+### Critical
+- `src/jobs/sync.ts:74` ...
+
+### High
+...
+
+### Test gaps (top 3)
+1. ...
+
+### Also noted
+- ...
+</code></pre>
+<h3 id="inspired-by">Inspired by</h3>
+<p>The role and scope follow the pr-review-toolkit plugin&#39;s /review-pr command in Anthropic&#39;s <a href="https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit" rel="noopener">claude-code</a> repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/review/review-pr" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in review</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/"><code>code-explorer</code></a> <span class="row-type">agent</span> Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-simplifier/"><code>code-simplifier</code></a> <span class="row-type">agent</span> Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/"><code>silent-failure-hunter</code></a> <span class="row-type">agent</span> Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/"><code>test-gap-analyzer</code></a> <span class="row-type">agent</span> Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/type-design-reviewer/"><code>type-design-reviewer</code></a> <span class="row-type">agent</span> Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=review">All of review</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

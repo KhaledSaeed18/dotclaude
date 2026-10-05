@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>git-worktrees: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/" />
+    <meta property="og:title" content="git-worktrees: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="git-worktrees: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/git-worktrees/#code","url":"https://dotclaude.khaledsaeed.tech/skill/git-worktrees/","name":"git-worktrees","alternateName":"Git Worktrees","headline":"git-worktrees: a Claude Code skill","description":"Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the platform's native worktree tooling, and falling back to git worktrees only when nothing native exists. Use before starting feature work that needs isolation, or before executing an implementation plan.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-worktrees","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"git-worktrees","item":"https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">git-worktrees</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>git-worktrees</code></h1>
+          
+          <p class="lede">Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the platform's native worktree tooling, and falling back to git worktrees only when nothing native exists. Use before starting feature work that needs isolation, or before executing an implementation plan.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/git-worktrees</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/git-worktrees/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Make sure the work happens somewhere isolated, without fighting whatever isolation the environment already provides. The order matters: detect what you&#39;re already in, prefer native tooling, and only reach for raw <code>git worktree</code> as a last resort. Creating a worktree on top of an environment that already gave you one produces phantom state the harness can&#39;t see or clean up.</p>
+<h3 id="step-0-detect-existing-isolation-first">Step 0: Detect existing isolation first</h3>
+<p>Before creating anything, check whether you&#39;re already isolated.</p>
+<pre><code class="language-bash">GIT_DIR=$(cd &quot;$(git rev-parse --git-dir)&quot; 2&gt;/dev/null &amp;&amp; pwd -P)
+GIT_COMMON=$(cd &quot;$(git rev-parse --git-common-dir)&quot; 2&gt;/dev/null &amp;&amp; pwd -P)
+BRANCH=$(git branch --show-current)
+</code></pre>
+<p>If <code>GIT_DIR != GIT_COMMON</code>, you&#39;re likely already in a linked worktree, <strong>but</strong> the same is true inside a git submodule, so rule that out first:</p>
+<pre><code class="language-bash">git rev-parse --show-superproject-working-tree 2&gt;/dev/null
+</code></pre>
+<p>If that prints a path, you&#39;re in a submodule: treat it as a normal repo. Otherwise, <code>GIT_DIR != GIT_COMMON</code> means you&#39;re already in a worktree, skip creation and go straight to setup (Step 3). Report it: &quot;Already in an isolated workspace at <code>&lt;path&gt;</code> on branch <code>&lt;name&gt;</code>&quot; (or note a detached HEAD, which will need a branch created at finish time).</p>
+<p>If <code>GIT_DIR == GIT_COMMON</code> (or you&#39;re in a submodule), you&#39;re in a normal checkout. Unless the user has already stated a worktree preference, ask before creating one:</p>
+<blockquote>
+<p>&quot;Want me to set up an isolated worktree? It keeps your current branch untouched while I work.&quot;</p>
+</blockquote>
+<p>Honor an existing stated preference without re-asking. If the user declines, work in place and skip to Step 3.</p>
+<h3 id="step-1-create-the-isolated-workspace">Step 1: Create the isolated workspace</h3>
+<p>Two mechanisms, tried in this order.</p>
+<h4 id="1a-native-worktree-tooling-preferred">1a. Native worktree tooling (preferred)</h4>
+<p>Do you already have a native way to create a worktree: a tool named something like <code>EnterWorktree</code> or <code>WorktreeCreate</code>, a <code>/worktree</code> command, a <code>--worktree</code> flag? If so, use it and skip to Step 3. Native tools handle placement, branch creation, and cleanup themselves; using raw <code>git worktree add</code> alongside them creates state the harness can&#39;t track. Only fall through to 1b if no native tool exists.</p>
+<h4 id="1b-git-worktree-fallback">1b. Git worktree fallback</h4>
+<p>Only if there&#39;s no native tool. Pick the directory by this priority: an explicit user preference always wins over what&#39;s on disk:</p>
+<ol>
+<li>A worktree directory the user already specified in their instructions.</li>
+<li>An existing project-local directory: <code>.worktrees/</code> (preferred), or <code>worktrees/</code>. If both exist, <code>.worktrees/</code> wins.</li>
+<li>Otherwise, default to <code>.worktrees/</code> at the repo root.</li>
+</ol>
+<p>For any project-local directory, <strong>verify it&#39;s git-ignored before creating the worktree</strong>: otherwise the worktree&#39;s contents get tracked:</p>
+<pre><code class="language-bash">git check-ignore -q .worktrees 2&gt;/dev/null || git check-ignore -q worktrees 2&gt;/dev/null
+</code></pre>
+<p>If it isn&#39;t ignored, add it to <code>.gitignore</code> and commit that change first. Then create the worktree on a new branch and move into it:</p>
+<pre><code class="language-bash">git worktree add &quot;$path/$BRANCH_NAME&quot; -b &quot;$BRANCH_NAME&quot;
+cd &quot;$path/$BRANCH_NAME&quot;
+</code></pre>
+<p>If <code>git worktree add</code> fails on a permission/sandbox error, tell the user the sandbox blocked it and that you&#39;re working in the current directory instead, then continue in place.</p>
+<h3 id="step-3-project-setup">Step 3: Project setup</h3>
+<p>Auto-detect the stack and install dependencies: for example <code>npm install</code> (or <code>pnpm</code>/<code>yarn</code>) for <code>package.json</code>, <code>cargo build</code> for <code>Cargo.toml</code>, <code>pip install -r requirements.txt</code> / <code>poetry install</code> for Python, <code>go mod download</code> for <code>go.mod</code>. Skip if there&#39;s nothing to install.</p>
+<h3 id="step-4-verify-a-clean-baseline">Step 4: Verify a clean baseline</h3>
+<p>Run the project&#39;s tests so you know the workspace starts green:</p>
+<pre><code class="language-bash"># project-appropriate: npm test / cargo test / pytest / go test ./...
+</code></pre>
+<p>If they fail, report the failures and ask whether to proceed or investigate first: a dirty baseline makes it impossible to tell your new bugs from pre-existing ones. If they pass, report ready: worktree path, branch, and that the baseline is green.</p>
+<h3 id="common-mistakes">Common mistakes</h3>
+<ul>
+<li><strong>Fighting the harness</strong>: running <code>git worktree add</code> when native isolation already exists. Step 0 and Step 1a exist to prevent this; it&#39;s the single most common error.</li>
+<li><strong>Skipping detection</strong>: creating a worktree nested inside one you&#39;re already in. Always run Step 0 first.</li>
+<li><strong>Skipping the ignore check</strong>: project-local worktree contents end up tracked and pollute <code>git status</code>. Always <code>git check-ignore</code> first.</li>
+<li><strong>Assuming the directory</strong>: guess and you violate the project&#39;s convention. Follow the priority order.</li>
+<li><strong>Proceeding on a failing baseline</strong>: you lose the ability to attribute failures. Report and ask.</li>
+</ul>
+<h3 id="attribution">Attribution</h3>
+<p>Adapted from the <code>using-git-worktrees</code> entry of <a href="https://github.com/obra/superpowers" rel="noopener">superpowers</a> by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry&#39;s other items are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-worktrees" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

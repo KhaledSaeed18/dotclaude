@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>supervisor-update: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/supervisor-update/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/supervisor-update/" />
+    <meta property="og:title" content="supervisor-update: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="supervisor-update: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/supervisor-update/#code","url":"https://dotclaude.khaledsaeed.tech/skill/supervisor-update/","name":"supervisor-update","alternateName":"Supervisor Update","headline":"supervisor-update: a Claude Code skill","description":"Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken and their reasons, results with numbers, blockers with the specific help needed, and the next steps with dates, in under a page. Use before a supervisor meeting, when asked for a progress email, or at a milestone.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/supervisor-update","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"supervisor-update","item":"https://dotclaude.khaledsaeed.tech/skill/supervisor-update/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">supervisor-update</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>supervisor-update</code></h1>
+          
+          <p class="lede">Turn the research log and recent work into a concise supervisor update or meeting agenda: progress since the last meeting with evidence, decisions taken and their reasons, results with numbers, blockers with the specific help needed, and the next steps with dates, in under a page. Use before a supervisor meeting, when asked for a progress email, or at a milestone.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) since when, the meeting date, and email or agenda format</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/supervisor-update</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/supervisor-update/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Supervisors read updates between other things. The update&#39;s job is to let them help in the ten minutes they have: what moved, what is stuck, what decision they need to make. Everything else is noise.</p>
+<h3 id="sources">Sources</h3>
+<ol>
+<li><code>RESEARCH_LOG.md</code> entries since the last meeting (or the period asked for). The log is the evidence; if it is thin, say so and ask the student what happened.</li>
+<li>Git history for the period (<code>git log --since</code>), new files under <code>research/notes/</code>, changed chapters.</li>
+<li>The last update or meeting notes, to answer what was promised.</li>
+</ol>
+<h3 id="structure">Structure</h3>
+<pre><code>Subject: Thesis update, 21 Sep 2026
+
+Since 7 Sep:
+- Read 6 papers on X (notes in research/notes/); the gap holds: none evaluates Y in setting Z.
+- Built the data pipeline (commit a1b2c3d); 412 sessions collected, 9 discarded for missing labels.
+- First results: variant B reduces latency 23% (n=10, SD 4%) at all sizes, table attached.
+
+Decided:
+- Dropped baseline C: its code does not run on our data format and reimplementing costs two weeks. Comparing against A and D only.
+
+Need from you:
+- Is a 23% reduction with n=10 enough for RQ2, or should I run n=30 (adds three days)?
+- Ethics amendment for the follow-up survey: can you sign the form (attached) by Thursday?
+
+Next two weeks:
+- Run the n=30 sweep if agreed (by 28 Sep).
+- Draft results chapter section 4.2 (by 3 Oct).
+- Literature synthesis outline for chapter 2 (by 5 Oct).
+
+Open questions carried over: 1 (dataset licence; waiting on the provider since 30 Aug).
+</code></pre>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Under 250 words for an email; under one page for an agenda.</li>
+<li>Every progress bullet has evidence: a path, a commit, a number, a note. No &quot;worked on the literature review&quot;.</li>
+<li>Decisions include the reason and what they rule out, so the supervisor can object now, not at the defence.</li>
+<li>&quot;Need from you&quot; is the most important section and comes before &quot;Next&quot;; each item is a question or a concrete action with a date.</li>
+<li>Carry over open items until they are resolved, with their age; a supervisor sees a stuck item precisely because it keeps appearing.</li>
+<li>Match the department&#39;s register: formal salutation or not, first name or title, as in previous correspondence.</li>
+<li>Attach or link, never paste, tables and figures.</li>
+<li>Run <code>humanize</code> before sending.</li>
+</ul>
+<p>Write to <code>research/updates/YYYY-MM-DD.md</code> and return the text. Log the update itself as a <code>/research-log</code> entry if the student agrees.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/supervisor-update" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cutover: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/cutover/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/cutover/" />
+    <meta property="og:title" content="cutover: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="cutover: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/cutover/#code","url":"https://dotclaude.khaledsaeed.tech/command/cutover/","name":"cutover","alternateName":"Cutover","headline":"cutover: a Claude Code command","description":"Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/cutover","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","deployment","deploy"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"cutover","item":"https://dotclaude.khaledsaeed.tech/command/cutover/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">cutover</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in deployment</span></p>
+          <h1><code>cutover</code></h1>
+          
+          <p class="lede">Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>&lt;domain&gt; --to &lt;new-host-address&gt; [--coolify-app &lt;name&gt;] [--dns &lt;provider&gt;] [--ssh &lt;alias&gt;]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Write, Edit, Bash, Glob, Grep</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/cutover</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/cutover.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Request: <code>$ARGUMENTS</code></p>
+<p><strong>Current DNS and deployment doc:</strong></p>
+<p>!<code>D=$(echo &quot;$ARGUMENTS&quot; | awk &#39;{print $1}&#39;); [ -n &quot;$D&quot; ] &amp;&amp; dig +noall +answer &quot;$D&quot; 2&gt;/dev/null; dig +short NS &quot;$(echo &quot;$D&quot; | awk -F. &#39;{print $(NF-1)&quot;.&quot;$NF}&#39;)&quot; 2&gt;/dev/null | head -2; ls docs/engineering/DEPLOYMENT.md 2&gt;/dev/null</code></p>
+<h3 id="task">Task</h3>
+<p>Run the <code>live-domain-cutover</code> skill as a guided session. You verify; the owner edits DNS and hosting consoles from exact steps you give. Never advance a stage on an assumption: each stage ends with a verification whose output you show.</p>
+<h4 id="stage-1-record">Stage 1: Record</h4>
+<p>Write the current record (type, value, TTL) and the authoritative servers into the deployment doc as the rollback value. Give the owner the TTL change (1 min on the existing record) and wait for &quot;done&quot;; confirm with <code>dig @&lt;ns&gt;</code>.</p>
+<h4 id="stage-2-rehearse">Stage 2: Rehearse</h4>
+<p>Give the owner the rehearsal record (<code>&lt;name&gt;-next</code> A to the new host, TTL 1 min). Deploy the app on that name only, then run the <code>deploy-verification</code> skill there in full, including a rolling-update probe and the header comparison with the old host. Fix and redeploy until every check passes. Report the checklist.</p>
+<h4 id="stage-3-switch">Stage 3: Switch</h4>
+<p>Agree a time. Give the owner the two edits (delete the old record, add the A record, TTL 1 min) and wait. Then: poll the authoritative server and two public resolvers; set the real domain as the only domain in Coolify and redeploy; watch the certificate until it verifies; switch the pipeline&#39;s probe variable; run <code>deploy-verification</code> on the real domain; ask the owner to reload their signed-in tab and confirm the session survived.</p>
+<h4 id="stage-4-soak-and-remove">Stage 4: Soak and remove</h4>
+<p>Record the cutover time and results in the deployment doc. Ask the owner how long to soak. When they declare it over, give the removal steps (DNS cleanup and TTL back to Automatic, old host domain, Git connection and project, GitHub app access and environments, hook secrets in other repositories), verify each with <code>dig</code>, <code>gh api</code> and <code>gh secret list</code>, and finish the docs: migration section removed, follow-ups for other repositories listed.</p>
+<p>End with a timeline of timestamps and a one-line status per stage. If anything failed at Stage 3, lead with the rollback instruction (restore the recorded value) before any analysis.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/cutover" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/deploy-setup/"><code>deploy-setup</code></a> <span class="row-type">command</span> Add container packaging and a GHCR to Coolify pipeline to the current repository, then list the owner actions left. Use when a project needs to go from...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/deploy-verify/"><code>deploy-verify</code></a> <span class="row-type">command</span> Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

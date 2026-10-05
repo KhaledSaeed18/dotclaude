@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>deploy-verify: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/deploy-verify/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/deploy-verify/" />
+    <meta property="og:title" content="deploy-verify: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="deploy-verify: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/deploy-verify/#code","url":"https://dotclaude.khaledsaeed.tech/command/deploy-verify/","name":"deploy-verify","alternateName":"Deploy Verify","headline":"deploy-verify: a Claude Code command","description":"Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a release.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/deploy-verify","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","deployment","deploy"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"deploy-verify","item":"https://dotclaude.khaledsaeed.tech/command/deploy-verify/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">deploy-verify</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in deployment</span></p>
+          <h1><code>deploy-verify</code></h1>
+          
+          <p class="lede">Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a release.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>&lt;domain&gt; [--app &lt;coolify-resource-name&gt;] [--api &lt;api-resource-name&gt;] [--run &lt;workflow-run-id&gt;] [--ssh &lt;alias&gt;]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Bash, Glob, Grep</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/deploy-verify</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/deploy-verify.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Request: <code>$ARGUMENTS</code></p>
+<p><strong>Deployment doc and latest main run:</strong></p>
+<p>!<code>ls docs/engineering/DEPLOYMENT.md docs/*deploy* 2&gt;/dev/null; gh run list --branch main --limit 1 --json databaseId,conclusion,displayTitle --jq &#39;.[] | &quot;\(.databaseId) \(.conclusion) \(.displayTitle)&quot;&#39; 2&gt;/dev/null</code></p>
+<h3 id="task">Task</h3>
+<p>Run the <code>deploy-verification</code> skill end to end for the given domain and report a checklist. Everything is read-only and measured from the server over one SSH connection; the owner&#39;s signed-in session is used only to open pages.</p>
+<ol>
+<li>Resolve the inputs from the arguments or the deployment doc: domain, SSH alias, Coolify resource names of the app and of the API behind it. Ask only for what cannot be found.</li>
+<li>Open the SSH ControlMaster connection once; every later command multiplexes through it.</li>
+<li>Run the checks in this order, each with its command and output captured: certificate verification and issuer; <code>/healthz</code> and the API readiness route through the domain; response headers (and a diff against the previous host when one is named); container contract (health, memory limit, no port bindings, non-root, image tag equals the latest published <code>sha-</code> tag); client address proof with a forged header from the server and from this machine; when <code>--run</code> is given and its deploy job has not started, arm the rolling-update probe and summarise the status counts and the slowest response.</li>
+<li>If the owner is signed in on the domain in the browser pane, open the landing page, one data page and one page per locale and read the network log for same-origin API calls and their status codes. Click nothing that writes.</li>
+<li>Close the SSH master connection.</li>
+</ol>
+<p>Produce a table: check, command, expected, observed, pass or fail. End with the overall verdict and, for every failure, the skill that fixes it (<code>nextjs-coolify-image</code> for shutdown or headers, <code>coolify-image-app</code> for container settings, <code>proxy-client-address</code> for the address, <code>live-domain-cutover</code> for certificate and DNS). Offer to append the dated table to the deployment doc.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/deploy-verify" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/cutover/"><code>cutover</code></a> <span class="row-type">command</span> Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host.</li><li><a href="https://dotclaude.khaledsaeed.tech/command/deploy-setup/"><code>deploy-setup</code></a> <span class="row-type">command</span> Add container packaging and a GHCR to Coolify pipeline to the current repository, then list the owner actions left. Use when a project needs to go from...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

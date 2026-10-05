@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>deploy plugin for Claude Code | dotclaude</title>
+    <meta name="description" content="Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/plugins/deploy/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/plugins/deploy/" />
+    <meta property="og:title" content="deploy plugin for Claude Code | dotclaude" />
+    <meta property="og:description" content="Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="deploy plugin for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/plugins/deploy/#code","url":"https://dotclaude.khaledsaeed.tech/plugins/deploy/","name":"deploy","headline":"deploy: a Claude Code plugin","description":"Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub Actions pipeline from pull request to production through GHCR, the Coolify application and API token, a host ops toolkit with alerting health checks and verified backups, server-side deploy verification, a zero-downtime domain cutover, and a read-only deployment reviewer.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/deploy","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","plugin","operations","deploy","coolify","docker","github-actions","ghcr","vps","nextjs","express"],"hasPart":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/#code","name":"coolify-image-app","url":"https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/#code","name":"coolify-vps-baseline","url":"https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/deploy-verification/#code","name":"deploy-verification","url":"https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/#code","name":"express-prisma-coolify-image","url":"https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/#code","name":"ghcr-coolify-pipeline","url":"https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/#code","name":"live-domain-cutover","url":"https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/#code","name":"nextjs-coolify-image","url":"https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/#code","name":"proxy-client-address","url":"https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/#code","name":"vps-ops-toolkit","url":"https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/#code","name":"deploy-reviewer","url":"https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/cutover/#code","name":"cutover","url":"https://dotclaude.khaledsaeed.tech/command/cutover/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/deploy-setup/#code","name":"deploy-setup","url":"https://dotclaude.khaledsaeed.tech/command/deploy-setup/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/deploy-verify/#code","name":"deploy-verify","url":"https://dotclaude.khaledsaeed.tech/command/deploy-verify/"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Plugins","item":"https://dotclaude.khaledsaeed.tech/#/plugins"},{"@type":"ListItem","position":3,"name":"deploy","item":"https://dotclaude.khaledsaeed.tech/plugins/deploy/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/plugins">Plugins</a></li><li aria-current="page">deploy</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="plugin">
+          <p class="detail-kind">Plugin <span class="row-category">operations</span></p>
+          <h1><code>deploy</code></h1>
+          <p class="lede">Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub Actions pipeline from pull request to production through GHCR, the Coolify application and API token, a host ops toolkit with alerting health checks and verified backups, server-side deploy verification, a zero-downtime domain cutover, and a read-only deployment reviewer.</p>
+          <p class="doc-keywords"><span class="chip">deploy</span> <span class="chip">coolify</span> <span class="chip">docker</span> <span class="chip">github-actions</span> <span class="chip">ghcr</span> <span class="chip">vps</span> <span class="chip">nextjs</span> <span class="chip">express</span></p>
+        </header>
+        <section class="doc-install">
+<h2 id="install">Install</h2>
+<p>Add the marketplace once, then install the bundle. It updates with <code>/plugin marketplace update dotclaude</code>.</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+        </section>
+        <section class="doc-body">
+          <h2 id="contents">What you get</h2>
+<h3 id="skills">Skills (9)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+<h3 id="agents">Agents (1)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/deploy-reviewer/"><code>deploy-reviewer</code></a> <span class="row-type">agent</span> Use this agent to review a repository's deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second...</li></ul>
+<h3 id="commands">Commands (3)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/cutover/"><code>cutover</code></a> <span class="row-type">command</span> Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host.</li><li><a href="https://dotclaude.khaledsaeed.tech/command/deploy-setup/"><code>deploy-setup</code></a> <span class="row-type">command</span> Add container packaging and a GHCR to Coolify pipeline to the current repository, then list the owner actions left. Use when a project needs to go from...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/deploy-verify/"><code>deploy-verify</code></a> <span class="row-type">command</span> Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a...</li></ul>
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/deploy" rel="noopener">View the plugin tree on GitHub</a> · <a href="/#/plugins">All plugins</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

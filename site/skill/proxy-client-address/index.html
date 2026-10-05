@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>proxy-client-address: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/" />
+    <meta property="og:title" content="proxy-client-address: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="proxy-client-address: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/#code","url":"https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/","name":"proxy-client-address","alternateName":"Proxy Client Address","headline":"proxy-client-address: a Claude Code skill","description":"Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy rate-limits or audits every user as one address.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/proxy-client-address","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"reference/snippets.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"proxy-client-address","item":"https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">proxy-client-address</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>proxy-client-address</code></h1>
+          
+          <p class="lede">Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy rate-limits or audits every user as one address.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the front-end proxy file and the backend's middleware</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/proxy-client-address</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/proxy-client-address/SKILL.md</code></li><li><code>.claude/skills/proxy-client-address/reference/snippets.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>When a browser calls a front-end server that forwards to an API, the API&#39;s peer is the front-end for every user: one rate-limit bucket and one audit address for everyone. Fix it with a named address the API believes only next to a shared secret, derived from the one forwarded header the edge proxy wrote itself.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Never trust <code>X-Forwarded-For</code> from the client side.</strong> Only the entry the edge proxy appended is real; confirm which entry that is for the proxy in front of you before relying on it.</li>
+<li><strong>The secret is runtime, server-only, identical on both sides,</strong> generated by the owner (<code>openssl rand -base64 32</code>), pasted into both deployments, never in a repository or a client bundle.</li>
+<li><strong>Strip the headers on the way in.</strong> The front-end deletes any <code>x-&lt;app&gt;-proxy-secret</code> or <code>x-&lt;app&gt;-client-ip</code> a browser sent before setting its own; the API deletes both after reading them.</li>
+<li><strong>Compare the secret in constant time</strong> on digests, so length and content leak nothing.</li>
+<li><strong>Without the secret, behave as before.</strong> The front-end falls back to the plain rewrite; the API falls back to <code>req.ip</code>. Rollout is safe in any order.</li>
+</ul>
+<h3 id="step-1-establish-the-proxys-behaviour">Step 1: Establish the proxy&#39;s behaviour</h3>
+<p>Read the edge proxy&#39;s configuration (Traefik: <code>docker inspect coolify-proxy --format &#39;{{json .Args}}&#39; | grep -i forwarded</code>). With no trusted IPs configured, Traefik discards client-sent <code>X-Forwarded-*</code> and writes the peer address itself, so the <strong>last</strong> entry is the client; a platform edge behaves the same. If trusted IPs or <code>insecure</code> are set, the client&#39;s forged entries survive in front of the real one and the last entry is still the real one. A Node server does not append. Document the finding.</p>
+<h3 id="step-2-front-end-side-the-bff">Step 2: Front-end side (the BFF)</h3>
+<p>In the Next.js proxy (or middleware), for <code>/api/*</code> requests: when the secret is configured, rewrite to the API origin with two added request headers, else return nothing and let <code>next.config</code> rewrites handle it. Server-side fetches (Server Components) add the same headers from <code>next/headers</code>. Snippets in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/proxy-client-address/reference/snippets.md" rel="noopener">reference/snippets.md</a>.</p>
+<h3 id="step-3-api-side">Step 3: API side</h3>
+<p>A middleware early in the chain: read both headers, delete them, verify the presented secret against the configured one on SHA-256 digests with <code>timingSafeEqual</code>, accept the named address only if it is a valid IP, else use <code>req.ip</code>. Store the result on the request (<code>req.clientIp</code>) and make the rate limiter&#39;s key generator and the audit writer read it. <code>trust proxy</code> stays set for <code>req.ip</code> to be meaningful behind the edge.</p>
+<h3 id="step-4-roll-out-and-prove-it">Step 4: Roll out and prove it</h3>
+<ol>
+<li>Ship both code sides (they are inert without the secret).</li>
+<li>Owner sets <code>API_PROXY_SECRET</code> on the front-end app and <code>DASHBOARD_PROXY_SECRET</code> (or the chosen name) on the API, same value, then redeploys both.</li>
+<li>Prove it: a request through the front-end to a non-existent API route with a forged <code>X-Forwarded-For: 203.0.113.9</code>, from two different networks, must be logged by the API with each real address; the same forged header plus a wrong secret sent straight to the API must be logged with the sender&#39;s address. The <code>deploy-verification</code> skill has the commands.</li>
+</ol>
+<p>Report the proxy finding, the header names chosen, the variable names on each side, and the proof lines from the API log.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/proxy-client-address" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>writing plugin for Claude Code | dotclaude</title>
+    <meta name="description" content="Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/plugins/writing/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/plugins/writing/" />
+    <meta property="og:title" content="writing plugin for Claude Code | dotclaude" />
+    <meta property="og:description" content="Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="writing plugin for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/plugins/writing/#code","url":"https://dotclaude.khaledsaeed.tech/plugins/writing/","name":"writing","headline":"writing: a Claude Code plugin","description":"Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/writing","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","plugin","writing","writing","editing","humanize","prose"],"hasPart":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/email-draft/#code","name":"email-draft","url":"https://dotclaude.khaledsaeed.tech/skill/email-draft/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/humanize/#code","name":"humanize","url":"https://dotclaude.khaledsaeed.tech/skill/humanize/"},{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/presentation-outline/#code","name":"presentation-outline","url":"https://dotclaude.khaledsaeed.tech/skill/presentation-outline/"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Plugins","item":"https://dotclaude.khaledsaeed.tech/#/plugins"},{"@type":"ListItem","position":3,"name":"writing","item":"https://dotclaude.khaledsaeed.tech/plugins/writing/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/plugins">Plugins</a></li><li aria-current="page">writing</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="plugin">
+          <p class="detail-kind">Plugin <span class="row-category">writing</span></p>
+          <h1><code>writing</code></h1>
+          <p class="lede">Prose for a human reader: strip machine-writing tells from any text, draft emails that get answered, and outline talks and defences slide by slide.</p>
+          <p class="doc-keywords"><span class="chip">writing</span> <span class="chip">editing</span> <span class="chip">humanize</span> <span class="chip">prose</span></p>
+        </header>
+        <section class="doc-install">
+<h2 id="install">Install</h2>
+<p>Add the marketplace once, then install the bundle. It updates with <code>/plugin marketplace update dotclaude</code>.</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install writing@dotclaude</code></pre>
+        </section>
+        <section class="doc-body">
+          <h2 id="contents">What you get</h2>
+<h3 id="skills">Skills (3)</h3><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/email-draft/"><code>email-draft</code></a> <span class="row-type">skill</span> Draft an email or message that gets the reply it needs: purpose in the first line, the ask made explicit with a date, context kept to what the reader...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/humanize/"><code>humanize</code></a> <span class="row-type">skill</span> Rewrite prose that reads as machine-generated so it reads as the writer, without changing what it says or adding any fact: removes not-X-but-Y contrasts...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/presentation-outline/"><code>presentation-outline</code></a> <span class="row-type">skill</span> Structure a talk, thesis defence, or project presentation as a slide-by-slide outline with one message per slide, an opening that states the point...</li></ul>
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/.claude-plugin/plugins/writing" rel="noopener">View the plugin tree on GitHub</a> · <a href="/#/plugins">All plugins</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

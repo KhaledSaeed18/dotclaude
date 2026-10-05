@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ghcr-coolify-pipeline: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/" />
+    <meta property="og:title" content="ghcr-coolify-pipeline: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ghcr-coolify-pipeline: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/#code","url":"https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/","name":"ghcr-coolify-pipeline","alternateName":"Ghcr Coolify Pipeline","headline":"ghcr-coolify-pipeline: a Claude Code skill","description":"Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a repo, replacing a CI-only workflow, or debugging a deploy job.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/ghcr-coolify-pipeline","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"reference/pipeline-anatomy.md"},{"@type":"CreativeWork","name":"templates/pipeline.express.yml"},{"@type":"CreativeWork","name":"templates/pipeline.nextjs.yml"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"ghcr-coolify-pipeline","item":"https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">ghcr-coolify-pipeline</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>ghcr-coolify-pipeline</code></h1>
+          
+          <p class="lede">Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a repo, replacing a CI-only workflow, or debugging a deploy job.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the stack (next or express), the production URL, and the existing workflow file</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/ghcr-coolify-pipeline</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/ghcr-coolify-pipeline/SKILL.md</code></li><li><code>.claude/skills/ghcr-coolify-pipeline/reference/pipeline-anatomy.md</code></li><li><code>.claude/skills/ghcr-coolify-pipeline/templates/pipeline.express.yml</code></li><li><code>.claude/skills/ghcr-coolify-pipeline/templates/pipeline.nextjs.yml</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>One workflow, five jobs: classify what changed, lint the ops layer, run the quality gates, build and smoke-test the runtime image, deploy through the Coolify API and prune the registry. Pull requests prove the image without publishing it; a push to <code>main</code> that changes something shipped publishes and deploys; &quot;Run workflow&quot; on <code>main</code> redeploys. Nothing in it needs a long-lived cloud key beyond one Coolify token.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>A main run is never cancelled mid-flight and deploys never overlap.</strong> <code>cancel-in-progress</code> only on pull requests; the deploy job holds its own concurrency group.</li>
+<li><strong>Only <code>main</code> publishes and deploys.</strong> Every push condition reads <code>github.ref == &#39;refs/heads/main&#39; &amp;&amp; github.event_name != &#39;pull_request&#39;</code>.</li>
+<li><strong>The image is proven before it is pushed.</strong> The smoke test runs the image the way production will: own user, own probe, both locales or a real database, and a timed stop.</li>
+<li><strong>Immutable tags.</strong> <code>sha-&lt;12&gt;</code> is what deploys and rollbacks pin; <code>main</code> only tracks the newest build.</li>
+<li><strong><code>shell: bash</code> with pipefail on every job that pipes curl into jq.</strong> Otherwise an empty body reaches jq silently. And never pipe curl into <code>grep -q</code>: it closes the pipe early and fails curl; write to a file first.</li>
+<li><strong>Fail fast when configuration is missing.</strong> The deploy job checks <code>COOLIFY_URL</code>, <code>COOLIFY_APP_UUID</code> and <code>COOLIFY_TOKEN</code> before touching anything.</li>
+<li><strong>No secret is ever printed.</strong> Tokens only appear as <code>Authorization</code> headers; the token value is pasted into GitHub by the owner.</li>
+</ul>
+<h3 id="step-1-choose-the-template-and-read-the-repo">Step 1: Choose the template and read the repo</h3>
+<table>
+<thead>
+<tr>
+<th>Stack</th>
+<th>Template</th>
+<th>Smoke test proves</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Next.js</td>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/ghcr-coolify-pipeline/templates/pipeline.nextjs.yml" rel="noopener">pipeline.nextjs.yml</a></td>
+<td>healthy, non-root, both locales, auth redirect, headers, image optimizer, stop within 10 s</td>
+</tr>
+<tr>
+<td>Express and Prisma</td>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/ghcr-coolify-pipeline/templates/pipeline.express.yml" rel="noopener">pipeline.express.yml</a></td>
+<td>migrations against a fresh Postgres, readiness probe, non-root, stop within 10 s, plus a schema and migration guard in the quality job</td>
+</tr>
+</tbody></table>
+<p>Read the existing workflow for the gates it already runs (lint, typecheck, tests, coverage, unused-code checks, build) and keep every one of them in the quality job. Check <code>package.json</code> for <code>packageManager</code> and <code>.nvmrc</code> for the Node version; the setup actions read both, so pin them if missing. Decide which Playwright or end-to-end suites stay local: anything that provisions its own database and sibling services usually does, because a free plan shares a small minutes budget across repositories.</p>
+<h3 id="step-2-adapt-the-change-classifier">Step 2: Adapt the change classifier</h3>
+<p>The <code>changes</code> job decides <code>code</code> (anything the gates can judge) and <code>runtime</code> (anything that ends up in the image). Edit the two regexes to the repo&#39;s layout: source folders, config files, lockfiles, Dockerfile, entrypoint, probe and shutdown scripts count as runtime; tests and docs do not. A docs-only push then stops after one job. The anatomy of every job and the reason for each line is in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/ghcr-coolify-pipeline/reference/pipeline-anatomy.md" rel="noopener">reference/pipeline-anatomy.md</a>.</p>
+<h3 id="step-3-fill-the-variables-and-secrets">Step 3: Fill the variables and secrets</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Kind</th>
+<th>Set by</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SITE_URL</code></td>
+<td>variable</td>
+<td>you, <code>gh variable set</code></td>
+<td>the URL the deploy job probes; the rehearsal domain first, the real one after cutover</td>
+</tr>
+<tr>
+<td><code>API_ORIGIN</code> or <code>API_BASE_URL</code></td>
+<td>variable</td>
+<td>you</td>
+<td>the build-time backend origin baked into the image</td>
+</tr>
+<tr>
+<td><code>COOLIFY_URL</code></td>
+<td>variable</td>
+<td>you</td>
+<td>the Coolify instance</td>
+</tr>
+<tr>
+<td><code>COOLIFY_APP_UUID</code></td>
+<td>variable</td>
+<td>you</td>
+<td>from the application&#39;s URL</td>
+</tr>
+<tr>
+<td><code>COOLIFY_TOKEN</code></td>
+<td>secret</td>
+<td>owner</td>
+<td>API token with deploy, read, write</td>
+</tr>
+<tr>
+<td><code>VPS_SSH_KEY</code>, <code>VPS_HOST_KEY</code>, <code>VPS_HOST</code></td>
+<td>secrets</td>
+<td>owner</td>
+<td>only for the Express template&#39;s pre-deploy backup over SSH</td>
+</tr>
+</tbody></table>
+<p><code>GITHUB_TOKEN</code> with <code>packages: write</code> pushes to GHCR; nothing else is needed for the registry.</p>
+<h3 id="step-4-lint-and-run-it">Step 4: Lint and run it</h3>
+<pre><code class="language-bash">docker run --rm -v &quot;$PWD:/repo&quot; -w /repo rhysd/actionlint:1.7.7   # includes shellcheck of every run block
+</code></pre>
+<p>Open a pull request; the run must be green with the deploy job skipped. After the merge, watch the main run to completion and read the <code>conclusion</code> field of each job rather than the overall badge:</p>
+<pre><code class="language-bash">gh run watch &lt;id&gt; --exit-status; gh run view &lt;id&gt; --json conclusion,jobs --jq &#39;.jobs[] | &quot;\(.name): \(.conclusion)&quot;&#39;
+</code></pre>
+<p>The first main run&#39;s live probe fails if the domain has no DNS yet; that is expected and clears with the <code>live-domain-cutover</code> skill. The <code>fix-ci</code> skill covers a failing step; the <code>github-actions-pipeline</code> skill the general workflow rules.</p>
+<p>Report the workflow path, the gates kept, the variables set, the secrets the owner must add, and the first run&#39;s per-job result.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/ghcr-coolify-pipeline" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"><code>nextjs-coolify-image</code></a> <span class="row-type">skill</span> Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

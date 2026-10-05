@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>refactoring-recipes: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/refactoring-recipes/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/refactoring-recipes/" />
+    <meta property="og:title" content="refactoring-recipes: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="refactoring-recipes: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/refactoring-recipes/#code","url":"https://dotclaude.khaledsaeed.tech/skill/refactoring-recipes/","name":"refactoring-recipes","alternateName":"Refactoring Recipes","headline":"refactoring-recipes: a Claude Code skill","description":"Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with polymorphism or lookup, introduce parameter object, replace flag argument, split phase, move function, encapsulate collection, strangler for large rewrites), each with when to apply it, the mechanical steps that keep the code working at every step, and the test to run between steps. Use when code is hard to change, before adding a feature to a tangled area, or when a reviewer asks for a structure change without saying how.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/refactoring-recipes","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"refactoring-recipes","item":"https://dotclaude.khaledsaeed.tech/skill/refactoring-recipes/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">refactoring-recipes</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>refactoring-recipes</code></h1>
+          
+          <p class="lede">Refactor safely by name: a catalogue of the refactorings that come up in practice (extract function or module, inline, rename, replace conditional with polymorphism or lookup, introduce parameter object, replace flag argument, split phase, move function, encapsulate collection, strangler for large rewrites), each with when to apply it, the mechanical steps that keep the code working at every step, and the test to run between steps. Use when code is hard to change, before adding a feature to a tangled area, or when a reviewer asks for a structure change without saying how.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the code to refactor and the smell or goal</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/refactoring-recipes</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/refactoring-recipes/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A refactoring changes structure without changing behaviour, in steps small enough that the tests pass after each one. If you cannot run tests between steps, the first refactoring is to make the code testable. If you are changing behaviour, that is a feature or a fix; do not mix it with refactoring in the same commit.</p>
+<h3 id="before-any-refactoring">Before any refactoring</h3>
+<ol>
+<li><strong>Tests exist and pass.</strong> Characterisation tests for legacy code: capture current outputs for representative inputs before touching anything.</li>
+<li><strong>Scope is named.</strong> The smell you are removing and the boundary you will not cross.</li>
+<li><strong>Commit is clean.</strong> Refactor on its own commit(s) so a reviewer can verify &quot;no behaviour change&quot; by reading the diff.</li>
+</ol>
+<h3 id="recipes">Recipes</h3>
+<p><strong>Extract function.</strong> When a block does one nameable thing inside a longer function, or the same block appears twice. Steps: name the function after what it does; copy the block; identify inputs (parameters) and outputs (return); replace the block with a call; run tests. Watch for variables assigned in the block and read after it (return them, or split the extraction).</p>
+<p><strong>Inline function.</strong> When a function&#39;s body is as clear as its name and it has one caller, or the indirection hides what happens. Steps: check it is not overridden; replace each call with the body; remove the function; run tests.</p>
+<p><strong>Rename.</strong> When a name lies or is vague. Steps: use the IDE or language-server rename for symbols; for strings and config keys, grep all occurrences including docs and tests; rename in one commit. Keep the old name as a deprecated alias when it is public API, with a removal date.</p>
+<p><strong>Extract module or class.</strong> When a file has two reasons to change, or one group of functions shares state the others do not touch. Steps: move the cohesive functions and their state; leave re-exports at the old location temporarily; update imports; run tests; remove re-exports when no caller remains.</p>
+<p><strong>Move function.</strong> When a function uses another module&#39;s data more than its own. Steps: copy to the target; make the original delegate; move callers one by one; delete the original.</p>
+<p><strong>Replace conditional with lookup.</strong> When a <code>switch</code> or if-chain maps a value to a value. Steps: build the table (object, Map, dict); replace the conditional with a lookup and an explicit default; run tests. Keep exhaustiveness (a <code>never</code> check or an assertion on the default).</p>
+<p><strong>Replace conditional with polymorphism.</strong> When the same <code>switch</code> on a type appears in several functions. Steps: introduce a type per case with the shared interface; move each branch&#39;s body to its type; replace the switch with a method call; run tests after each case moves. Do not apply for a single switch; the lookup is enough.</p>
+<p><strong>Introduce parameter object.</strong> When several functions take the same three or four parameters together. Steps: define the type; add it as a new parameter while keeping the old ones; migrate callers; remove the old parameters.</p>
+<p><strong>Replace flag argument.</strong> When a boolean parameter selects between two behaviours. Steps: create one function per behaviour with the shared part extracted; migrate callers by the literal they pass; remove the flag.</p>
+<p><strong>Split phase.</strong> When a function reads input, computes, and writes output interleaved. Steps: extract the compute into a pure function taking plain data; the outer function becomes read, call, write; test the pure function directly.</p>
+<p><strong>Encapsulate collection.</strong> When callers mutate an exposed array or map. Steps: return a copy or readonly view; add add/remove methods; migrate callers; make the field private.</p>
+<p><strong>Replace magic value.</strong> When a literal carries meaning. Steps: named constant next to its first use, or an enum when it is one of a set; replace occurrences; run tests.</p>
+<p><strong>Decompose conditional.</strong> When a condition needs a comment. Steps: extract the condition into a predicate named after its meaning; extract each branch if long.</p>
+<p><strong>Introduce guard clauses.</strong> When the happy path is nested in else branches. Steps: invert each condition and return early; flatten; run tests. Stop when the main path reads top to bottom.</p>
+<p><strong>Strangler for large rewrites.</strong> When a module is too broken to refactor in place. Steps: put a facade in front of it; route one behaviour at a time to the new implementation behind the facade, with the old one as fallback and a comparison log; when all behaviours are routed and comparisons agree, delete the old module. Never a big-bang rewrite.</p>
+<h3 id="between-steps">Between steps</h3>
+<p>Run the narrowest test that covers the change, then the module&#39;s tests, then the full suite before committing. If a step breaks a test and the fix is not obvious in one minute, revert the step and take a smaller one.</p>
+<h3 id="reporting">Reporting</h3>
+<p>For each refactoring: the smell, the recipe, the files, and the test run. If a refactoring exposed a bug, fix it in a separate commit with its own test and say so; a refactoring commit must be behaviour-neutral. Hand the result to <code>code-simplifier</code> for a final pass if the diff is large.</p>
+<h3 id="source">Source</h3>
+<p>Recipe names follow Martin Fowler&#39;s catalogue (Refactoring, 2nd edition); the steps and ordering here are this repository&#39;s summary.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/refactoring-recipes" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

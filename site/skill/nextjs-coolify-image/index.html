@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nextjs-coolify-image: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/" />
+    <meta property="og:title" content="nextjs-coolify-image: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="nextjs-coolify-image: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/#code","url":"https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/","name":"nextjs-coolify-image","alternateName":"Nextjs Coolify Image","headline":"nextjs-coolify-image: a Claude Code skill","description":"Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is large or slow, or when a rolling update drops requests.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/nextjs-coolify-image","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","deployment","deploy"],"hasPart":[{"@type":"CreativeWork","name":"templates/Dockerfile"},{"@type":"CreativeWork","name":"templates/dockerignore"},{"@type":"CreativeWork","name":"templates/healthcheck.js"},{"@type":"CreativeWork","name":"templates/healthz-route.ts"},{"@type":"CreativeWork","name":"templates/shutdown.cjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"nextjs-coolify-image","item":"https://dotclaude.khaledsaeed.tech/skill/nextjs-coolify-image/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">nextjs-coolify-image</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in deployment</span></p>
+          <h1><code>nextjs-coolify-image</code></h1>
+          
+          <p class="lede">Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is large or slow, or when a rolling update drops requests.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the app directory, its public API origin, and where it will run</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/deploy/">deploy</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install deploy@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/nextjs-coolify-image</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/nextjs-coolify-image/SKILL.md</code></li><li><code>.claude/skills/nextjs-coolify-image/templates/Dockerfile</code></li><li><code>.claude/skills/nextjs-coolify-image/templates/dockerignore</code></li><li><code>.claude/skills/nextjs-coolify-image/templates/healthcheck.js</code></li><li><code>.claude/skills/nextjs-coolify-image/templates/healthz-route.ts</code></li><li><code>.claude/skills/nextjs-coolify-image/templates/shutdown.cjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>The image contains the standalone server and nothing else: the build runs natively in CI, the Dockerfile only copies output, and the container proves its own readiness and leaves within a second when asked. Those three properties make rolling updates safe and images small; everything below enforces them.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Build on the runner, never in Docker and never on the server.</strong> Registry installs inside container builds hang; the server has no spare CPU. The Dockerfile copies <code>.next/standalone</code>, <code>.next/static</code> and <code>public</code> only.</li>
+<li><strong><code>output: &quot;standalone&quot;</code> with no <code>NEXT_DIST_DIR</code> override at build time</strong>, so the output lands in <code>.next</code>.</li>
+<li><strong>Public env is baked at build time.</strong> Every <code>NEXT_PUBLIC_*</code> value and the <code>/api</code> rewrite destination are inlined; set them in the workflow before <code>next build</code> and verify them in <code>.next/routes-manifest.json</code>. Only server-only runtime secrets go to Coolify.</li>
+<li><strong>The health route lives outside anything proxied or localised.</strong> <code>/healthz</code> sits beside <code>app/api</code>, not under it, and the proxy matcher excludes it.</li>
+<li><strong>Exit within a second on SIGTERM.</strong> Next waits for in-flight requests; a long-lived stream (SSE, a WebSocket) keeps the old container alive for the whole grace period while the proxy still routes to it.</li>
+<li><strong>No <code>latest</code> tags, no root user, no host ports.</strong></li>
+</ul>
+<h3 id="step-1-audit-the-app">Step 1: Audit the app</h3>
+<pre><code class="language-bash">grep -n &quot;output\|distDir\|rewrites\|headers&quot; next.config.*
+grep -rn &quot;process.env&quot; app components lib proxy.ts middleware.ts 2&gt;/dev/null | grep -v NEXT_PUBLIC_ | grep -v node_modules
+grep -rln &quot;next/image&quot; app components | head
+</code></pre>
+<p>Classify every env read as build-time (<code>NEXT_PUBLIC_*</code>, anything in <code>next.config</code>) or runtime (read on the server at request time). Note whether <code>next/image</code> optimises local images: sharp is traced into the standalone output automatically when installed, so the runtime image needs no extra packages, but the smoke test must prove it.</p>
+<h3 id="step-2-add-the-runtime-files">Step 2: Add the runtime files</h3>
+<p>Copy and adapt, from <code>templates/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/nextjs-coolify-image/templates/Dockerfile" rel="noopener">Dockerfile</a></td>
+<td><code>node:&lt;major&gt;-slim</code>, copies the three output folders plus the two scripts, <code>USER node</code>, <code>HEALTHCHECK</code> on the probe, exit deadline preloaded</td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/nextjs-coolify-image/templates/dockerignore" rel="noopener">.dockerignore</a></td>
+<td>an allowlist: everything out except the build output</td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/nextjs-coolify-image/templates/healthcheck.js" rel="noopener">healthcheck.js</a></td>
+<td>fetches <code>/healthz</code> on <code>127.0.0.1</code> with a 4 s timeout, exit 0 or 1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/nextjs-coolify-image/templates/shutdown.cjs" rel="noopener">shutdown.cjs</a></td>
+<td>exits half a second after SIGTERM or SIGINT; <code>NEXT_MANUAL_SIG_HANDLE=true</code> in the Dockerfile disables Next&#39;s own wait</td>
+</tr>
+<tr>
+<td><a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/deployment/nextjs-coolify-image/templates/healthz-route.ts" rel="noopener">healthz route</a></td>
+<td><code>app/healthz/route.ts</code>, static, <code>Cache-Control: no-store</code></td>
+</tr>
+</tbody></table>
+<p>In <code>next.config.*</code>: <code>output: &quot;standalone&quot;</code>, <code>poweredByHeader: false</code>, and send <code>Strict-Transport-Security</code> yourself (a platform edge used to add it; a self-hosted proxy does not). In the proxy or middleware matcher add <code>healthz</code> to the exclusions: <code>&quot;/((?!api|healthz|_next|.*\\..*).*)&quot;</code>. Add the new files to knip or lint ignores if the repo gates unused files.</p>
+<h3 id="step-3-build-and-verify-the-baked-values-locally">Step 3: Build and verify the baked values locally</h3>
+<pre><code class="language-bash">NEXT_PUBLIC_API_BASE_URL=https://api.example.com pnpm build
+jq -r &#39;.rewrites.afterFiles[]?, .rewrites.beforeFiles[]?, .rewrites.fallback[]? | select(.source == &quot;/api/:path*&quot;) | .destination&#39; .next/routes-manifest.json
+ls .next/standalone/node_modules/.pnpm | grep -c sharp   # non-zero when next/image is used
+docker build -t app:local . &amp;&amp; docker image inspect app:local --format &#39;{{.Size}}&#39;
+</code></pre>
+<h3 id="step-4-smoke-test-the-image-the-way-ci-will">Step 4: Smoke-test the image the way CI will</h3>
+<p>Run the container with the memory limit and check, in order: Docker reports <code>healthy</code> within 30 s; <code>id -u</code> is not 0; <code>/healthz</code> 200; a page per locale (<code>dir=&quot;rtl&quot;</code> present where expected); an unauthenticated protected route redirects to login; security headers present and <code>x-powered-by</code> absent; <code>/_next/image?url=...</code> returns <code>image/*</code> when the app optimises images; <code>docker stop -t 10</code> returns in about a second. Write curl output to files before grepping: <code>grep -q</code> closes the pipe early and fails curl under <code>pipefail</code>. The exact script is the image job in the <code>ghcr-coolify-pipeline</code> skill.</p>
+<h3 id="step-5-hand-over">Step 5: Hand over</h3>
+<p>Report the image size, the verified rewrite destination, the smoke results, which env values are baked and which are runtime, and anything the app does that the probe does not cover (background jobs, streams). The Coolify side is the <code>coolify-image-app</code> skill; the general container rules the <code>dockerfile-best-practices</code> skill.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/nextjs-coolify-image" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in deployment</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-image-app/"><code>coolify-image-app</code></a> <span class="row-type">skill</span> Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/coolify-vps-baseline/"><code>coolify-vps-baseline</code></a> <span class="row-type">skill</span> Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/deploy-verification/"><code>deploy-verification</code></a> <span class="row-type">skill</span> Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/express-prisma-coolify-image/"><code>express-prisma-coolify-image</code></a> <span class="row-type">skill</span> Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/ghcr-coolify-pipeline/"><code>ghcr-coolify-pipeline</code></a> <span class="row-type">skill</span> Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/live-domain-cutover/"><code>live-domain-cutover</code></a> <span class="row-type">skill</span> Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/proxy-client-address/"><code>proxy-client-address</code></a> <span class="row-type">skill</span> Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/vps-ops-toolkit/"><code>vps-ops-toolkit</code></a> <span class="row-type">skill</span> Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=deployment">All of deployment</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

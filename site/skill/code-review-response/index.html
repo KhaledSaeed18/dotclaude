@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>code-review-response: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/code-review-response/" />
+    <meta property="og:title" content="code-review-response: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="code-review-response: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/code-review-response/#code","url":"https://dotclaude.khaledsaeed.tech/skill/code-review-response/","name":"code-review-response","alternateName":"Code Review Response","headline":"code-review-response: a Claude Code skill","description":"Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/code-review-response","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"code-review-response","item":"https://dotclaude.khaledsaeed.tech/skill/code-review-response/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">code-review-response</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>code-review-response</code></h1>
+          
+          <p class="lede">Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or implementation rather than reflexive agreement. Use when you receive review comments (from a human, the code-reviewer agent, or any reviewer) and are about to act on them, especially if any feedback seems unclear or wrong.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/code-review-response</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/code-review-response/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Code review is a technical exchange, not a social one. The job isn&#39;t to agree warmly and start changing things; it&#39;s to understand each point, verify it against the real code, and then implement it, push back on it, or ask about it on the merits. Blindly applying a suggestion that&#39;s wrong for this codebase is as much a failure as ignoring a good one.</p>
+<h3 id="the-response-pattern">The response pattern</h3>
+<p>For each piece of feedback:</p>
+<ol>
+<li><strong>Read it fully</strong> before reacting. Take in all of it, not just the first comment.</li>
+<li><strong>Restate the point</strong> in your own words, or ask, if you can&#39;t. If you can&#39;t articulate what&#39;s being asked, you can&#39;t correctly implement it.</li>
+<li><strong>Verify against reality.</strong> Check the claim against the actual codebase. Is the problem real here? Does the suggested approach fit how this code already works?</li>
+<li><strong>Evaluate on technical merit.</strong> Is it sound <em>for this codebase</em>, not just in the abstract?</li>
+<li><strong>Respond.</strong> A technical acknowledgement, a clarifying question, or reasoned pushback, whichever the evaluation produced.</li>
+<li><strong>Implement one item at a time</strong>, verifying each before moving to the next.</li>
+</ol>
+<h3 id="skip-the-performance">Skip the performance</h3>
+<p>Don&#39;t open with &quot;You&#39;re absolutely right!&quot;, &quot;Great point!&quot;, or &quot;Let me implement that right away&quot;: the first two are filler, and the third commits you before you&#39;ve checked anything. Replace the reflex with substance: restate the technical requirement, ask a clarifying question, push back with reasoning if it&#39;s wrong, or just quietly start the work. Actions communicate more than agreement noises.</p>
+<h3 id="when-feedback-is-unclear">When feedback is unclear</h3>
+<p>If any item is ambiguous, stop (don&#39;t implement anything yet) and ask about the unclear items specifically. Guessing at what a reviewer meant and building the wrong thing wastes both your effort and their next review. It&#39;s faster to ask.</p>
+<h3 id="when-feedback-seems-wrong">When feedback seems wrong</h3>
+<p>Sometimes a suggestion is incorrect for this codebase: it misreads the code, conflicts with a constraint the reviewer can&#39;t see, or would introduce a regression. Push back, with evidence. Cite the file and line, state the concrete problem the suggestion would cause, and propose the alternative. A reviewer would rather be shown a real issue than have a mistaken comment implemented silently. If you turn out to be the one who&#39;s wrong, you&#39;ve learned something; either way the code is better than if you&#39;d agreed reflexively.</p>
+<h3 id="implementing">Implementing</h3>
+<ul>
+<li>One item at a time. Bundling several changes makes it impossible to tell which one broke something.</li>
+<li>Verify each change before the next: the <code>verify-completion</code> skill is the standard: run the check, read the output, then move on.</li>
+<li>For anything non-trivial, a failing-test-first approach (the <code>test-driven-development</code> skill) proves the change does what the reviewer asked.</li>
+<li>Track which items you&#39;ve addressed and which you&#39;ve deferred, so the reviewer can see what happened to each comment.</li>
+</ul>
+<h3 id="attribution">Attribution</h3>
+<p>Adapted from the <code>receiving-code-review</code> entry of <a href="https://github.com/obra/superpowers" rel="noopener">superpowers</a> by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry&#39;s other items are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/code-review-response" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"><code>dependency-upgrade</code></a> <span class="row-type">skill</span> Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

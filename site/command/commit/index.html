@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>commit: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Create one well-formed commit from the current changes using the git-commit skill&#39;s rules: inspect the diff, honour the repo&#39;s commitlint and hooks, stage..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/commit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/commit/" />
+    <meta property="og:title" content="commit: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Create one well-formed commit from the current changes using the git-commit skill&#39;s rules: inspect the diff, honour the repo&#39;s commitlint and hooks, stage..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="commit: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Create one well-formed commit from the current changes using the git-commit skill&#39;s rules: inspect the diff, honour the repo&#39;s commitlint and hooks, stage..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/commit/#code","url":"https://dotclaude.khaledsaeed.tech/command/commit/","name":"commit","alternateName":"Commit","headline":"commit: a Claude Code command","description":"Create one well-formed commit from the current changes using the git-commit skill's rules: inspect the diff, honour the repo's commitlint and hooks, stage only understood files explicitly, write a conventional message whose body says why, and confirm before committing. Never pushes. Use when a piece of work is ready to be recorded in history, or when asked to commit.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/commit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"commit","item":"https://dotclaude.khaledsaeed.tech/command/commit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">commit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in version-control</span></p>
+          <h1><code>commit</code></h1>
+          
+          <p class="lede">Create one well-formed commit from the current changes using the git-commit skill's rules: inspect the diff, honour the repo's commitlint and hooks, stage only understood files explicitly, write a conventional message whose body says why, and confirm before committing. Never pushes. Use when a piece of work is ready to be recorded in history, or when asked to commit.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[scope, ticket, or a hint about what to commit]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Grep, Glob, Bash(git:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/commit</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/commit.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Hint: <code>$ARGUMENTS</code></p>
+<p><strong>Status:</strong></p>
+<p>!<code>git status --short 2&gt;/dev/null | head -40</code></p>
+<p><strong>Branch and recent style:</strong></p>
+<p>!<code>git branch --show-current 2&gt;/dev/null; git log --oneline -8 2&gt;/dev/null</code></p>
+<p><strong>Staged and unstaged summary:</strong></p>
+<p>!<code>git diff --staged --stat 2&gt;/dev/null | tail -5; echo &#39;---&#39;; git diff --stat 2&gt;/dev/null | tail -5</code></p>
+<h3 id="task">Task</h3>
+<p>Apply the <code>git-commit</code> skill end to end for exactly one commit. In short:</p>
+<ol>
+<li>Read the actual diffs (<code>git diff</code>, <code>git diff --staged</code>). Do not commit what you have not read.</li>
+<li>Find and obey the repo&#39;s rules: commitlint config, pre-commit or husky hooks, CONTRIBUTING, the message style visible in the log above.</li>
+<li>If the changes contain more than one logical unit, propose the split and commit only the first unit (or the one the hint names); say what remains.</li>
+<li>Stage files explicitly by path. Never <code>git add -A</code> or <code>git add .</code>. Never stage generated output, secrets, or dependencies; flag anything untracked that should be ignored.</li>
+<li>Write the message: conventional type and scope matching the repo&#39;s convention, subject in the imperative under 72 characters, a body that explains why and what a reviewer needs to know. No AI or co-author mentions of any kind.</li>
+<li>Show the file list and the full message, then ask for a yes before running <code>git commit</code>. If a hook fails, fix the cause and retry; never <code>--no-verify</code>.</li>
+<li>Report the commit hash and subject. Do not push; that is <code>/pr</code> or an explicit request.</li>
+</ol>
+<p>If there is nothing to commit, say so and stop.</p>
+<h3 id="inspired-by">Inspired by</h3>
+<p>The role and scope follow the commit-commands plugin&#39;s /commit command in Anthropic&#39;s <a href="https://github.com/anthropics/claude-code/tree/main/plugins/commit-commands" rel="noopener">claude-code</a> repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/commit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/clean-branches/"><code>clean-branches</code></a> <span class="row-type">command</span> List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/pr/"><code>pr</code></a> <span class="row-type">command</span> Take the current branch from uncommitted work to an open pull request: commit outstanding changes with the git-commit rules if asked, push with upstream...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

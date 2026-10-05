@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>git-undo: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/git-undo/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/git-undo/" />
+    <meta property="og:title" content="git-undo: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="git-undo: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/git-undo/#code","url":"https://dotclaude.khaledsaeed.tech/skill/git-undo/","name":"git-undo","alternateName":"Git Undo","headline":"git-undo: a Claude Code skill","description":"Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad rebases. Chooses the least-destructive fix and protects against data loss. Use when something in Git went wrong and needs undoing.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-undo","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"git-undo","item":"https://dotclaude.khaledsaeed.tech/skill/git-undo/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">git-undo</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>git-undo</code></h1>
+          
+          <p class="lede">Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad rebases. Chooses the least-destructive fix and protects against data loss. Use when something in Git went wrong and needs undoing.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) what went wrong, e.g. 'committed to main', 'lost my commits'</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/git-undo</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/git-undo/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Undo the mistake with the <em>least-destructive</em> tool that fits, after establishing two facts that change everything: has the work been <strong>committed</strong>, and has it been <strong>pushed/shared</strong>. Get those wrong and you either lose work or rewrite history other people depend on.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Diagnose before acting.</strong> Establish: committed or not? pushed or not? on a shared branch? Run <code>git status</code>, <code>git log --oneline -10</code>, and <code>git reflog -20</code> first. The fix depends entirely on the answers.</li>
+<li><strong>Never rewrite published history casually.</strong> For anything already pushed to a shared branch, undo <em>forward</em> with <code>git revert</code>; do not <code>reset</code>/<code>rebase</code>/<code>commit --amend</code> and force-push unless the user explicitly owns the consequences and coordinates with collaborators.</li>
+<li><strong>Take a safety net before any destructive op.</strong> Before <code>reset --hard</code>, a force-push, or a history rewrite, snapshot the current tip: <code>git branch backup/&lt;desc&gt;</code> or <code>git tag backup/&lt;desc&gt;</code>. Reflog usually saves you, but a branch is free insurance.</li>
+<li><strong><code>--hard</code> and <code>clean</code> destroy uncommitted work irrecoverably.</strong> Reflog only recovers <em>committed</em> states. Spell out exactly what will be lost and confirm before running them.</li>
+<li><strong>Confirm before any destructive or shared-history command</strong>: <code>reset --hard</code>, <code>clean -fd</code>, <code>push --force*</code>, history rewrites. Prefer <code>push --force-with-lease</code> over <code>--force</code> when a rewrite is genuinely required.</li>
+</ul>
+<h3 id="step-1-diagnose">Step 1: Diagnose</h3>
+<ul>
+<li><code>git status</code>: staged vs unstaged vs untracked; any operation in progress.</li>
+<li><code>git log --oneline --graph -15</code>: recent commits and branch shape.</li>
+<li><code>git reflog -25</code>: the time machine, every position <code>HEAD</code> has held, even &quot;lost&quot; ones. This is how you recover almost anything committed.</li>
+<li>Determine <strong>shared or local</strong>: has the affected commit/branch been pushed? <code>git status</code> (ahead/behind), <code>git branch -r --contains &lt;sha&gt;</code>.</li>
+</ul>
+<h3 id="step-2-pick-the-fix">Step 2: Pick the fix</h3>
+<p>Match the situation to the safest tool:</p>
+<p><strong>Uncommitted work</strong></p>
+<ul>
+<li>Discard changes in a file → <code>git restore &lt;file&gt;</code> (was <code>git checkout -- &lt;file&gt;</code>).</li>
+<li>Unstage but keep changes → <code>git restore --staged &lt;file&gt;</code> (was <code>git reset HEAD &lt;file&gt;</code>).</li>
+<li>Set aside without losing → <code>git stash push -m &quot;&lt;note&gt;&quot;</code>; bring back with <code>git stash pop</code>.</li>
+<li>Remove untracked files → <code>git clean -nd</code> (dry run first!), then <code>git clean -fd</code> once confirmed.</li>
+</ul>
+<p><strong>The last commit (not yet pushed)</strong></p>
+<ul>
+<li>Wrong message → <code>git commit --amend</code>.</li>
+<li>Forgot a file → stage it, then <code>git commit --amend --no-edit</code>.</li>
+<li>Undo the commit, keep changes staged → <code>git reset --soft HEAD~1</code>.</li>
+<li>Undo the commit, keep changes unstaged → <code>git reset --mixed HEAD~1</code> (default).</li>
+<li>Undo the commit and discard changes → <code>git reset --hard HEAD~1</code> (destructive; safety net first).</li>
+</ul>
+<p><strong>Already pushed / shared branch</strong></p>
+<ul>
+<li>Undo a commit safely → <code>git revert &lt;sha&gt;</code> (creates an inverse commit; history stays intact). Revert a merge with <code>-m 1</code>.</li>
+</ul>
+<p><strong>Wrong-branch / structural mistakes</strong></p>
+<ul>
+<li>Committed to the wrong branch → create the right branch from here (<code>git branch feature</code>), then <code>git reset --hard origin/&lt;wrong-branch&gt;</code> on the original (safety net first); or <code>git cherry-pick</code> the commits onto the right branch and drop them from the wrong one.</li>
+<li>Need an old version of one file → <code>git restore --source=&lt;sha&gt; -- &lt;file&gt;</code>.</li>
+</ul>
+<p><strong>Recovering things that look lost</strong></p>
+<ul>
+<li>Hard reset / branch deletion / bad amend → find the old SHA in <code>git reflog</code>, then <code>git branch recovered &lt;sha&gt;</code> or <code>git reset --hard &lt;sha&gt;</code>.</li>
+<li>Botched rebase/merge → <code>git reset --hard ORIG_HEAD</code> returns to the pre-operation tip.</li>
+<li>Deleted branch with no reflog entry → <code>git fsck --lost-found</code> lists dangling commits.</li>
+<li>Dropped a stash → <code>git fsck --no-reflog | grep commit</code>, or recover from <code>git reflog stash</code>.</li>
+</ul>
+<h3 id="step-3-safety-net-before-anything-destructive">Step 3: Safety net (before anything destructive)</h3>
+<p>Snapshot the current tip so the operation is reversible regardless of outcome:</p>
+<pre><code>git branch backup/before-undo        # or: git tag backup/before-undo
+</code></pre>
+<p>Note the current <code>HEAD</code> SHA too. This costs nothing and turns &quot;irreversible&quot; into &quot;recoverable.&quot;</p>
+<h3 id="step-4-execute-with-confirmation">Step 4: Execute (with confirmation)</h3>
+<ol>
+<li>State plainly: what command runs, what it changes, and <strong>what (if anything) is lost forever</strong>.</li>
+<li>For destructive or shared-history operations, get an explicit yes. For force-pushes, use <code>--force-with-lease</code> and confirm no one else&#39;s work is being overwritten.</li>
+<li>Run it.</li>
+</ol>
+<h3 id="step-5-verify">Step 5: Verify</h3>
+<ul>
+<li><code>git status</code> and <code>git log --oneline -5</code> to confirm the tree and history are what you intended.</li>
+<li>Confirm recovered work is present (file contents, expected commits).</li>
+<li>Note the safety branch/tag you created; remove it once the user confirms the recovery is good.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/git-undo" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>changelog: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/changelog/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/changelog/" />
+    <meta property="og:title" content="changelog: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="changelog: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/changelog/#code","url":"https://dotclaude.khaledsaeed.tech/skill/changelog/","name":"changelog","alternateName":"Changelog","headline":"changelog: a Claude Code skill","description":"Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes called out. Conventional-Commits aware and Keep a Changelog formatted; respects any existing CHANGELOG or tooling. Use when preparing release notes or updating CHANGELOG.md.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/changelog","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"changelog","item":"https://dotclaude.khaledsaeed.tech/skill/changelog/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">changelog</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in version-control</span></p>
+          <h1><code>changelog</code></h1>
+          
+          <p class="lede">Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes called out. Conventional-Commits aware and Keep a Changelog formatted; respects any existing CHANGELOG or tooling. Use when preparing release notes or updating CHANGELOG.md.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) version, or a ref range like v1.2.0..HEAD</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/changelog</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/changelog/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Produce a changelog from what actually shipped: the commits, merged PRs, and references between two points in history. Write it for the people who <em>read</em> releases (users, integrators), not as a raw <code>git log</code> dump.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>Base it on real history, never invent.</strong> Every entry must trace to a commit, PR, or issue. No speculative or aspirational items.</li>
+<li><strong>Match the existing format.</strong> If <code>CHANGELOG.md</code> or a changelog tool already exists, follow its structure, headings, and conventions exactly. Don&#39;t impose a new style on an established file.</li>
+<li><strong>Never rewrite already-released sections.</strong> Add the new version on top; leave shipped entries untouched.</li>
+<li><strong>Write for humans.</strong> Translate commits into user-facing outcomes. Drop pure-noise commits (formatting, CI tweaks, internal refactors) unless they affect users.</li>
+<li><strong>Surface breaking changes prominently.</strong> They&#39;re the entries most likely to ruin someone&#39;s day if missed.</li>
+</ul>
+<h3 id="step-1-determine-the-range">Step 1: Determine the range</h3>
+<ul>
+<li>Last release to now: <code>git describe --tags --abbrev=0</code> gives the latest tag; the range is <code>&lt;lastTag&gt;..HEAD</code>.</li>
+<li>Between two releases: <code>&lt;olderTag&gt;..&lt;newerTag&gt;</code>.</li>
+<li>First release ever: use the full history (no lower bound).</li>
+<li>Honor an explicit range or version the user passed.</li>
+</ul>
+<h3 id="step-2-gather-the-raw-material">Step 2: Gather the raw material</h3>
+<ul>
+<li>Commits in range: <code>git log &lt;range&gt; --no-merges --pretty=format:&#39;%H %s&#39;</code> (and <code>%b</code> for bodies, to catch <code>BREAKING CHANGE:</code> footers).</li>
+<li>Merge commits / PR numbers: <code>git log &lt;range&gt; --merges</code> and <code>(#123)</code> references in subjects.</li>
+<li>Parse Conventional Commit prefixes (<code>feat</code>, <code>fix</code>, <code>perf</code>, <code>refactor</code>, <code>docs</code>, etc.), scopes, the <code>!</code> breaking marker, and issue/ticket references (<code>#123</code>, <code>JIRA-456</code>, <code>CU-abc</code>).</li>
+<li>Capture authors if the project credits contributors.</li>
+</ul>
+<h3 id="step-3-detect-the-projects-convention">Step 3: Detect the project&#39;s convention</h3>
+<p>Look before you write; adopt what&#39;s already in use:</p>
+<ul>
+<li>An existing <code>CHANGELOG.md</code> / <code>CHANGES</code>/<code>HISTORY</code> file → mirror its format (most follow <strong><a href="https://keepachangelog.com" rel="noopener">Keep a Changelog</a></strong>).</li>
+<li>Tooling config that owns the changelog, e.g. <code>conventional-changelog</code>/<code>standard-version</code>, <code>release-please</code>, <strong>changesets</strong> (<code>.changeset/</code>), <strong>git-cliff</strong> (<code>cliff.toml</code>), <code>towncrier</code> (<code>newsfragments/</code>), <code>auto</code>, <code>semantic-release</code>. If one is configured, prefer driving <em>it</em> over hand-writing, and explain how to run it.</li>
+</ul>
+<h3 id="step-4-categorize">Step 4: Categorize</h3>
+<p>Default to Keep a Changelog sections, mapping Conventional Commits onto them:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Sourced from</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Added</strong></td>
+<td><code>feat</code></td>
+</tr>
+<tr>
+<td><strong>Changed</strong></td>
+<td><code>refactor</code>, <code>perf</code>, behavior-changing updates</td>
+</tr>
+<tr>
+<td><strong>Deprecated</strong></td>
+<td>commits marking something deprecated</td>
+</tr>
+<tr>
+<td><strong>Removed</strong></td>
+<td>removals</td>
+</tr>
+<tr>
+<td><strong>Fixed</strong></td>
+<td><code>fix</code></td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>security fixes (CVE/advisory references)</td>
+</tr>
+</tbody></table>
+<p>List <strong>Breaking changes</strong> in their own prominent block (from <code>!</code> markers and <code>BREAKING CHANGE:</code> footers), with the migration path. Omit <code>chore</code>, <code>ci</code>, <code>build</code>, <code>style</code>, and <code>test</code> unless user-visible.</p>
+<h3 id="step-5-write-the-entries">Step 5: Write the entries</h3>
+<ul>
+<li>One concise, imperative, user-facing line per change: describe the outcome, not the diff.</li>
+<li>Link references: <code>... (#123)</code>, ticket IDs, or commit short-SHAs per the project&#39;s style.</li>
+<li>Deduplicate (squash-merge plus follow-up commits often describe the same change) and merge related items.</li>
+<li>Order sections by reader impact: Breaking → Added → Changed → Fixed → the rest.</li>
+</ul>
+<h3 id="step-6-assemble-and-place">Step 6: Assemble and place</h3>
+<ul>
+<li>Head the section with the version and ISO date: <code>## [1.4.0] - 2025-06-06</code>. Use <code>## [Unreleased]</code> if the version isn&#39;t cut yet.</li>
+<li><strong>Prepend</strong> under any existing <code>[Unreleased]</code>/top of file; never disturb prior releases.</li>
+<li>Maintain comparison links at the bottom if the file uses them (<code>[1.4.0]: https://…/compare/v1.3.0...v1.4.0</code>).</li>
+<li>If a changelog tool owns the file, generate through it instead of editing by hand, and show the command used.</li>
+</ul>
+<p>Report the version, the range covered, and any commits you deliberately excluded as noise, so the result is auditable.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/version-control/changelog" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/merge-conflict/"><code>merge-conflict</code></a> <span class="row-type">skill</span> Resolve Git merge, rebase, cherry-pick, revert, and stash conflicts safely by understanding both sides and the operation in progress before integrating...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/pr-description/"><code>pr-description</code></a> <span class="row-type">skill</span> Generate a clear, reviewer-friendly pull-request description from a diff, covering what changed, why, risk, and how it was tested. Use when opening a pull...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/release-tag/"><code>release-tag</code></a> <span class="row-type">skill</span> Cut a release by determining the SemVer bump from history, updating version files across any stack, refreshing the changelog, creating an annotated...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

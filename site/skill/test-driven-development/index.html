@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>test-driven-development: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/test-driven-development/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/test-driven-development/" />
+    <meta property="og:title" content="test-driven-development: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="test-driven-development: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/test-driven-development/#code","url":"https://dotclaude.khaledsaeed.tech/skill/test-driven-development/","name":"test-driven-development","alternateName":"Test Driven Development","headline":"test-driven-development: a Claude Code skill","description":"Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/test-driven-development","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"test-driven-development","item":"https://dotclaude.khaledsaeed.tech/skill/test-driven-development/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">test-driven-development</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>test-driven-development</code></h1>
+          
+          <p class="lede">Implement a feature or bugfix test-first using the red-green-refactor cycle. Write a failing test, watch it fail, write the minimal code to pass, then clean up. Works in any language or test runner. Use when building new behaviour or fixing a bug and you want the test to actually prove the code works.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/test-driven-development</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/test-driven-development/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Write the test before the code, watch it fail, then write only enough code to make it pass. The point of seeing it fail first is simple: a test you never watched fail might be testing nothing. Tests written after the fact pass immediately, and a test that has only ever passed proves nothing about whether it would catch the bug.</p>
+<h3 id="the-one-rule">The one rule</h3>
+<p><strong>No production code without a failing test that demands it.</strong> If you wrote the implementation first, the honest move is to delete it and start from the test: not keep it &quot;as reference&quot; and reconstruct it, which is just testing-after wearing a costume. Implement fresh from what the test asks for.</p>
+<p>Exceptions worth asking the user about: throwaway prototypes, generated code, pure config. Everything else (features, bugfixes, behaviour changes) goes test-first. The thought &quot;I&#39;ll skip TDD just this once&quot; is the rationalisation this skill exists to catch.</p>
+<h3 id="where-the-test-goes-seams">Where the test goes: seams</h3>
+<p>A <strong>seam</strong> is the public boundary you test at: the interface where behaviour is observable without reaching inside. Tests live at seams, never against internals: code behind the seam can be rewritten entirely and the tests shouldn&#39;t care. The tell that you&#39;ve tested inside the seam is a test that breaks on a refactor even though behaviour didn&#39;t change.</p>
+<p>You can&#39;t test everything, so decide the seams before writing any test: name the public interface under test and, when the choice isn&#39;t obvious, confirm it with the user (&quot;what&#39;s the public interface here, and which paths matter most?&quot;). Agreed seams put the testing effort on critical paths and complex logic instead of spraying assertions over every private helper.</p>
+<h3 id="the-cycle-red-green-refactor">The cycle: red → green → refactor</h3>
+<h4 id="red-write-one-failing-test">Red: write one failing test</h4>
+<p>Write a single test for one behaviour, with a name that describes that behaviour. Exercise the real code, not a mock of it: a test that asserts a mock was called tests the mock, not your logic. Mock only what you genuinely can&#39;t run (network, clock, filesystem) and only when unavoidable.</p>
+<p>Good: <code>test(&#39;retries a failed operation three times before giving up&#39;)</code>, clear name, one behaviour, real code path.
+Avoid: <code>test(&#39;retry works&#39;)</code> driving a pre-scripted mock, vague, and it verifies the mock&#39;s script rather than the implementation.</p>
+<p>Expected values come from an independent source of truth (a known-good literal, a worked example, the spec), never recomputed the way the code computes them. <code>expect(add(a, b)).toBe(a + b)</code> passes by construction and can never disagree with the code; it is a tautology wearing a test&#39;s clothes. Same for a hand-derived snapshot built with the same reasoning as the implementation.</p>
+<h4 id="verify-red-watch-it-fail-for-the-right-reason">Verify red: watch it fail, for the right reason</h4>
+<p>Run the test. This step is not optional. Confirm it <em>fails</em> (not errors out on a typo or import), and that it fails because the behaviour is missing: the assertion you expect, not &quot;function not defined&quot; hiding a different problem. If it passes, you&#39;re testing something that already exists; fix the test. If it errors, fix the error and re-run until it fails cleanly.</p>
+<h4 id="green-minimal-code-to-pass">Green: minimal code to pass</h4>
+<p>Write the simplest thing that makes the test pass. No extra options, no configurability nobody asked for, no &quot;while I&#39;m here&quot; features. Resist designing for imagined future needs: the next test will pull the design forward when it&#39;s actually needed.</p>
+<h4 id="verify-green-watch-it-pass">Verify green: watch it pass</h4>
+<p>Run it again. Confirm this test passes, every other test still passes, and the output is clean (no new warnings or stray logs). If your test fails, fix the code, not the test. If a <em>different</em> test broke, fix that now.</p>
+<h4 id="refactor-clean-up-while-green">Refactor: clean up while green</h4>
+<p>Only once green: remove duplication, improve names, extract helpers. Keep the tests passing the whole time and don&#39;t add new behaviour here, new behaviour means a new red test.</p>
+<p>Then repeat for the next behaviour.</p>
+<h3 id="why-the-order-is-the-whole-point">Why the order is the whole point</h3>
+<p>Tests written after the code are shaped by the code: you test what you happened to build, verify the edge cases you happened to remember, and never watch the test catch anything. Tests written first force you to state what the code <em>should</em> do and to discover edge cases before they&#39;re buried in an implementation. &quot;Thirty minutes of tests afterward&quot; gets you coverage but throws away the proof that the tests work.</p>
+<p>If a test is hard to write, listen to it, hard to test usually means hard to use, or too tightly coupled. That&#39;s design feedback, not a reason to skip the test.</p>
+<h3 id="bugfix-flavour">Bugfix flavour</h3>
+<p>A bug is a missing test. Write a test that reproduces the bug and fails, then fix the code until it passes. Now the fix is proven and the regression can&#39;t silently come back. Never fix a bug without first having a test that fails because of it.</p>
+<h3 id="red-flags-stop-and-restart-test-first">Red flags: stop and restart test-first</h3>
+<ul>
+<li>Production code exists with no test that failed first.</li>
+<li>The test passed the very first time you ran it.</li>
+<li>You can&#39;t explain why the test failed.</li>
+<li>&quot;I&#39;ll add tests at the end.&quot;</li>
+<li>&quot;I already tested it by hand.&quot;</li>
+<li>&quot;Keep the code as reference and write tests around it.&quot;</li>
+<li>&quot;I&#39;ve spent hours on this, deleting it is wasteful.&quot; (Sunk cost, untrusted code is the liability, not the deleted time.)</li>
+<li>&quot;TDD is dogmatic, I&#39;m being pragmatic.&quot; (Test-first <em>is</em> the pragmatic path; the alternative is debugging in production.)</li>
+<li>Writing all the tests first, then all the implementation. That&#39;s horizontal slicing: bulk tests verify <em>imagined</em> behaviour and commit you to a test structure before the implementation has taught you anything. Work in vertical slices (one test, one implementation, repeat) each test a tracer bullet shaped by what the last cycle revealed.</li>
+<li>An assertion that mirrors the implementation&#39;s own arithmetic or a snapshot derived the same way the code derives it (see the tautology note under Red).</li>
+</ul>
+<h3 id="quick-checklist-before-calling-it-done">Quick checklist before calling it done</h3>
+<ul>
+<li>Every new function or behaviour has a test.</li>
+<li>You watched each test fail before implementing it, and it failed for the expected reason.</li>
+<li>The implementation is the minimum that passes.</li>
+<li>All tests pass and the output is clean.</li>
+<li>Tests run real code; mocks appear only where unavoidable.</li>
+<li>Edge cases and error paths are covered.</li>
+</ul>
+<p>Can&#39;t tick every box? You drifted off TDD: go back to the last green point and restart test-first from there.</p>
+<h3 id="attribution">Attribution</h3>
+<p>Adapted from the <code>test-driven-development</code> entry of <a href="https://github.com/obra/superpowers" rel="noopener">superpowers</a> by Jesse Vincent (MIT). The structure and the core rules are theirs; the wording, the examples, and the integration with this registry&#39;s other items are this repository&#39;s.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/test-driven-development" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>paper-reader: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student&#39;s..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/paper-reader/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/paper-reader/" />
+    <meta property="og:title" content="paper-reader: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student&#39;s..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="paper-reader: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student&#39;s..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/paper-reader/#code","url":"https://dotclaude.khaledsaeed.tech/skill/paper-reader/","name":"paper-reader","alternateName":"Paper Reader","headline":"paper-reader: a Claude Code skill","description":"Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student's research question, and quotable passages with locations, so that lit-review-synthesis can build an argument from many notes. Use when working through a reading list, when a supervisor asks what a paper actually shows, or before citing a paper for a specific claim.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/paper-reader","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"paper-reader","item":"https://dotclaude.khaledsaeed.tech/skill/paper-reader/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">paper-reader</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>paper-reader</code></h1>
+          
+          <p class="lede">Read one paper (PDF, arXiv id, DOI, or text) and produce a structured note: the claim, method, evidence, limitations, how it relates to the student's research question, and quotable passages with locations, so that lit-review-synthesis can build an argument from many notes. Use when working through a reading list, when a supervisor asks what a paper actually shows, or before citing a paper for a specific claim.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>path, DOI, or arXiv id of the paper; optionally the research question to read it against</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/paper-reader</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/paper-reader/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Read the paper, not the abstract. The note you produce will be trusted later, when the student is writing under deadline and will not reopen the PDF, so every claim in the note must be traceable to a page or section.</p>
+<h3 id="get-the-text">Get the text</h3>
+<ul>
+<li>A local PDF: extract text (<code>pdftotext -layout file.pdf -</code>), and read the figures and tables where the text is unclear.</li>
+<li>An arXiv id: fetch the LaTeX source when available (<code>https://arxiv.org/e-print/&lt;id&gt;</code>, a gzipped tar) because it keeps equations and tables intact; otherwise the PDF (<code>https://arxiv.org/pdf/&lt;id&gt;</code>).</li>
+<li>A DOI: resolve it to metadata with CrossRef, then ask the student for the PDF if it is not open access. Do not summarise a paper from its abstract and pretend it was read.</li>
+</ul>
+<h3 id="read-in-this-order">Read in this order</h3>
+<ol>
+<li>Abstract, introduction, conclusion: what the authors <em>claim</em>.</li>
+<li>Method and setup: what they <em>did</em>, precisely enough to judge the claim.</li>
+<li>Results, including tables: what the evidence <em>shows</em>, including what it does not show.</li>
+<li>Related work and limitations: where they place themselves and what they concede.</li>
+<li>References: which works they lean on (candidates for <code>citation-graph</code>).</li>
+</ol>
+<h3 id="the-note">The note</h3>
+<p>Write one markdown file per paper under <code>research/notes/</code>, named <code>&lt;firstauthor&gt;&lt;year&gt;-&lt;short-title&gt;.md</code>, with the BibTeX key in the front matter so <code>citation-verifier</code> and <code>lit-review-synthesis</code> can join them:</p>
+<pre><code class="language-markdown">---
+key: smith2023feedback
+title: ...
+authors: ...
+year: 2023
+venue: ...
+doi: 10.xxxx/yyyy
+type: empirical | design | survey | theory | position
+read: 2026-09-21
+relevance: high | medium | low
+---
+
+## One-sentence claim
+What the paper says it shows, in your words.
+
+## Research question it answers
+Their question, and which of the student&#39;s sub-questions it bears on.
+
+## Method
+Design, data (source, size), procedure, metrics, baselines. Enough to judge validity.
+
+## Evidence
+The key results with numbers, and the table or figure each comes from (Table 3, Fig. 2).
+What was not tested.
+
+## Limitations
+Theirs (from the paper) and yours (what you noticed).
+
+## Relation to this thesis
+Supports / contradicts / extends / provides method for: which claim of the student&#39;s, and how.
+
+## Quotable
+&gt; &quot;exact sentence&quot; (p. 4, Sec. 3.2)
+At most five. Exact text, with location, for use in the review.
+
+## Follow-up
+References worth chasing, with the reason.
+</code></pre>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Distinguish what the paper <em>claims</em> from what its evidence <em>supports</em>; when they differ, say so in Limitations.</li>
+<li>Numbers are copied, not rounded or recalled. If a number is unreadable in the extraction, write <code>[unreadable, check Table N]</code>.</li>
+<li>Never invent a page number. If the source is LaTeX or HTML with no pagination, cite the section.</li>
+<li>The note is in the student&#39;s voice for the student&#39;s purpose; &quot;relevance: low&quot; is a valid and useful outcome.</li>
+<li>When reading several papers, do not compare them here; that is <code>lit-review-synthesis</code>. One paper, one note.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/paper-reader" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

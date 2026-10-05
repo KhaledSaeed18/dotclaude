@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>citation-verifier: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/" />
+    <meta property="og:title" content="citation-verifier: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="citation-verifier: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/citation-verifier/#code","url":"https://dotclaude.khaledsaeed.tech/skill/citation-verifier/","name":"citation-verifier","alternateName":"Citation Verifier","headline":"citation-verifier: a Claude Code skill","description":"Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a live DOI or arXiv record whose title, authors, and year match, and each claim attributed to a source must be supported by that source's note or text. Reports unverified, mismatched, and unsupported citations with the fix. Use before sending a draft to a supervisor, before submission, or whenever text was drafted with AI assistance and a fabricated reference would be fatal.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-verifier","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"citation-verifier","item":"https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">citation-verifier</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>citation-verifier</code></h1>
+          
+          <p class="lede">Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a live DOI or arXiv record whose title, authors, and year match, and each claim attributed to a source must be supported by that source's note or text. Reports unverified, mismatched, and unsupported citations with the fix. Use before sending a draft to a supervisor, before submission, or whenever text was drafted with AI assistance and a fabricated reference would be fatal.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>path to the .tex, .md, or .docx chapter; optionally the .bib and the notes directory</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/citation-verifier</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/citation-verifier/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A fabricated or misattributed citation is the one error a thesis cannot survive. This skill treats every citation as unverified until three checks pass: the key exists, the entry is real, and the claim is supported.</p>
+<h3 id="level-1-every-key-exists">Level 1: every key exists</h3>
+<ol>
+<li>Extract cite keys from the document:<ul>
+<li>LaTeX: <code>\cite{a,b}</code>, <code>\citep</code>, <code>\citet</code>, <code>\parencite</code>, <code>\textcite</code>, <code>\autocite</code>, <code>\footcite</code>, and starred/optional-argument forms.</li>
+<li>Markdown/Pandoc: <code>[@key]</code>, <code>[@a; @b, p. 3]</code>, <code>@key</code>.</li>
+<li>Word: extract with <code>pandoc file.docx -t markdown</code> and look for Zotero fields or <code>(Author, Year)</code> strings; match those against <code>.bib</code> <code>author</code>+<code>year</code>.</li>
+</ul>
+</li>
+<li>Parse the <code>.bib</code> keys (<code>^@\w+\{([^,]+),</code>).</li>
+<li>Report keys cited but not defined (hard error) and entries defined but never cited (informational; the bibliography should usually contain only cited works).</li>
+</ol>
+<h3 id="level-2-every-entry-is-real">Level 2: every entry is real</h3>
+<p>For each cited entry:</p>
+<ol>
+<li>If it has a <code>doi</code>: <code>curl -s &quot;https://api.crossref.org/works/&lt;doi&gt;&quot;</code> and compare title (normalised), first author surname, and year. A DOI that returns 404 is fabricated or mistyped: search CrossRef by title to find the real one and report both.</li>
+<li>If it has an arXiv <code>eprint</code>: <code>curl -s &quot;http://export.arxiv.org/api/query?id_list=&lt;id&gt;&quot;</code> and compare title and first author.</li>
+<li>If it has only a URL: <code>curl -sI &lt;url&gt;</code> returns 2xx/3xx; flag as weakly verified.</li>
+<li>If it has none of these: <code>curl -s &quot;https://api.crossref.org/works?query.bibliographic=&lt;title&gt;&amp;rows=3&quot;</code> and report whether a plausible match exists. Until it does, the entry is <strong>unverified</strong>.</li>
+</ol>
+<p>Rate-limit to one request per second per host. Cache results in <code>research/.citation-cache.json</code> keyed by DOI so re-runs are fast.</p>
+<p>A mismatch in title or author is reported as <strong>mismatched</strong>, with the fetched metadata beside the <code>.bib</code> entry, because it usually means the wrong DOI was attached to the right paper (or the right DOI to a paraphrased title).</p>
+<h3 id="level-3-every-claim-is-supported">Level 3: every claim is supported</h3>
+<p>This is the check that catches &quot;the paper says X&quot; when it does not. For each citation in context:</p>
+<ol>
+<li>Take the sentence (or list item) that carries the cite and the claim it makes.</li>
+<li>Open the matching note in <code>research/notes/</code> (joined by <code>key</code> in the note&#39;s front matter). If there is a note, check whether the claim appears under <em>One-sentence claim</em>, <em>Evidence</em>, or <em>Quotable</em>. If there is no note, say so; the student should run <code>paper-reader</code> before citing.</li>
+<li>Classify: <strong>supported</strong> (the note contains it), <strong>plausible but unverified</strong> (the note is silent), <strong>contradicted</strong> (the note&#39;s Limitations or Evidence say otherwise), or <strong>overclaimed</strong> (the note supports a weaker version, e.g. &quot;improves&quot; cited as &quot;solves&quot;).</li>
+<li>For a quotation, the exact text must appear in the note&#39;s <em>Quotable</em> section or in the source text; otherwise it is an <strong>unverified quote</strong>.</li>
+</ol>
+<h3 id="report">Report</h3>
+<p>Write <code>research/citation-report.md</code> and summarise in the reply:</p>
+<pre><code># Citation report: chapters/02-related-work.tex (2026-09-21)
+
+Cited keys: 41   Defined: 58   Missing keys: 1   Unused entries: 17
+Verified: 36   Mismatched: 2   Unverified: 3   Claim checks: 30 supported, 8 unverified, 2 overclaimed, 1 contradicted
+
+## Must fix
+- `lee2022grading` is cited (line 112) but not in references.bib.
+- `chen2021code`: DOI 10.1145/9999999 returns 404. CrossRef title search finds &quot;...&quot; with DOI 10.1145/3468264.3468563; confirm and replace.
+- Line 87 cites `smith2023feedback` for &quot;reduces grading time by half&quot;; the note records a 23% reduction (Table 4). Overclaimed.
+
+## Should check
+- ...
+</code></pre>
+<p>Ordering: missing keys and dead identifiers first (they fail compilation or expose fabrication), then contradictions and overclaims, then the unverified.</p>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Never &quot;repair&quot; a citation by inventing a DOI, year, or venue. Report and propose; the student confirms.</li>
+<li>Never mark a claim supported because it sounds right. Supported means the note or source text contains it.</li>
+<li>Re-run before every submission. The <code>citation-guard</code> hook does Level 1 continuously on every edit; this skill does the rest.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/citation-verifier" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/latex-toolkit/"><code>latex-toolkit</code></a> <span class="row-type">skill</span> Set up, build, and debug a LaTeX thesis: project layout with one file per chapter, latexmk builds, biblatex or natbib bibliography wiring, university...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

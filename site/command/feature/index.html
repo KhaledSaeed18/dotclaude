@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>feature: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/feature/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/feature/" />
+    <meta property="og:title" content="feature: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="feature: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/feature/#code","url":"https://dotclaude.khaledsaeed.tech/command/feature/","name":"feature","alternateName":"Feature","headline":"feature: a Claude Code command","description":"Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify requirements, write a task-by-task plan with the writing-plans skill, execute it with test-driven development, simplify with the code-simplifier agent, verify completion, and hand off ready for /pr. Each phase produces an artifact and stops for agreement at the plan. Use when starting any feature or non-trivial change, or when an implementation keeps drifting because it started without a plan.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/feature","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"feature","item":"https://dotclaude.khaledsaeed.tech/command/feature/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">feature</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in engineering</span></p>
+          <h1><code>feature</code></h1>
+          
+          <p class="lede">Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify requirements, write a task-by-task plan with the writing-plans skill, execute it with test-driven development, simplify with the code-simplifier agent, verify completion, and hand off ready for /pr. Each phase produces an artifact and stops for agreement at the plan. Use when starting any feature or non-trivial change, or when an implementation keeps drifting because it started without a plan.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>&lt;what to build&gt; [--plan-only] [--no-simplify]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Write, Edit, Glob, Grep, Bash, Agent</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/feature</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/feature.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Request: <code>$ARGUMENTS</code></p>
+<p><strong>Branch and state:</strong></p>
+<p>!<code>git branch --show-current 2&gt;/dev/null; git status --short 2&gt;/dev/null | head -10</code></p>
+<p><strong>Project conventions:</strong></p>
+<p>!<code>head -60 CLAUDE.md 2&gt;/dev/null || echo &quot;(no CLAUDE.md)&quot;</code></p>
+<h3 id="task">Task</h3>
+<p>Deliver the feature through these phases in order. Do not skip a phase; do not start editing before the plan is agreed.</p>
+<h4 id="phase-0-branch">Phase 0: Branch</h4>
+<p>If on the default branch (or <code>main</code>/<code>master</code>/<code>develop</code>), create a feature branch named from the request (<code>feat/&lt;kebab-summary&gt;</code>) before anything else. If the working tree is dirty with unrelated changes, say so and ask whether to stash.</p>
+<h4 id="phase-1-orient">Phase 1: Orient</h4>
+<p>Launch the <code>code-explorer</code> agent with the request. It returns entry points, the flow, shared types, gates, tests, and the likely change surface with <code>file:line</code> anchors. Read its report; open anything it flagged as uncertain.</p>
+<h4 id="phase-2-clarify">Phase 2: Clarify</h4>
+<p>From the request and the orientation, list the decisions the request leaves open (behaviour at edges, backward compatibility, configuration, error handling, UI copy). For each, either resolve it from the codebase&#39;s existing conventions and say so, or ask the user. Ask in one message, as a numbered list, with a recommended answer for each; proceed on the recommendations if the user says so.</p>
+<p>Write the outcome as a short spec: goal, in scope, out of scope, acceptance criteria as checkable statements.</p>
+<h4 id="phase-3-plan">Phase 3: Plan</h4>
+<p>Apply <code>writing-plans</code> to the spec and the orientation report. The plan lives at <code>docs/plans/&lt;date&gt;-&lt;kebab-summary&gt;.md</code> (or the project&#39;s plans directory if one exists). Each task names files, code, and the verification command.</p>
+<p>Show the plan summary (task list with one line each) and <strong>stop for agreement</strong>. With <code>--plan-only</code>, end here.</p>
+<h4 id="phase-4-execute">Phase 4: Execute</h4>
+<p>Apply <code>executing-plans</code> with <code>test-driven-development</code> for each task: failing test, minimal code, green, refactor. Run the task&#39;s verification before moving on. If a task cannot be done as planned, stop and revise the plan rather than improvising around it. Commit at the plan&#39;s commit points with the <code>git-commit</code> rules if the plan or user asks; otherwise leave the tree uncommitted.</p>
+<h4 id="phase-5-simplify">Phase 5: Simplify</h4>
+<p>Unless <code>--no-simplify</code>, launch the <code>code-simplifier</code> agent on the change. Review its report; every simplification is already applied with tests green, so only vetoes need action.</p>
+<h4 id="phase-6-verify">Phase 6: Verify</h4>
+<p>Apply <code>verify-completion</code>: run the full test suite, lint, and typecheck with fresh output; check each acceptance criterion from the spec against evidence; list anything unmet honestly.</p>
+<h4 id="phase-7-hand-off">Phase 7: Hand off</h4>
+<p>Report:</p>
+<ul>
+<li>Spec (goal, acceptance criteria with pass/fail evidence)</li>
+<li>Plan path and which tasks are done</li>
+<li>Files changed (<code>git diff --stat</code>)</li>
+<li>Simplifications applied</li>
+<li>Verification output summary</li>
+<li>Suggested next: <code>/review-pr</code> for a specialist review, then <code>/pr</code> to open the pull request</li>
+</ul>
+<h3 id="inspired-by">Inspired by</h3>
+<p>The role and scope follow the feature-dev plugin&#39;s /feature-dev command in Anthropic&#39;s <a href="https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev" rel="noopener">claude-code</a> repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/feature" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/explain-code/"><code>explain-code</code></a> <span class="row-type">command</span> Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>format-on-edit: Hook for Claude Code | dotclaude</title>
+    <meta name="description" content="A PostToolUse hook that runs the project&#39;s own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on each file Claude Code edits or writes, so every..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/hook/format-on-edit/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/format-on-edit/" />
+    <meta property="og:title" content="format-on-edit: Hook for Claude Code | dotclaude" />
+    <meta property="og:description" content="A PostToolUse hook that runs the project&#39;s own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on each file Claude Code edits or writes, so every..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="format-on-edit: Hook for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="A PostToolUse hook that runs the project&#39;s own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on each file Claude Code edits or writes, so every..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/format-on-edit/#code","url":"https://dotclaude.khaledsaeed.tech/hook/format-on-edit/","name":"format-on-edit","alternateName":"Format On Edit","headline":"format-on-edit: a Claude Code hook","description":"A PostToolUse hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on each file Claude Code edits or writes, so every change lands already formatted. Detects the formatter from project config, uses only locally installed binaries, and does nothing when no formatter applies. Use to eliminate style drift and formatting-only diffs from agent sessions.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/automation/format-on-edit","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","automation","format-on-edit"],"hasPart":[{"@type":"CreativeWork","name":"format-on-edit.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"format-on-edit","item":"https://dotclaude.khaledsaeed.tech/hook/format-on-edit/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">format-on-edit</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="hook">
+          <p class="detail-kind">Hook <span class="row-category">in automation</span></p>
+          <h1><code>format-on-edit</code></h1>
+          
+          <p class="lede">A PostToolUse hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on each file Claude Code edits or writes, so every change lands already formatted. Detects the formatter from project config, uses only locally installed binaries, and does nothing when no formatter applies. Use to eliminate style drift and formatting-only diffs from agent sessions.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/format-on-edit/">format-on-edit</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install format-on-edit@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/format-on-edit</code></pre>
+<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/hooks/format-on-edit/HOOK.md</code></li><li><code>.claude/hooks/format-on-edit/format-on-edit.mjs</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Hook contents">
+          <h2 id="contents">What it does</h2>
+<h2 id="format-on-edit">format-on-edit</h2>
+<p>A Claude Code hook that formats each file immediately after Claude edits or writes it, using whatever formatter the project itself has configured. No more &quot;run the formatter&quot; follow-ups or formatting-only cleanup commits at the end of a session.</p>
+<ul>
+<li><strong>Project-driven detection.</strong> Formats with Biome when <code>biome.json</code>/<code>biome.jsonc</code> is present, otherwise Prettier when a Prettier config (or a <code>prettier</code> key in <code>package.json</code>) is present. Go, Rust, and Python files use <code>gofmt</code>, <code>rustfmt</code>, and <code>ruff format</code> respectively (<code>ruff</code> only when the project configures it).</li>
+<li><strong>Local binaries only.</strong> JS-family formatters run from the project&#39;s <code>node_modules/.bin</code>; the hook never does a network <code>npx</code> fetch. If the binary is not installed, it silently does nothing.</li>
+<li><strong>One file per event.</strong> Only the file Claude just touched is formatted, never the whole tree.</li>
+<li><strong>Fails open.</strong> A missing, crashing, or hanging formatter (15-second cap) can never break the edit; the hook always exits <code>0</code>.</li>
+<li><strong>Zero dependencies.</strong> Node standard library only (<code>node &gt;= 18</code>).</li>
+</ul>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>format-on-edit.mjs</code></td>
+<td>The hook script. Detects the formatter, formats the edited file.</td>
+</tr>
+<tr>
+<td><code>HOOK.md</code></td>
+<td>This file.</td>
+</tr>
+</tbody></table>
+<p>After <code>npx shadcn@latest add KhaledSaeed18/dotclaude/format-on-edit</code>, both land in <code>.claude/hooks/format-on-edit/</code>.</p>
+<h3 id="activate-it-required-manual-step">Activate it (required manual step)</h3>
+<p>Add this to <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (global):</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Edit|Write|MultiEdit|NotebookEdit&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;node \&quot;$CLAUDE_PROJECT_DIR/.claude/hooks/format-on-edit/format-on-edit.mjs\&quot;&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Installing the <code>format-on-edit</code> plugin from the dotclaude marketplace wires this automatically.</p>
+<h3 id="verify-it">Verify it</h3>
+<pre><code class="language-bash"># In a project with a Prettier or Biome config: write a mangled file, pipe the event, check it reformats
+printf &#39;const   x=1\n&#39; &gt; src/messy.ts
+echo &#39;{&quot;tool_name&quot;:&quot;Write&quot;,&quot;tool_input&quot;:{&quot;file_path&quot;:&quot;&#39;$PWD&#39;/src/messy.ts&quot;}}&#39; \
+  | node .claude/hooks/format-on-edit/format-on-edit.mjs
+cat src/messy.ts
+</code></pre>
+<h3 id="tune-it">Tune it</h3>
+<ul>
+<li><strong>Add a formatter:</strong> extend <code>formatFile()</code> in the script with your tool; keep the pattern of detecting project config first and capping the run with a timeout.</li>
+<li><strong>Restrict file types:</strong> edit the <code>BIOME_EXTS</code> / <code>PRETTIER_EXTS</code> sets.</li>
+<li><strong>Formatter precedence:</strong> when both Biome and Prettier configs exist, Biome wins; reorder the checks in <code>formatFile()</code> to prefer Prettier.</li>
+</ul>
+<blockquote>
+<p>Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it.</p>
+</blockquote>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/automation/format-on-edit" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
+          <h2 id="related">More in automation</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/hook/notify/"><code>notify</code></a> <span class="row-type">hook</span> A Notification hook that turns Claude Code notifications into native desktop notifications (macOS osascript, Linux notify-send), so long-running sessions...</li></ul>
+          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=automation">All of automation</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

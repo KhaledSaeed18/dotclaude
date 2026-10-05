@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>adversarial-reviewer: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/" />
+    <meta property="og:title" content="adversarial-reviewer: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="adversarial-reviewer: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/#code","url":"https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/","name":"adversarial-reviewer","alternateName":"Adversarial Reviewer","headline":"adversarial-reviewer: a Claude Code skill","description":"Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a standard review feels too comfortable, when code is going into a critical path, when a previous review missed bugs that later surfaced, or when you want coverage across correctness, clarity, and security in a single pass.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/adversarial-reviewer","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"adversarial-reviewer","item":"https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">adversarial-reviewer</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>adversarial-reviewer</code></h1>
+          
+          <p class="lede">Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a standard review feels too comfortable, when code is going into a critical path, when a previous review missed bugs that later surfaced, or when you want coverage across correctness, clarity, and security in a single pass.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/adversarial-reviewer</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/adversarial-reviewer/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>A normal review looks for obvious problems. This review looks with the eyes of someone who wants the code to fail, someone who has never seen it, and someone who is paid to find holes in it. Each persona must report at least one finding. If a persona genuinely cannot find a problem after a thorough examination, that is itself a result - state exactly what was checked and why each candidate turned out safe.</p>
+<h3 id="before-starting">Before starting</h3>
+<p>Read the code in full without judging it. Understand what it is trying to do and what invariants it relies on. Only then switch to the adversarial personas, one at a time.</p>
+<p>If a diff or specific files are in scope, focus there. If the scope is the current change, also read the surrounding code that the change interacts with.</p>
+<h3 id="persona-1-the-saboteur">Persona 1: The Saboteur</h3>
+<p>The Saboteur wants the code to fail at runtime. They probe for:</p>
+<ul>
+<li><strong>Edge cases:</strong> what happens with empty input, zero, negative numbers, very large values, unicode, null, undefined, or a missing key in an object?</li>
+<li><strong>Sequence and ordering:</strong> what if events arrive out of order? What if two calls happen concurrently? Is there a race between reads and writes?</li>
+<li><strong>Type coercion and implicit conversion:</strong> does <code>==</code> hide a type mismatch? Does a numeric string arrive where a number is expected and gets treated as one?</li>
+<li><strong>Failure paths:</strong> what happens when a network call fails, a file is missing, a lock times out, or a dependency throws? Are errors swallowed? Does the system end up in a partially-updated state?</li>
+<li><strong>Off-by-one and boundary arithmetic:</strong> are loop bounds correct? Are slices and ranges inclusive or exclusive where they need to be?</li>
+</ul>
+<p>The Saboteur reports findings as: &quot;Saboteur finds: [precise scenario] at [file:line] causes [concrete failure].&quot;</p>
+<h3 id="persona-2-the-new-hire">Persona 2: The New Hire</h3>
+<p>The New Hire is reading this code for the first time, on their second week. They flag:</p>
+<ul>
+<li><strong>Naming confusion:</strong> identifiers that mean something different from what they look like, or two things that sound the same but differ in a subtle way.</li>
+<li><strong>Undocumented assumptions:</strong> preconditions that callers must satisfy but are never stated, state that must be initialized before a function is called, or ordering guarantees that the code depends on but does not enforce.</li>
+<li><strong>Missing tests for non-obvious behavior:</strong> any path that a reader would not predict from the function&#39;s name or signature but that is load-bearing.</li>
+<li><strong>Why is this here?</strong> Code that does something surprising without explanation. Side effects that are not obvious from the call site.</li>
+<li><strong>Complexity that could be simpler:</strong> nested conditionals that could be flattened, a loop doing the work of a standard library function, state that is tracked manually when a different data structure would make it automatic.</li>
+</ul>
+<p>The New Hire reports findings as: &quot;New Hire finds: [what was confusing or missing] at [file:line] because [what they would have assumed instead].&quot;</p>
+<h3 id="persona-3-the-security-auditor">Persona 3: The Security Auditor</h3>
+<p>The Security Auditor is looking for exploitable weaknesses in this specific code, not a generic checklist. They focus on:</p>
+<ul>
+<li><strong>Trust boundary violations:</strong> is any user-controlled value used in a query, shell command, file path, or template without explicit validation and sanitization at the boundary?</li>
+<li><strong>Authorization gaps:</strong> is the caller&#39;s identity and permission verified before the operation runs? Can a valid authenticated user access another user&#39;s resource by changing an ID?</li>
+<li><strong>Information leakage:</strong> does an error message, a log line, or a response body expose stack traces, internal paths, user data, or system information to untrusted parties?</li>
+<li><strong>Insecure defaults:</strong> is a sensitive operation opt-in to security (must be enabled) rather than opt-out (secure by default)? Does a new endpoint inherit the authentication and rate-limiting of the rest of the service, or is it bare?</li>
+<li><strong>Cryptographic shortcuts:</strong> is a password hashed with anything other than bcrypt, argon2, or scrypt? Is a secret compared with <code>==</code> instead of a constant-time function? Is a random token generated with <code>Math.random()</code>?</li>
+<li><strong>Supply chain:</strong> if a new dependency was added, is it maintained, widely used, and necessary? Does it run install scripts that could execute arbitrary code?</li>
+</ul>
+<p>The Security Auditor reports findings as: &quot;Security Auditor finds: [vulnerability class] at [file:line]: [attack path and what an adversary gains].&quot;</p>
+<h3 id="report-format">Report format</h3>
+<p>After all three personas have reported, give a consolidated summary:</p>
+<pre><code>Saboteur: [N findings]
+New Hire: [N findings]
+Security Auditor: [N findings]
+
+Critical items (address before merge):
+- [file:line] - [the finding] - [the fix]
+
+Should-fix items:
+- ...
+
+Low / consider items:
+- ...
+</code></pre>
+<p>If a persona found nothing after thorough checking, list the specific things they checked and confirmed safe - a clean result from a specific check is as useful as a finding.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/adversarial-reviewer" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"><code>dependency-upgrade</code></a> <span class="row-type">skill</span> Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>explain-code: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/explain-code/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/explain-code/" />
+    <meta property="og:title" content="explain-code: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="explain-code: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/explain-code/#code","url":"https://dotclaude.khaledsaeed.tech/command/explain-code/","name":"explain-code","alternateName":"Explain Code","headline":"explain-code: a Claude Code command","description":"Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol name as the argument. Use when onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/explain-code","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"explain-code","item":"https://dotclaude.khaledsaeed.tech/command/explain-code/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">explain-code</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in engineering</span></p>
+          <h1><code>explain-code</code></h1>
+          
+          <p class="lede">Walk through a file, function, class, or module and explain what it does, how it works, and why it is structured that way. Pass a file path or a symbol name as the argument. Use when onboarding onto unfamiliar code, understanding a complex algorithm, or preparing to modify something you have not read before.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>&lt;file-or-symbol&gt;</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Grep, Glob, Bash(git:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/explain-code</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/explain-code.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Target: <code>$ARGUMENTS</code></p>
+<h3 id="task">Task</h3>
+<p>Explain the code at <code>$ARGUMENTS</code> clearly enough that a developer who has never seen it can understand what it does, how it works, and what to know before touching it.</p>
+<p>If no argument was given, ask for a file path or symbol name and stop.</p>
+<h4 id="step-1-locate-the-target">Step 1: Locate the target</h4>
+<p>If <code>$ARGUMENTS</code> is a file path, read it directly. If it names a function, class, or type:</p>
+<pre><code class="language-bash">grep -rn &quot;$ARGUMENTS&quot; --include=&quot;*.ts&quot; --include=&quot;*.tsx&quot; --include=&quot;*.js&quot; --include=&quot;*.jsx&quot; --include=&quot;*.py&quot; --include=&quot;*.go&quot; --include=&quot;*.rs&quot; . | grep -v node_modules | head -20
+</code></pre>
+<p>Read the definition first, then any imports it pulls in, then its primary callers (at most two or three) to understand how it is used in practice.</p>
+<h4 id="step-2-understand-the-context">Step 2: Understand the context</h4>
+<p>Check what changed recently and why:</p>
+<pre><code class="language-bash">git log --oneline -10 -- &quot;$ARGUMENTS&quot; 2&gt;/dev/null
+</code></pre>
+<p>If there is meaningful history, note whether the code has evolved significantly or is stable. Look for any comments explaining non-obvious decisions.</p>
+<h4 id="step-3-explain">Step 3: Explain</h4>
+<p>Structure the explanation as follows:</p>
+<p><strong>What it does:</strong> One or two sentences. The observable purpose from the caller&#39;s perspective, not the implementation.</p>
+<p><strong>How it works:</strong> Walk through the key logic step by step. Use concrete examples where the code operates on data (show what goes in, what comes out). For complex control flow, trace the main path first, then branches. Skip boilerplate that does not add to understanding.</p>
+<p><strong>Key design decisions:</strong> Point out anything that is non-obvious or that a reader might initially get wrong. Explain any patterns, abstractions, or constraints that shaped the implementation. If the code works around a bug or a framework quirk, say so.</p>
+<p><strong>Dependencies and callers:</strong> What does this code depend on, and what depends on it? Name the two or three most important relationships.</p>
+<p><strong>What to know before modifying it:</strong> Gotchas, invariants, or side effects a developer must not break. What tests cover it? What is likely to break if the signature or behavior changes?</p>
+<h4 id="step-4-depth-calibration">Step 4: Depth calibration</h4>
+<p>If the target is a large file (more than 300 lines) or a deeply nested module, focus on the public surface and the core logic path rather than every private helper. Offer to go deeper on any specific section if the user needs it.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/engineering/explain-code" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/feature/"><code>feature</code></a> <span class="row-type">command</span> Take a feature from a one-line description to a reviewed, tested change through a fixed pipeline: orient with the code-explorer agent, clarify...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

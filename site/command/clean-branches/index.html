@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>clean-branches: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/clean-branches/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/clean-branches/" />
+    <meta property="og:title" content="clean-branches: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="clean-branches: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/clean-branches/#code","url":"https://dotclaude.khaledsaeed.tech/command/clean-branches/","name":"clean-branches","alternateName":"Clean Branches","headline":"clean-branches: a Claude Code command","description":"List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and the current branch. Pass --dry-run to preview. Unlike the finish-branch skill, which closes one active branch, this cleans up accumulated branches across the repository. Use when local branches have piled up and need safe cleanup.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/clean-branches","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","version-control","git"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"clean-branches","item":"https://dotclaude.khaledsaeed.tech/command/clean-branches/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">clean-branches</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in version-control</span></p>
+          <h1><code>clean-branches</code></h1>
+          
+          <p class="lede">List local Git branches that are fully merged or stale and delete them safely after showing what would be removed, protecting main, master, develop, and the current branch. Pass --dry-run to preview. Unlike the finish-branch skill, which closes one active branch, this cleans up accumulated branches across the repository. Use when local branches have piled up and need safe cleanup.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>[--dry-run]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Bash(git:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/git/">git</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install git@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/clean-branches</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/clean-branches.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<p>Options: <code>$ARGUMENTS</code></p>
+<p><strong>Current branch and remotes:</strong></p>
+<p>!<code>git branch --show-current 2&gt;/dev/null</code></p>
+<p>!<code>git remote -v 2&gt;/dev/null | head -4</code></p>
+<h3 id="task">Task</h3>
+<p>Identify merged and stale local branches and remove them, after presenting a clear list of what will be deleted and why.</p>
+<h4 id="step-1-gather-branch-state">Step 1: Gather branch state</h4>
+<pre><code class="language-bash"># All local branches with their last commit date and whether they are merged into main/master
+git branch -v --merged main 2&gt;/dev/null || git branch -v --merged master 2&gt;/dev/null
+</code></pre>
+<pre><code class="language-bash"># Branches with no corresponding remote-tracking ref (orphaned after remote deletion)
+git branch -vv | grep &quot;: gone]&quot;
+</code></pre>
+<pre><code class="language-bash"># All local branches with last commit date, sorted oldest first
+git for-each-ref --sort=committerdate refs/heads/ \
+  --format=&quot;%(committerdate:short)  %(refname:short)  %(upstream:track)&quot;
+</code></pre>
+<h4 id="step-2-classify-branches-for-deletion">Step 2: Classify branches for deletion</h4>
+<p>Candidates for deletion are branches that meet one or more of these criteria:</p>
+<ol>
+<li><strong>Fully merged:</strong> the branch tip is reachable from <code>main</code> or <code>master</code> (shown by <code>git branch --merged</code>).</li>
+<li><strong>Remote gone:</strong> the tracking remote branch was deleted (shown by <code>&quot;: gone]&quot;</code> in <code>git branch -vv</code>).</li>
+<li><strong>Stale and inactive:</strong> last commit is more than 90 days old and the branch has no open remote counterpart.</li>
+</ol>
+<p><strong>Protected branches - never delete:</strong></p>
+<ul>
+<li><code>main</code>, <code>master</code>, <code>develop</code>, <code>dev</code>, <code>staging</code>, <code>production</code></li>
+<li>The currently checked-out branch</li>
+<li>Any branch with uncommitted changes (this cannot happen for local branches, but note it as a constraint)</li>
+</ul>
+<p>Build two lists:</p>
+<ul>
+<li><strong>Safe to delete:</strong> merged or remote-gone branches that are not protected.</li>
+<li><strong>Needs review:</strong> stale branches that are not merged and whose remote still exists (present these for manual decision, do not auto-delete).</li>
+</ul>
+<h4 id="step-3-confirm-and-act">Step 3: Confirm and act</h4>
+<p>Present the lists clearly before deleting anything:</p>
+<pre><code>Branches to delete (merged or remote-gone):
+  feature/old-login     last commit: 2024-11-03  [merged into main]
+  fix/typo-in-readme    last commit: 2025-01-14  [remote: gone]
+
+Branches for manual review (stale, not merged):
+  experiment/new-nav    last commit: 2024-09-12  [remote still exists]
+</code></pre>
+<p>If <code>$ARGUMENTS</code> contains <code>--dry-run</code>, stop here and print the lists without deleting anything.</p>
+<p>Otherwise, ask: &quot;Delete the N branches above? (yes/no)&quot; and wait for confirmation before proceeding.</p>
+<p>On confirmation, delete each safe branch:</p>
+<pre><code class="language-bash">git branch -d &lt;branch-name&gt;   # for merged branches (safe delete, errors if not merged)
+git branch -D &lt;branch-name&gt;   # for remote-gone branches (force delete, only after showing the user)
+</code></pre>
+<p>Use <code>-d</code> (safe) for merged branches. Use <code>-D</code> (force) only for branches confirmed as remote-gone, and log each one explicitly.</p>
+<h4 id="step-4-report">Step 4: Report</h4>
+<p>After deletion, report:</p>
+<ul>
+<li>How many branches were deleted</li>
+<li>Whether any deletion failed and why</li>
+<li>Any branches in the &quot;needs review&quot; list that the user should decide on manually</li>
+</ul>
+<p>Optionally offer: <code>git remote prune origin</code> to also clean up stale remote-tracking refs if any were found.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/version-control/clean-branches" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in version-control</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/command/commit/"><code>commit</code></a> <span class="row-type">command</span> Create one well-formed commit from the current changes using the git-commit skill's rules: inspect the diff, honour the repo's commitlint and hooks, stage...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/pr/"><code>pr</code></a> <span class="row-type">command</span> Take the current branch from uncommitted work to an open pull request: commit outstanding changes with the git-commit rules if asked, push with upstream...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/changelog/"><code>changelog</code></a> <span class="row-type">skill</span> Generate a changelog or release notes from Git history, grouped by change type, written in user-facing language, with issue/PR links and breaking changes...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/finish-branch/"><code>finish-branch</code></a> <span class="row-type">skill</span> Wrap up a completed development branch by verifying tests pass, detecting the workspace state, then presenting clear merge / PR / keep / discard options...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-commit/"><code>git-commit</code></a> <span class="row-type">skill</span> Commit work the right way by gathering full repo state, respecting the project's commitlint/pre-commit/branch rules, staging only understood files, and...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-undo/"><code>git-undo</code></a> <span class="row-type">skill</span> Recover safely from Git mistakes such as discard, unstage, amend, reset, revert, restore lost commits via reflog, recover deleted branches, and fix bad...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/git-worktrees/"><code>git-worktrees</code></a> <span class="row-type">skill</span> Set up an isolated workspace for feature work so the current branch and working tree stay untouched, detecting existing isolation first, preferring the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/gitignore/"><code>gitignore</code></a> <span class="row-type">skill</span> Generate or repair a .gitignore tailored to the project's actual stacks, frameworks, OS, and editors, and untrack files that are already committed but...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=version-control">All of version-control</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

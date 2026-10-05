@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>write-tests: Command for Claude Code | dotclaude</title>
+    <meta name="description" content="Generate a focused, production-quality test suite for a source file, detecting the project&#39;s existing test runner and conventions. Use when a source file..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/command/write-tests/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/command/write-tests/" />
+    <meta property="og:title" content="write-tests: Command for Claude Code | dotclaude" />
+    <meta property="og:description" content="Generate a focused, production-quality test suite for a source file, detecting the project&#39;s existing test runner and conventions. Use when a source file..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="write-tests: Command for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Generate a focused, production-quality test suite for a source file, detecting the project&#39;s existing test runner and conventions. Use when a source file..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/command/write-tests/#code","url":"https://dotclaude.khaledsaeed.tech/command/write-tests/","name":"write-tests","alternateName":"Write Tests","headline":"write-tests: a Claude Code command","description":"Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. Use when a source file needs a test suite that matches the project's existing conventions.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/testing/write-tests","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Command","testing","testing"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Commands","item":"https://dotclaude.khaledsaeed.tech/#/?type=command"},{"@type":"ListItem","position":3,"name":"write-tests","item":"https://dotclaude.khaledsaeed.tech/command/write-tests/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=command">Commands</a></li><li aria-current="page">write-tests</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="command">
+          <p class="detail-kind">Command <span class="row-category">in testing</span></p>
+          <h1><code>write-tests</code></h1>
+          
+          <p class="lede">Generate a focused, production-quality test suite for a source file, detecting the project's existing test runner and conventions. Use when a source file needs a test suite that matches the project's existing conventions.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>&lt;path/to/source/file&gt; [runner]</dd><dt>Model</dt><dd>inherit</dd><dt>Allowed tools</dt><dd>Read, Write, Edit, Glob, Grep, Bash(cat:*), Bash(npm:*), Bash(pnpm:*), Bash(yarn:*), Bash(npx:*)</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/testing/">testing</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install testing@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the command lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/write-tests</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/commands/write-tests.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Command contents">
+          <h2 id="contents">What it does</h2>
+<h3 id="context">Context</h3>
+<ul>
+<li>Target file: <code>$1</code></li>
+<li>Runner override (optional): <code>$2</code></li>
+<li>Project manifest (detect runner, scripts, and deps from here):</li>
+</ul>
+<p>!<code>cat package.json</code></p>
+<h3 id="task">Task</h3>
+<p>Write a thorough, idiomatic test suite for <strong><code>$1</code></strong>. If no file path was given in the arguments above, ask for one and stop.</p>
+<p>Follow this procedure:</p>
+<h4 id="1-detect-the-toolchain-dont-assume">1. Detect the toolchain: don&#39;t assume</h4>
+<p>From the manifest above (and config files if needed), determine the runner and libraries already in use. Respect <code>$2</code> if the user named a runner; otherwise infer:</p>
+<ul>
+<li><strong>Runner</strong>: <code>vitest</code>, <code>jest</code>, <code>node:test</code>, <code>mocha</code>, <code>ava</code>, or <code>@playwright/test</code>. Check <code>devDependencies</code> and the <code>test</code> script.</li>
+<li><strong>Helpers in play</strong>: <code>@testing-library/react</code> + <code>@testing-library/jest-dom</code> (React), <code>supertest</code> (Express/HTTP), <code>@nestjs/testing</code> (NestJS), <code>msw</code> (network mocking).</li>
+<li><strong>Config</strong>: <code>vitest.config.*</code>, <code>jest.config.*</code>, <code>tsconfig</code> paths/aliases, <code>setupTests</code> files.</li>
+</ul>
+<p>If the project has <strong>no</strong> test runner installed, do not invent one silently: state what you&#39;d add (default to <strong>Vitest</strong> for Vite/Next/library code, <strong>Jest</strong> where it&#39;s already the ecosystem norm) and ask before adding a dependency.</p>
+<h4 id="2-mirror-existing-conventions">2. Mirror existing conventions</h4>
+<p>Find sibling tests with Glob/Grep (<code>**/*.{test,spec}.{ts,tsx,js,jsx}</code>) and read one or two. Match their file location (<code>__tests__/</code> vs co-located <code>*.test.ts</code>), import style, naming, and setup/teardown patterns. New tests should look like they were written by whoever wrote the existing ones.</p>
+<h4 id="3-understand-the-unit-under-test">3. Understand the unit under test</h4>
+<p>Read <code>$1</code> in full. Identify every exported function/component/class, its inputs, outputs, side effects, dependencies to mock (network, DB, clock, randomness, filesystem), and the branches that need coverage.</p>
+<h4 id="4-write-meaningful-tests">4. Write meaningful tests</h4>
+<ul>
+<li><strong>Cover behavior, not implementation.</strong> Assert observable outputs and effects; don&#39;t pin internal calls unless the contract is the call itself.</li>
+<li><strong>Per unit, cover:</strong> the happy path, boundary/edge cases (empty, zero, negative, large, unicode), and error/failure paths (throws, rejections, invalid input).</li>
+<li><strong>Structure</strong> each test Arrange–Act–Assert with a description that reads as a behavior (<code>it(&quot;returns 401 when the token is missing&quot;)</code>).</li>
+<li><strong>Determinism is non-negotiable:</strong> fake timers for time, seed or stub randomness, no real network/DB/filesystem, mock at the boundary (<code>msw</code>, <code>supertest</code>, in-memory fakes). No <code>sleep</code>, no ordering assumptions, no shared mutable state between tests.</li>
+<li><strong>Stack specifics:</strong><ul>
+<li><strong>React</strong> (Testing Library): query by role/label/text, never by test-id unless unavoidable; assert what the user sees; use <code>userEvent</code> for interaction; wrap async UI in <code>findBy</code>/<code>waitFor</code>. Don&#39;t test internal state.</li>
+<li><strong>Express</strong>: drive HTTP with <code>supertest</code> against the app instance; assert status, body, and headers; cover auth and validation failures.</li>
+<li><strong>NestJS</strong>: build a <code>Test.createTestingModule</code>, provide mocked providers, and test services in isolation; for controllers, mock the service layer.</li>
+</ul>
+</li>
+<li>Keep each test independent and runnable in any order.</li>
+</ul>
+<h4 id="5-verify">5. Verify</h4>
+<p>Run the suite with the detected runner (e.g. <code>npx vitest run &lt;file&gt;</code>, <code>npx jest &lt;file&gt;</code>) targeting only the new file. Fix failures by correcting the test or the mock: never by weakening an assertion to force a pass. If a test reveals a real bug in <code>$1</code>, stop and report it rather than writing the test to expect the buggy behavior.</p>
+<h4 id="6-report">6. Report</h4>
+<p>State the test file path, the runner used, what scenarios you covered (and any deliberately left out), the pass result, and anything the author should follow up on.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/testing/write-tests" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this command as Markdown</a>.</p>
+          <h2 id="related">More in testing</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/accessibility-audit/"><code>accessibility-audit</code></a> <span class="row-type">skill</span> Audit UI code or a running page against WCAG 2.2 AA, covering semantics, keyboard access, focus, labels, contrast, ARIA misuse, and motion, using axe-core...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/webapp-testing/"><code>webapp-testing</code></a> <span class="row-type">skill</span> Verify a web application works in a real browser with Playwright, covering navigation, form submission, interactions, console errors, screenshots, and...</li></ul>
+          <p><a href="/#/?type=command">All commands</a> · <a href="/#/?category=testing">All of testing</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

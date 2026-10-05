@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>docx-thesis: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/" />
+    <meta property="og:title" content="docx-thesis: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="docx-thesis: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/docx-thesis/#code","url":"https://dotclaude.khaledsaeed.tech/skill/docx-thesis/","name":"docx-thesis","alternateName":"Docx Thesis","headline":"docx-thesis: a Claude Code skill","description":"Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a reference .docx that carries the department's styles, manage citations through Zotero with Better BibTeX so the .bib stays the source of truth, and handle the Word-specific submission checks (styles, table of contents, captions, tracked changes). Use when the department requires .docx, the supervisor comments in Word, or a LaTeX draft must become a Word document.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/docx-thesis","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"docx-thesis","item":"https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">docx-thesis</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>docx-thesis</code></h1>
+          
+          <p class="lede">Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a reference .docx that carries the department's styles, manage citations through Zotero with Better BibTeX so the .bib stays the source of truth, and handle the Word-specific submission checks (styles, table of contents, captions, tracked changes). Use when the department requires .docx, the supervisor comments in Word, or a LaTeX draft must become a Word document.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the source files, the department template .docx, and the citation style</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/docx-thesis</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/docx-thesis/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Word is a delivery format, not an authoring format. Author in plain text under git, convert at the end of each cycle, and treat the <code>.docx</code> as a build artifact you regenerate rather than edit. This keeps <code>citation-verifier</code>, <code>humanize</code>, and the whole pipeline working while the department gets what it asked for.</p>
+<h3 id="pipeline">Pipeline</h3>
+<pre><code>chapters/*.md  +  references.bib  +  template/reference.docx  +  style.csl
+        │
+        └── pandoc ──▶ build/thesis.docx
+</code></pre>
+<ol>
+<li><p><strong>Author</strong> each chapter in Pandoc Markdown (<code>[@key]</code> citations, <code>$math$</code>, <code>![caption](figures/x.png){#fig:x}</code>, <code>Table: caption {#tbl:x}</code>), or keep LaTeX and let pandoc read it (loses some packages; test early).</p>
+</li>
+<li><p><strong>Reference document</strong>: open the department&#39;s template in Word, or create one with <code>pandoc -o template/reference.docx --print-default-data-file reference.docx</code>, then set the styles (Heading 1..3, Body Text, First Paragraph, Caption, Table, Source Code, Bibliography) to the required fonts and spacing. Pandoc copies styles from this file; it ignores its content.</p>
+</li>
+<li><p><strong>Citation style</strong>: download the CSL for the required style (IEEE, APA 7, Harvard) from the Zotero style repository (<code>https://www.zotero.org/styles/&lt;name&gt;</code>) into <code>style.csl</code>.</p>
+</li>
+<li><p><strong>Build</strong>:</p>
+<pre><code class="language-bash">pandoc chapters/*.md \
+  --reference-doc=template/reference.docx \
+  --citeproc --bibliography=references.bib --csl=style.csl \
+  --filter pandoc-crossref \
+  --toc --number-sections \
+  -o build/thesis.docx
+</code></pre>
+<p><code>pandoc-crossref</code> numbers figures, tables, and equations and resolves <code>@fig:x</code>. Install with <code>pip install pandoc-crossref</code> or the release binary.</p>
+</li>
+<li><p><strong>Finish in Word</strong> only what pandoc cannot do: the title page from the template, the declaration page, updating the table of contents (right-click, Update field), page numbering sections. Keep a checklist so it is repeatable.</p>
+</li>
+</ol>
+<h3 id="zotero">Zotero</h3>
+<p>The <code>.bib</code> remains the source of truth (<code>bibtex-manager</code>). Two ways to keep Zotero in step:</p>
+<ul>
+<li><strong>Zotero as a view</strong>: import <code>references.bib</code> (File → Import), re-import after changes. Simple, one-way.</li>
+<li><strong>Better BibTeX auto-export</strong>: install Better BibTeX, set its key format to <code>auth.lower + year + shorttitle(1,1).lower</code> so keys match the <code>.bib</code>, then right-click the thesis collection → Export → Better BibLaTeX with &quot;Keep updated&quot;. Zotero becomes the editing UI and the file stays current. Use this when the supervisor shares a Zotero group.</li>
+</ul>
+<p>If the supervisor insists on Zotero&#39;s Word plugin (live fields in the document), the <code>.docx</code> becomes the source for citations and the pipeline above stops applying to that document. Prefer the pandoc route; if the plugin is mandatory, export the bibliography from Zotero to <code>references.bib</code> weekly so <code>citation-verifier</code> still runs against the text.</p>
+<h3 id="supervisor-comments">Supervisor comments</h3>
+<p>Supervisors comment in Word. Extract them so the fixes go back into the Markdown source:</p>
+<pre><code class="language-bash">pandoc --track-changes=all reviewed.docx -t markdown -o reviewed.md
+</code></pre>
+<p>Comments appear as <code>[comment text]{.comment-start}</code> spans; tracked changes as <code>{.insertion}</code> / <code>{.deletion}</code>. Apply each to the source, then rebuild. Reply to the comments in the next <code>RESEARCH_LOG.md</code> entry so nothing is lost.</p>
+<h3 id="from-latex">From LaTeX</h3>
+<p><code>pandoc main.tex --bibliography=references.bib --citeproc --csl=style.csl -o build/thesis.docx</code> handles standard LaTeX. Things that need attention: <code>\input</code> (use <code>--resource-path</code>), custom macros (define in a <code>macros.tex</code> pandoc can read, or <code>-f latex+raw_tex</code>), TikZ figures (export to PDF/PNG first), <code>booktabs</code> tables (pandoc flattens them; check widths), <code>\cref</code> (becomes plain references; pandoc-crossref does not read cleveref).</p>
+<h3 id="submission-checks">Submission checks</h3>
+<ul>
+<li>Styles: every heading uses a Heading style (the ToC depends on it); body is one style throughout.</li>
+<li>Captions above tables and below figures per the template; numbered per chapter if required (<code>--number-sections</code> and pandoc-crossref&#39;s <code>chapters: true</code> in the metadata).</li>
+<li>Page count and word count per the regulations (<code>pandoc --lua-filter wordcount.lua</code> or Word&#39;s count excluding references).</li>
+<li>No tracked changes or comments left: Review → Accept All, delete comments, then Inspect Document.</li>
+<li>PDF/A export if required: File → Save As → PDF → Options → PDF/A.</li>
+<li>Fonts embedded (Word does this for PDF export by default).</li>
+</ul>
+<p>Run <code>citation-verifier</code> on the Markdown source, not the <code>.docx</code>, before every build.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/docx-thesis" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/latex-toolkit/"><code>latex-toolkit</code></a> <span class="row-type">skill</span> Set up, build, and debug a LaTeX thesis: project layout with one file per chapter, latexmk builds, biblatex or natbib bibliography wiring, university...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

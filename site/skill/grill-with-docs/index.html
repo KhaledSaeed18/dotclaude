@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>grill-with-docs: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Stress-test a plan against the project&#39;s existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/grill-with-docs/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/grill-with-docs/" />
+    <meta property="og:title" content="grill-with-docs: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Stress-test a plan against the project&#39;s existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="grill-with-docs: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Stress-test a plan against the project&#39;s existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/grill-with-docs/#code","url":"https://dotclaude.khaledsaeed.tech/skill/grill-with-docs/","name":"grill-with-docs","alternateName":"Grill With Docs","headline":"grill-with-docs: a Claude Code skill","description":"Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise. Use when a plan or design needs to be checked against the project's documented domain model before implementation.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/grill-with-docs","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"],"hasPart":[{"@type":"CreativeWork","name":"docs/ADR-FORMAT.md"},{"@type":"CreativeWork","name":"docs/CONTEXT-FORMAT.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"grill-with-docs","item":"https://dotclaude.khaledsaeed.tech/skill/grill-with-docs/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">grill-with-docs</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>grill-with-docs</code></h1>
+          
+          <p class="lede">Stress-test a plan against the project's existing domain model by challenging terminology, surfacing contradictions with code, and updating CONTEXT.md and ADRs inline as decisions crystallise. Use when a plan or design needs to be checked against the project's documented domain model before implementation.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the plan, design, or idea to stress-test; paste it or point to a file</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/grill-with-docs</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/grill-with-docs/SKILL.md</code></li><li><code>.claude/skills/grill-with-docs/docs/ADR-FORMAT.md</code></li><li><code>.claude/skills/grill-with-docs/docs/CONTEXT-FORMAT.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the decision tree, resolving dependencies between decisions one by one.</p>
+<p>If arguments were passed, treat them as the subject to grill. Otherwise, ask what to stress-test before starting. If a question can be answered by exploring the codebase or reading existing files, do that instead of asking.</p>
+<p><strong>NEVER</strong> use the AskUserQuestion tool; ask questions as plain text output.</p>
+<h3 id="your-goals">Your goals</h3>
+<ul>
+<li>Discover every major decision and dependency.</li>
+<li>Walk the decision tree branch-by-branch.</li>
+<li>Resolve high-impact decisions before low-impact ones.</li>
+<li>Challenge assumptions and identify weaknesses, especially against the existing domain model.</li>
+<li>Surface risks, tradeoffs, and alternatives.</li>
+<li>Maintain a running model of unresolved questions.</li>
+<li>Make temporary assumptions when necessary and state them explicitly.</li>
+</ul>
+<h3 id="hard-rule-one-question-per-turn">Hard rule: one question per turn</h3>
+<p><strong>ONE question per turn. Then STOP. Wait for reply.</strong> No lists. No &quot;and also&quot;. No follow-ups. No bundled sub-questions. One <code>?</code> per response. Violating this defeats the skill; the user needs space to think, not a wall of questions.</p>
+<p>If a question leads to more nested branches, move those to a new question. Never nest question numbers.</p>
+<h3 id="for-every-question">For every question</h3>
+<p>Index each question as <strong>Q1, Q2, Q3, …</strong></p>
+<ol>
+<li><p>Explain why the question matters.</p>
+</li>
+<li><p>Ask exactly one question.</p>
+</li>
+<li><p>Present the options as labeled choices (<strong>A, B, C, …</strong>) covering the realistic alternatives. Mark your recommended option with <code>← recommended</code>. Example:</p>
+<p><strong>A.</strong> Option one ← recommended
+<strong>B.</strong> Option two
+<strong>C.</strong> Option three</p>
+<p>The user can reply with just a letter. If they pick a non-recommended option, acknowledge the tradeoff before moving on.</p>
+</li>
+</ol>
+<h3 id="after-each-answer">After each answer</h3>
+<ul>
+<li>Update your understanding.</li>
+<li>Summarize any newly resolved decisions.</li>
+<li>Identify the next highest-priority unresolved dependency.</li>
+</ul>
+<h3 id="domain-awareness">Domain awareness</h3>
+<p>Before starting the session, explore the codebase for existing documentation:</p>
+<p>Most repos have a single context:</p>
+<pre><code>/
+├── CONTEXT.md
+├── docs/
+│   └── adr/
+│       ├── 0001-event-sourced-orders.md
+│       └── 0002-postgres-for-write-model.md
+└── src/
+</code></pre>
+<p>If a <code>CONTEXT-MAP.md</code> exists at the root, the repo has multiple bounded contexts. The map points to where each one lives:</p>
+<pre><code>/
+├── CONTEXT-MAP.md
+├── docs/
+│   └── adr/                        ← system-wide decisions
+└── src/
+    ├── ordering/
+    │   ├── CONTEXT.md
+    │   └── docs/adr/               ← context-specific decisions
+    └── billing/
+        ├── CONTEXT.md
+        └── docs/adr/
+</code></pre>
+<p>Create files lazily, only when you have something to write. If no <code>CONTEXT.md</code> exists, create one when the first term is resolved. If no <code>docs/adr/</code> exists, create it when the first ADR is needed.</p>
+<h3 id="during-the-session">During the session</h3>
+<h4 id="challenge-against-the-glossary">Challenge against the glossary</h4>
+<p>When the user uses a term that conflicts with the existing language in <code>CONTEXT.md</code>, call it out immediately. Example: &quot;Your glossary defines &#39;cancellation&#39; as X, but you seem to mean Y; which is it?&quot;</p>
+<h4 id="sharpen-fuzzy-language">Sharpen fuzzy language</h4>
+<p>When the user uses vague or overloaded terms, propose a precise canonical term. Example: &quot;You&#39;re saying &#39;account&#39;; do you mean the Customer or the User? Those are different things in your glossary.&quot;</p>
+<h4 id="stress-test-with-concrete-scenarios">Stress-test with concrete scenarios</h4>
+<p>When domain relationships are being discussed, invent edge-case scenarios that probe the boundaries and force precision.</p>
+<h4 id="cross-reference-with-code">Cross-reference with code</h4>
+<p>When the user states how something works, check whether the code agrees. If you find a contradiction, surface it. Example: &quot;Your code cancels entire Orders, but you just said partial cancellation is possible; which is right?&quot;</p>
+<h4 id="update-contextmd-inline">Update CONTEXT.md inline</h4>
+<p>When a term is resolved, update <code>CONTEXT.md</code> right away; don&#39;t batch. Use the format in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/grill-with-docs/docs/CONTEXT-FORMAT.md" rel="noopener">docs/CONTEXT-FORMAT.md</a>.</p>
+<p><code>CONTEXT.md</code> is a glossary and nothing else, totally devoid of implementation details, specs, or architecture notes.</p>
+<h4 id="offer-adrs-sparingly">Offer ADRs sparingly</h4>
+<p>Only offer to create an ADR when all three are true:</p>
+<ol>
+<li><strong>Hard to reverse</strong>: the cost of changing your mind later is meaningful.</li>
+<li><strong>Surprising without context</strong>: a future reader will wonder &quot;why did they do it this way?&quot;</li>
+<li><strong>Real trade-off</strong>: there were genuine alternatives and you picked one for specific reasons.</li>
+</ol>
+<p>If any of the three is missing, skip the ADR. Use the format in <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/grill-with-docs/docs/ADR-FORMAT.md" rel="noopener">docs/ADR-FORMAT.md</a>.</p>
+<h3 id="stop-only-when">Stop only when</h3>
+<ul>
+<li>All critical decisions are resolved,</li>
+<li>remaining uncertainties are documented,</li>
+<li>major risks are identified,</li>
+<li><code>CONTEXT.md</code> reflects all resolved terminology,</li>
+<li>and a coherent plan can be restated end-to-end.</li>
+</ul>
+<h3 id="final-output">Final output</h3>
+<p>Produce a decision record covering:</p>
+<ol>
+<li><strong>Restated plan</strong>: the full plan as understood, end-to-end.</li>
+<li><strong>Resolved decisions</strong>: every key decision made and its rationale.</li>
+<li><strong>Open questions</strong>: anything still unresolved, with the risk if left open.</li>
+<li><strong>Risks &amp; mitigations</strong>: identified risks and suggested mitigations.</li>
+<li><strong>Glossary changes</strong>: terms added or updated in <code>CONTEXT.md</code> during this session.</li>
+<li><strong>ADRs created</strong>: list any ADRs written, with a one-line summary of each.</li>
+</ol>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/grill-with-docs" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>literature-search: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP)..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/literature-search/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/literature-search/" />
+    <meta property="og:title" content="literature-search: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP)..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="literature-search: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP)..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/literature-search/#code","url":"https://dotclaude.khaledsaeed.tech/skill/literature-search/","name":"literature-search","alternateName":"Literature Search","headline":"literature-search: a Claude Code skill","description":"Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP), deduplicating by DOI, ranking by relevance, citations, and recency, and producing a reading list with verified identifiers ready for paper-reader and bibtex-manager. Use when starting a literature review, checking whether a gap is real, or looking for the papers that cite or are cited by a known key paper.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/literature-search","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"],"hasPart":[{"@type":"CreativeWork","name":"reference/apis.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"literature-search","item":"https://dotclaude.khaledsaeed.tech/skill/literature-search/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">literature-search</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>literature-search</code></h1>
+          
+          <p class="lede">Find the literature for a research question by querying OpenAlex, Semantic Scholar, arXiv, and CrossRef from the shell with curl (no keys, no MCP), deduplicating by DOI, ranking by relevance, citations, and recency, and producing a reading list with verified identifiers ready for paper-reader and bibtex-manager. Use when starting a literature review, checking whether a gap is real, or looking for the papers that cite or are cited by a known key paper.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the research question or search terms; add --since YEAR or --limit N</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/literature-search</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/literature-search/SKILL.md</code></li><li><code>.claude/skills/literature-search/reference/apis.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Search the literature the way a librarian would: several databases, explicit search strings, deduplication, and a record of what was searched so the process can be reported. Every result must carry a real identifier (DOI, arXiv id, or OpenAlex id) that resolves. A paper you cannot resolve does not go on the list.</p>
+<h3 id="sources-and-how-to-query-them">Sources and how to query them</h3>
+<p>All are free and need no API key. Use <code>curl -s</code> with a <code>User-Agent</code> header and a <code>mailto</code> where the API asks for one (OpenAlex and CrossRef give a faster &quot;polite pool&quot; with it). Read <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/academic/literature-search/reference/apis.md" rel="noopener">reference/apis.md</a> for the exact endpoints, parameters, and the fields to keep.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Best for</th>
+<th>Endpoint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenAlex</td>
+<td>broad coverage, citation counts, concepts, open-access links</td>
+<td><code>api.openalex.org/works?search=...</code></td>
+</tr>
+<tr>
+<td>Semantic Scholar</td>
+<td>CS and AI, citation graph, TL;DR, influential citations</td>
+<td><code>api.semanticscholar.org/graph/v1/paper/search?query=...</code></td>
+</tr>
+<tr>
+<td>arXiv</td>
+<td>preprints, latest ML/systems work</td>
+<td><code>export.arxiv.org/api/query?search_query=...</code></td>
+</tr>
+<tr>
+<td>CrossRef</td>
+<td>resolving a DOI to full metadata, verifying a reference</td>
+<td><code>api.crossref.org/works/&lt;doi&gt;</code></td>
+</tr>
+</tbody></table>
+<p>Respect rate limits: at most one request per second per source without a key; back off on HTTP 429.</p>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li><strong>Build the search strings.</strong> From the research question, extract two to four concept groups (the phenomenon, the method, the setting, the population). For each group list synonyms and abbreviations. Combine as <code>(a OR a&#39;) AND (b OR b&#39;)</code>. Record every string; the thesis method chapter will report them.</li>
+<li><strong>Query each source</strong> with each string, most specific first. Keep the top 50 per query per source at most. Filter by year only when the student asks (<code>--since</code>), and say so in the log.</li>
+<li><strong>Normalise and deduplicate.</strong> Key on lowercase DOI; fall back to arXiv id, then to normalised title (lowercase, ASCII, no punctuation) plus first author surname. Merge fields across sources: prefer CrossRef for bibliographic fields, OpenAlex for citation count and OA link, Semantic Scholar for abstract and TL;DR.</li>
+<li><strong>Snowball once.</strong> For the three to five most relevant hits, fetch their references and their citing works from Semantic Scholar (<code>/paper/&lt;id&gt;/references</code>, <code>/paper/&lt;id&gt;/citations</code>) and add anything that appears twice or more.</li>
+<li><strong>Rank.</strong> Score = relevance (title and abstract term overlap with the concept groups) with a bonus for citation count normalised by age, and a small bonus for recency. Show the formula used. Never rank purely by citations: the newest relevant work has few.</li>
+<li><strong>Screen titles and abstracts</strong> against the inclusion criteria the student states (or propose criteria and ask). Mark each as include, exclude with reason, or unsure.</li>
+<li><strong>Verify</strong> every included identifier resolves: <code>curl -sI https://doi.org/&lt;doi&gt;</code> returns 3xx, or the arXiv abs page returns 200. Drop anything that does not.</li>
+</ol>
+<h3 id="output">Output</h3>
+<p>Write two files (default under <code>research/</code>), and summarise in the reply:</p>
+<ul>
+<li><p><code>search-log.md</code>: date, sources, every search string, result counts per source, inclusion criteria, and the snowballing seeds. This is a method-chapter artifact.</p>
+</li>
+<li><p><code>reading-list.md</code>: one entry per included paper, ranked:</p>
+<pre><code>## 1. Title (Year)
+Authors. Venue. DOI: 10.xxxx/yyyy  | arXiv: 2401.01234  | cited by 142  | OA: url
+Why it is here: one sentence tying it to the research question.
+Abstract: (verbatim, from the source)
+</code></pre>
+</li>
+</ul>
+<p>Offer the next steps: <code>bibtex-manager</code> to turn the list into a <code>.bib</code>, <code>paper-reader</code> for structured notes on each, <code>citation-graph</code> to expand from the key papers.</p>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Never fabricate a paper, author, venue, or identifier. If an API returns nothing, say so and widen the search string.</li>
+<li>Never paraphrase an abstract as if it were the paper&#39;s finding; the reading happens in <code>paper-reader</code>.</li>
+<li>Report negative results: &quot;no paper matched string 3 in any source&quot; is useful for the gap argument.</li>
+</ul>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/literature-search" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

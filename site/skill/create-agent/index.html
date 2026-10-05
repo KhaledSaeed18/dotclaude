@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>create-agent: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/create-agent/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/create-agent/" />
+    <meta property="og:title" content="create-agent: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="create-agent: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/create-agent/#code","url":"https://dotclaude.khaledsaeed.tech/skill/create-agent/","name":"create-agent","alternateName":"Create Agent","headline":"create-agent: a Claude Code skill","description":"Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in frontmatter, then writing a focused system prompt and regenerating the registry. Use when creating, scaffolding, or reviewing an agent or subagent in this repo.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/create-agent","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering"],"hasPart":[{"@type":"CreativeWork","name":"reference/frontmatter.md"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"create-agent","item":"https://dotclaude.khaledsaeed.tech/skill/create-agent/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">create-agent</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>create-agent</code></h1>
+          
+          <p class="lede">Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in frontmatter, then writing a focused system prompt and regenerating the registry. Use when creating, scaffolding, or reviewing an agent or subagent in this repo.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) the agent's purpose, proposed name, or category</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Not part of any plugin; install it with the shadcn CLI below.</p>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/create-agent</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/create-agent/SKILL.md</code></li><li><code>.claude/skills/create-agent/reference/frontmatter.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Create a subagent that earns its own context window: one clear role, a tightly curated tool allowlist, and a system prompt focused enough that the main agent knows exactly when to delegate to it. Then regenerate the derived files and validate.</p>
+<p>Source layout is <code>agents/&lt;category&gt;/&lt;name&gt;/AGENT.md</code>. Agents are <strong>file-layout</strong>: the folder must contain only <code>AGENT.md</code>, because it installs as the single file <code>.claude/agents/&lt;name&gt;.md</code>. The <strong>category is the folder</strong>; the per-agent <code>registry.json</code>, the root <code>registry.json</code>, and the README catalog are all <em>generated</em> by <code>pnpm gen</code>. Never hand-edit generated files.</p>
+<h3 id="hard-rules-never-break-these">Hard rules: never break these</h3>
+<ul>
+<li><strong>One agent, one role.</strong> A subagent exists to keep a side task out of the main context and return a tight result. If the role needs &quot;and&quot; to describe it, narrow it or split it.</li>
+<li><strong>Curate the tool allowlist ruthlessly.</strong> The whole point of a subagent is a constrained tool set. Grant only what the role genuinely needs; omit <code>Bash</code> unless it must run commands, omit write tools for a read-only reviewer. Inheriting everything defeats the purpose.</li>
+<li><strong>File layout: only <code>AGENT.md</code>.</strong> No companion files in an agent folder. <code>pnpm gen</code> rejects extra files because the agent installs as one file. Reference material for the agent goes in its system prompt, not a sidecar.</li>
+<li><strong><code>name</code> is globally unique and equals the folder name</strong>, kebab-case. Agents install to a flat <code>.claude/agents/&lt;name&gt;.md</code>.</li>
+<li><strong>Never hand-write <code>registry.json</code> or the README catalog.</strong> They are derived; run <code>pnpm gen</code>.</li>
+<li><strong>No AI/co-author mentions</strong> anywhere in the agent or in what it produces.</li>
+</ul>
+<h3 id="step-1-define-the-agent">Step 1: Define the agent</h3>
+<p>Pin down before writing a line:</p>
+<ul>
+<li><strong>The one role</strong>, in a sentence.</li>
+<li><strong>When the main agent should delegate to it.</strong> This is the most load-bearing decision; it drives the <code>description</code>.</li>
+<li><strong>The tools the role actually needs.</strong> List them; everything else stays off.</li>
+<li><strong>The model.</strong> <code>opus</code> for synthesis and hard judgment, <code>haiku</code> for cheap high-volume work, <code>inherit</code> (the default) when it should match the session.</li>
+</ul>
+<p>If the role is fuzzy or sounds like two jobs, sharpen or split it now.</p>
+<h3 id="step-2-scaffold-it">Step 2: Scaffold it</h3>
+<p>From the repo root, let the scaffolder create the folder, stub, and regenerate in one step:</p>
+<pre><code>pnpm new --type agent --category &lt;category&gt; --name &lt;name&gt; --description &quot;&lt;what it does. Use when ...&gt;&quot;
+</code></pre>
+<p>Current agent categories: <code>academic</code>, <code>engineering</code>, <code>research</code>, <code>review</code>, <code>security</code> (run <code>ls agents</code> for the live list). Reuse one unless a genuinely new family is justified. The scaffolder enforces kebab-case and global name uniqueness, so a bad name fails fast.</p>
+<h3 id="step-3-write-the-frontmatter">Step 3: Write the frontmatter</h3>
+<p>Required: <code>name</code>, <code>description</code>. The rest are optional but shape behavior, cost, and UI. Full field table and valid values: <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/skills/engineering/create-agent/reference/frontmatter.md" rel="noopener">reference/frontmatter.md</a>.</p>
+<ul>
+<li><strong><code>description</code> is the delegation trigger.</strong> Third person, lead with the capability, end with an explicit <strong>&quot;Use when …&quot;</strong> clause naming the situations that should route to this agent. Vague descriptions never get delegated to (avoid a <code>: </code> in the value; it is YAML).</li>
+<li><strong><code>tools</code></strong>: the curated allowlist from Step 1.</li>
+<li><strong><code>model</code></strong>, and optionally <strong><code>color</code></strong> (UI accent) and <strong><code>memory</code></strong> (<code>user</code> / <code>project</code> / <code>local</code> for cross-session learning). <code>pnpm validate</code> rejects an invalid color, memory scope, or model, so typos fail in CI.</li>
+</ul>
+<h3 id="step-4-write-the-system-prompt">Step 4: Write the system prompt</h3>
+<p>The markdown body is the agent&#39;s system prompt. Address the agent in the second person, imperative. The shape that works:</p>
+<ol>
+<li>One or two lines establishing the role and the standard it&#39;s held to.</li>
+<li><strong>Operating rules / hard constraints</strong> the agent must always follow.</li>
+<li>The <strong>procedure</strong> if the work is staged.</li>
+<li>The <strong>exact output</strong> it should return to the caller, since that result is all the main agent sees.</li>
+</ol>
+<p>Keep it focused. A subagent&#39;s prompt should be sharp, not a second copy of the whole repo&#39;s conventions.</p>
+<h3 id="step-5-regenerate-and-validate">Step 5: Regenerate and validate</h3>
+<pre><code>pnpm gen        # writes registry.json files and the README catalog
+pnpm validate   # checks frontmatter values + layout, then shadcn registry validate
+</code></pre>
+<p>If <code>pnpm validate</code> flags the frontmatter or layout, fix the source <code>AGENT.md</code> and rerun; never patch generated output.</p>
+<h3 id="step-6-review-against-the-bar">Step 6: Review against the bar</h3>
+<ul>
+<li>The <code>description</code> would actually get the agent delegated to on the intended situations, and not over-trigger.</li>
+<li>The tool allowlist is the minimum the role needs, nothing more.</li>
+<li>The folder contains only <code>AGENT.md</code>.</li>
+<li><code>color</code>/<code>memory</code>/<code>model</code> are valid and <code>pnpm validate</code> passes.</li>
+<li>It reads like the existing agents in voice and structure.</li>
+</ul>
+<p>Report the agent&#39;s path, category, its tools and model, and the validation result. Leave committing to the user.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/create-agent" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/"><code>api-design-review</code></a> <span class="row-type">skill</span> Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"><code>dependency-upgrade</code></a> <span class="row-type">skill</span> Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

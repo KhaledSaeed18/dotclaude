@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>api-design-review: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/api-design-review/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/api-design-review/" />
+    <meta property="og:title" content="api-design-review: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="api-design-review: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/api-design-review/#code","url":"https://dotclaude.khaledsaeed.tech/skill/api-design-review/","name":"api-design-review","alternateName":"API Design Review","headline":"api-design-review: a Claude Code skill","description":"Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape, pagination, versioning, idempotency, and backward compatibility, and producing concrete revisions rather than abstract advice. Use when designing new endpoints, changing an existing API's surface, or reviewing a PR that adds or modifies API routes.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/api-design-review","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","engineering","engineering"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"api-design-review","item":"https://dotclaude.khaledsaeed.tech/skill/api-design-review/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">api-design-review</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in engineering</span></p>
+          <h1><code>api-design-review</code></h1>
+          
+          <p class="lede">Review an API contract (REST or GraphQL) before or while it is implemented, checking resource naming, HTTP semantics, status codes, error shape, pagination, versioning, idempotency, and backward compatibility, and producing concrete revisions rather than abstract advice. Use when designing new endpoints, changing an existing API's surface, or reviewing a PR that adds or modifies API routes.</p>
+          
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/engineering/">engineering</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install engineering@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/api-design-review</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/api-design-review/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>An API contract is the hardest thing in a codebase to change once someone depends on it. Review it as a future consumer under pressure: every inconsistency you let through becomes a permanent workaround in every client. Ground each finding in the project&#39;s existing conventions first; consistency with the API a team already ships beats textbook purity.</p>
+<h3 id="step-1-establish-the-existing-contract">Step 1: Establish the existing contract</h3>
+<p>Before judging anything, learn what this API already does:</p>
+<ul>
+<li>Find the existing routes/resolvers and read three or four representative ones end to end (path, verbs, request/response shapes, error handling).</li>
+<li>Find the conventions: error envelope shape, pagination style, naming case (camelCase vs snake_case), plural vs singular resources, auth mechanism, versioning scheme (path, header, or none).</li>
+<li>Find any OpenAPI/GraphQL schema, API docs, or client SDKs; those are the contract&#39;s consumers-eye view.</li>
+</ul>
+<p>New surface must match these unless there is a stated reason to diverge, and divergence should be raised as its own finding.</p>
+<h3 id="step-2-review-the-surface">Step 2: Review the surface</h3>
+<p>Work through the checklist against each new or changed endpoint. Flag only what is wrong or risky, with the concrete revision.</p>
+<p><strong>Resources and naming</strong></p>
+<ul>
+<li>Nouns for resources, verbs only via HTTP methods (<code>POST /orders</code>, not <code>POST /createOrder</code>). Sub-resources for ownership (<code>/users/{id}/orders</code>), not query-parameter relationships.</li>
+<li>Consistent casing and pluralization with the rest of the API.</li>
+</ul>
+<p><strong>HTTP semantics</strong></p>
+<ul>
+<li>GET is safe and cacheable, never mutates. PUT is full replace and idempotent; PATCH is partial. DELETE is idempotent (second call returns the same outcome, 404 or 204, deliberately chosen).</li>
+<li>Status codes carry meaning: 201 + Location for creation, 400 for malformed input vs 422 for valid-but-unprocessable (pick the project&#39;s existing convention), 401 unauthenticated vs 403 unauthorized, 409 for conflicts, 429 with Retry-After for rate limits. Never 200 with an error in the body.</li>
+</ul>
+<p><strong>Errors</strong></p>
+<ul>
+<li>One error envelope everywhere, machine-distinguishable (a stable <code>code</code> field, not just prose), with enough detail to act on but no internals (no stack traces, no SQL, no infrastructure hostnames).</li>
+<li>Validation errors name the field that failed.</li>
+</ul>
+<p><strong>Collections</strong></p>
+<ul>
+<li>Pagination from day one on anything that can grow; cursor-based when ordering is stable and data is written concurrently, offset only for small or static sets. Response includes what the client needs to continue (next cursor / total when affordable).</li>
+<li>Filtering and sorting parameters validated against an allowlist, never passed through to the datastore.</li>
+</ul>
+<p><strong>Change safety</strong></p>
+<ul>
+<li>Additive changes only within a version: new optional fields are fine; renaming, removing, retyping, or changing the meaning of an existing field is a break and needs a version bump or a deprecation path.</li>
+<li>Unknown fields in requests: decide and document ignore-vs-reject; do not leave it to framework defaults.</li>
+</ul>
+<p><strong>Write safety</strong></p>
+<ul>
+<li>Mutations that a client might retry (payments, orders, anything POST) accept an idempotency key or are documented as at-most-once.</li>
+<li>Bulk operations define partial-failure behavior explicitly (all-or-nothing, or per-item results).</li>
+</ul>
+<p><strong>GraphQL specifics</strong> (when applicable)</p>
+<ul>
+<li>Nullability is a contract decision, not the schema default. Mutations return payload types with typed user errors, not thrown exceptions. Depth/complexity limits exist for public schemas. Pagination follows the connection pattern already in use.</li>
+</ul>
+<h3 id="step-3-report">Step 3: Report</h3>
+<p>Order findings by cost-to-fix-later, not by section: contract breaks and irreversible naming first, then semantics, then polish. For each: what, where, why it will hurt, and the exact revised shape (show the corrected route/field/response, not a description of it). Close with anything that should be decided now but deferred deliberately, e.g. rate limiting or versioning strategy, so it is a recorded decision instead of an accident.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/engineering/api-design-review" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in engineering</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/adversarial-reviewer/"><code>adversarial-reviewer</code></a> <span class="row-type">skill</span> Review code through three hostile personas - the Saboteur, the New Hire, and the Security Auditor - each required to find at least one issue. Use when a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/code-review-response/"><code>code-review-response</code></a> <span class="row-type">skill</span> Process code-review feedback with technical rigour. Understand each point, check it against the actual codebase, and respond with reasoning or...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-agent/"><code>create-agent</code></a> <span class="row-type">skill</span> Author a new subagent for this repository end to end by scaffolding it with pnpm new, curating its tool allowlist, setting model, color, and memory in...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-command/"><code>create-command</code></a> <span class="row-type">skill</span> Author a new slash command for this repository end to end by scaffolding it with pnpm new, writing the frontmatter and argument handling, drafting the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-hook/"><code>create-hook</code></a> <span class="row-type">skill</span> Author a new Claude Code hook for this repository end to end by scaffolding it with pnpm new, writing the hook script and its settings.json wiring...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/create-skill/"><code>create-skill</code></a> <span class="row-type">skill</span> Author a new skill for this repository end to end by choosing its category, writing trigger-friendly frontmatter, structuring the SKILL.md, splitting...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/db-migration-safety/"><code>db-migration-safety</code></a> <span class="row-type">skill</span> Review or write a database schema migration with production safety as the bar, checking locks, table rewrites, backfills, expand-contract deploy order...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/dependency-upgrade/"><code>dependency-upgrade</code></a> <span class="row-type">skill</span> Upgrade dependencies without breaking the project: audit what is outdated and why it matters (security, EOL, features), read the changelogs and migration...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=engineering">All of engineering</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>

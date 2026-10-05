@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>thesis-proposal: Skill for Claude Code | dotclaude</title>
+    <meta name="description" content="Draft or revise a master&#39;s thesis proposal from a research question record, reading notes, and the department&#39;s template: problem statement, gap, research..." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/skill/thesis-proposal/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/skill/thesis-proposal/" />
+    <meta property="og:title" content="thesis-proposal: Skill for Claude Code | dotclaude" />
+    <meta property="og:description" content="Draft or revise a master&#39;s thesis proposal from a research question record, reading notes, and the department&#39;s template: problem statement, gap, research..." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="thesis-proposal: Skill for Claude Code | dotclaude" />
+    <meta name="twitter:description" content="Draft or revise a master&#39;s thesis proposal from a research question record, reading notes, and the department&#39;s template: problem statement, gap, research..." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/skill/thesis-proposal/#code","url":"https://dotclaude.khaledsaeed.tech/skill/thesis-proposal/","name":"thesis-proposal","alternateName":"Thesis Proposal","headline":"thesis-proposal: a Claude Code skill","description":"Draft or revise a master's thesis proposal from a research question record, reading notes, and the department's template: problem statement, gap, research questions, method, evaluation, timeline, risks, and a chapter plan, in the student's own claims with citations only to sources they actually have. Use when a proposal is due, a supervisor asks for a written plan, or the research question is settled and needs a structured document around it.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/thesis-proposal","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Skill","academic","thesis"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Skills","item":"https://dotclaude.khaledsaeed.tech/#/?type=skill"},{"@type":"ListItem","position":3,"name":"thesis-proposal","item":"https://dotclaude.khaledsaeed.tech/skill/thesis-proposal/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="subpage">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="/">Items</a>
+          <a href="/#/plugins">Plugins</a>
+          <a href="/#/install">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page doc-page" id="main">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=skill">Skills</a></li><li aria-current="page">thesis-proposal</li></ol></nav>
+      <article class="doc">
+        <header class="doc-head" data-type="skill">
+          <p class="detail-kind">Skill <span class="row-category">in academic</span></p>
+          <h1><code>thesis-proposal</code></h1>
+          
+          <p class="lede">Draft or revise a master's thesis proposal from a research question record, reading notes, and the department's template: problem statement, gap, research questions, method, evaluation, timeline, risks, and a chapter plan, in the student's own claims with citations only to sources they actually have. Use when a proposal is due, a supervisor asks for a written plan, or the research question is settled and needs a structured document around it.</p>
+          <dl class="doc-facts"><dt>Arguments</dt><dd>(optional) path to the research question record and any template or existing draft</dd></dl>
+        </header>
+        <section class="doc-install">
+<h2 id="install-as-a-plugin">Install as a plugin</h2>
+<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/thesis/">thesis</a> plugin. Add the marketplace once, then install the bundle:</p>
+<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
+<pre class="command"><code>/plugin install thesis@dotclaude</code></pre>
+<h2 id="install-as-a-single-item">Install as a single item</h2>
+<p>Run from the project root; the skill lands under <code>.claude/</code>.</p>
+<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-proposal</code></pre>
+
+<h3 id="files-installed">Files installed</h3>
+<ul class="targets"><li><code>.claude/skills/thesis-proposal/SKILL.md</code></li></ul>
+        </section>
+        <section class="doc-body" aria-label="Skill contents">
+          <h2 id="contents">What it does</h2>
+<p>Produce a proposal a supervisor can approve: specific about what will be done, honest about what is uncertain, and short. A proposal is a contract for the coming months, not a literature review; every section exists to let a reader judge feasibility and value.</p>
+<h3 id="inputs-to-gather-first">Inputs to gather first</h3>
+<p>Read before writing. Ask only for what is missing:</p>
+<ol>
+<li>The research question record (<code>research/QUESTION.md</code> or wherever <code>research-question</code> wrote it). If none exists, run that skill&#39;s process first; do not invent a question.</li>
+<li>The department&#39;s proposal template or page limit, if any. Follow its section names exactly. A proposal that ignores the template gets sent back on form before anyone reads the content.</li>
+<li>Reading notes produced by <code>paper-reader</code> (<code>research/notes/*.md</code>) and the <code>.bib</code> file. <strong>Cite only sources present there.</strong> A proposal with an invented reference is worse than one with a gap.</li>
+<li>Constraints: submission date, defence date, supervisor meeting cadence, available compute or data, ethics requirements.</li>
+</ol>
+<h3 id="structure-adapt-names-to-the-template">Structure (adapt names to the template)</h3>
+<ol>
+<li><strong>Title</strong>: descriptive, no colon-subtitle unless the template expects one, under 15 words.</li>
+<li><strong>Problem statement</strong> (one to two paragraphs): the practical or scientific problem, who has it, why it matters now. Concrete, with one or two figures or citations that show the problem is real.</li>
+<li><strong>Background and gap</strong> (one page): the three to six most relevant lines of prior work, what they established, and the specific thing they leave open. This is a targeted argument for the gap, not a survey; the full literature review is a chapter, not a proposal section.</li>
+<li><strong>Research questions</strong>: the primary question and sub-questions, verbatim from the record.</li>
+<li><strong>Method</strong>: for each sub-question, what will be done to answer it. Name the design (experiment, case study, design science, survey, systematic review), the data (source, size, access status), the procedure, and the analysis. State what would count as a negative result.</li>
+<li><strong>Evaluation and validity</strong>: how results will be judged, what the threats to validity are (internal, external, construct, conclusion) and what is done about each.</li>
+<li><strong>Expected contribution</strong>: one paragraph, the same sentence as the record expanded with what artifacts result (a dataset, a tool, a model, a set of findings).</li>
+<li><strong>Timeline</strong>: a table of phases with start and end weeks, milestones, and the supervisor checkpoints. Back-load writing time: at least the final quarter is writing and revision. Include the buffer explicitly.</li>
+<li><strong>Risks</strong>: table of risk, likelihood, impact, mitigation. Data access and ethics approval are almost always the top two.</li>
+<li><strong>Chapter plan</strong>: chapter titles with one line each and a target page count. Total should match the department norm (often 60 to 100 pages for a master&#39;s).</li>
+<li><strong>References</strong>: only entries in the <code>.bib</code>.</li>
+</ol>
+<h3 id="writing-rules">Writing rules</h3>
+<ul>
+<li>Present tense for what the thesis will establish, future tense for what will be done, past tense for prior work.</li>
+<li>The student is the author. Write &quot;this thesis&quot;, &quot;the study&quot;, or &quot;I/we&quot; per the department convention; never &quot;the AI&quot; or &quot;the assistant&quot;.</li>
+<li>No hedging stacks. One &quot;may&quot; per claim at most. Uncertainty goes in the risks table, not in every sentence.</li>
+<li>Every method claim must be executable: &quot;compare A and B on dataset D using metric M with N runs&quot; rather than &quot;evaluate the approach&quot;.</li>
+<li>Run <code>humanize</code> on the draft before returning it.</li>
+</ul>
+<h3 id="output">Output</h3>
+<p>Write to the path the student names (default <code>research/PROPOSAL.md</code>, or <code>.tex</code> if the template is LaTeX). Return a short list of open items the student must fill in personally (supervisor name, ethics reference number, exact deadlines) marked with <code>[[FILL]]</code> in the document.</p>
+
+        </section>
+        <footer class="doc-foot">
+          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/academic/thesis-proposal" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this skill as Markdown</a>.</p>
+          <h2 id="related">More in academic</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/skill/academic-writing/"><code>academic-writing</code></a> <span class="row-type">skill</span> Write or revise thesis and paper prose section by section (abstract, introduction, related work, method, results, discussion, conclusion) with the...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/benchmark-reporting/"><code>benchmark-reporting</code></a> <span class="row-type">skill</span> Report computational benchmarks and experimental comparisons the way examiners and reviewers expect: fair baselines run under the same conditions...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/bibtex-manager/"><code>bibtex-manager</code></a> <span class="row-type">skill</span> Maintain the thesis .bib file as a single source of truth: fetch verified BibTeX from a DOI, arXiv id, or title via CrossRef and arXiv, normalise citation...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-graph/"><code>citation-graph</code></a> <span class="row-type">skill</span> Expand a set of key papers into the literature around them by walking the citation graph with the Semantic Scholar and OpenAlex APIs: backward...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/citation-verifier/"><code>citation-verifier</code></a> <span class="row-type">skill</span> Audit every citation in a chapter, paper, or proposal against the .bib file and the real world: each cite key must exist, each entry must resolve to a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/design-science-methodology/"><code>design-science-methodology</code></a> <span class="row-type">skill</span> Structure a thesis whose contribution is a built artifact (tool, system, method, model) using design science research: explicit problem and requirements...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/docx-thesis/"><code>docx-thesis</code></a> <span class="row-type">skill</span> Write a thesis in Word without losing the discipline of a source-controlled workflow: author chapters in Markdown or LaTeX, convert with pandoc and a...</li><li><a href="https://dotclaude.khaledsaeed.tech/skill/experiment-reproducibility/"><code>experiment-reproducibility</code></a> <span class="row-type">skill</span> Make a thesis's computational experiments reproducible by the examiner and by the student three months later: pinned environments, seeded randomness, a...</li></ul>
+          <p><a href="/#/?type=skill">All skills</a> · <a href="/#/?category=academic">All of academic</a></p>
+        </footer>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="footer-inner">
+        MIT licensed. Source and contributing guide on
+        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>
