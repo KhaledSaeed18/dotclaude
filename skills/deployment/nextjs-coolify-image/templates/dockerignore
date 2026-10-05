@@ -1,0 +1,9 @@
+# Allowlist: the image only packages the build output. Everything else,
+# including sources, node_modules and env files, stays out of the context.
+# Save as .dockerignore in the repository root.
+*
+!.next/standalone
+!.next/static
+!public
+!healthcheck.js
+!shutdown.cjs

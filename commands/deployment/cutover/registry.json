@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "cutover",
+      "type": "registry:item",
+      "title": "Cutover",
+      "description": "Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "deployment"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/cutover",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/cutover.md"
+        }
+      ]
+    }
+  ]
+}

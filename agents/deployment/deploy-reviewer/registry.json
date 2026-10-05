@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "deploy-reviewer",
+      "type": "registry:item",
+      "title": "Deploy Reviewer",
+      "description": "Use this agent to review a repository's deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second pair of eyes before it ships.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "deployment"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/deployment/deploy-reviewer",
+      "meta": {
+        "type": "agent"
+      },
+      "files": [
+        {
+          "path": "AGENT.md",
+          "type": "registry:file",
+          "target": ".claude/agents/deploy-reviewer.md"
+        }
+      ]
+    }
+  ]
+}

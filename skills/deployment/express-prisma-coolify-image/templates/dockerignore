@@ -1,0 +1,17 @@
+# Save as .dockerignore. node_modules and dist are deliberately not ignored:
+# they are built natively on the runner and are the payload the runtime
+# image copies as-is.
+.git/
+.github/
+coverage/
+logs/
+*.log
+.env
+.env.*
+src/
+test/
+docs/
+ops/
+scripts/
+.vscode/
+.DS_Store

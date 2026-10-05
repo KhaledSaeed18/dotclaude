@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "live-domain-cutover",
+      "type": "registry:item",
+      "title": "Live Domain Cutover",
+      "description": "Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use when migrating a production app between hosting platforms.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "deployment"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/live-domain-cutover",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/live-domain-cutover/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

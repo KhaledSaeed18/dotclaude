@@ -1,0 +1,330 @@
+name: Pipeline
+
+# One workflow from pull request to production, for a Next.js app packaged
+# with the nextjs-coolify-image skill.
+#
+# Pull requests run the quality gates and build the runtime image, then
+# smoke-test it without publishing anything. A push to main runs the same,
+# publishes the image to GHCR and deploys it through the Coolify API, but
+# only when the push changed something that ships. "Run workflow" on main
+# redeploys unconditionally.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pipeline-${{ github.ref }}
+  # A newer pull request run supersedes an older one. A main run is never
+  # cancelled part way: its deploy job may already be changing production.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  # Build-time inputs, baked into the image. They must match the
+  # environment the image is deployed to.
+  API_ORIGIN: ${{ vars.API_ORIGIN || 'https://api.example.com' }}
+  # Where the deploy job probes after Coolify reports success.
+  SITE_URL: ${{ vars.SITE_URL || 'https://app.example.com' }}
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      code: ${{ steps.detect.outputs.code }}
+      runtime: ${{ steps.detect.outputs.runtime }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # code: anything the quality gates can judge; docs are not.
+      # runtime: anything that ends up in the image; tests and docs are not.
+      - name: Classify changed files
+        id: detect
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          BASE="$PR_BASE"
+          [ "$EVENT" = push ] && BASE="$PUSH_BEFORE"
+          if [ "$EVENT" = workflow_dispatch ] || [ -z "$BASE" ] \
+              || [[ "$BASE" =~ ^0+$ ]] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+              { echo "code=true"; echo "runtime=true"; } >> "$GITHUB_OUTPUT"
+              echo "No usable base; treating every path as changed."
+              exit 0
+          fi
+          FILES="$(git diff --name-only "$BASE" "$GITHUB_SHA")"
+          printf 'Changed files:\n%s\n' "$FILES"
+          CODE=false
+          if grep -qvE '^docs/|\.md$' <<< "$FILES"; then CODE=true; fi
+          RUNTIME=false
+          if grep -vE '(^|/)tests?/|\.test\.tsx?$|^e2e/' <<< "$FILES" \
+              | grep -qE '^(app/|components/|config/|constants/|hooks/|i18n/|lib/|messages/|public/|services/|types/|package\.json$|pnpm-lock\.yaml$|pnpm-workspace\.yaml$|next\.config\.ts$|postcss\.config\.mjs$|proxy\.ts$|tsconfig\.json$|Dockerfile$|\.dockerignore$|healthcheck\.js$|shutdown\.cjs$|\.nvmrc$)'; then
+              RUNTIME=true
+          fi
+          { echo "code=$CODE"; echo "runtime=$RUNTIME"; } >> "$GITHUB_OUTPUT"
+          echo "code=$CODE runtime=$RUNTIME"
+
+  ops:
+    name: Workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      # actionlint also runs shellcheck over every run block.
+      - name: Actionlint
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.7 -color
+
+  quality:
+    name: Lint, typecheck, test, build
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      # The pnpm version comes from the packageManager field in package.json.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint and format
+        run: pnpm check
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test and coverage
+        run: pnpm test:coverage
+
+      - name: Upload coverage report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+          retention-days: 7
+
+      - name: Unused code and dependencies
+        run: pnpm knip
+
+      - name: Build
+        run: pnpm build
+
+  image:
+    name: Build and smoke-test image
+    needs: changes
+    if: ${{ needs.changes.outputs.runtime == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.ref.outputs.image }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve image reference
+        id: ref
+        run: |
+          REPO="ghcr.io/${GITHUB_REPOSITORY,,}"
+          echo "repo=$REPO" >> "$GITHUB_OUTPUT"
+          echo "image=$REPO:sha-${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      # Postinstall scripts stay on: sharp is traced into the standalone
+      # output for next/image, and the runtime image has no build tools.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build standalone output
+        env:
+          NEXT_PUBLIC_API_BASE_URL: ${{ env.API_ORIGIN }}
+        run: pnpm build
+
+      - name: Verify the baked-in API rewrite
+        run: |
+          DEST="$(jq -r '.rewrites.afterFiles[]?, .rewrites.beforeFiles[]?, .rewrites.fallback[]? | select(.source == "/api/:path*") | .destination' .next/routes-manifest.json)"
+          echo "rewrite /api/:path* -> $DEST"
+          [ "$DEST" = "$API_ORIGIN/api/:path*" ] || { echo "Unexpected rewrite destination"; exit 1; }
+
+      - name: Build runtime image
+        run: |
+          docker build \
+              --label "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}" \
+              --label "org.opencontainers.image.revision=$GITHUB_SHA" \
+              --label "org.opencontainers.image.created=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+              -t "${{ steps.ref.outputs.image }}" \
+              -t "${{ steps.ref.outputs.repo }}:main" \
+              .
+
+      # The same checks Coolify relies on: the container reports healthy on
+      # its own, runs as a non-root user, serves both locales, keeps the
+      # auth gate, optimizes images, sends the security headers and stops
+      # cleanly within the grace period a rolling update allows.
+      - name: Smoke-test the image
+        run: |
+          docker run -d --name smoke --memory 512m -p 3000:3000 "${{ steps.ref.outputs.image }}"
+          STATUS=starting
+          for _ in $(seq 1 30); do
+              STATUS="$(docker inspect --format '{{.State.Health.Status}}' smoke)"
+              [ "$STATUS" = healthy ] && break
+              sleep 1
+          done
+          echo "health: $STATUS"
+          [ "$STATUS" = healthy ] || { docker logs smoke; exit 1; }
+          UID_IN_CONTAINER="$(docker exec smoke id -u)"
+          [ "$UID_IN_CONTAINER" != 0 ] || { echo "Container runs as root"; exit 1; }
+          curl -fsS http://localhost:3000/healthz
+          curl -fsS -o /dev/null http://localhost:3000/en/login
+          # grep -q closes the pipe early, which fails curl under pipefail,
+          # so responses are written to files first.
+          curl -fsS -o ar-login.html http://localhost:3000/ar/login
+          grep -q 'dir="rtl"' ar-login.html
+          LOCATION="$(curl -sS -o /dev/null -w '%{redirect_url}' http://localhost:3000/en/dashboard)"
+          echo "unauthenticated /en/dashboard -> $LOCATION"
+          [[ "$LOCATION" == */en/login ]] || { echo "Auth gate did not redirect to login"; exit 1; }
+          curl -fsSI -o en-login.headers http://localhost:3000/en/login
+          grep -qi '^x-frame-options: DENY' en-login.headers
+          grep -qi '^strict-transport-security:' en-login.headers
+          if grep -qi '^x-powered-by' en-login.headers; then echo "x-powered-by leaked"; exit 1; fi
+          TYPE="$(curl -fsS -o /dev/null -w '%{content_type}' 'http://localhost:3000/_next/image?url=%2Fimages%2Flogo.png&w=128&q=75')"
+          echo "optimized image: $TYPE"
+          [[ "$TYPE" == image/* ]] || { echo "Image optimizer did not answer"; exit 1; }
+          START="$(date +%s)"
+          timeout 15 docker stop -t 10 smoke
+          ELAPSED=$(( $(date +%s) - START ))
+          echo "stopped in ${ELAPSED}s"
+          [ "$ELAPSED" -le 10 ] || { echo "Container took too long to stop"; exit 1; }
+          docker rm smoke
+
+      - name: Log in to GHCR
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # The sha- tag is immutable and is what a deploy or rollback pins;
+      # main only tracks the newest build for convenience.
+      - name: Push image
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        run: |
+          docker push "${{ steps.ref.outputs.image }}"
+          docker push "${{ steps.ref.outputs.repo }}:main"
+          DIGEST="$(docker inspect --format '{{index .RepoDigests 0}}' "${{ steps.ref.outputs.image }}" | cut -d@ -f2)"
+          {
+              echo "### Published image"
+              echo ""
+              echo "- Tag: \`${{ steps.ref.outputs.image }}\`"
+              echo "- Digest: \`$DIGEST\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    name: Deploy to Coolify
+    needs: [quality, image, ops]
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.image.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      packages: write
+    # An explicit bash shell runs with pipefail, so a failed curl in a pipe
+    # fails the step instead of handing jq an empty body.
+    defaults:
+      run:
+        shell: bash
+    env:
+      COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+      COOLIFY_APP_UUID: ${{ vars.COOLIFY_APP_UUID }}
+      COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+      IMAGE: ${{ needs.image.outputs.image }}
+    steps:
+      - name: Check deploy configuration
+        run: |
+          for NAME in COOLIFY_URL COOLIFY_APP_UUID COOLIFY_TOKEN; do
+              [ -n "${!NAME}" ] || { echo "$NAME is not configured"; exit 1; }
+          done
+
+      - name: Point the application at the new image
+        run: |
+          curl --fail-with-body -sS -X PATCH \
+              "$COOLIFY_URL/api/v1/applications/$COOLIFY_APP_UUID" \
+              -H "Authorization: Bearer $COOLIFY_TOKEN" \
+              -H 'Content-Type: application/json' \
+              -d "$(jq -n --arg tag "${IMAGE##*:}" '{docker_registry_image_tag: $tag}')"
+
+      # Coolify starts the new container next to the old one and moves
+      # traffic only after the health check passes, so a failed deploy leaves
+      # the running version serving.
+      - name: Deploy and wait for Coolify
+        run: |
+          RESPONSE="$(curl --fail-with-body -sS -X POST \
+              "$COOLIFY_URL/api/v1/deploy?uuid=$COOLIFY_APP_UUID&force=false" \
+              -H "Authorization: Bearer $COOLIFY_TOKEN")"
+          DEPLOYMENT="$(jq -r '.deployments[0].deployment_uuid // empty' <<< "$RESPONSE")"
+          if [ -z "$DEPLOYMENT" ]; then
+              echo "Coolify did not start a deployment: $RESPONSE"
+              exit 1
+          fi
+          echo "Coolify deployment $DEPLOYMENT for $IMAGE"
+          STATUS=unknown
+          for _ in $(seq 1 90); do
+              STATUS="$(curl --fail-with-body -sS \
+                  "$COOLIFY_URL/api/v1/deployments/$DEPLOYMENT" \
+                  -H "Authorization: Bearer $COOLIFY_TOKEN" | jq -r '.status')"
+              case "$STATUS" in
+                  finished) echo "Deployment finished"; exit 0 ;;
+                  failed|cancelled*) echo "Deployment $STATUS"; exit 1 ;;
+              esac
+              sleep 10
+          done
+          echo "Deployment did not finish in time (last status: $STATUS)"
+          exit 1
+
+      - name: Probe the live site
+        run: |
+          for URL in "$SITE_URL/healthz" "$SITE_URL/api/v1/health/ready"; do
+              OK=false
+              for _ in $(seq 1 12); do
+                  if curl -fsS --max-time 10 "$URL" > /dev/null; then OK=true; break; fi
+                  sleep 5
+              done
+              [ "$OK" = true ] || { echo "Not reachable: $URL"; exit 1; }
+              echo "ok: $URL"
+          done
+
+      # Every deploy leaves a tag behind; keep the recent ones for rollback.
+      - name: Prune old image versions
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: ${{ github.event.repository.name }}
+          package-type: container
+          min-versions-to-keep: 20

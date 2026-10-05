@@ -1,0 +1,5 @@
+# Installed as /etc/cron.d/app-backup by ops/install.sh
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+30 3 * * * root /usr/local/lib/app-ops/backup/backup.sh >> /var/log/app-backup.log 2>&1

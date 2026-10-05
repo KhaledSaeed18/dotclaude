@@ -1,0 +1,10 @@
+# Installed as /etc/logrotate.d/app-ops by ops/install.sh
+/var/log/app-health.log /var/log/app-backup.log {
+    weekly
+    rotate 8
+    compress
+    missingok
+    notifempty
+    create 0600 root root
+    su root adm
+}

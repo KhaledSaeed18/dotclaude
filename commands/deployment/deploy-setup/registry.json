@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "deploy-setup",
+      "type": "registry:item",
+      "title": "Deploy Setup",
+      "description": "Add container packaging and a GHCR to Coolify pipeline to the current repository, then list the owner actions left. Use when a project needs to go from code to automatic deploys on a VPS.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "deployment"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/deploy-setup",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/deploy-setup.md"
+        }
+      ]
+    }
+  ]
+}
