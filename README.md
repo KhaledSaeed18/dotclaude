@@ -14,11 +14,11 @@
 
 <div align="center">
 <!-- badges:start -->
-  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-77-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="77 skills" /></a>
-  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-16-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="16 agents" /></a>
-  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-15-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="15 commands" /></a>
+  <a href="#skills"><img src="https://shieldcn.dev/badge/Skills-86-2563eb.svg?split=true&logo=ri:RiSparkling2Fill" alt="86 skills" /></a>
+  <a href="#agents"><img src="https://shieldcn.dev/badge/Agents-17-7c3aed.svg?split=true&logo=ri:RiRobot2Fill" alt="17 agents" /></a>
+  <a href="#commands"><img src="https://shieldcn.dev/badge/Commands-18-0891b2.svg?split=true&logo=ri:RiTerminalBoxFill" alt="18 commands" /></a>
   <a href="#hooks"><img src="https://shieldcn.dev/badge/Hooks-15-db2777.svg?split=true&logo=ri:RiPlugFill" alt="15 hooks" /></a>
-  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-16-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="16 plugins" /></a>
+  <a href="#as-claude-code-plugins-recommended"><img src="https://shieldcn.dev/badge/Plugins-17-059669.svg?split=true&logo=ri:RiPuzzle2Fill" alt="17 plugins" /></a>
 <!-- badges:end -->
 </div>
 
@@ -83,6 +83,7 @@ Plugins update with the repo (`/plugin marketplace update dotclaude`), namespace
 | Plugin | What you get | Install |
 | --- | --- | --- |
 | **engineering** | Engineering workflow skills, review agents, and a /feature pipeline: orientation, planning, test-driven development, systematic debugging, refactoring, error handling, observability, containers, CI pipelines, dependency upgrades, migration planning, incident postmortems, code review, completion verification, and performance work. (22 skills, 7 agents, 2 commands) | `/plugin install engineering@dotclaude` |
+| **deploy** | Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub Actions pipeline from pull request to production through GHCR, the Coolify application and API token, a host ops toolkit with alerting health checks and verified backups, server-side deploy verification, a zero-downtime domain cutover, and a read-only deployment reviewer. (9 skills, 1 agent, 3 commands) | `/plugin install deploy@dotclaude` |
 | **docs** | Documentation that stays true to the code: architecture decision records with an /adr command, READMEs verified against the repository, developer guides in the four documentation types, and OpenAPI specifications kept in sync in CI. (4 skills, 1 command) | `/plugin install docs@dotclaude` |
 | **pr-toolkit** | Pull-request review as a set of specialists: a read-only code explorer, a behaviour-preserving simplifier, hunters for silent failures and test gaps, a type-design reviewer, and a /review-pr command that runs them in parallel and merges one ranked review. (5 agents, 1 command) | `/plugin install pr-toolkit@dotclaude` |
 | **security** | Security review toolkit: OWASP-aligned code review, dependency and secret auditing skills, a security-auditor agent, and a full-codebase /security-audit command. (3 skills, 1 agent, 1 command) | `/plugin install security@dotclaude` |
@@ -190,6 +191,20 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [systematic-review](skills/academic/systematic-review/) | Run a systematic literature review or mapping study to the PRISMA 2020 standard: protocol with research questions and inclusion criteria written before searching, reproducible search strings per database, screening with recorded reasons for exclusion, a PRISMA flow diagram with counts, quality assessment, data extraction into a form, and synthesis, producing a method section a reviewer can audit. Use when the thesis or a chapter is a literature review, when a supervisor asks for a systematic rather than narrative review, or when a mapping study is the first contribution. | `npx shadcn@latest add KhaledSaeed18/dotclaude/systematic-review` |
 | [thesis-proposal](skills/academic/thesis-proposal/) | Draft or revise a master's thesis proposal from a research question record, reading notes, and the department's template: problem statement, gap, research questions, method, evaluation, timeline, risks, and a chapter plan, in the student's own claims with citations only to sources they actually have. Use when a proposal is due, a supervisor asks for a written plan, or the research question is settled and needs a structured document around it. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-proposal` |
 
+#### Deployment
+
+| Skill | Description | Install |
+| --- | --- | --- |
+| [coolify-image-app](skills/deployment/coolify-image-app/) | Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check, domains, limits or environment, or wiring its API token for a pipeline. | `npx shadcn@latest add KhaledSaeed18/dotclaude/coolify-image-app` |
+| [coolify-vps-baseline](skills/deployment/coolify-vps-baseline/) | Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry, firewall, proxy and monitoring before the first deploy. | `npx shadcn@latest add KhaledSaeed18/dotclaude/coolify-vps-baseline` |
+| [deploy-verification](skills/deployment/deploy-verification/) | Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy, certificate, header or client address needs checking. | `npx shadcn@latest add KhaledSaeed18/dotclaude/deploy-verification` |
+| [express-prisma-coolify-image](skills/deployment/express-prisma-coolify-image/) | Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a database, or when migrations, readiness or shutdown misbehave in production. | `npx shadcn@latest add KhaledSaeed18/dotclaude/express-prisma-coolify-image` |
+| [ghcr-coolify-pipeline](skills/deployment/ghcr-coolify-pipeline/) | Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a repo, replacing a CI-only workflow, or debugging a deploy job. | `npx shadcn@latest add KhaledSaeed18/dotclaude/ghcr-coolify-pipeline` |
+| [live-domain-cutover](skills/deployment/live-domain-cutover/) | Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use when migrating a production app between hosting platforms. | `npx shadcn@latest add KhaledSaeed18/dotclaude/live-domain-cutover` |
+| [nextjs-coolify-image](skills/deployment/nextjs-coolify-image/) | Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is large or slow, or when a rolling update drops requests. | `npx shadcn@latest add KhaledSaeed18/dotclaude/nextjs-coolify-image` |
+| [proxy-client-address](skills/deployment/proxy-client-address/) | Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy rate-limits or audits every user as one address. | `npx shadcn@latest add KhaledSaeed18/dotclaude/proxy-client-address` |
+| [vps-ops-toolkit](skills/deployment/vps-ops-toolkit/) | Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when a server has no monitoring or backups, or when adding a resource to them. | `npx shadcn@latest add KhaledSaeed18/dotclaude/vps-ops-toolkit` |
+
 #### Documentation
 
 | Skill | Description | Install |
@@ -296,6 +311,12 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [paper-critic](agents/academic/paper-critic/) | Use this agent to read one paper adversarially: it separates what the paper claims from what its evidence supports, finds methodological holes (weak baselines, unfair comparisons, leakage, missing variance, cherry-picked settings), checks whether the conclusions follow, and returns a critique the student can use to position their own work or to decide how much to trust the paper. Read-only. Use when a paper is central to the thesis, when its results look too good, or when preparing to argue against it in related work. | `npx shadcn@latest add KhaledSaeed18/dotclaude/paper-critic` |
 | [thesis-reviewer](agents/academic/thesis-reviewer/) | Use this agent to get an examiner's read of a thesis chapter or full draft before the supervisor or committee sees it: it checks whether the research questions are answered by the evidence, whether the contribution is clear and honestly sized, whether the method supports the claims (validity threats, baselines, statistics), whether the related work covers what an examiner would expect, and what the hardest defence questions will be. Read-only; returns a ranked report with locations. Use before submitting a chapter, before the defence, or when a draft feels finished but has not been challenged. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-reviewer` |
 
+#### Deployment
+
+| Agent | Description | Install |
+| --- | --- | --- |
+| [deploy-reviewer](agents/deployment/deploy-reviewer/) | Use this agent to review a repository's deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second pair of eyes before it ships. | `npx shadcn@latest add KhaledSaeed18/dotclaude/deploy-reviewer` |
+
 #### Engineering
 
 | Agent | Description | Install |
@@ -339,6 +360,14 @@ The catalog below lists every item in this repository, grouped by type and then 
 | [research-log](commands/academic/research-log/) | Append a dated entry to the thesis research log (RESEARCH_LOG.md) recording what was read, done, decided, and what comes next, pulling the day's evidence from git history, new reading notes, and the conversation, so progress is never reconstructed from memory before a supervisor meeting. Use at the end of a working session, after a decision, or when asked what happened this week. | `npx shadcn@latest add KhaledSaeed18/dotclaude/research-log` |
 | [thesis-chapter](commands/academic/thesis-chapter/) | Draft or revise one thesis chapter from the outline, the research question record, the reading notes, and the results, applying the academic-writing skill section by section and finishing with citation verification and a humanize pass, so a chapter arrives structured, traceable, and free of invented references. Use when a chapter is due, when starting a chapter from an approved outline, or when a draft chapter needs a full revision pass. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-chapter` |
 | [thesis-progress](commands/academic/thesis-progress/) | Report where the thesis stands in numbers: word count per chapter against the plan, placeholders left ([[FILL]], [[CITE]], [[FIG]]), citation health (cited keys, undefined keys, unverifiable entries), notes read versus reading list, open items in the research log, and days to the next deadline. Use at the start of a working session, before a supervisor meeting, or whenever the answer to how far along am I is a guess. | `npx shadcn@latest add KhaledSaeed18/dotclaude/thesis-progress` |
+
+#### Deployment
+
+| Command | Description | Install |
+| --- | --- | --- |
+| [cutover](commands/deployment/cutover/) | Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host. | `npx shadcn@latest add KhaledSaeed18/dotclaude/cutover` |
+| [deploy-setup](commands/deployment/deploy-setup/) | Add container packaging and a GHCR to Coolify pipeline to the current repository, then list the owner actions left. Use when a project needs to go from code to automatic deploys on a VPS. | `npx shadcn@latest add KhaledSaeed18/dotclaude/deploy-setup` |
+| [deploy-verify](commands/deployment/deploy-verify/) | Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a release. | `npx shadcn@latest add KhaledSaeed18/dotclaude/deploy-verify` |
 
 #### Documentation
 

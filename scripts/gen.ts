@@ -232,6 +232,17 @@ const PLUGINS: readonly PluginDef[] = [
     commands: { category: "engineering" },
   },
   {
+    name: "deploy",
+    version: "1.0.0",
+    description:
+      "Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub Actions pipeline from pull request to production through GHCR, the Coolify application and API token, a host ops toolkit with alerting health checks and verified backups, server-side deploy verification, a zero-downtime domain cutover, and a read-only deployment reviewer.",
+    category: "operations",
+    keywords: ["deploy", "coolify", "docker", "github-actions", "ghcr", "vps", "nextjs", "express"],
+    skills: { category: "deployment" },
+    agents: { category: "deployment" },
+    commands: { category: "deployment" },
+  },
+  {
     name: "docs",
     version: "1.0.0",
     description:

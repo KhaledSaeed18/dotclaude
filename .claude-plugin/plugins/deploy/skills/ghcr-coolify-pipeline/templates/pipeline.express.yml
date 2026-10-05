@@ -1,0 +1,381 @@
+name: Pipeline
+
+# One workflow from pull request to production, for an Express and Prisma
+# API packaged with the express-prisma-coolify-image skill.
+#
+# Pull requests run the quality gates (with a migration guard and a schema
+# check against a fresh Postgres) and smoke-test the runtime image against
+# another fresh Postgres. A push to main does the same, publishes the image,
+# takes a restore-verified backup on the server, and deploys through Coolify.
+# "Run workflow" on main redeploys unconditionally.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  # prisma.config.ts reads DATABASE_URL eagerly; generation never connects.
+  DATABASE_URL: postgresql://placeholder:placeholder@localhost:5432/placeholder
+  READINESS_URL: ${{ vars.READINESS_URL || 'https://api.example.com/api/v1/health/ready' }}
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      code: ${{ steps.detect.outputs.code }}
+      runtime: ${{ steps.detect.outputs.runtime }}
+      base: ${{ steps.detect.outputs.base }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Classify changed files
+        id: detect
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          BASE="$PR_BASE"
+          [ "$EVENT" = push ] && BASE="$PUSH_BEFORE"
+          if [ "$EVENT" = workflow_dispatch ] || [ -z "$BASE" ] \
+              || [[ "$BASE" =~ ^0+$ ]] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+              BASE="$(git rev-list --max-parents=0 HEAD | tail -1)"
+              { echo "code=true"; echo "runtime=true"; echo "base=$BASE"; } >> "$GITHUB_OUTPUT"
+              echo "No usable base; treating every path as changed."
+              exit 0
+          fi
+          FILES="$(git diff --name-only "$BASE" "$GITHUB_SHA")"
+          printf 'Changed files:\n%s\n' "$FILES"
+          CODE=false
+          if grep -qvE '^(docs/|ops/)|\.md$' <<< "$FILES"; then CODE=true; fi
+          RUNTIME=false
+          if grep -vE '(^|/)__tests__/|\.(test|spec|itest)\.ts$' <<< "$FILES" \
+              | grep -qE '^(src/|prisma/|package\.json$|pnpm-lock\.yaml$|pnpm-workspace\.yaml$|prisma\.config\.ts$|tsconfig(\.build)?\.json$|Dockerfile$|\.dockerignore$|docker-entrypoint\.sh$|\.nvmrc$)'; then
+              RUNTIME=true
+          fi
+          { echo "code=$CODE"; echo "runtime=$RUNTIME"; echo "base=$BASE"; } >> "$GITHUB_OUTPUT"
+          echo "code=$CODE runtime=$RUNTIME"
+
+  ops:
+    name: Ops scripts and workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Shellcheck
+        run: |
+          mapfile -t SCRIPTS < <(git ls-files 'ops/*.sh' 'ops/**/*.sh' docker-entrypoint.sh)
+          shellcheck -x "${SCRIPTS[@]}"
+
+      - name: Actionlint
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.7 -color
+
+  quality:
+    name: Lint, typecheck, test, build
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      migration-db:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+          POSTGRES_DB: migration_check
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U app -d migration_check"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm exec prisma generate
+
+      # Applied migrations never change; a mistake gets a new migration.
+      - name: Guard immutable migrations
+        shell: bash
+        env:
+          BASE_SHA: ${{ needs.changes.outputs.base }}
+        run: |
+          violations="$(git diff --name-status "$BASE_SHA"...HEAD -- prisma/migrations | awk '$1 != "A" { print }')"
+          if [[ -n "$violations" ]]; then
+              echo "Existing Prisma migrations are immutable. Add a new migration instead of editing, deleting, or renaming old ones."
+              echo "$violations"
+              exit 1
+          fi
+
+      - name: Validate Prisma migrations match schema
+        env:
+          DATABASE_URL: postgresql://app:app@localhost:5432/migration_check?schema=public
+        run: |
+          pnpm exec prisma migrate deploy
+          pnpm exec prisma migrate status
+          pnpm exec prisma migrate diff --from-config-datasource --to-schema=prisma/schema.prisma --exit-code
+
+      - name: Lint and format
+        run: pnpm exec biome ci .
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Test with coverage
+        run: pnpm run test:cov
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+          retention-days: 14
+
+      - name: Build
+        run: pnpm exec tsc -p tsconfig.build.json
+
+  image:
+    name: Build, smoke-test, and publish image
+    needs: changes
+    if: ${{ needs.changes.outputs.runtime == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.ref.outputs.image }}
+    services:
+      smoke-db:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+          POSTGRES_DB: app
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U app -d app"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve image reference
+        id: ref
+        run: |
+          REPO="ghcr.io/${GITHUB_REPOSITORY,,}"
+          echo "repo=$REPO" >> "$GITHUB_OUTPUT"
+          echo "image=$REPO:sha-${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Build
+        run: pnpm run build
+
+      # A fresh production-only install: an in-place --prod install leaves
+      # dev tooling in pnpm's virtual store that the image never needs.
+      - name: Reinstall production dependencies only
+        run: |
+          rm -rf node_modules
+          pnpm install --prod --frozen-lockfile --ignore-scripts
+
+      # The migrate engine is downloaded by the Prisma CLI on first use; the
+      # container cannot download it at start as an unprivileged user.
+      - name: Bundle the Prisma schema engine
+        run: |
+          pnpm exec prisma version
+          ls node_modules/.pnpm/@prisma+engines@*/node_modules/@prisma/engines/schema-engine-*
+
+      - name: Build runtime image
+        run: |
+          docker build \
+              --label "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}" \
+              --label "org.opencontainers.image.revision=$GITHUB_SHA" \
+              --label "org.opencontainers.image.created=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+              -t "${{ steps.ref.outputs.image }}" \
+              -t "${{ steps.ref.outputs.repo }}:main" \
+              .
+
+      # Runs the image the way production does: its own user and entrypoint,
+      # migrations against an empty Postgres, then the exact readiness probe
+      # Coolify runs, then a stop that must finish inside the drain deadline.
+      - name: Smoke-test the image
+        env:
+          IMAGE: ${{ steps.ref.outputs.image }}
+        run: |
+          docker run -d --name smoke --network host \
+              -e APP_ENV=production -e APP_PORT=8000 -e API_PREFIX=/api/v1 \
+              -e DATABASE_URL='postgresql://app:app@127.0.0.1:5433/app?schema=public' \
+              -e JWT_ACCESS_SECRET=ci-smoke-test-signing-secret-not-used-elsewhere \
+              -e CORS_ALLOWED_ORIGINS=https://smoke.invalid \
+              "$IMAGE"
+          READY=false
+          for _ in $(seq 1 60); do
+              if [ "$(docker inspect -f '{{.State.Running}}' smoke)" != true ]; then break; fi
+              if docker exec smoke node dist/healthcheck.js; then READY=true; break; fi
+              sleep 2
+          done
+          docker logs smoke 2>&1 | tail -40
+          if [ "$READY" != true ]; then
+              echo "The image never became ready."
+              exit 1
+          fi
+          test "$(docker exec smoke id -un)" = node
+          START=$(date +%s)
+          docker stop -t 30 smoke > /dev/null
+          STOPPED_IN=$(( $(date +%s) - START ))
+          EXIT_CODE="$(docker inspect -f '{{.State.ExitCode}}' smoke)"
+          echo "Stopped in ${STOPPED_IN}s with exit code ${EXIT_CODE}"
+          test "$EXIT_CODE" = 0
+          test "$STOPPED_IN" -le 10
+
+      - name: Log in to GHCR
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push image
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        run: |
+          docker push "${{ steps.ref.outputs.image }}"
+          docker push "${{ steps.ref.outputs.repo }}:main"
+
+  deploy:
+    name: Deploy to Coolify
+    needs: [quality, image, ops]
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.image.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: bash
+    env:
+      COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+      COOLIFY_APP_UUID: ${{ vars.COOLIFY_APP_UUID }}
+      COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+      IMAGE: ${{ needs.image.outputs.image }}
+    steps:
+      - name: Check deploy configuration
+        run: |
+          for NAME in COOLIFY_URL COOLIFY_APP_UUID COOLIFY_TOKEN; do
+              [ -n "${!NAME}" ] || { echo "$NAME is not configured"; exit 1; }
+          done
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.VPS_HOST_KEY }}" >> ~/.ssh/known_hosts
+
+      # Every release starts from a restore-verified backup, so a bad
+      # migration can always be rolled back to the moment before it.
+      - name: Back up the database
+        run: |
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes \
+              "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+              'sudo -n env BACKUP_CONFIG=/etc/app-backup-predeploy.env /usr/local/lib/app-ops/backup/backup.sh'
+
+      - name: Point the application at the new image
+        run: |
+          curl --fail-with-body -sS -X PATCH \
+              "$COOLIFY_URL/api/v1/applications/$COOLIFY_APP_UUID" \
+              -H "Authorization: Bearer $COOLIFY_TOKEN" \
+              -H 'Content-Type: application/json' \
+              -d "$(jq -n --arg tag "${IMAGE##*:}" '{docker_registry_image_tag: $tag}')"
+
+      - name: Deploy and wait for Coolify
+        run: |
+          RESPONSE="$(curl --fail-with-body -sS -X POST \
+              "$COOLIFY_URL/api/v1/deploy?uuid=$COOLIFY_APP_UUID&force=false" \
+              -H "Authorization: Bearer $COOLIFY_TOKEN")"
+          DEPLOYMENT="$(jq -r '.deployments[0].deployment_uuid // empty' <<< "$RESPONSE")"
+          if [ -z "$DEPLOYMENT" ]; then
+              echo "Coolify did not start a deployment: $RESPONSE"
+              exit 1
+          fi
+          echo "Coolify deployment $DEPLOYMENT for $IMAGE"
+          STATUS=unknown
+          for _ in $(seq 1 90); do
+              STATUS="$(curl --fail-with-body -sS \
+                  "$COOLIFY_URL/api/v1/deployments/$DEPLOYMENT" \
+                  -H "Authorization: Bearer $COOLIFY_TOKEN" | jq -r '.status')"
+              case "$STATUS" in
+                  finished) echo "Deployment finished"; exit 0 ;;
+                  failed|cancelled*) echo "Deployment $STATUS"; exit 1 ;;
+              esac
+              sleep 10
+          done
+          echo "Deployment did not finish in time (last status: $STATUS)"
+          exit 1
+
+      - name: Check public readiness
+        run: |
+          for _ in $(seq 1 12); do
+              if curl -fsS --max-time 10 "$READINESS_URL" > /dev/null; then
+                  echo "ready at $READINESS_URL"
+                  exit 0
+              fi
+              sleep 5
+          done
+          echo "not ready at $READINESS_URL"
+          exit 1
+
+  prune-images:
+    name: Prune old images
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      packages: write
+    steps:
+      # Twenty releases is the rollback window Coolify can redeploy from.
+      - uses: actions/delete-package-versions@v5
+        with:
+          package-name: ${{ github.event.repository.name }}
+          package-type: container
+          min-versions-to-keep: 20

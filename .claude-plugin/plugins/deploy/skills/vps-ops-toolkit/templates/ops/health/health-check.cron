@@ -1,0 +1,5 @@
+# Installed as /etc/cron.d/app-health-check by ops/install.sh
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+*/5 * * * * root /usr/local/lib/app-ops/health/health-check.sh >/dev/null 2>&1

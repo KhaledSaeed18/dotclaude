@@ -14,7 +14,7 @@
       "layout": "folder",
       "targetBase": ".claude/skills",
       "color": "#2563eb",
-      "count": 77
+      "count": 86
     },
     {
       "type": "agent",
@@ -23,7 +23,7 @@
       "layout": "file",
       "targetBase": ".claude/agents",
       "color": "#7c3aed",
-      "count": 16
+      "count": 17
     },
     {
       "type": "command",
@@ -32,7 +32,7 @@
       "layout": "file",
       "targetBase": ".claude/commands",
       "color": "#0891b2",
-      "count": 15
+      "count": 18
     },
     {
       "type": "hook",
@@ -88,6 +88,36 @@
         "agent/performance-engineer",
         "command/explain-code",
         "command/feature"
+      ]
+    },
+    {
+      "name": "deploy",
+      "description": "Ship a Next.js app or an Express and Prisma API to a VPS under Coolify, end to end: runtime-only images with health probes and fast shutdown, one GitHub Actions pipeline from pull request to production through GHCR, the Coolify application and API token, a host ops toolkit with alerting health checks and verified backups, server-side deploy verification, a zero-downtime domain cutover, and a read-only deployment reviewer.",
+      "category": "operations",
+      "keywords": [
+        "deploy",
+        "coolify",
+        "docker",
+        "github-actions",
+        "ghcr",
+        "vps",
+        "nextjs",
+        "express"
+      ],
+      "items": [
+        "skill/coolify-image-app",
+        "skill/coolify-vps-baseline",
+        "skill/deploy-verification",
+        "skill/express-prisma-coolify-image",
+        "skill/ghcr-coolify-pipeline",
+        "skill/live-domain-cutover",
+        "skill/nextjs-coolify-image",
+        "skill/proxy-client-address",
+        "skill/vps-ops-toolkit",
+        "agent/deploy-reviewer",
+        "command/cutover",
+        "command/deploy-setup",
+        "command/deploy-verify"
       ]
     },
     {
@@ -701,6 +731,178 @@
       ],
       "plugins": [
         "thesis"
+      ]
+    },
+    {
+      "key": "skill/coolify-image-app",
+      "name": "coolify-image-app",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Coolify Image App",
+      "description": "Create and configure a Coolify application that runs a prebuilt image from a registry. Use when adding an app to Coolify, fixing its health check, domains, limits or environment, or wiring its API token for a pipeline.",
+      "path": "skills/deployment/coolify-image-app",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/coolify-image-app",
+      "targets": [
+        ".claude/skills/coolify-image-app/SKILL.md",
+        ".claude/skills/coolify-image-app/reference/coolify-api.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/coolify-vps-baseline",
+      "name": "coolify-vps-baseline",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Coolify Vps Baseline",
+      "description": "Prepare a Linux VPS to run production containers under Coolify. Use when setting up a new server, auditing an existing one, or connecting a registry, firewall, proxy and monitoring before the first deploy.",
+      "path": "skills/deployment/coolify-vps-baseline",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/coolify-vps-baseline",
+      "targets": [
+        ".claude/skills/coolify-vps-baseline/SKILL.md",
+        ".claude/skills/coolify-vps-baseline/reference/server-checklist.md",
+        ".claude/skills/coolify-vps-baseline/reference/traefik-notes.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/deploy-verification",
+      "name": "deploy-verification",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Deploy Verification",
+      "description": "Prove a deployment from the server side. Use when a deploy finished and needs sign-off, when a rolling update may have dropped requests, or when a proxy, certificate, header or client address needs checking.",
+      "path": "skills/deployment/deploy-verification",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/deploy-verification",
+      "targets": [
+        ".claude/skills/deploy-verification/SKILL.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/express-prisma-coolify-image",
+      "name": "express-prisma-coolify-image",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Express Prisma Coolify Image",
+      "description": "Package an Express and Prisma API as a runtime-only image that migrates its Postgres database at start. Use when containerising a Node API with a database, or when migrations, readiness or shutdown misbehave in production.",
+      "path": "skills/deployment/express-prisma-coolify-image",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/express-prisma-coolify-image",
+      "targets": [
+        ".claude/skills/express-prisma-coolify-image/SKILL.md",
+        ".claude/skills/express-prisma-coolify-image/templates/Dockerfile",
+        ".claude/skills/express-prisma-coolify-image/templates/docker-entrypoint.sh",
+        ".claude/skills/express-prisma-coolify-image/templates/dockerignore",
+        ".claude/skills/express-prisma-coolify-image/templates/healthcheck.ts"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/ghcr-coolify-pipeline",
+      "name": "ghcr-coolify-pipeline",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Ghcr Coolify Pipeline",
+      "description": "Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a repo, replacing a CI-only workflow, or debugging a deploy job.",
+      "path": "skills/deployment/ghcr-coolify-pipeline",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/ghcr-coolify-pipeline",
+      "targets": [
+        ".claude/skills/ghcr-coolify-pipeline/SKILL.md",
+        ".claude/skills/ghcr-coolify-pipeline/reference/pipeline-anatomy.md",
+        ".claude/skills/ghcr-coolify-pipeline/templates/pipeline.express.yml",
+        ".claude/skills/ghcr-coolify-pipeline/templates/pipeline.nextjs.yml"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/live-domain-cutover",
+      "name": "live-domain-cutover",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Live Domain Cutover",
+      "description": "Move a live domain from one host to another without downtime or lost sessions, with a rehearsal, a timed DNS switch, a soak and the old host removed. Use when migrating a production app between hosting platforms.",
+      "path": "skills/deployment/live-domain-cutover",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/live-domain-cutover",
+      "targets": [
+        ".claude/skills/live-domain-cutover/SKILL.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/nextjs-coolify-image",
+      "name": "nextjs-coolify-image",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Nextjs Coolify Image",
+      "description": "Package a Next.js app as a runtime-only container image with a health probe and a fast shutdown. Use when containerising a Next.js app, when its image is large or slow, or when a rolling update drops requests.",
+      "path": "skills/deployment/nextjs-coolify-image",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/nextjs-coolify-image",
+      "targets": [
+        ".claude/skills/nextjs-coolify-image/SKILL.md",
+        ".claude/skills/nextjs-coolify-image/templates/Dockerfile",
+        ".claude/skills/nextjs-coolify-image/templates/dockerignore",
+        ".claude/skills/nextjs-coolify-image/templates/healthcheck.js",
+        ".claude/skills/nextjs-coolify-image/templates/healthz-route.ts",
+        ".claude/skills/nextjs-coolify-image/templates/shutdown.cjs"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/proxy-client-address",
+      "name": "proxy-client-address",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Proxy Client Address",
+      "description": "Forward the real client address from a server-side proxy to a backend without trusting forgeable headers. Use when an API behind a BFF or reverse proxy rate-limits or audits every user as one address.",
+      "path": "skills/deployment/proxy-client-address",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/proxy-client-address",
+      "targets": [
+        ".claude/skills/proxy-client-address/SKILL.md",
+        ".claude/skills/proxy-client-address/reference/snippets.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "skill/vps-ops-toolkit",
+      "name": "vps-ops-toolkit",
+      "type": "skill",
+      "category": "deployment",
+      "title": "Vps Ops Toolkit",
+      "description": "Install host operations on a VPS, with a cron health check that alerts on change, restore-verified encrypted database backups, and an installer. Use when a server has no monitoring or backups, or when adding a resource to them.",
+      "path": "skills/deployment/vps-ops-toolkit",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/vps-ops-toolkit",
+      "targets": [
+        ".claude/skills/vps-ops-toolkit/SKILL.md",
+        ".claude/skills/vps-ops-toolkit/templates/ops/backup/backup.cron",
+        ".claude/skills/vps-ops-toolkit/templates/ops/backup/backup.env.example",
+        ".claude/skills/vps-ops-toolkit/templates/ops/backup/backup.sh",
+        ".claude/skills/vps-ops-toolkit/templates/ops/backup/fingerprint.sql",
+        ".claude/skills/vps-ops-toolkit/templates/ops/backup/snapshot.sql",
+        ".claude/skills/vps-ops-toolkit/templates/ops/health/health-check.cron",
+        ".claude/skills/vps-ops-toolkit/templates/ops/health/health-check.sh",
+        ".claude/skills/vps-ops-toolkit/templates/ops/health/health.env.example",
+        ".claude/skills/vps-ops-toolkit/templates/ops/health/ops.logrotate",
+        ".claude/skills/vps-ops-toolkit/templates/ops/install.sh",
+        ".claude/skills/vps-ops-toolkit/templates/ops/lib/alert.sh",
+        ".claude/skills/vps-ops-toolkit/templates/ops/ship.sh"
+      ],
+      "plugins": [
+        "deploy"
       ]
     },
     {
@@ -1650,6 +1852,22 @@
       ]
     },
     {
+      "key": "agent/deploy-reviewer",
+      "name": "deploy-reviewer",
+      "type": "agent",
+      "category": "deployment",
+      "title": "Deploy Reviewer",
+      "description": "Use this agent to review a repository's deployment setup read-only. Use when a Dockerfile, pipeline, health probe or Coolify configuration needs a second pair of eyes before it ships.",
+      "path": "agents/deployment/deploy-reviewer",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/deployment/deploy-reviewer",
+      "targets": [
+        ".claude/agents/deploy-reviewer.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
       "key": "agent/architect-reviewer",
       "name": "architect-reviewer",
       "type": "agent",
@@ -1919,6 +2137,54 @@
       ],
       "plugins": [
         "thesis"
+      ]
+    },
+    {
+      "key": "command/cutover",
+      "name": "cutover",
+      "type": "command",
+      "category": "deployment",
+      "title": "Cutover",
+      "description": "Drive a live domain migration step by step, with the owner doing DNS and the agent verifying each stage. Use when moving a production domain to a new host.",
+      "path": "commands/deployment/cutover",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/cutover",
+      "targets": [
+        ".claude/commands/cutover.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "command/deploy-setup",
+      "name": "deploy-setup",
+      "type": "command",
+      "category": "deployment",
+      "title": "Deploy Setup",
+      "description": "Add container packaging and a GHCR to Coolify pipeline to the current repository, then list the owner actions left. Use when a project needs to go from code to automatic deploys on a VPS.",
+      "path": "commands/deployment/deploy-setup",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/deploy-setup",
+      "targets": [
+        ".claude/commands/deploy-setup.md"
+      ],
+      "plugins": [
+        "deploy"
+      ]
+    },
+    {
+      "key": "command/deploy-verify",
+      "name": "deploy-verify",
+      "type": "command",
+      "category": "deployment",
+      "title": "Deploy Verify",
+      "description": "Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a release.",
+      "path": "commands/deployment/deploy-verify",
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/deploy-verify",
+      "targets": [
+        ".claude/commands/deploy-verify.md"
+      ],
+      "plugins": [
+        "deploy"
       ]
     },
     {

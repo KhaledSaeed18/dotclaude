@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "ghcr-coolify-pipeline",
+      "type": "registry:item",
+      "title": "Ghcr Coolify Pipeline",
+      "description": "Write the single GitHub Actions workflow that takes a repository from pull request to production through GHCR and Coolify. Use when adding deployment to a repo, replacing a CI-only workflow, or debugging a deploy job.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "deployment"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/skills/deployment/ghcr-coolify-pipeline",
+      "meta": {
+        "type": "skill"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "type": "registry:file",
+          "target": ".claude/skills/ghcr-coolify-pipeline/SKILL.md"
+        },
+        {
+          "path": "reference/pipeline-anatomy.md",
+          "type": "registry:file",
+          "target": ".claude/skills/ghcr-coolify-pipeline/reference/pipeline-anatomy.md"
+        },
+        {
+          "path": "templates/pipeline.express.yml",
+          "type": "registry:file",
+          "target": ".claude/skills/ghcr-coolify-pipeline/templates/pipeline.express.yml"
+        },
+        {
+          "path": "templates/pipeline.nextjs.yml",
+          "type": "registry:file",
+          "target": ".claude/skills/ghcr-coolify-pipeline/templates/pipeline.nextjs.yml"
+        }
+      ]
+    }
+  ]
+}

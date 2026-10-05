@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "deploy-verify",
+      "type": "registry:item",
+      "title": "Deploy Verify",
+      "description": "Run the server-side verification of a deployment and report pass or fail per check. Use when a deploy finished, after a cutover, or before closing a release.",
+      "author": "Khaled Saeed",
+      "categories": [
+        "deployment"
+      ],
+      "docs": "https://github.com/KhaledSaeed18/dotclaude/tree/main/commands/deployment/deploy-verify",
+      "meta": {
+        "type": "command"
+      },
+      "files": [
+        {
+          "path": "COMMAND.md",
+          "type": "registry:file",
+          "target": ".claude/commands/deploy-verify.md"
+        }
+      ]
+    }
+  ]
+}
