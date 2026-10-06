@@ -34,7 +34,7 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.5.15",
     "@types/node": "^26.6.3",
     "gray-matter": "^4.0.3",
     "marked": "^18.0.14",
