@@ -103,9 +103,13 @@ function hasRuffConfig(dir) {
   return existsSync(pyproject) && readFileSync(pyproject, "utf8").includes("[tool.ruff");
 }
 
-/** Run a formatter, capped so a hung tool can never stall the session. */
-function run(command, args) {
-  execFileSync(command, args, { stdio: "ignore", timeout: 15_000 });
+/**
+ * Run a formatter, capped so a hung tool can never stall the session. JS
+ * tooling runs from its config's directory: Biome resolves its project from
+ * the working directory and crashes on a file outside it.
+ */
+function run(command, args, cwd) {
+  execFileSync(command, args, { cwd, stdio: "ignore", timeout: 15_000 });
 }
 
 function formatFile(filePath, projectDir) {
@@ -134,14 +138,14 @@ function formatFile(filePath, projectDir) {
   );
   if (biomeDir && BIOME_EXTS.has(ext)) {
     const bin = findUp(fileDir, root, (dir) => existsSync(join(dir, "node_modules/.bin/biome")));
-    if (bin) run(join(bin, "node_modules/.bin/biome"), ["format", "--write", filePath]);
+    if (bin) run(join(bin, "node_modules/.bin/biome"), ["format", "--write", filePath], biomeDir);
     return;
   }
 
   const prettierDir = findUp(fileDir, root, hasPrettierConfig);
   if (prettierDir && PRETTIER_EXTS.has(ext)) {
     const bin = findUp(fileDir, root, (dir) => existsSync(join(dir, "node_modules/.bin/prettier")));
-    if (bin) run(join(bin, "node_modules/.bin/prettier"), ["--write", filePath]);
+    if (bin) run(join(bin, "node_modules/.bin/prettier"), ["--write", filePath], prettierDir);
   }
 }
 

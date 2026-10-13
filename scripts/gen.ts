@@ -401,7 +401,7 @@ const PLUGINS: readonly PluginDef[] = [
   },
   {
     name: "format-on-edit",
-    version: "1.0.0",
+    version: "1.0.1",
     description:
       "Automation hook that runs the project's own formatter (Biome, Prettier, gofmt, rustfmt, or ruff) on every file Claude edits, so changes land already formatted.",
     category: "automation",
