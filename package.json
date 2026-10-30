@@ -24,6 +24,8 @@
     "coverage": "tsx scripts/coverage.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome format --write ."
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
+    "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.5",
     "gray-matter": "^4.0.3",
     "marked": "^18.1.1",

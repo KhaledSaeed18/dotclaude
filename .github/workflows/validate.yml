@@ -60,3 +60,34 @@ jobs:
         env:
           SMOKE_CLAUDE_CLI: claude
         run: pnpm smoke
+
+  site:
+    # The catalog site end to end, in a real browser, on a desktop and a
+    # phone profile: filters, search ranking, keyboard, legacy links, copy,
+    # theme, and every generated page type.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6.1.0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install the test browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Test the site
+        run: pnpm test:e2e
+
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7
