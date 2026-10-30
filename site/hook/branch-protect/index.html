@@ -9,8 +9,8 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Khaled Saeed" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111317" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="dotclaude" />
     <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/hook/branch-protect/" />
@@ -28,49 +28,60 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/branch-protect/#code","url":"https://dotclaude.khaledsaeed.tech/hook/branch-protect/","name":"branch-protect","alternateName":"Branch Protect","headline":"branch-protect: a Claude Code hook","description":"A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","workflow","workflow-hooks"],"hasPart":[{"@type":"CreativeWork","name":"branch-protect.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/#/?type=hook"},{"@type":"ListItem","position":3,"name":"branch-protect","item":"https://dotclaude.khaledsaeed.tech/hook/branch-protect/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/hook/branch-protect/#code","url":"https://dotclaude.khaledsaeed.tech/hook/branch-protect/","name":"branch-protect","alternateName":"Branch Protect","headline":"branch-protect: a Claude Code hook","description":"A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Hook","workflow","workflow-hooks"],"hasPart":[{"@type":"CreativeWork","name":"branch-protect.mjs"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Hooks","item":"https://dotclaude.khaledsaeed.tech/?type=hook"},{"@type":"ListItem","position":3,"name":"branch-protect","item":"https://dotclaude.khaledsaeed.tech/hook/branch-protect/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
     <link rel="stylesheet" href="/styles.css" />
+    <script>try{const t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch{}</script>
   </head>
-  <body class="subpage">
+  <body data-page="doc">
     <a class="skip" href="#main">Skip to content</a>
     <header class="masthead">
-      <div class="masthead-inner">
+      <div class="masthead-inner wrap">
         <a class="brand" href="/">
           <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
           dotclaude
         </a>
-        <nav class="masthead-nav" aria-label="Sections">
-          <a href="/">Items</a>
-          <a href="/#/plugins">Plugins</a>
-          <a href="/#/install">Install</a>
-          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" /></svg></button>
+        <nav class="masthead-nav" id="site-nav" aria-label="Sections">
+          <a href="/" aria-current="page">Catalog</a>
+          <a href="/plugins/">Plugins</a>
+          <a href="/install/">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener" class="icon-button" title="Source on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.5.8.5 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2Z" /></svg><span class="visually-hidden">GitHub</span></a>
+          <button type="button" class="icon-button theme-toggle" aria-label="Switch theme" title="Switch theme"><svg class="icon-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" /></svg><svg class="icon-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M16.5 12.5A7 7 0 0 1 7.5 3.5a7 7 0 1 0 9 9Z" /></svg><span class="visually-hidden">Theme</span></button>
         </nav>
       </div>
     </header>
-    <main class="page doc-page" id="main">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=hook">Hooks</a></li><li aria-current="page">branch-protect</li></ol></nav>
-      <article class="doc">
-        <header class="doc-head" data-type="hook">
-          <p class="detail-kind">Hook <span class="row-category">in workflow</span></p>
-          <h1><code>branch-protect</code></h1>
-          
-          <p class="lede">A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first.</p>
-          
-        </header>
-        <section class="doc-install">
-<h2 id="install-as-a-plugin">Install as a plugin</h2>
-<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/workflow-hooks/">workflow-hooks</a> plugin. Add the marketplace once, then install the bundle:</p>
-<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
-<pre class="command"><code>/plugin install workflow-hooks@dotclaude</code></pre>
-<h2 id="install-as-a-single-item">Install as a single item</h2>
-<p>Run from the project root; the hook lands under <code>.claude/</code>.</p>
-<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/branch-protect</code></pre>
-<p class="detail-note">Installed as a single item, a hook still needs the block documented below added to <code>.claude/settings.json</code>; the plugin route wires it automatically.</p>
-<h3 id="files-installed">Files installed</h3>
-<ul class="targets"><li><code>.claude/hooks/branch-protect/HOOK.md</code></li><li><code>.claude/hooks/branch-protect/branch-protect.mjs</code></li></ul>
-        </section>
-        <section class="doc-body" aria-label="Hook contents">
-          <h2 id="contents">What it does</h2>
+    <main class="page" id="main">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/?type=hook">Hooks</a></li><li aria-current="page">branch-protect</li></ol></nav>
+        <article class="doc" data-type="hook">
+          <header class="doc-head">
+            <p class="doc-kind"><span class="pill" data-type="hook"><span class="dot" aria-hidden="true"></span>Hook</span> <span>in <a href="/?category=workflow">workflow</a></span></p>
+            <h1><code>branch-protect</code></h1>
+            
+            <p class="lede">A UserPromptSubmit hook that, once per session, tells Claude the checkout is on a protected branch (main, master, develop, or a configured list) so it creates a feature branch before editing or committing. Advisory context only; it never blocks. Use alongside git-guard when work keeps landing directly on main because nobody branched first.</p>
+            
+          </header>
+          <div class="doc-layout">
+            <div class="doc-main">
+              <h2 id="install">Install</h2>
+              <div class="install-ways">
+<div class="install-way">
+  <h3>As a plugin</h3>
+  <p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/workflow-hooks/">workflow-hooks</a> plugin. Add the marketplace once, then install the bundle; it updates with the marketplace.</p>
+  <div class="command" data-copy="/plugin marketplace add KhaledSaeed18/dotclaude" data-prompt="claude"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+  <div class="command" data-copy="/plugin install workflow-hooks@dotclaude" data-prompt="claude"><code>/plugin install workflow-hooks@dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+</div>
+<div class="install-way">
+  <h3>As a single item</h3>
+  <p>Run from the project root; the hook lands under <code>.claude/</code>. Copy it to <code>~/.claude/</code> to make it global.</p>
+  <div class="command" data-copy="npx shadcn@latest add KhaledSaeed18/dotclaude/branch-protect"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/branch-protect</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+</div>
+              </div>
+              <p class="note">Installed as a single item, a hook still needs the settings block documented below added to <code>.claude/settings.json</code>. The plugin route wires it automatically.</p>
+              <h3 id="files-installed">Files installed</h3>
+              <ul class="targets"><li><code>.claude/hooks/branch-protect/HOOK.md</code></li><li><code>.claude/hooks/branch-protect/branch-protect.mjs</code></li></ul>
+              <h2 id="contents">What it does</h2>
+              <div class="prose">
 <h2 id="branch-protect">branch-protect</h2>
 <p>A Claude Code hook that adds one line of context the first time a prompt is submitted while the checkout is on a protected branch:</p>
 <blockquote>
@@ -130,19 +141,53 @@ echo &#39;{&quot;hook_event_name&quot;:&quot;UserPromptSubmit&quot;,&quot;cwd&qu
 <p>Hooks run arbitrary commands on your machine with your credentials whenever their event fires. Read any hook script (including this one) before enabling it.</p>
 </blockquote>
 
-        </section>
-        <footer class="doc-foot">
-          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this hook as Markdown</a>.</p>
-          <h2 id="related">More in workflow</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/hook/git-guard/"><code>git-guard</code></a> <span class="row-type">hook</span> A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/session-context/"><code>session-context</code></a> <span class="row-type">hook</span> A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/stop-gate/"><code>stop-gate</code></a> <span class="row-type">hook</span> A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/subagent-summary/"><code>subagent-summary</code></a> <span class="row-type">hook</span> A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its...</li><li><a href="https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/"><code>typecheck-on-edit</code></a> <span class="row-type">hook</span> A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing...</li></ul>
-          <p><a href="/#/?type=hook">All hooks</a> · <a href="/#/?category=workflow">All of workflow</a></p>
-        </footer>
-      </article>
+              </div>
+              <p class="note">This is the hook as installed, rendered from <a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect" rel="noopener">its source on GitHub</a>. <a href="index.md">Read it as Markdown</a>.</p>
+              <h2 id="related">More in workflow</h2><ul class="doc-list"><li data-type="hook"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/hook/git-guard/">git-guard</a><span class="desc">A PreToolUse hook for Bash that blocks git operations which destroy work or bypass review, with a reason Claude can act on. Stops force-pushes and...</span></li><li data-type="hook"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/hook/session-context/">session-context</a><span class="desc">A SessionStart hook that orients every new session before the first prompt by injecting the current branch, ahead/behind status, uncommitted files, the...</span></li><li data-type="hook"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/hook/stop-gate/">stop-gate</a><span class="desc">A Stop hook that runs the project's test command before Claude may end a turn with uncommitted changes, blocking the stop and returning the failure output...</span></li><li data-type="hook"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/hook/subagent-summary/">subagent-summary</a><span class="desc">A SubagentStop hook that appends one JSON line per finished subagent to a project log (timestamp, session, agent id, and the first 300 characters of its...</span></li><li data-type="hook"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/">typecheck-on-edit</a><span class="desc">A PostToolUse hook that type-checks the project after Claude edits a TypeScript, Python, or Go file and returns the errors as context immediately, listing...</span></li></ul>
+              <nav class="pager" aria-label="More hooks">
+                <a rel="prev" href="https://dotclaude.khaledsaeed.tech/hook/smart-approve/"><small>Previous hook</small><code>smart-approve</code></a>
+                <a rel="next" href="https://dotclaude.khaledsaeed.tech/hook/git-guard/"><small>Next hook</small><code>git-guard</code></a>
+              </nav>
+            </div>
+            <aside class="doc-side">
+              <div class="side-block">
+                <h2>Quick install</h2>
+                <div class="command" data-copy="/plugin install workflow-hooks@dotclaude" data-prompt="claude"><code>/plugin install workflow-hooks@dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+                <p>After <code>/plugin marketplace add KhaledSaeed18/dotclaude</code>.</p>
+              </div>
+              <nav class="side-block toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol><li data-depth="2"><a href="#branch-protect">branch-protect</a></li><li data-depth="3"><a href="#files">Files</a></li><li data-depth="3"><a href="#activate-it-required-manual-step">Activate it (required manual step)</a></li><li data-depth="3"><a href="#verify-it">Verify it</a></li><li data-depth="3"><a href="#tune-it">Tune it</a></li></ol>
+</nav>
+              <div class="side-block">
+  <h2>Also in workflow-hooks</h2>
+  <p>6 hooks in the bundle.</p>
+  <ul class="side-list"><li data-type="hook"><a href="https://dotclaude.khaledsaeed.tech/hook/session-context/"><span class="dot" aria-hidden="true"></span><code>session-context</code></a></li><li data-type="hook"><a href="https://dotclaude.khaledsaeed.tech/hook/stop-gate/"><span class="dot" aria-hidden="true"></span><code>stop-gate</code></a></li><li data-type="hook"><a href="https://dotclaude.khaledsaeed.tech/hook/typecheck-on-edit/"><span class="dot" aria-hidden="true"></span><code>typecheck-on-edit</code></a></li><li data-type="hook"><a href="https://dotclaude.khaledsaeed.tech/hook/git-guard/"><span class="dot" aria-hidden="true"></span><code>git-guard</code></a></li><li data-type="hook"><a href="https://dotclaude.khaledsaeed.tech/hook/subagent-summary/"><span class="dot" aria-hidden="true"></span><code>subagent-summary</code></a></li><li><a class="more" href="https://dotclaude.khaledsaeed.tech/plugins/workflow-hooks/">View the plugin</a></li></ul>
+</div>
+              <div class="side-block">
+                <h2>Links</h2>
+                <ul class="side-list">
+                  <li><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/hooks/workflow/branch-protect" rel="noopener">Source on GitHub</a></li>
+                  <li><a href="index.md">Markdown</a></li>
+                  <li><a href="/?type=hook">All hooks</a></li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </article>
+      </div>
     </main>
     <footer class="footer">
-      <p class="footer-inner">
-        MIT licensed. Source and contributing guide on
-        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
-      </p>
+      <div class="footer-inner wrap">
+        <p>MIT licensed. Built by <a href="https://khaledsaeed.tech/work/dotclaude" rel="noopener">Khaled Saeed</a>.</p>
+        <nav aria-label="More">
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">Source</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/CONTRIBUTING.md" rel="noopener">Contributing</a>
+          <a href="/llms.txt">llms.txt</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </nav>
+      </div>
     </footer>
+    <script src="/app.js"></script>
   </body>
 </html>

@@ -9,8 +9,8 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Khaled Saeed" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1a1c21" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111317" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="dotclaude" />
     <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/agent/code-simplifier/" />
@@ -28,49 +28,60 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     <link rel="alternate" type="text/markdown" href="index.md" title="Markdown" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/code-simplifier/#code","url":"https://dotclaude.khaledsaeed.tech/agent/code-simplifier/","name":"code-simplifier","alternateName":"Code Simplifier","headline":"code-simplifier: a Claude Code agent","description":"Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead branches, needless abstraction, over-general parameters, and comments that restate code, while keeping behaviour and tests identical. Edits the working tree and reports each simplification with its reason. Use when a diff has grown during implementation, when a reviewer says it is more complex than it needs to be, or as the last step of executing a plan.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-simplifier","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Agent","review","pr-toolkit"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Agents","item":"https://dotclaude.khaledsaeed.tech/#/?type=agent"},{"@type":"ListItem","position":3,"name":"code-simplifier","item":"https://dotclaude.khaledsaeed.tech/agent/code-simplifier/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","@id":"https://dotclaude.khaledsaeed.tech/agent/code-simplifier/#code","url":"https://dotclaude.khaledsaeed.tech/agent/code-simplifier/","name":"code-simplifier","alternateName":"Code Simplifier","headline":"code-simplifier: a Claude Code agent","description":"Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead branches, needless abstraction, over-general parameters, and comments that restate code, while keeping behaviour and tests identical. Edits the working tree and reports each simplification with its reason. Use when a diff has grown during implementation, when a reviewer says it is more complex than it needs to be, or as the last step of executing a plan.","codeRepository":"https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-simplifier","programmingLanguage":"Markdown","runtimePlatform":"Claude Code","license":"https://opensource.org/license/mit","author":{"@type":"Person","name":"Khaled Saeed"},"isPartOf":{"@id":"https://dotclaude.khaledsaeed.tech/#website"},"keywords":["Claude Code","Agent","review","pr-toolkit"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Agents","item":"https://dotclaude.khaledsaeed.tech/?type=agent"},{"@type":"ListItem","position":3,"name":"code-simplifier","item":"https://dotclaude.khaledsaeed.tech/agent/code-simplifier/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
     <link rel="stylesheet" href="/styles.css" />
+    <script>try{const t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch{}</script>
   </head>
-  <body class="subpage">
+  <body data-page="doc">
     <a class="skip" href="#main">Skip to content</a>
     <header class="masthead">
-      <div class="masthead-inner">
+      <div class="masthead-inner wrap">
         <a class="brand" href="/">
           <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
           dotclaude
         </a>
-        <nav class="masthead-nav" aria-label="Sections">
-          <a href="/">Items</a>
-          <a href="/#/plugins">Plugins</a>
-          <a href="/#/install">Install</a>
-          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>
+        <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" /></svg></button>
+        <nav class="masthead-nav" id="site-nav" aria-label="Sections">
+          <a href="/" aria-current="page">Catalog</a>
+          <a href="/plugins/">Plugins</a>
+          <a href="/install/">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener" class="icon-button" title="Source on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.5.8.5 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2Z" /></svg><span class="visually-hidden">GitHub</span></a>
+          <button type="button" class="icon-button theme-toggle" aria-label="Switch theme" title="Switch theme"><svg class="icon-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" /></svg><svg class="icon-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M16.5 12.5A7 7 0 0 1 7.5 3.5a7 7 0 1 0 9 9Z" /></svg><span class="visually-hidden">Theme</span></button>
         </nav>
       </div>
     </header>
-    <main class="page doc-page" id="main">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/#/?type=agent">Agents</a></li><li aria-current="page">code-simplifier</li></ol></nav>
-      <article class="doc">
-        <header class="doc-head" data-type="agent">
-          <p class="detail-kind">Agent <span class="row-category">in review</span></p>
-          <h1><code>code-simplifier</code></h1>
-          
-          <p class="lede">Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead branches, needless abstraction, over-general parameters, and comments that restate code, while keeping behaviour and tests identical. Edits the working tree and reports each simplification with its reason. Use when a diff has grown during implementation, when a reviewer says it is more complex than it needs to be, or as the last step of executing a plan.</p>
-          <dl class="doc-facts"><dt>Tools</dt><dd>Read, Edit, Write, Grep, Glob, Bash</dd><dt>Model</dt><dd>inherit</dd></dl>
-        </header>
-        <section class="doc-install">
-<h2 id="install-as-a-plugin">Install as a plugin</h2>
-<p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/pr-toolkit/">pr-toolkit</a> plugin. Add the marketplace once, then install the bundle:</p>
-<pre class="command"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code></pre>
-<pre class="command"><code>/plugin install pr-toolkit@dotclaude</code></pre>
-<h2 id="install-as-a-single-item">Install as a single item</h2>
-<p>Run from the project root; the agent lands under <code>.claude/</code>.</p>
-<pre class="command"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/code-simplifier</code></pre>
-
-<h3 id="files-installed">Files installed</h3>
-<ul class="targets"><li><code>.claude/agents/code-simplifier.md</code></li></ul>
-        </section>
-        <section class="doc-body" aria-label="Agent contents">
-          <h2 id="contents">What it does</h2>
+    <main class="page" id="main">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li><a href="/?type=agent">Agents</a></li><li aria-current="page">code-simplifier</li></ol></nav>
+        <article class="doc" data-type="agent">
+          <header class="doc-head">
+            <p class="doc-kind"><span class="pill" data-type="agent"><span class="dot" aria-hidden="true"></span>Agent</span> <span>in <a href="/?category=review">review</a></span></p>
+            <h1><code>code-simplifier</code></h1>
+            
+            <p class="lede">Use this agent after a feature or fix works and before it is reviewed: it reduces the change to its simplest correct form by removing duplication, dead branches, needless abstraction, over-general parameters, and comments that restate code, while keeping behaviour and tests identical. Edits the working tree and reports each simplification with its reason. Use when a diff has grown during implementation, when a reviewer says it is more complex than it needs to be, or as the last step of executing a plan.</p>
+            <dl class="doc-facts"><dt>Tools</dt><dd>Read, Edit, Write, Grep, Glob, Bash</dd><dt>Model</dt><dd>inherit</dd></dl>
+          </header>
+          <div class="doc-layout">
+            <div class="doc-main">
+              <h2 id="install">Install</h2>
+              <div class="install-ways">
+<div class="install-way">
+  <h3>As a plugin</h3>
+  <p>Bundled in the <a href="https://dotclaude.khaledsaeed.tech/plugins/pr-toolkit/">pr-toolkit</a> plugin. Add the marketplace once, then install the bundle; it updates with the marketplace.</p>
+  <div class="command" data-copy="/plugin marketplace add KhaledSaeed18/dotclaude" data-prompt="claude"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+  <div class="command" data-copy="/plugin install pr-toolkit@dotclaude" data-prompt="claude"><code>/plugin install pr-toolkit@dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+</div>
+<div class="install-way">
+  <h3>As a single item</h3>
+  <p>Run from the project root; the agent lands under <code>.claude/</code>. Copy it to <code>~/.claude/</code> to make it global.</p>
+  <div class="command" data-copy="npx shadcn@latest add KhaledSaeed18/dotclaude/code-simplifier"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/code-simplifier</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+</div>
+              </div>
+              
+              <h3 id="files-installed">Files installed</h3>
+              <ul class="targets"><li><code>.claude/agents/code-simplifier.md</code></li></ul>
+              <h2 id="contents">What it does</h2>
+              <div class="prose">
 <p>You make working code smaller and clearer without changing what it does. You are the pass that happens after &quot;it works&quot; and before &quot;please review&quot;: the reviewer should see the idea, not the scaffolding it took to get there.</p>
 <h3 id="operating-rules">Operating rules</h3>
 <ul>
@@ -119,19 +130,53 @@ Left alone (needs the author):
 <h3 id="inspired-by">Inspired by</h3>
 <p>The role and scope follow the pr-review-toolkit plugin&#39;s code-simplifier agent in Anthropic&#39;s <a href="https://github.com/anthropics/claude-code/tree/main/plugins/pr-review-toolkit" rel="noopener">claude-code</a> repository. That repository is not open-licensed, so nothing is copied from it; every line here was written for this registry.</p>
 
-        </section>
-        <footer class="doc-foot">
-          <p><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-simplifier" rel="noopener">View the source on GitHub</a> or <a href="index.md">read this agent as Markdown</a>.</p>
-          <h2 id="related">More in review</h2><ul class="doc-list"><li><a href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/"><code>code-explorer</code></a> <span class="row-type">agent</span> Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/"><code>silent-failure-hunter</code></a> <span class="row-type">agent</span> Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/"><code>test-gap-analyzer</code></a> <span class="row-type">agent</span> Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries...</li><li><a href="https://dotclaude.khaledsaeed.tech/agent/type-design-reviewer/"><code>type-design-reviewer</code></a> <span class="row-type">agent</span> Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable...</li><li><a href="https://dotclaude.khaledsaeed.tech/command/review-pr/"><code>review-pr</code></a> <span class="row-type">command</span> Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter...</li></ul>
-          <p><a href="/#/?type=agent">All agents</a> · <a href="/#/?category=review">All of review</a></p>
-        </footer>
-      </article>
+              </div>
+              <p class="note">This is the agent as installed, rendered from <a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-simplifier" rel="noopener">its source on GitHub</a>. <a href="index.md">Read it as Markdown</a>.</p>
+              <h2 id="related">More in review</h2><ul class="doc-list"><li data-type="agent"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/">code-explorer</a><span class="desc">Use this agent before changing code you do not fully know: given a feature, bug, or question, it maps the relevant files, entry points, data flow, and the...</span></li><li data-type="agent"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/">silent-failure-hunter</a><span class="desc">Use this agent to find the places where a change can fail without anyone noticing: swallowed exceptions, empty catch blocks, ignored return values and...</span></li><li data-type="agent"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/">test-gap-analyzer</a><span class="desc">Use this agent to find what a change does that no test checks: it lists each behaviour the diff adds or alters (branches, error paths, boundaries...</span></li><li data-type="agent"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/agent/type-design-reviewer/">type-design-reviewer</a><span class="desc">Use this agent to review the types, interfaces, schemas, and data shapes a change introduces or modifies: whether invalid states are representable...</span></li><li data-type="command"><span class="dot" aria-hidden="true"></span><a href="https://dotclaude.khaledsaeed.tech/command/review-pr/">review-pr</a><span class="desc">Review a pull request or the current branch with four specialist agents in parallel (code-reviewer for correctness and security, silent-failure-hunter...</span></li></ul>
+              <nav class="pager" aria-label="More agents">
+                <a rel="prev" href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/"><small>Previous agent</small><code>code-explorer</code></a>
+                <a rel="next" href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/"><small>Next agent</small><code>silent-failure-hunter</code></a>
+              </nav>
+            </div>
+            <aside class="doc-side">
+              <div class="side-block">
+                <h2>Quick install</h2>
+                <div class="command" data-copy="/plugin install pr-toolkit@dotclaude" data-prompt="claude"><code>/plugin install pr-toolkit@dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div>
+                <p>After <code>/plugin marketplace add KhaledSaeed18/dotclaude</code>.</p>
+              </div>
+              <nav class="side-block toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol><li data-depth="3"><a href="#operating-rules">Operating rules</a></li><li data-depth="3"><a href="#what-to-remove-or-reduce">What to remove or reduce</a></li><li data-depth="3"><a href="#what-not-to-touch">What not to touch</a></li><li data-depth="3"><a href="#procedure">Procedure</a></li><li data-depth="3"><a href="#report">Report</a></li><li data-depth="3"><a href="#inspired-by">Inspired by</a></li></ol>
+</nav>
+              <div class="side-block">
+  <h2>Also in pr-toolkit</h2>
+  <p>5 agents, 1 command in the bundle.</p>
+  <ul class="side-list"><li data-type="agent"><a href="https://dotclaude.khaledsaeed.tech/agent/code-explorer/"><span class="dot" aria-hidden="true"></span><code>code-explorer</code></a></li><li data-type="agent"><a href="https://dotclaude.khaledsaeed.tech/agent/silent-failure-hunter/"><span class="dot" aria-hidden="true"></span><code>silent-failure-hunter</code></a></li><li data-type="agent"><a href="https://dotclaude.khaledsaeed.tech/agent/test-gap-analyzer/"><span class="dot" aria-hidden="true"></span><code>test-gap-analyzer</code></a></li><li data-type="agent"><a href="https://dotclaude.khaledsaeed.tech/agent/type-design-reviewer/"><span class="dot" aria-hidden="true"></span><code>type-design-reviewer</code></a></li><li data-type="command"><a href="https://dotclaude.khaledsaeed.tech/command/review-pr/"><span class="dot" aria-hidden="true"></span><code>review-pr</code></a></li><li><a class="more" href="https://dotclaude.khaledsaeed.tech/plugins/pr-toolkit/">View the plugin</a></li></ul>
+</div>
+              <div class="side-block">
+                <h2>Links</h2>
+                <ul class="side-list">
+                  <li><a href="https://github.com/KhaledSaeed18/dotclaude/tree/main/agents/review/code-simplifier" rel="noopener">Source on GitHub</a></li>
+                  <li><a href="index.md">Markdown</a></li>
+                  <li><a href="/?type=agent">All agents</a></li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </article>
+      </div>
     </main>
     <footer class="footer">
-      <p class="footer-inner">
-        MIT licensed. Source and contributing guide on
-        <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">GitHub</a>.
-      </p>
+      <div class="footer-inner wrap">
+        <p>MIT licensed. Built by <a href="https://khaledsaeed.tech/work/dotclaude" rel="noopener">Khaled Saeed</a>.</p>
+        <nav aria-label="More">
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">Source</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/CONTRIBUTING.md" rel="noopener">Contributing</a>
+          <a href="/llms.txt">llms.txt</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </nav>
+      </div>
     </footer>
+    <script src="/app.js"></script>
   </body>
 </html>

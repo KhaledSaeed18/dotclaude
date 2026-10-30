@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://dotclaude.khaledsaeed.tech/</loc></url>
+  <url><loc>https://dotclaude.khaledsaeed.tech/plugins/</loc></url>
+  <url><loc>https://dotclaude.khaledsaeed.tech/install/</loc></url>
   <url><loc>https://dotclaude.khaledsaeed.tech/plugins/engineering/</loc></url>
   <url><loc>https://dotclaude.khaledsaeed.tech/plugins/deploy/</loc></url>
   <url><loc>https://dotclaude.khaledsaeed.tech/plugins/docs/</loc></url>

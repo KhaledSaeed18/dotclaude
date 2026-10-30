@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Install Claude Code extensions | dotclaude</title>
+    <meta name="description" content="How to install dotclaude items into Claude Code: as plugins from the marketplace, or one at a time with the shadcn CLI, and what a skill, agent, command and hook each do." />
+    <link rel="canonical" href="https://dotclaude.khaledsaeed.tech/install/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Khaled Saeed" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111317" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dotclaude" />
+    <meta property="og:url" content="https://dotclaude.khaledsaeed.tech/install/" />
+    <meta property="og:title" content="Install Claude Code extensions | dotclaude" />
+    <meta property="og:description" content="How to install dotclaude items into Claude Code: as plugins from the marketplace, or one at a time with the shadcn CLI, and what a skill, agent, command and hook each do." />
+    <meta property="og:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Install Claude Code extensions | dotclaude" />
+    <meta name="twitter:description" content="How to install dotclaude items into Claude Code: as plugins from the marketplace, or one at a time with the shadcn CLI, and what a skill, agent, command and hook each do." />
+    <meta name="twitter:image" content="https://dotclaude.khaledsaeed.tech/og-image.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"HowTo","@id":"https://dotclaude.khaledsaeed.tech/install/","name":"Install dotclaude items into Claude Code","description":"How to install dotclaude items into Claude Code: as plugins from the marketplace, or one at a time with the shadcn CLI, and what a skill, agent, command and hook each do.","step":[{"@type":"HowToStep","name":"Add the marketplace","text":"/plugin marketplace add KhaledSaeed18/dotclaude"},{"@type":"HowToStep","name":"Install a plugin","text":"/plugin install engineering@dotclaude"},{"@type":"HowToStep","name":"Or add a single item","text":"npx shadcn@latest add KhaledSaeed18/dotclaude/academic-writing"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"dotclaude","item":"https://dotclaude.khaledsaeed.tech/"},{"@type":"ListItem","position":2,"name":"Install","item":"https://dotclaude.khaledsaeed.tech/install/"}]},{"@type":"WebSite","@id":"https://dotclaude.khaledsaeed.tech/#website","url":"https://dotclaude.khaledsaeed.tech/","name":"dotclaude"}]}</script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script>try{const t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch{}</script>
+  </head>
+  <body data-page="doc">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="masthead-inner wrap">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
+          dotclaude
+        </a>
+        <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" /></svg></button>
+        <nav class="masthead-nav" id="site-nav" aria-label="Sections">
+          <a href="/">Catalog</a>
+          <a href="/plugins/">Plugins</a>
+          <a href="/install/" aria-current="page">Install</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener" class="icon-button" title="Source on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.5.8.5 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2Z" /></svg><span class="visually-hidden">GitHub</span></a>
+          <button type="button" class="icon-button theme-toggle" aria-label="Switch theme" title="Switch theme"><svg class="icon-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" /></svg><svg class="icon-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M16.5 12.5A7 7 0 0 1 7.5 3.5a7 7 0 1 0 9 9Z" /></svg><span class="visually-hidden">Theme</span></button>
+        </nav>
+      </div>
+    </header>
+    <main class="page" id="main">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">dotclaude</a></li><li aria-current="page">Install</li></ol></nav>
+        <section class="hero" style="padding-left:0;padding-right:0">
+          <h1>Install</h1>
+          <p class="lede">Two routes into the same files. A plugin is the easy way and keeps itself updated; a single item is the surgical way when you want one thing in one project.</p>
+        </section>
+
+        <section class="section" aria-labelledby="ways">
+          <div class="section-head"><h2 id="ways">Two ways in</h2></div>
+          <div class="ways">
+            <article class="card">
+              <h3>As a plugin</h3>
+              <p>Bundles of related items managed by Claude Code. Hooks activate on install, commands are namespaced (<code>/security:security-audit</code>), and one command updates everything.</p>
+              <ol class="steps">
+                <li><div>Add the marketplace once, inside a Claude Code session.<div class="command" data-copy="/plugin marketplace add KhaledSaeed18/dotclaude" data-prompt="claude"><code>/plugin marketplace add KhaledSaeed18/dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div></div></li>
+                <li><div>Install a bundle.<div class="command" data-copy="/plugin install engineering@dotclaude" data-prompt="claude"><code>/plugin install engineering@dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div></div></li>
+                <li><div>Later, pull every update at once.<div class="command" data-copy="/plugin marketplace update dotclaude" data-prompt="claude"><code>/plugin marketplace update dotclaude</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div></div></li>
+              </ol>
+              <p>A good starter set is <a href="/plugins/engineering/"><strong>engineering</strong></a>, <a href="/plugins/git/"><strong>git</strong></a>, <a href="/plugins/security-hooks/"><strong>security-hooks</strong></a>.</p>
+            </article>
+            <article class="card">
+              <h3>As a single item</h3>
+              <p>The shadcn CLI copies one item into the project you run it from, under <code>.claude/</code>. Nothing else is touched, and nothing updates itself.</p>
+              <ol class="steps">
+                <li><div>From the project root, add the item by name.<div class="command" data-copy="npx shadcn@latest add KhaledSaeed18/dotclaude/academic-writing"><code>npx shadcn@latest add KhaledSaeed18/dotclaude/academic-writing</code><button type="button" class="copy" aria-label="Copy command">Copy</button></div></div></li>
+                <li><div>To make it global, move it from <code>.claude/</code> into <code>~/.claude/</code>: folders for skills and hooks, single files for agents and commands.</div></li>
+                <li><div>A hook installed this way still needs its documented block in <code>.claude/settings.json</code>; each hook's page shows it.</div></li>
+              </ol>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="which">
+          <div class="section-head"><h2 id="which">Which should I pick?</h2></div>
+          <table class="compare">
+            <thead><tr><th scope="col"></th><th scope="col">Plugin</th><th scope="col">Single item</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Scope</th><td>Everything in the bundle, in every project</td><td>One item, in one project</td></tr>
+              <tr><th scope="row">Updates</th><td>One command updates all installed bundles</td><td>Run the add command again to refresh</td></tr>
+              <tr><th scope="row">Hooks</th><td>Wired on install</td><td>Add the settings block yourself</td></tr>
+              <tr><th scope="row">Commands</th><td>Namespaced: <code>/engineering:research-log</code></td><td>Plain: <code>/research-log</code></td></tr>
+              <tr><th scope="row">Where the files go</th><td>Claude Code's plugin cache</td><td><code>.claude/</code> in the project, visible in git</td></tr>
+              <tr><th scope="row">Best for</th><td>Your own machine, a whole workflow</td><td>A shared repository, one specific need</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section" aria-labelledby="types">
+          <div class="section-head"><h2 id="types">What each type is</h2><p class="lede">Four kinds of file, four ways Claude reaches them.</p></div>
+          <div class="types">
+            <article class="card" data-type="skill">
+              <h3><span class="dot" aria-hidden="true"></span>Skill</h3>
+              <p>A procedure Claude loads on its own when your request matches its description. You never call it by name.</p>
+              <p>Installs to <code>.claude/skills/&lt;name&gt;/</code></p>
+              <a href="/?type=skill">Browse 86 skills</a>
+            </article>
+            <article class="card" data-type="agent">
+              <h3><span class="dot" aria-hidden="true"></span>Agent</h3>
+              <p>A specialist Claude hands a whole side task to, in its own context, returning only the result.</p>
+              <p>Installs to <code>.claude/agents/&lt;name&gt;.md</code></p>
+              <a href="/?type=agent">Browse 17 agents</a>
+            </article>
+            <article class="card" data-type="command">
+              <h3><span class="dot" aria-hidden="true"></span>Command</h3>
+              <p>A shortcut you trigger yourself by typing /name in the session.</p>
+              <p>Installs to <code>.claude/commands/&lt;name&gt;.md</code></p>
+              <a href="/?type=command">Browse 18 commands</a>
+            </article>
+            <article class="card" data-type="hook">
+              <h3><span class="dot" aria-hidden="true"></span>Hook</h3>
+              <p>A script that runs on a Claude Code event, every time, with no model judgment involved.</p>
+              <p>Installs to <code>.claude/hooks/&lt;name&gt;/</code></p>
+              <a href="/?type=hook">Browse 15 hooks</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="faq">
+          <div class="section-head"><h2 id="faq">Questions</h2></div>
+          <div class="faq">
+            <details><summary>Is it safe to install?</summary><div><p>Every item is a Markdown file you can read before you trust it: open any item's page and the full text is there, or read it on GitHub. Hooks are small standalone scripts with no dependencies; each hook's page shows exactly what it blocks and allows.</p></div></details>
+            <details><summary>Can I install a plugin for one project only?</summary><div><p>Plugins live in Claude Code's own config and apply wherever you run it. For one project, install the items you want as single items so they sit in that repository's <code>.claude/</code> folder.</p></div></details>
+            <details><summary>How do I remove something?</summary><div><p>A plugin: <code>/plugin uninstall name@dotclaude</code>. A single item: delete its file or folder under <code>.claude/</code>, and for a hook remove its block from <code>settings.json</code>.</p></div></details>
+            <details><summary>Does the shadcn CLI need a React project?</summary><div><p>No. The registry format is shadcn's, but the items are plain files; the CLI only copies them into place. Any folder works as the project root.</p></div></details>
+            <details><summary>Can I use these with other agents?</summary><div><p>Skills are plain Markdown with a description and instructions, so most agents that read a skills folder can use them. Hooks, agents and commands follow Claude Code's conventions.</p></div></details>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner wrap">
+        <p>MIT licensed. Built by <a href="https://khaledsaeed.tech/work/dotclaude" rel="noopener">Khaled Saeed</a>.</p>
+        <nav aria-label="More">
+          <a href="https://github.com/KhaledSaeed18/dotclaude" rel="noopener">Source</a>
+          <a href="https://github.com/KhaledSaeed18/dotclaude/blob/main/CONTRIBUTING.md" rel="noopener">Contributing</a>
+          <a href="/llms.txt">llms.txt</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="/app.js"></script>
+  </body>
+</html>

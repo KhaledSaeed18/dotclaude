@@ -872,7 +872,7 @@ function buildPluginArtifacts(): PluginBuild {
       author: { name: REGISTRY_AUTHOR },
       // The catalog site, filtered to this plugin's items; the repo stays
       // under `repository`.
-      homepage: `${SITE_URL}/#/?plugin=${def.name}`,
+      homepage: `${SITE_URL}/plugins/${def.name}/`,
       repository: REGISTRY_HOMEPAGE,
       license: "MIT",
       category: def.category,
@@ -992,16 +992,26 @@ function escapeHtml(text: string): string {
  * invisible.
  */
 function buildSiteRows(model: SiteModel): string {
-  const rows = model.items.map((item) =>
-    [
+  const titleCase = (slug: string) =>
+    slug
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  const rows = model.items.map((item) => {
+    const showTitle = item.title.toLowerCase() !== titleCase(item.name).toLowerCase();
+    return [
       `<li class="row"><a class="row-link" href="/${item.key}/" data-key="${item.key}" data-type="${item.type}">`,
-      `<span class="row-rail" aria-hidden="true"></span><span class="row-main">`,
+      `<span class="dot" aria-hidden="true"></span><span class="row-main">`,
       `<span class="row-head"><code class="row-name">${escapeHtml(item.name)}</code>`,
       `<span class="row-type">${item.type}</span>`,
-      `<span class="row-category">${escapeHtml(item.category)}</span></span>`,
-      `<span class="row-desc">${escapeHtml(item.description)}</span></span></a></li>`,
-    ].join(""),
-  );
+      showTitle ? `<span class="row-title">${escapeHtml(item.title)}</span>` : "",
+      `</span><span class="row-desc">${escapeHtml(item.description)}</span></span>`,
+      item.plugins.length > 0
+        ? `<span class="row-plugins"><span class="visually-hidden">In plugins: </span>${item.plugins.map((p) => `<span>${escapeHtml(p)}</span>`).join("")}</span>`
+        : "",
+      `</a></li>`,
+    ].join("");
+  });
   return [SITE_ROWS_START, ...rows, SITE_ROWS_END].join("\n");
 }
 

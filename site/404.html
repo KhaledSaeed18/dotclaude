@@ -5,25 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Not found | dotclaude</title>
     <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
+    <script>try{const t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch{}</script>
   </head>
-  <body class="subpage">
+  <body data-page="notfound">
     <header class="masthead">
-      <div class="masthead-inner">
+      <div class="masthead-inner wrap">
         <a class="brand" href="/">
           <img class="brand-mark" src="/favicon.svg" alt="" width="20" height="20" />
           dotclaude
         </a>
+        <nav class="masthead-nav" id="site-nav" aria-label="Sections">
+          <a href="/">Catalog</a>
+          <a href="/plugins/">Plugins</a>
+          <a href="/install/">Install</a>
+        </nav>
       </div>
     </header>
-    <main class="page doc-page">
-      <h1>Nothing here</h1>
+    <main class="page wrap notfound">
+      <p class="pill">404</p>
+      <h1>Nothing at this address</h1>
       <p class="lede">
-        That item may have been renamed or removed. Search the
-        <a href="/">catalog</a>, or browse the
+        The item may have been renamed or removed. Search the catalog, or browse the
         <a href="https://github.com/KhaledSaeed18/dotclaude#catalog" rel="noopener">README on GitHub</a>.
       </p>
+      <search><form class="search" action="/" method="get">
+        <span class="visually-hidden">Search the catalog</span>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <circle cx="9" cy="9" r="5.5" />
+          <path d="M13.5 13.5 17 17" />
+        </svg>
+        <input name="q" type="search" placeholder="Search skills, agents, commands, hooks" autocomplete="off" />
+      </form></search>
     </main>
+    <script src="/app.js"></script>
   </body>
 </html>
