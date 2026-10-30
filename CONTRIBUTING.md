@@ -19,7 +19,7 @@ Every item lives at `<type>/<category>/<name>/<MANIFEST>`. From that location pl
 - the root `registry.json`
 - the README catalog, the count badges, and the plugins table
 - `site/data.json`, the single file the catalog site at [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) renders, plus the pre-rendered `meta`, `rows` and `jsonld` regions in `site/index.html` and `site/llms.txt` for crawlers
-- one static page per item (`site/<type>/<name>/index.html` with an `index.md` twin) and per plugin (`site/plugins/<name>/`), `site/sitemap.xml` and `site/llms-full.txt`, so every item is indexable and citable on its own URL
+- one static page per item (`site/<type>/<name>/index.html` with an `index.md` twin) and per plugin (`site/plugins/<name>/`), the plugins index and install guide (`site/plugins/`, `site/install/`), `site/sitemap.xml` and `site/llms-full.txt`, so every item is indexable and citable on its own URL
 - `.claude-plugin/marketplace.json` (the Claude Code plugin marketplace) and one plugin tree per bundle under `.claude-plugin/plugins/<plugin>/` (item copies in the standard plugin layout)
 
 **Never hand-edit a `registry.json`, the marketplace file, anything under `.claude-plugin/`, `site/data.json`, the README catalog, or the badge numbers.** They are generated. Edit the source manifest and run `pnpm gen`; `pnpm gen:check` fails CI if anything is stale.
@@ -121,10 +121,11 @@ Commit messages follow [Conventional Commits](https://www.conventionalcommits.or
 
 ## Continuous integration
 
-Two workflows run on every pull request:
+Three workflows run on every pull request:
 
 - **pages** ([.github/workflows/pages.yml](.github/workflows/pages.yml)): deploys `site/` to GitHub Pages at [dotclaude.khaledsaeed.tech](https://dotclaude.khaledsaeed.tech) on pushes to `main` that touch `site/`. The site is static with no build step; it renders the generated `site/data.json`, so an item change reaches the site on the next merge with no site edits. Preview locally with `python3 -m http.server 4173 --directory site`.
 - **validate** ([.github/workflows/validate.yml](.github/workflows/validate.yml)): typecheck, lint, test, `pnpm coverage` (90% floor), `gen:check`, registry validation, plugin-manifest validation, and the `pnpm smoke` install test.
+- **validate / site** (same workflow): the catalog site end to end with Playwright (`pnpm test:e2e`, specs in `e2e/`), on a desktop and a phone profile. Run it locally after any change under `site/` or to `scripts/site-pages.ts`; the first run needs `pnpm exec playwright install chromium`.
 - **security** ([.github/workflows/security.yml](.github/workflows/security.yml)): secret scanning and a dependency audit, plus a weekly scheduled run.
 
 ## Trying an item locally
