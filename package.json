@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@playwright/test": "^1.64.1",
+    "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.6",
     "gray-matter": "^4.0.3",
     "marked": "^18.1.3",
