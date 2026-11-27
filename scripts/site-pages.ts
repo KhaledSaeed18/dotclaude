@@ -132,13 +132,6 @@ function slugify(text: string): string {
     .replace(/\s+/g, "-");
 }
 
-function titleCase(slug: string): string {
-  return slug
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
-}
-
 /** JSON for a script element: `<` can never close it. */
 function jsonLd(graph: unknown[]): string {
   const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(

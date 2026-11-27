@@ -243,10 +243,6 @@ function titleCase(slug) {
     .join(" ");
 }
 
-function typeMeta(type) {
-  return state.data.types.find((t) => t.type === type);
-}
-
 /* Toolbar ------------------------------------------------------------------------ */
 
 function renderToolbar() {
